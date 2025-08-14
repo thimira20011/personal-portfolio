@@ -1,7 +1,7 @@
 {
   "name": "my-portfolio",
   "version": "0.1.0",
-  "homepage": "https://thimira20011.github.io/modern-portfolio",
+  "homepage": "https://thimira20011.github.io/personal-portfolio",
   "private": true,
   "dependencies": {
     "@heroicons/react": "^2.0.18",
