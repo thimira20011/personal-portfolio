@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/thimira20011/personal-portfolio.git/static/css/main.0a34ada7.css",
+    "main.js": "/thimira20011/personal-portfolio.git/static/js/main.67f1fb66.js",
+    "index.html": "/thimira20011/personal-portfolio.git/index.html",
+    "main.0a34ada7.css.map": "/thimira20011/personal-portfolio.git/static/css/main.0a34ada7.css.map",
+    "main.67f1fb66.js.map": "/thimira20011/personal-portfolio.git/static/js/main.67f1fb66.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.0a34ada7.css",
+    "static/js/main.67f1fb66.js"
+  ]
+}
