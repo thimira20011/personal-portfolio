@@ -16,15 +16,31 @@ import { Github, Linkedin, X, Sun, Moon } from 'lucide-react';
 export default function App() {
   const [isDarkMode, setIsDarkMode] = useState(false);
 
-  // useEffect to set initial theme based on system preference
+  // useEffect to set initial theme based on localStorage or system preference
   useEffect(() => {
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    if (prefersDark) {
-      document.documentElement.classList.add('dark');
-      setIsDarkMode(true);
+    // Check if there's a saved theme preference in localStorage
+    const savedTheme = localStorage.getItem('theme');
+    
+    if (savedTheme) {
+      // Use saved preference
+      const isDark = savedTheme === 'dark';
+      setIsDarkMode(isDark);
+      if (isDark) {
+        document.documentElement.classList.add('dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+      }
     } else {
-      document.documentElement.classList.remove('dark');
-      setIsDarkMode(false);
+      // Fall back to system preference
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      setIsDarkMode(prefersDark);
+      if (prefersDark) {
+        document.documentElement.classList.add('dark');
+        localStorage.setItem('theme', 'dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+        localStorage.setItem('theme', 'light');
+      }
     }
   }, []);
 
@@ -34,8 +50,10 @@ export default function App() {
       const newMode = !prevMode;
       if (newMode) {
         document.documentElement.classList.add('dark');
+        localStorage.setItem('theme', 'dark');
       } else {
         document.documentElement.classList.remove('dark');
+        localStorage.setItem('theme', 'light');
       }
       return newMode;
     });
