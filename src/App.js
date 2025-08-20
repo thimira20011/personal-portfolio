@@ -68,15 +68,15 @@ export default function App() {
     resumeUrl: "https://drive.google.com/file/d/1jJ99adEOCqtgoB7DH6lfyMGXgjnw_5hF/view?usp=sharing", // Replace with your resume's URL
     about: {
       bio: "Hello! I'm a passionate student at the Sabaragamuwa University of Sri Lanka, following a degree in Information Systems. I'm fascinated by web development, networking, and cybersecurity. My journey in tech started with a curiosity for how things work, and it has evolved into a passion for building user-friendly applications and exploring the intricacies of network security. In my free time, I enjoy reading, hiking, and exploring new technologies.",
-      skills: ["Java", "C", "React", "JavaScript", "HTML", "CSS", "Tailwind CSS", "Node.js", "Express.js", "MongoDB", "Figma"]
+      skills: ["Java", "C", "React", "JavaScript", "HTML", "CSS", "Tailwind CSS", "Node.js", "Express.js", "MongoDB", "Figma","Linux"]
     },
     projects: [
       {
         id: 1,
         title: "Project The Reuse Hub",
         description: "A dynamic web application for managing tasks and tracking progress. Built with React and a Node.js + firebase backend. Features include user authentication, real-time updates, and a clean user interface.",
-        link: "https://github.com/thimira20011/the-reuse-hub.git",
-        imageUrl: "https://github.com/thimira20011/portfolio-pictures/blob/main/Reusehub.png?raw=true", // Placeholder image URL
+        link: "https://github.com/thimira20011/the-reuse-hub-v2.git",
+        imageUrl: "https://github.com/thimira20011/portfolio-pictures/blob/main/ReuseHubHome.png?raw=true", // Placeholder image URL
         techStack: ["React", "Node.js", "MySQL","TailwindCSS"]
       },
       {
