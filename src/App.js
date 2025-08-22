@@ -246,7 +246,7 @@ export default function App() {
 
   return (
     // The main container now has the background colors and is a relative position parent
-    <div className="relative font-sans antialiased min-h-screen bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-200 transition-colors duration-500">
+    <div className="relative font-sans antialiased min-h-screen bg-indigo-50 dark:bg-gray-900 text-gray-800 dark:text-gray-200 transition-colors duration-500">
       {/* The background animation is now a separate component */}
       <BackgroundAnimation isDarkMode={isDarkMode} />
       {/* The rest of the content is in a separate container on top of the animation */}
