@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import {
   BookOpenIcon,
   EnvelopeIcon,
@@ -11,6 +11,143 @@ import {
   ArrowDownTrayIcon
 } from '@heroicons/react/20/solid';
 import { Github, Linkedin, X, Sun, Moon } from 'lucide-react';
+
+// A new component to handle the canvas-based background animation
+const BackgroundAnimation = ({ isDarkMode }) => {
+  const canvasRef = useRef(null);
+  const animationFrameIdRef = useRef(null);
+
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+
+    let particles = [];
+    const numParticles = 75;
+
+    let stars = [];
+    const numStars = 250;
+
+    // A function to resize the canvas to fit the window
+    const resizeCanvas = () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    };
+
+    // Initialize particles for light mode
+    const initParticles = () => {
+      particles = [];
+      for (let i = 0; i < numParticles; i++) {
+        particles.push({
+          x: Math.random() * canvas.width,
+          y: Math.random() * canvas.height,
+          radius: Math.random() * 2 + 1,
+          speedX: (Math.random() - 0.5) * 0.2,
+          speedY: (Math.random() - 0.5) * 0.2,
+          opacity: Math.random() * 0.5 + 0.1
+        });
+      }
+    };
+
+    // Draw the particles for light mode
+    const drawParticles = () => {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      // NOTE: Changed fillStyle to a darker color for better visibility in light mode
+      particles.forEach(p => {
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(150, 150, 150, ${p.opacity + 0.2})`; // Increased opacity and changed color
+        ctx.fill();
+      });
+    };
+
+    // Update particle positions for light mode
+    const updateParticles = () => {
+      particles.forEach(p => {
+        p.x += p.speedX;
+        p.y += p.speedY;
+
+        // Wrap particles around the screen
+        if (p.x > canvas.width + p.radius) p.x = -p.radius;
+        if (p.x < -p.radius) p.x = canvas.width + p.radius;
+        if (p.y > canvas.height + p.radius) p.y = -p.radius;
+        if (p.y < -p.radius) p.y = canvas.height + p.radius;
+      });
+    };
+
+    // Initialize stars for dark mode
+    const initStars = () => {
+      stars = [];
+      for (let i = 0; i < numStars; i++) {
+        stars.push({
+          x: Math.random() * canvas.width,
+          y: Math.random() * canvas.height,
+          size: Math.random() * 1.5 + 0.5,
+          speed: (Math.random() * 0.05) + 0.01,
+          opacity: Math.random() * 0.7 + 0.3
+        });
+      }
+    };
+
+    // Draw the stars for dark mode
+    const drawStars = () => {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      stars.forEach(s => {
+        ctx.beginPath();
+        ctx.arc(s.x, s.y, s.size, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(255, 255, 255, ${s.opacity})`;
+        ctx.fill();
+      });
+    };
+
+    // Update star positions for dark mode
+    const updateStars = () => {
+      stars.forEach(s => {
+        s.x -= s.speed;
+        if (s.x < 0) {
+          s.x = canvas.width;
+          s.y = Math.random() * canvas.height;
+        }
+      });
+    };
+
+    // Main animation loop
+    const animate = () => {
+      if (isDarkMode) {
+        drawStars();
+        updateStars();
+      } else {
+        drawParticles();
+        updateParticles();
+      }
+      animationFrameIdRef.current = requestAnimationFrame(animate);
+    };
+
+    // Initial setup and animation start
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+    if (isDarkMode) {
+      initStars();
+    } else {
+      initParticles();
+    }
+    animate();
+
+    // Cleanup function
+    return () => {
+      window.removeEventListener('resize', resizeCanvas);
+      cancelAnimationFrame(animationFrameIdRef.current);
+    };
+
+  }, [isDarkMode]);
+
+  return (
+    <canvas
+      ref={canvasRef}
+      className="absolute inset-0 z-0"
+    ></canvas>
+  );
+};
 
 // Main App component which contains all the sections and logic
 export default function App() {
@@ -108,8 +245,12 @@ export default function App() {
   });
 
   return (
-    <div className="bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-200 font-sans antialiased min-h-screen">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+    // The main container now has the background colors and is a relative position parent
+    <div className="relative font-sans antialiased min-h-screen bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-200 transition-colors duration-500">
+      {/* The background animation is now a separate component */}
+      <BackgroundAnimation isDarkMode={isDarkMode} />
+      {/* The rest of the content is in a separate container on top of the animation */}
+      <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 bg-transparent">
         <Header data={portfolioData} isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />
         <About data={portfolioData.about} />
         <Projects data={portfolioData.projects} />
