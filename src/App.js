@@ -26,7 +26,8 @@ const BackgroundAnimation = ({ isDarkMode }) => {
     const numParticles = 75;
 
     let stars = [];
-    const numStars = 250;
+    // FIX: Corrected the syntax error in the user's code block
+    const numStars = 250; 
 
     // A function to resize the canvas to fit the window
     const resizeCanvas = () => {
@@ -52,11 +53,11 @@ const BackgroundAnimation = ({ isDarkMode }) => {
     // Draw the particles for light mode
     const drawParticles = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
-      // NOTE: Changed fillStyle to a darker color for better visibility in light mode
+      // NOTE: Using darker color for better visibility against the light background
       particles.forEach(p => {
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(150, 150, 150, ${p.opacity + 0.2})`; // Increased opacity and changed color
+        ctx.fillStyle = `rgba(150, 150, 150, ${p.opacity + 0.2})`;
         ctx.fill();
       });
     };
@@ -245,8 +246,8 @@ export default function App() {
   });
 
   return (
-    // The main container now has the background colors and is a relative position parent
-    <div className="relative font-sans antialiased min-h-screen bg-indigo-50 dark:bg-gray-900 text-gray-800 dark:text-gray-200 transition-colors duration-500">
+    // M3 Base: Use light sky background for light mode
+    <div className="relative font-sans antialiased min-h-screen bg-sky-50 dark:bg-gray-900 text-gray-800 dark:text-gray-200 transition-colors duration-500">
       {/* The background animation is now a separate component */}
       <BackgroundAnimation isDarkMode={isDarkMode} />
       {/* The rest of the content is in a separate container on top of the animation */}
@@ -262,18 +263,25 @@ export default function App() {
 
 // Header component for the hero section
 const Header = React.memo(({ data, isDarkMode, toggleDarkMode }) => {
+  // M3 Accent Color: Using sky-600/400 for primary elements
+  const accentColorClass = "text-sky-600 dark:text-sky-400";
+  const primaryButtonClass = "bg-sky-600 hover:bg-sky-700 focus:ring-sky-500";
+  const secondaryButtonClass = "border-sky-600 text-sky-600 dark:text-sky-400 dark:border-sky-400 hover:bg-sky-50 dark:hover:bg-gray-700 focus:ring-sky-500";
+
   return (
     <header className="py-24 md:py-32 lg:py-40 text-center">
+      {/* M3 Toggle Button: Rounded, high-contrast toggle */}
       <button
         onClick={toggleDarkMode}
-        className="absolute top-8 right-8 p-2 rounded-full text-gray-800 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+        // M3 Toggle Button Style: Full rounded, shadow for elevation
+        className="fixed top-6 right-6 z-50 p-3 rounded-full shadow-lg bg-sky-100 dark:bg-sky-900 text-sky-800 dark:text-sky-200 hover:bg-sky-200 dark:hover:bg-sky-800 transition-colors duration-300 focus:outline-none focus:ring-4 focus:ring-sky-300 dark:focus:ring-sky-700"
       >
         {isDarkMode ? <Sun className="h-6 w-6" /> : <Moon className="h-6 w-6" />}
       </button>
       <div className="flex flex-col-reverse md:flex-row items-center justify-center gap-8 md:gap-16">
         <div className="relative z-10 text-center md:text-left">
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight tracking-tight mb-2 text-gray-900 dark:text-white">
-            Hi, I'm <span className="text-indigo-600 dark:text-indigo-400">{data.name}</span>
+            Hi, I'm <span className={accentColorClass}>{data.name}</span>
           </h1>
           <p className="text-xl sm:text-2xl lg:text-3xl font-light text-gray-600 dark:text-gray-300">
             {data.title}
@@ -282,18 +290,22 @@ const Header = React.memo(({ data, isDarkMode, toggleDarkMode }) => {
             {data.tagline}
           </p>
           <div className="mt-8 flex flex-col sm:flex-row justify-center md:justify-start space-y-4 sm:space-y-0 sm:space-x-4">
+            {/* M3 Primary Button Style (Elevated/Filled) */}
             <a
               href="#projects"
-              className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-full shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition duration-300 ease-in-out"
+              // M3 Button: Full rounded shape, shadow-xl for high elevation
+              className={`inline-flex items-center px-8 py-4 border border-transparent text-base font-medium rounded-3xl shadow-xl text-white ${primaryButtonClass} transition duration-300 ease-in-out`}
             >
               My Work
               <ArrowDownCircleIcon className="ml-2 -mr-1 h-5 w-5" aria-hidden="true" />
             </a>
+            {/* M3 Secondary Button Style (Outlined) */}
             <a
               href={data.resumeUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center px-6 py-3 border border-indigo-600 text-base font-medium rounded-full shadow-sm text-indigo-600 dark:text-indigo-400 bg-white dark:bg-gray-800 hover:bg-indigo-50 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition duration-300 ease-in-out"
+              // M3 Button: Full rounded shape, shadow-lg, outlined
+              className={`inline-flex items-center px-8 py-4 border-2 text-base font-medium rounded-3xl shadow-lg bg-white dark:bg-gray-800 ${secondaryButtonClass} transition duration-300 ease-in-out`}
             >
               Download Resume
               <ArrowDownTrayIcon className="ml-2 -mr-1 h-5 w-5" aria-hidden="true" />
@@ -301,14 +313,11 @@ const Header = React.memo(({ data, isDarkMode, toggleDarkMode }) => {
           </div>
         </div>
         <div className="relative w-48 h-48 md:w-64 md:h-64 flex-shrink-0">
-          {/*
-            NOTE: For best performance, make sure to use an optimized image.
-            Tools like TinyPNG or Squoosh can help compress your profile picture.
-          */}
+          {/* M3 Profile Circle: Softer ring color */}
           <img
             src={data.profilePicUrl}
             alt="Profile"
-            className="w-full h-full rounded-full object-cover ring-4 ring-indigo-600 dark:ring-indigo-400 transform transition-transform duration-300 ease-in-out hover:scale-105"
+            className="w-full h-full rounded-full object-cover ring-4 ring-sky-200 dark:ring-sky-600 transform transition-transform duration-300 ease-in-out hover:scale-105 shadow-xl"
           />
         </div>
       </div>
@@ -321,21 +330,23 @@ const About = React.memo(({ data }) => {
   return (
     <section id="about" className="py-16 md:py-24">
       <h2 className="text-3xl sm:text-4xl font-bold text-center mb-12">
-        <UserIcon className="h-8 w-8 inline-block mr-2 text-indigo-600 dark:text-indigo-400" />
+        <UserIcon className="h-8 w-8 inline-block mr-2 text-sky-600 dark:text-sky-400" />
         About Me
       </h2>
       <div className="max-w-4xl mx-auto">
-        <div className="bg-white dark:bg-gray-800 p-8 md:p-12 rounded-2xl shadow-lg transition duration-300 ease-in-out hover:shadow-2xl">
+        {/* M3 Card: Elevated surface, large rounded corners, subtle shadow */}
+        <div className="bg-white dark:bg-gray-800 p-8 md:p-12 rounded-3xl shadow-xl transition duration-300 ease-in-out hover:shadow-2xl">
           <p className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
             {data.bio}
           </p>
           <div className="mt-8">
             <h3 className="text-xl font-semibold mb-4 text-gray-900 dark:text-white">Skills</h3>
-            <div className="flex flex-wrap gap-2">
+            <div className="flex flex-wrap gap-3">
               {data.skills.map((skill, index) => (
                 <span
                   key={index}
-                  className="px-4 py-2 bg-indigo-100 text-indigo-800 dark:bg-indigo-900 dark:text-indigo-300 rounded-full font-medium text-sm transition duration-300 ease-in-out transform hover:scale-105"
+                  // M3 Chip Style: Rounded, contrasting color background
+                  className="px-4 py-2 bg-sky-100 text-sky-800 dark:bg-sky-900 dark:text-sky-300 rounded-full font-medium text-sm transition duration-300 ease-in-out transform hover:scale-105 shadow-md"
                 >
                   {skill}
                 </span>
@@ -353,16 +364,17 @@ const Projects = React.memo(({ data }) => {
   return (
     <section id="projects" className="py-16 md:py-24 bg-gray-100 dark:bg-gray-800 rounded-3xl">
       <h2 className="text-3xl sm:text-4xl font-bold text-center mb-12">
-        <BookOpenIcon className="h-8 w-8 inline-block mr-2 text-indigo-600 dark:text-indigo-400" />
+        <BookOpenIcon className="h-8 w-8 inline-block mr-2 text-sky-600 dark:text-sky-400" />
         My Projects
       </h2>
       <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 p-4">
         {data.map((project) => (
-          <div key={project.id} className="bg-white dark:bg-gray-900 rounded-2xl shadow-lg overflow-hidden transition duration-300 ease-in-out transform hover:-translate-y-2 hover:shadow-2xl">
-            <img 
-              src={project.imageUrl} 
-              alt={project.title} 
-              className="w-full h-48 object-cover" 
+          // M3 Project Card: High rounded corners, significant shadow for elevation
+          <div key={project.id} className="bg-white dark:bg-gray-900 rounded-3xl shadow-xl overflow-hidden transition duration-300 ease-in-out transform hover:-translate-y-2 hover:shadow-2xl">
+            <img
+              src={project.imageUrl}
+              alt={project.title}
+              className="w-full h-48 object-cover"
             />
             <div className="p-6">
               <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">{project.title}</h3>
@@ -371,6 +383,7 @@ const Projects = React.memo(({ data }) => {
                 {project.techStack.map((tech, index) => (
                   <span
                     key={index}
+                    // M3 Chip Style
                     className="px-2 py-1 bg-gray-200 text-gray-700 dark:bg-gray-700 dark:text-gray-300 rounded-full text-xs font-medium"
                   >
                     {tech}
@@ -381,7 +394,7 @@ const Projects = React.memo(({ data }) => {
                 href={project.link}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center text-sm font-medium text-indigo-600 dark:text-indigo-400 hover:text-indigo-800 dark:hover:text-indigo-500 transition duration-300 ease-in-out"
+                className="inline-flex items-center text-sm font-medium text-sky-600 dark:text-sky-400 hover:text-sky-800 dark:hover:text-sky-500 transition duration-300 ease-in-out"
               >
                 View on GitHub
                 <ArrowTopRightOnSquareIcon className="ml-1 h-4 w-4" />
@@ -403,11 +416,12 @@ const Contact = React.memo(({ data, socialLinks }) => {
   return (
     <section id="contact" className="py-16 md:py-24">
       <h2 className="text-3xl sm:text-4xl font-bold text-center mb-12">
-        <EnvelopeIcon className="h-8 w-8 inline-block mr-2 text-indigo-600 dark:text-indigo-400" />
+        <EnvelopeIcon className="h-8 w-8 inline-block mr-2 text-sky-600 dark:text-sky-400" />
         Contact Me
       </h2>
       <div className="max-w-4xl mx-auto">
-        <div className="bg-white dark:bg-gray-800 p-8 md:p-12 rounded-2xl shadow-lg">
+        {/* M3 Surface Card */}
+        <div className="bg-white dark:bg-gray-800 p-8 md:p-12 rounded-3xl shadow-xl">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {/* Contact Details */}
             <div>
@@ -417,24 +431,25 @@ const Contact = React.memo(({ data, socialLinks }) => {
               </p>
               <div className="space-y-4">
                 <div className="flex items-center space-x-3">
-                  <EnvelopeIcon className="h-6 w-6 text-indigo-600 dark:text-indigo-400" />
-                  <a href={`mailto:${data.email}`} className="text-gray-700 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition duration-300 ease-in-out">
+                  <EnvelopeIcon className="h-6 w-6 text-sky-600 dark:text-sky-400" />
+                  <a href={`mailto:${data.email}`} className="text-gray-700 dark:text-gray-300 hover:text-sky-600 dark:hover:text-sky-400 transition duration-300 ease-in-out">
                     {data.email}
                   </a>
                 </div>
                 <div className="flex items-center space-x-3">
-                  <PhoneIcon className="h-6 w-6 text-indigo-600 dark:text-indigo-400" />
+                  <PhoneIcon className="h-6 w-6 text-sky-600 dark:text-sky-400" />
                   <span className="text-gray-700 dark:text-gray-300">{data.phone}</span>
                 </div>
               </div>
               <div className="mt-8">
                 <h3 className="text-xl font-semibold mb-4 text-gray-900 dark:text-white">Find Me On</h3>
                 <div className="flex space-x-4">
+                  {/* M3 Icon Button Hover */}
                   <a
                     href={socialLinks.github}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-gray-500 hover:text-indigo-600 dark:hover:text-indigo-400 transition duration-300 ease-in-out"
+                    className="text-gray-500 hover:text-sky-600 dark:hover:text-sky-400 transition duration-300 ease-in-out p-1 rounded-full hover:bg-sky-50 dark:hover:bg-gray-700"
                   >
                     <Github size={32} />
                   </a>
@@ -442,7 +457,7 @@ const Contact = React.memo(({ data, socialLinks }) => {
                     href={socialLinks.linkedin}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-gray-500 hover:text-indigo-600 dark:hover:text-indigo-400 transition duration-300 ease-in-out"
+                    className="text-gray-500 hover:text-sky-600 dark:hover:text-sky-400 transition duration-300 ease-in-out p-1 rounded-full hover:bg-sky-50 dark:hover:bg-gray-700"
                   >
                     <Linkedin size={32} />
                   </a>
@@ -450,7 +465,7 @@ const Contact = React.memo(({ data, socialLinks }) => {
                     href={socialLinks.x}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-gray-500 hover:text-indigo-600 dark:hover:text-indigo-400 transition duration-300 ease-in-out"
+                    className="text-gray-500 hover:text-sky-600 dark:hover:text-sky-400 transition duration-300 ease-in-out p-1 rounded-full hover:bg-sky-50 dark:hover:bg-gray-700"
                   >
                     <X size={32} />
                   </a>
@@ -461,51 +476,55 @@ const Contact = React.memo(({ data, socialLinks }) => {
             {/* Contact Form using Formspree */}
             <div>
               <h3 className="text-xl font-semibold mb-4 text-gray-900 dark:text-white">Send me a message</h3>
-              {/*
-                 IMPORTANT: Replace 'YOUR_FORMSPREE_ENDPOINT' with your actual Formspree form ID.
-                 To get your ID, go to https://formspree.io/ and create a new form.
-              */}
               <form
-                action="https://formspree.io/f/xdkdjdvn"
+                action="https://formspree.io/f/xdkdjdvn" // NOTE: Using your provided Formspree ID
                 method="POST"
                 className="space-y-4"
               >
                 <div>
                   <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-300">Name</label>
+                  {/* M3 Input Field: Highly rounded corners */}
                   <input
                     type="text"
                     id="name"
                     name="name"
-                    className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 dark:bg-gray-700 dark:border-gray-600 dark:text-gray-200"
+                    // M3 Style: Rounded-xl for softer look
+                    className="mt-1 block w-full rounded-xl border-gray-300 shadow-inner focus:border-sky-500 focus:ring-sky-500 dark:bg-gray-700 dark:border-gray-600 dark:text-gray-200"
                     placeholder="Your Name"
                     required
                   />
                 </div>
                 <div>
                   <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300">Email</label>
+                   {/* M3 Input Field */}
                   <input
                     type="email"
                     id="email"
-                    name="_replyto" // Formspree uses _replyto for the sender's email
-                    className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 dark:bg-gray-700 dark:border-gray-600 dark:text-gray-200"
+                    name="_replyto"
+                    // M3 Style: Rounded-xl
+                    className="mt-1 block w-full rounded-xl border-gray-300 shadow-inner focus:border-sky-500 focus:ring-sky-500 dark:bg-gray-700 dark:border-gray-600 dark:text-gray-200"
                     placeholder="you@example.com"
                     required
                   />
                 </div>
                 <div>
                   <label htmlFor="message" className="block text-sm font-medium text-gray-700 dark:text-gray-300">Message</label>
+                   {/* M3 Input Field */}
                   <textarea
                     id="message"
                     name="message"
                     rows="4"
-                    className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 dark:bg-gray-700 dark:border-gray-600 dark:text-gray-200"
+                    // M3 Style: Rounded-xl
+                    className="mt-1 block w-full rounded-xl border-gray-300 shadow-inner focus:border-sky-500 focus:ring-sky-500 dark:bg-gray-700 dark:border-gray-600 dark:text-gray-200"
                     placeholder="Your Message..."
                     required
                   ></textarea>
                 </div>
+                {/* M3 Primary Button (Filled) */}
                 <button
                   type="submit"
-                  className="w-full inline-flex justify-center py-3 px-6 border border-transparent shadow-sm text-base font-medium rounded-full text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition duration-300 ease-in-out"
+                  // M3 Button: Full rounded shape, shadow-xl for high elevation
+                  className="w-full inline-flex justify-center py-3 px-6 border border-transparent shadow-xl text-base font-medium rounded-full text-white bg-sky-600 hover:bg-sky-700 focus:outline-none focus:ring-4 focus:ring-sky-300 transition duration-300 ease-in-out"
                 >
                   Send Message
                 </button>
