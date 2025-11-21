@@ -211,26 +211,34 @@ export default function App() {
     projects: [
       {
         id: 1,
-        title: "Project The Reuse Hub",
-        description: "A dynamic web application for managing tasks and tracking progress. Built with React and a Node.js + firebase backend. Features include user authentication, real-time updates, and a clean user interface.",
-        link: "https://github.com/thimira20011/the-reuse-hub-v2.git",
-        imageUrl: "https://github.com/thimira20011/portfolio-pictures/blob/main/ReuseHubHome.png?raw=true", // Placeholder image URL
-        techStack: ["React", "Node.js", "MySQL","TailwindCSS"]
+        title: "Galagama Gems",
+        description: "A modern, animated website showcasing gemstone products with smooth animations and transitions. Features comprehensive UI components, form validation, and a fully responsive design with advanced animation patterns.",
+        link: "https://github.com/thimira20011/Galagama-Gems.git",
+        imageUrl: "https://github.com/thimira20011/portfolio-pictures/blob/main/Screenshot%202025-11-21%20230125.png?raw=true",
+        techStack: ["React", "Vite", "Radix UI", "Motion", "Tailwind CSS"]
       },
       {
         id: 2,
-        title: "Personal Expense Tracker",
-        description: "A enterprise application for tracking personal expenses. Users can add, edit, and delete expenses, and view their spending habits over time.",
-        link: "https://github.com/thimira20011/expense-tracker.git",
-        imageUrl: "https://raw.githubusercontent.com/thimira20011/portfolio-pictures/refs/heads/main/expenseTracker.png", // Placeholder image URL
-        techStack: ["Java"]
+        title: "Project The Reuse Hub",
+        description: "A dynamic web application for managing tasks and tracking progress. Built with React and a Node.js + firebase backend. Features include user authentication, real-time updates, and a clean user interface.",
+        link: "https://github.com/thimira20011/the-reuse-hub-v2.git",
+        imageUrl: "https://github.com/thimira20011/portfolio-pictures/blob/main/ReuseHubHome.png?raw=true",
+        techStack: ["React", "Node.js", "MySQL","TailwindCSS"]
       },
       {
         id: 3,
+        title: "Personal Expense Tracker",
+        description: "A enterprise application for tracking personal expenses. Users can add, edit, and delete expenses, and view their spending habits over time.",
+        link: "https://github.com/thimira20011/expense-tracker.git",
+        imageUrl: "https://raw.githubusercontent.com/thimira20011/portfolio-pictures/refs/heads/main/expenseTracker.png",
+        techStack: ["Java"]
+      },
+      {
+        id: 4,
         title: "You think Web Site",
         description: "This very website! A responsive and modern portfolio template built to showcase my projects and skills. Designed with a focus on simplicity and user experience.",
         link: "https://github.com/thimira20011/you-think.git",
-        imageUrl: "https://github.com/thimira20011/portfolio-pictures/blob/main/youThink.png?raw=true", // Placeholder image URL
+        imageUrl: "https://github.com/thimira20011/portfolio-pictures/blob/main/youThink.png?raw=true",
         techStack: ["HTML", "CSS", "JavaScript","Bootstrap"]
       }
     ],
