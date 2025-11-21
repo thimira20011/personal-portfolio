@@ -215,7 +215,7 @@ export default function App() {
         description: "A modern, animated website showcasing gemstone products with smooth animations and transitions. Features comprehensive UI components, form validation, and a fully responsive design with advanced animation patterns.",
         link: "https://github.com/thimira20011/Galagama-Gems.git",
         imageUrl: "https://github.com/thimira20011/portfolio-pictures/blob/main/Screenshot%202025-11-21%20230125.png?raw=true",
-        techStack: ["React", "Vite", "Radix UI", "Motion", "Tailwind CSS"]
+        techStack: ["React", "TypeScript", "Radix UI", "Motion", "Tailwind CSS"]
       },
       {
         id: 2,
