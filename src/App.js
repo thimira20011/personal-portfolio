@@ -10,7 +10,7 @@ import {
   ArrowTopRightOnSquareIcon,
   ArrowDownTrayIcon
 } from '@heroicons/react/20/solid';
-import { Github, Linkedin, X, Sun, Moon } from 'lucide-react';
+import { Github, Linkedin, X, Sun, Moon, Menu, ChevronUp } from 'lucide-react';
 
 // A new component to handle the canvas-based background animation
 const BackgroundAnimation = ({ isDarkMode }) => {
@@ -27,7 +27,7 @@ const BackgroundAnimation = ({ isDarkMode }) => {
 
     let stars = [];
     // FIX: Corrected the syntax error in the user's code block
-    const numStars = 250; 
+    const numStars = 250;
 
     // A function to resize the canvas to fit the window
     const resizeCanvas = () => {
@@ -158,7 +158,7 @@ export default function App() {
   useEffect(() => {
     // Check if there's a saved theme preference in localStorage
     const savedTheme = localStorage.getItem('theme');
-    
+
     if (savedTheme) {
       // Use saved preference
       const isDark = savedTheme === 'dark';
@@ -206,7 +206,7 @@ export default function App() {
     resumeUrl: "https://drive.google.com/file/d/1jJ99adEOCqtgoB7DH6lfyMGXgjnw_5hF/view?usp=sharing", // Replace with your resume's URL
     about: {
       bio: "Hello! I'm a passionate student at the Sabaragamuwa University of Sri Lanka, following a degree in Information Systems. I'm fascinated by web development, networking, and cybersecurity. My journey in tech started with a curiosity for how things work, and it has evolved into a passion for building user-friendly applications and exploring the intricacies of network security. In my free time, I enjoy reading, hiking, and exploring new technologies.",
-      skills: ["Java", "C", "React", "JavaScript", "HTML", "CSS", "Tailwind CSS", "Node.js", "Express.js", "MongoDB", "Figma","Linux"]
+      skills: ["Java", "C", "React", "JavaScript", "HTML", "CSS", "Tailwind CSS", "Node.js", "Express.js", "MongoDB", "Figma", "Linux"]
     },
     projects: [
       {
@@ -223,7 +223,7 @@ export default function App() {
         description: "A dynamic web application for managing tasks and tracking progress. Built with React and a Node.js + firebase backend. Features include user authentication, real-time updates, and a clean user interface.",
         link: "https://github.com/thimira20011/the-reuse-hub-v2.git",
         imageUrl: "https://github.com/thimira20011/portfolio-pictures/blob/main/ReuseHubHome.png?raw=true",
-        techStack: ["React", "Node.js", "MySQL","TailwindCSS"]
+        techStack: ["React", "Node.js", "MySQL", "TailwindCSS"]
       },
       {
         id: 3,
@@ -239,7 +239,7 @@ export default function App() {
         description: "This very website! A responsive and modern portfolio template built to showcase my projects and skills. Designed with a focus on simplicity and user experience.",
         link: "https://github.com/thimira20011/you-think.git",
         imageUrl: "https://github.com/thimira20011/portfolio-pictures/blob/main/youThink.png?raw=true",
-        techStack: ["HTML", "CSS", "JavaScript","Bootstrap"]
+        techStack: ["HTML", "CSS", "JavaScript", "Bootstrap"]
       }
     ],
     socialLinks: {
@@ -258,13 +258,20 @@ export default function App() {
     <div className="relative font-sans antialiased min-h-screen bg-sky-50 dark:bg-gray-900 text-gray-800 dark:text-gray-200 transition-colors duration-500">
       {/* The background animation is now a separate component */}
       <BackgroundAnimation isDarkMode={isDarkMode} />
+
+
+
       {/* The rest of the content is in a separate container on top of the animation */}
-      <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 bg-transparent">
+      <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 bg-transparent pt-20">
         <Header data={portfolioData} isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />
         <About data={portfolioData.about} />
         <Projects data={portfolioData.projects} />
         <Contact data={portfolioData.contact} socialLinks={portfolioData.socialLinks} />
+        <Footer data={portfolioData} />
       </div>
+
+      {/* Scroll To Top Button */}
+      <ScrollToTop />
     </div>
   );
 }
@@ -504,7 +511,7 @@ const Contact = React.memo(({ data, socialLinks }) => {
                 </div>
                 <div>
                   <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300">Email</label>
-                   {/* M3 Input Field */}
+                  {/* M3 Input Field */}
                   <input
                     type="email"
                     id="email"
@@ -517,7 +524,7 @@ const Contact = React.memo(({ data, socialLinks }) => {
                 </div>
                 <div>
                   <label htmlFor="message" className="block text-sm font-medium text-gray-700 dark:text-gray-300">Message</label>
-                   {/* M3 Input Field */}
+                  {/* M3 Input Field */}
                   <textarea
                     id="message"
                     name="message"
@@ -544,3 +551,65 @@ const Contact = React.memo(({ data, socialLinks }) => {
     </section>
   );
 });
+
+
+
+// Scroll To Top Component
+const ScrollToTop = () => {
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const toggleVisibility = () => {
+      if (window.pageYOffset > 300) {
+        setIsVisible(true);
+      } else {
+        setIsVisible(false);
+      }
+    };
+
+    window.addEventListener('scroll', toggleVisibility);
+    return () => window.removeEventListener('scroll', toggleVisibility);
+  }, []);
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  };
+
+  return (
+    <>
+      {isVisible && (
+        <button
+          onClick={scrollToTop}
+          className="fixed bottom-8 right-8 z-50 p-3 rounded-full bg-sky-600 text-white shadow-lg hover:bg-sky-700 transition-all duration-300 focus:outline-none animate-bounce"
+        >
+          <ChevronUp className="h-6 w-6" />
+        </button>
+      )}
+    </>
+  );
+};
+
+// Footer Component
+const Footer = ({ data }) => {
+  return (
+    <footer className="mt-16 py-8 border-t border-gray-200 dark:border-gray-800 text-center">
+      <p className="text-gray-600 dark:text-gray-400">
+        &copy; {new Date().getFullYear()} {data.name}. All rights reserved.
+      </p>
+      <div className="mt-4 flex justify-center space-x-6">
+        <a href={data.socialLinks.github} target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-sky-600 dark:hover:text-sky-400">
+          <Github className="h-5 w-5" />
+        </a>
+        <a href={data.socialLinks.linkedin} target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-sky-600 dark:hover:text-sky-400">
+          <Linkedin className="h-5 w-5" />
+        </a>
+        <a href={data.socialLinks.x} target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-sky-600 dark:hover:text-sky-400">
+          <X className="h-5 w-5" />
+        </a>
+      </div>
+    </footer>
+  );
+};
