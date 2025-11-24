@@ -80,11 +80,6 @@ All content is managed in the [`portfolioData`](src/App.js) object in [`src/App.
 - **Add projects:** Add objects to the `projects` array with details and image URLs.
 - **Contact form:** Sign up at [Formspree](https://formspree.io/) and replace the endpoint in the Contact component with your unique form ID.
 
----
-
-## 📄 License
-
-This project is MIT licensed. See the [LICENSE](LICENSE) file for details.
 
 ---
 
