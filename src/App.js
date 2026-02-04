@@ -203,7 +203,7 @@ export default function App() {
     title: "Student, Information Systems",
     tagline: "Fascinated by Web Development, Networking, and Cybersecurity.",
     profilePicUrl: "https://github.com/thimira20011/portfolio-pictures/blob/main/Profile.jpg?raw=true", // Replace with your image URL
-    resumeUrl: "https://drive.google.com/file/d/1jJ99adEOCqtgoB7DH6lfyMGXgjnw_5hF/view?usp=sharing", // Replace with your resume's URL
+    resumeUrl: "https://drive.google.com/file/d/1A5cI1T66xB9HFwusyAgLF2TcU9Mkut8o/view?usp=sharing", // Replace with your resume's URL
     about: {
       bio: "Hello! I'm a passionate student at the Sabaragamuwa University of Sri Lanka, following a degree in Information Systems. I'm fascinated by web development, networking, and cybersecurity. My journey in tech started with a curiosity for how things work, and it has evolved into a passion for building user-friendly applications and exploring the intricacies of network security. In my free time, I enjoy reading, hiking, and exploring new technologies.",
       skills: ["Java", "C", "React", "JavaScript", "HTML", "CSS", "Tailwind CSS", "Node.js", "Express.js", "MongoDB", "Figma", "Linux"]
