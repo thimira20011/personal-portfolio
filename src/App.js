@@ -202,7 +202,7 @@ export default function App() {
     name: "Thimira Niranjaya",
     title: "Student, Information Systems",
     tagline: "Fascinated by Web Development, Networking, and Cybersecurity.",
-    profilePicUrl: "https://github.com/thimira20011/portfolio-pictures/blob/main/Profile.jpg?raw=true", // Replace with your image URL
+    profilePicUrl: "https://github.com/thimira20011/portfolio-pictures/blob/main/WhatsApp%20Image%202026-03-30%20at%2023.34.12.jpeg?raw=true", // Replace with your image URL
     resumeUrl: "https://drive.google.com/file/d/1jJ99adEOCqtgoB7DH6lfyMGXgjnw_5hF/view?usp=sharing", // Replace with your resume's URL
     about: {
       bio: "Hello! I'm a passionate student at the Sabaragamuwa University of Sri Lanka, following a degree in Information Systems. I'm fascinated by web development, networking, and cybersecurity. My journey in tech started with a curiosity for how things work, and it has evolved into a passion for building user-friendly applications and exploring the intricacies of network security. In my free time, I enjoy reading, hiking, and exploring new technologies.",
