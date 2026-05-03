@@ -201,13 +201,22 @@ export default function App() {
   // All the portfolio data is centralized here for easy editing
   const [portfolioData] = useState({
     name: "Thimira Niranjaya",
-    title: "Student, Information Systems",
-    tagline: "Specializing in .NET 10, C#, performance engineering, and green coding.",
+    title: "Information Systems Undergraduate",
+    tagline: "Building high-performance software with .NET 10, C#, and green coding principles.",
     profilePicUrl: "https://github.com/thimira20011/portfolio-pictures/blob/main/WhatsApp%20Image%202026-03-30%20at%2023.34.12.jpeg?raw=true", // Replace with your image URL
     resumeUrl: "https://drive.google.com/file/d/1A5cI1T66xB9HFwusyAgLF2TcU9Mkut8o/view?usp=sharing", // Replace with your resume's URL
     about: {
       bio: "I am an Information Systems undergraduate at the Sabaragamuwa University of Sri Lanka with a passion for building high-performance, sustainable software. My technical focus has evolved into a specialization in .NET 10 and C#, with a deep interest in Performance Engineering and Green Coding practices to reduce Software Carbon Intensity. Currently, I lead the NearU project, a university-oriented digital marketplace built with .NET 10, React (TypeScript), and PostgreSQL. I thrive at the intersection of technical architecture and efficient delivery, backed by certifications in Six Sigma and Scrum Fundamentals. When I'm not optimizing codebases or managing cloud infrastructure on Linux, I'm likely exploring the latest updates in technology or preparing for my next professional milestone.",
-      skills: [".NET 10", "C#", "Java", "Node.js", "Firebase", "React", "TypeScript", "Tailwind CSS", "PostgreSQL", "Green Coding", "Software Carbon Intensity Reduction", "Git", "Linux", "Cloud Integration", "Figma", "UI/UX Design", "Canva"]
+      skillGroups: [
+        {
+          category: "Core Stack",
+          items: [".NET 10", "C#", "Java", "Node.js", "Firebase", "React", "TypeScript", "Tailwind CSS", "PostgreSQL"]
+        },
+        {
+          category: "Specializations & Tools",
+          items: ["Green Coding", "Software Carbon Intensity Reduction", "Git", "Linux", "Cloud Integration", "Figma", "UI/UX Design", "Canva"]
+        }
+      ]
     },
     certifications: [
       {
@@ -227,14 +236,14 @@ export default function App() {
       {
         id: 3,
         title: "Digital Marketing",
-        issuer: "",
+        issuer: "Google Digital Garage",
         issuedDate: "",
         credentialUrl: "#"
       },
       {
         id: 4,
         title: "AI Certifications",
-        issuer: "",
+        issuer: "LinkedIn Learning",
         issuedDate: "",
         credentialUrl: "#"
       }
@@ -250,23 +259,23 @@ export default function App() {
       },
       {
         id: 2,
-        title: "Project The Reuse Hub",
-        description: "A dynamic web application for managing tasks and tracking progress. Built with React and a Node.js + firebase backend. Features include user authentication, real-time updates, and a clean user interface.",
+        title: "The Reuse Hub",
+        description: "A dynamic web application for managing tasks and tracking progress. Built with React and a Node.js + Firebase backend. Features include user authentication, real-time updates, and a clean user interface.",
         link: "https://github.com/thimira20011/the-reuse-hub-v2.git",
         imageUrl: "https://github.com/thimira20011/portfolio-pictures/blob/main/ReuseHubHome.png?raw=true",
-        techStack: ["React", "Node.js", "MySQL", "TailwindCSS"]
+        techStack: ["React", "Node.js", "MySQL", "Tailwind CSS"]
       },
       {
         id: 3,
         title: "Personal Expense Tracker",
-        description: "A enterprise application for tracking personal expenses. Users can add, edit, and delete expenses, and view their spending habits over time.",
+        description: "An enterprise-style application for tracking personal expenses. Users can add, edit, and delete expenses, and view spending habits over time.",
         link: "https://github.com/thimira20011/expense-tracker.git",
         imageUrl: "https://raw.githubusercontent.com/thimira20011/portfolio-pictures/refs/heads/main/expenseTracker.png",
         techStack: ["Java"]
       },
       {
         id: 4,
-        title: "You think Web Site",
+        title: "YouThink Website",
         description: "This very website! A responsive and modern portfolio template built to showcase my projects and skills. Designed with a focus on simplicity and user experience.",
         link: "https://github.com/thimira20011/you-think.git",
         imageUrl: "https://github.com/thimira20011/portfolio-pictures/blob/main/youThink.png?raw=true",
@@ -290,10 +299,18 @@ export default function App() {
       {/* The background animation is now a separate component */}
       <BackgroundAnimation isDarkMode={isDarkMode} />
 
+      {/* Decorative gradient glows for added depth */}
+      <div className="pointer-events-none absolute inset-0 z-[1] overflow-hidden">
+        <div className="absolute -top-16 -left-16 h-72 w-72 rounded-full bg-sky-300/25 blur-3xl dark:bg-sky-700/15" />
+        <div className="absolute top-1/3 -right-24 h-80 w-80 rounded-full bg-indigo-300/15 blur-3xl dark:bg-indigo-700/15" />
+        <div className="absolute -bottom-20 left-1/3 h-72 w-72 rounded-full bg-cyan-300/15 blur-3xl dark:bg-cyan-700/10" />
+      </div>
+
 
 
       {/* The rest of the content is in a separate container on top of the animation */}
       <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 bg-transparent pt-20">
+        <NavBar />
         <Header data={portfolioData} isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />
         <About data={portfolioData.about} />
         <Certifications data={portfolioData.certifications} />
@@ -307,6 +324,36 @@ export default function App() {
     </div>
   );
 }
+
+const SectionHeading = ({ icon: Icon, title }) => (
+  <h2 className="text-3xl sm:text-4xl font-bold text-center mb-12">
+    <span className="inline-flex items-center justify-center px-5 py-2 rounded-full bg-white/60 dark:bg-gray-800/50 border border-white/60 dark:border-gray-600/50 shadow-lg backdrop-blur-md">
+      <Icon className="h-8 w-8 inline-block mr-2 text-sky-600 dark:text-sky-400" />
+      {title}
+    </span>
+  </h2>
+);
+
+const NavBar = React.memo(() => (
+  <nav className="fixed top-6 left-1/2 -translate-x-1/2 z-40">
+    <div className="flex items-center gap-2 rounded-full bg-white/55 dark:bg-gray-800/45 backdrop-blur-lg border border-white/60 dark:border-gray-600/50 shadow-xl px-3 py-2">
+      {[
+        { href: '#about', label: 'About' },
+        { href: '#certifications', label: 'Certifications' },
+        { href: '#projects', label: 'Projects' },
+        { href: '#contact', label: 'Contact' },
+      ].map((item) => (
+        <a
+          key={item.href}
+          href={item.href}
+          className="px-3 py-1.5 text-sm font-medium rounded-full text-gray-700 dark:text-gray-200 hover:bg-sky-100/70 dark:hover:bg-gray-700/70 hover:text-sky-700 dark:hover:text-sky-300 transition-all duration-300 hover:shadow-md"
+        >
+          {item.label}
+        </a>
+      ))}
+    </div>
+  </nav>
+));
 
 // Header component for the hero section
 const Header = React.memo(({ data, isDarkMode, toggleDarkMode }) => {
@@ -341,7 +388,7 @@ const Header = React.memo(({ data, isDarkMode, toggleDarkMode }) => {
             <a
               href="#projects"
               // M3 Button: Full rounded shape, shadow-xl for high elevation
-              className={`inline-flex items-center px-8 py-4 border border-transparent text-base font-medium rounded-3xl shadow-xl text-white ${primaryButtonClass} transition duration-300 ease-in-out`}
+              className={`inline-flex items-center px-8 py-4 border border-transparent text-base font-medium rounded-3xl shadow-xl text-white ${primaryButtonClass} transition duration-300 ease-in-out transform hover:-translate-y-0.5`}
             >
               My Work
               <ArrowDownCircleIcon className="ml-2 -mr-1 h-5 w-5" aria-hidden="true" />
@@ -352,7 +399,7 @@ const Header = React.memo(({ data, isDarkMode, toggleDarkMode }) => {
               target="_blank"
               rel="noopener noreferrer"
               // M3 Button: Full rounded shape, shadow-lg, outlined
-              className={`inline-flex items-center px-8 py-4 border-2 text-base font-medium rounded-3xl shadow-lg bg-white dark:bg-gray-800 ${secondaryButtonClass} transition duration-300 ease-in-out`}
+              className={`inline-flex items-center px-8 py-4 border-2 text-base font-medium rounded-3xl shadow-lg bg-white dark:bg-gray-800 ${secondaryButtonClass} transition duration-300 ease-in-out transform hover:-translate-y-0.5`}
             >
               Download Resume
               <ArrowDownTrayIcon className="ml-2 -mr-1 h-5 w-5" aria-hidden="true" />
@@ -361,10 +408,11 @@ const Header = React.memo(({ data, isDarkMode, toggleDarkMode }) => {
         </div>
         <div className="relative w-48 h-48 md:w-64 md:h-64 flex-shrink-0">
           {/* M3 Profile Circle: Softer ring color */}
+          <div className="absolute inset-0 rounded-full bg-gradient-to-br from-sky-300/40 to-indigo-300/30 blur-md" />
           <img
             src={data.profilePicUrl}
             alt="Profile"
-            className="w-full h-full rounded-full object-cover ring-4 ring-sky-200 dark:ring-sky-600 transform transition-transform duration-300 ease-in-out hover:scale-105 shadow-xl"
+            className="relative w-full h-full rounded-full object-cover ring-4 ring-sky-200 dark:ring-sky-600 transform transition-transform duration-300 ease-in-out hover:scale-105 shadow-xl"
           />
         </div>
       </div>
@@ -376,27 +424,33 @@ const Header = React.memo(({ data, isDarkMode, toggleDarkMode }) => {
 const About = React.memo(({ data }) => {
   return (
     <section id="about" className="py-16 md:py-24">
-      <h2 className="text-3xl sm:text-4xl font-bold text-center mb-12">
-        <UserIcon className="h-8 w-8 inline-block mr-2 text-sky-600 dark:text-sky-400" />
-        About Me
-      </h2>
+      <SectionHeading icon={UserIcon} title="About Me" />
       <div className="max-w-4xl mx-auto">
         {/* M3 Card: Elevated surface, large rounded corners, subtle shadow */}
-        <div className="bg-white dark:bg-gray-800 p-8 md:p-12 rounded-3xl shadow-xl transition duration-300 ease-in-out hover:shadow-2xl">
+        <div className="bg-white/70 dark:bg-gray-800/55 p-8 md:p-12 rounded-3xl shadow-xl backdrop-blur-lg border border-white/60 dark:border-gray-600/50 transition duration-300 ease-in-out hover:shadow-2xl hover:border-sky-200/70 dark:hover:border-sky-700/60">
           <p className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
             {data.bio}
           </p>
           <div className="mt-8">
-            <h3 className="text-xl font-semibold mb-4 text-gray-900 dark:text-white">Skills</h3>
-            <div className="flex flex-wrap gap-3">
-              {data.skills.map((skill, index) => (
-                <span
-                  key={index}
-                  // M3 Chip Style: Rounded, contrasting color background
-                  className="px-4 py-2 bg-sky-100 text-sky-800 dark:bg-sky-900 dark:text-sky-300 rounded-full font-medium text-sm transition duration-300 ease-in-out transform hover:scale-105 shadow-md"
-                >
-                  {skill}
-                </span>
+            <h3 className="text-xl font-semibold mb-4 text-gray-900 dark:text-white">Technical Skills</h3>
+            <div className="space-y-5">
+              {data.skillGroups.map((group, groupIndex) => (
+                <div key={groupIndex}>
+                  <h4 className="text-sm font-semibold uppercase tracking-wide text-gray-600 dark:text-gray-400 mb-3">
+                    {group.category}
+                  </h4>
+                  <div className="flex flex-wrap gap-3">
+                    {group.items.map((skill, skillIndex) => (
+                      <span
+                        key={skillIndex}
+                        // M3 Chip Style: Rounded, contrasting color background
+                        className="px-4 py-2 bg-sky-100 text-sky-800 dark:bg-sky-900 dark:text-sky-300 rounded-full font-medium text-sm transition duration-300 ease-in-out transform hover:scale-105 shadow-md"
+                      >
+                        {skill}
+                      </span>
+                    ))}
+                  </div>
+                </div>
               ))}
             </div>
           </div>
@@ -410,15 +464,12 @@ const About = React.memo(({ data }) => {
 const Certifications = React.memo(({ data }) => {
   return (
     <section id="certifications" className="py-16 md:py-24">
-      <h2 className="text-3xl sm:text-4xl font-bold text-center mb-12">
-        <CheckBadgeIcon className="h-8 w-8 inline-block mr-2 text-sky-600 dark:text-sky-400" />
-        Licenses & Certifications
-      </h2>
+      <SectionHeading icon={CheckBadgeIcon} title="Licenses & Certifications" />
       <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6">
         {data.map((certification) => (
           <div
             key={certification.id}
-            className="bg-white dark:bg-gray-800 p-6 rounded-3xl shadow-xl transition duration-300 ease-in-out hover:shadow-2xl"
+            className="bg-white/70 dark:bg-gray-800/55 p-6 rounded-3xl shadow-xl backdrop-blur-lg border border-white/60 dark:border-gray-600/50 transition duration-300 ease-in-out transform hover:-translate-y-1.5 hover:shadow-2xl hover:border-sky-200/70 dark:hover:border-sky-700/60"
           >
             <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
               {certification.title}
@@ -447,20 +498,20 @@ const Certifications = React.memo(({ data }) => {
 // Projects component
 const Projects = React.memo(({ data }) => {
   return (
-    <section id="projects" className="py-16 md:py-24 bg-gray-100 dark:bg-gray-800 rounded-3xl">
-      <h2 className="text-3xl sm:text-4xl font-bold text-center mb-12">
-        <BookOpenIcon className="h-8 w-8 inline-block mr-2 text-sky-600 dark:text-sky-400" />
-        My Projects
-      </h2>
+    <section id="projects" className="py-16 md:py-24 bg-gradient-to-br from-gray-100/70 to-sky-100/55 dark:from-gray-800/65 dark:to-slate-900/70 rounded-3xl border border-white/60 dark:border-gray-600/50 backdrop-blur-md">
+      <SectionHeading icon={BookOpenIcon} title="My Projects" />
       <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 p-4">
         {data.map((project) => (
           // M3 Project Card: High rounded corners, significant shadow for elevation
-          <div key={project.id} className="bg-white dark:bg-gray-900 rounded-3xl shadow-xl overflow-hidden transition duration-300 ease-in-out transform hover:-translate-y-2 hover:shadow-2xl">
-            <img
-              src={project.imageUrl}
-              alt={project.title}
-              className="w-full h-48 object-cover"
-            />
+          <div key={project.id} className="group bg-white/80 dark:bg-gray-900/75 rounded-3xl shadow-xl overflow-hidden border border-white/70 dark:border-gray-600/55 backdrop-blur-md transition duration-300 ease-in-out transform hover:-translate-y-2 hover:shadow-2xl hover:border-sky-200/70 dark:hover:border-sky-700/60">
+            <div className="relative overflow-hidden">
+              <img
+                src={project.imageUrl}
+                alt={project.title}
+                className="w-full h-48 object-cover transition-transform duration-500 ease-out group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-gray-900/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+            </div>
             <div className="p-6">
               <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">{project.title}</h3>
               <p className="text-gray-600 dark:text-gray-400 text-sm mb-4">{project.description}</p>
@@ -500,19 +551,17 @@ const Contact = React.memo(({ data, socialLinks }) => {
 
   return (
     <section id="contact" className="py-16 md:py-24">
-      <h2 className="text-3xl sm:text-4xl font-bold text-center mb-12">
-        <EnvelopeIcon className="h-8 w-8 inline-block mr-2 text-sky-600 dark:text-sky-400" />
-        Contact Me
-      </h2>
+      <SectionHeading icon={EnvelopeIcon} title="Contact Me" />
       <div className="max-w-4xl mx-auto">
         {/* M3 Surface Card */}
-        <div className="bg-white dark:bg-gray-800 p-8 md:p-12 rounded-3xl shadow-xl">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="rounded-3xl bg-gradient-to-r from-sky-200/40 via-indigo-200/25 to-sky-200/40 dark:from-sky-900/25 dark:via-indigo-900/20 dark:to-sky-900/25 p-[1px] shadow-xl">
+          <div className="bg-white/70 dark:bg-gray-800/55 p-8 md:p-12 rounded-3xl backdrop-blur-lg border border-white/60 dark:border-gray-600/50">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {/* Contact Details */}
             <div>
               <h3 className="text-xl font-semibold mb-4 text-gray-900 dark:text-white">Get in Touch</h3>
               <p className="text-gray-700 dark:text-gray-300 mb-4">
-                I'm always open to new opportunities and collaborations. Feel free to reach out!
+                I'm open to internships, collaborations, and impactful software projects. Feel free to reach out.
               </p>
               <div className="space-y-4">
                 <div className="flex items-center space-x-3">
@@ -527,7 +576,7 @@ const Contact = React.memo(({ data, socialLinks }) => {
                 </div>
               </div>
               <div className="mt-8">
-                <h3 className="text-xl font-semibold mb-4 text-gray-900 dark:text-white">Find Me On</h3>
+                <h3 className="text-xl font-semibold mb-4 text-gray-900 dark:text-white">Connect With Me</h3>
                 <div className="flex space-x-4">
                   {/* M3 Icon Button Hover */}
                   <a
@@ -615,6 +664,7 @@ const Contact = React.memo(({ data, socialLinks }) => {
                 </button>
               </form>
             </div>
+          </div>
           </div>
         </div>
       </div>
