@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import {
   BookOpenIcon,
+  CheckBadgeIcon,
   EnvelopeIcon,
   PhoneIcon,
   UserIcon,
@@ -201,13 +202,43 @@ export default function App() {
   const [portfolioData] = useState({
     name: "Thimira Niranjaya",
     title: "Student, Information Systems",
-    tagline: "Fascinated by Web Development, Networking, and Cybersecurity.",
+    tagline: "Specializing in .NET 10, C#, performance engineering, and green coding.",
     profilePicUrl: "https://github.com/thimira20011/portfolio-pictures/blob/main/WhatsApp%20Image%202026-03-30%20at%2023.34.12.jpeg?raw=true", // Replace with your image URL
     resumeUrl: "https://drive.google.com/file/d/1A5cI1T66xB9HFwusyAgLF2TcU9Mkut8o/view?usp=sharing", // Replace with your resume's URL
     about: {
-      bio: "Hello! I'm a passionate student at the Sabaragamuwa University of Sri Lanka, following a degree in Information Systems. I'm fascinated by web development, networking, and cybersecurity. My journey in tech started with a curiosity for how things work, and it has evolved into a passion for building user-friendly applications and exploring the intricacies of network security. In my free time, I enjoy reading, hiking, and exploring new technologies.",
-      skills: ["Java", "C", "React", "JavaScript", "HTML", "CSS", "Tailwind CSS", "Node.js", "Express.js", "MongoDB", "Figma", "Linux"]
+      bio: "I am an Information Systems undergraduate at the Sabaragamuwa University of Sri Lanka with a passion for building high-performance, sustainable software. My technical focus has evolved into a specialization in .NET 10 and C#, with a deep interest in Performance Engineering and Green Coding practices to reduce Software Carbon Intensity. Currently, I lead the NearU project, a university-oriented digital marketplace built with .NET 10, React (TypeScript), and PostgreSQL. I thrive at the intersection of technical architecture and efficient delivery, backed by certifications in Six Sigma and Scrum Fundamentals. When I'm not optimizing codebases or managing cloud infrastructure on Linux, I'm likely exploring the latest updates in technology or preparing for my next professional milestone.",
+      skills: [".NET 10", "C#", "Java", "Node.js", "Firebase", "React", "TypeScript", "Tailwind CSS", "PostgreSQL", "Green Coding", "Software Carbon Intensity Reduction", "Git", "Linux", "Cloud Integration", "Figma", "UI/UX Design", "Canva"]
     },
+    certifications: [
+      {
+        id: 1,
+        title: "Six Sigma Yellow Belt",
+        issuer: "Six Sigma",
+        issuedDate: "",
+        credentialUrl: "#"
+      },
+      {
+        id: 2,
+        title: "Scrum Fundamentals (SFC)",
+        issuer: "Scrum Study",
+        issuedDate: "",
+        credentialUrl: "#"
+      },
+      {
+        id: 3,
+        title: "Digital Marketing",
+        issuer: "",
+        issuedDate: "",
+        credentialUrl: "#"
+      },
+      {
+        id: 4,
+        title: "AI Certifications",
+        issuer: "",
+        issuedDate: "",
+        credentialUrl: "#"
+      }
+    ],
     projects: [
       {
         id: 1,
@@ -265,6 +296,7 @@ export default function App() {
       <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 bg-transparent pt-20">
         <Header data={portfolioData} isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />
         <About data={portfolioData.about} />
+        <Certifications data={portfolioData.certifications} />
         <Projects data={portfolioData.projects} />
         <Contact data={portfolioData.contact} socialLinks={portfolioData.socialLinks} />
         <Footer data={portfolioData} />
@@ -369,6 +401,44 @@ const About = React.memo(({ data }) => {
             </div>
           </div>
         </div>
+      </div>
+    </section>
+  );
+});
+
+// Licenses & Certifications component
+const Certifications = React.memo(({ data }) => {
+  return (
+    <section id="certifications" className="py-16 md:py-24">
+      <h2 className="text-3xl sm:text-4xl font-bold text-center mb-12">
+        <CheckBadgeIcon className="h-8 w-8 inline-block mr-2 text-sky-600 dark:text-sky-400" />
+        Licenses & Certifications
+      </h2>
+      <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6">
+        {data.map((certification) => (
+          <div
+            key={certification.id}
+            className="bg-white dark:bg-gray-800 p-6 rounded-3xl shadow-xl transition duration-300 ease-in-out hover:shadow-2xl"
+          >
+            <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
+              {certification.title}
+            </h3>
+            {(certification.issuer || certification.issuedDate) && (
+              <p className="mt-2 text-gray-600 dark:text-gray-300">
+                {[certification.issuer, certification.issuedDate].filter(Boolean).join(' • ')}
+              </p>
+            )}
+            <a
+              href={certification.credentialUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-4 inline-flex items-center text-sm font-medium text-sky-600 dark:text-sky-400 hover:text-sky-800 dark:hover:text-sky-500 transition duration-300 ease-in-out"
+            >
+              View Credential
+              <ArrowTopRightOnSquareIcon className="ml-1 h-4 w-4" />
+            </a>
+          </div>
+        ))}
       </div>
     </section>
   );
