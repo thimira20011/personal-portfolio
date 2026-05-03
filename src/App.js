@@ -199,7 +199,7 @@ export default function App() {
   };
 
   // All the portfolio data is centralized here for easy editing
-  const [portfolioData] = useState({
+  const portfolioData = {
     name: "Thimira Niranjaya",
     title: "Information Systems Undergraduate",
     tagline: "Building high-performance software with .NET 10, C#, and green coding principles.",
@@ -291,7 +291,7 @@ export default function App() {
       email: "tnirajaya2001@gmail.com",
       phone: "+94 70 512 7856"
     }
-  });
+  };
 
   return (
     // M3 Base: Use light sky background for light mode
@@ -335,7 +335,7 @@ const SectionHeading = ({ icon: Icon, title }) => (
 );
 
 const NavBar = React.memo(() => (
-  <nav className="fixed top-6 left-1/2 -translate-x-1/2 z-40">
+  <nav aria-label="Section navigation" className="fixed top-6 left-1/2 -translate-x-1/2 z-40">
     <div className="flex items-center gap-2 rounded-full bg-white/55 dark:bg-gray-800/45 backdrop-blur-lg border border-white/60 dark:border-gray-600/50 shadow-xl px-3 py-2">
       {[
         { href: '#about', label: 'About' },
@@ -346,7 +346,7 @@ const NavBar = React.memo(() => (
         <a
           key={item.href}
           href={item.href}
-          className="px-3 py-1.5 text-sm font-medium rounded-full text-gray-700 dark:text-gray-200 hover:bg-sky-100/70 dark:hover:bg-gray-700/70 hover:text-sky-700 dark:hover:text-sky-300 transition-all duration-300 hover:shadow-md"
+          className="px-3 py-1.5 text-sm font-medium rounded-full text-gray-700 dark:text-gray-200 hover:bg-sky-100/70 dark:hover:bg-gray-700/70 hover:text-sky-700 dark:hover:text-sky-300 transition-all duration-300 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-sky-400"
         >
           {item.label}
         </a>
@@ -367,6 +367,7 @@ const Header = React.memo(({ data, isDarkMode, toggleDarkMode }) => {
       {/* M3 Toggle Button: Rounded, high-contrast toggle */}
       <button
         onClick={toggleDarkMode}
+        aria-label={isDarkMode ? 'Switch to light mode' : 'Switch to dark mode'}
         // M3 Toggle Button Style: Full rounded, shadow for elevation
         className="fixed top-6 right-6 z-50 p-3 rounded-full shadow-lg bg-sky-100 dark:bg-sky-900 text-sky-800 dark:text-sky-200 hover:bg-sky-200 dark:hover:bg-sky-800 transition-colors duration-300 focus:outline-none focus:ring-4 focus:ring-sky-300 dark:focus:ring-sky-700"
       >
@@ -412,6 +413,7 @@ const Header = React.memo(({ data, isDarkMode, toggleDarkMode }) => {
           <img
             src={data.profilePicUrl}
             alt="Profile"
+            loading="eager"
             className="relative w-full h-full rounded-full object-cover ring-4 ring-sky-200 dark:ring-sky-600 transform transition-transform duration-300 ease-in-out hover:scale-105 shadow-xl"
           />
         </div>
@@ -423,7 +425,7 @@ const Header = React.memo(({ data, isDarkMode, toggleDarkMode }) => {
 // About Me component
 const About = React.memo(({ data }) => {
   return (
-    <section id="about" className="py-16 md:py-24">
+    <section id="about" className="py-16 md:py-24 scroll-mt-28">
       <SectionHeading icon={UserIcon} title="About Me" />
       <div className="max-w-4xl mx-auto">
         {/* M3 Card: Elevated surface, large rounded corners, subtle shadow */}
@@ -463,7 +465,7 @@ const About = React.memo(({ data }) => {
 // Licenses & Certifications component
 const Certifications = React.memo(({ data }) => {
   return (
-    <section id="certifications" className="py-16 md:py-24">
+    <section id="certifications" className="py-16 md:py-24 scroll-mt-28">
       <SectionHeading icon={CheckBadgeIcon} title="Licenses & Certifications" />
       <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6">
         {data.map((certification) => (
@@ -479,15 +481,21 @@ const Certifications = React.memo(({ data }) => {
                 {[certification.issuer, certification.issuedDate].filter(Boolean).join(' • ')}
               </p>
             )}
-            <a
-              href={certification.credentialUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-4 inline-flex items-center text-sm font-medium text-sky-600 dark:text-sky-400 hover:text-sky-800 dark:hover:text-sky-500 transition duration-300 ease-in-out"
-            >
-              View Credential
-              <ArrowTopRightOnSquareIcon className="ml-1 h-4 w-4" />
-            </a>
+            {certification.credentialUrl && certification.credentialUrl !== '#' ? (
+              <a
+                href={certification.credentialUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-4 inline-flex items-center text-sm font-medium text-sky-600 dark:text-sky-400 hover:text-sky-800 dark:hover:text-sky-500 transition duration-300 ease-in-out"
+              >
+                View Credential
+                <ArrowTopRightOnSquareIcon className="ml-1 h-4 w-4" />
+              </a>
+            ) : (
+              <span className="mt-4 inline-block text-sm text-gray-500 dark:text-gray-400">
+                Credential link available on request
+              </span>
+            )}
           </div>
         ))}
       </div>
@@ -498,7 +506,7 @@ const Certifications = React.memo(({ data }) => {
 // Projects component
 const Projects = React.memo(({ data }) => {
   return (
-    <section id="projects" className="py-16 md:py-24 bg-gradient-to-br from-gray-100/70 to-sky-100/55 dark:from-gray-800/65 dark:to-slate-900/70 rounded-3xl border border-white/60 dark:border-gray-600/50 backdrop-blur-md">
+    <section id="projects" className="py-16 md:py-24 scroll-mt-28 bg-gradient-to-br from-gray-100/70 to-sky-100/55 dark:from-gray-800/65 dark:to-slate-900/70 rounded-3xl border border-white/60 dark:border-gray-600/50 backdrop-blur-md">
       <SectionHeading icon={BookOpenIcon} title="My Projects" />
       <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 p-4">
         {data.map((project) => (
@@ -508,6 +516,8 @@ const Projects = React.memo(({ data }) => {
               <img
                 src={project.imageUrl}
                 alt={project.title}
+                loading="lazy"
+                decoding="async"
                 className="w-full h-48 object-cover transition-transform duration-500 ease-out group-hover:scale-105"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-gray-900/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
@@ -545,12 +555,8 @@ const Projects = React.memo(({ data }) => {
 
 // Contact Me component
 const Contact = React.memo(({ data, socialLinks }) => {
-  // State for form submission status
-  const [submissionStatus, setSubmissionStatus] = useState(''); // 'success', 'error', or ''
-  const [isLoading, setIsLoading] = useState(false);
-
   return (
-    <section id="contact" className="py-16 md:py-24">
+    <section id="contact" className="py-16 md:py-24 scroll-mt-28">
       <SectionHeading icon={EnvelopeIcon} title="Contact Me" />
       <div className="max-w-4xl mx-auto">
         {/* M3 Surface Card */}
