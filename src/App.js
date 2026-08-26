@@ -180,14 +180,6 @@ export default function App() {
     resumeUrl:
       'https://drive.google.com/file/d/1A5cI1T66xB9HFwusyAgLF2TcU9Mkut8o/view?usp=sharing',
 
-    // ── Stats ─────────────────────────────────────────────────────────────────
-    stats: [
-      { label: 'Projects Shipped', value: 6, suffix: '+' },
-      { label: 'Years Coding',     value: 2, suffix: '+' },
-      { label: 'Certifications',   value: 5, suffix: ''  },
-      { label: 'Technologies',     value: 15, suffix: '+' },
-    ],
-
     // ── About & Skills ────────────────────────────────────────────────────────
     about: {
       bio: "I build real-time, distributed backend systems — and I like the parts most people skip: query performance, spatial data, and the DevOps under the hood. As an Information Systems undergraduate at SUSL, I work across .NET, Java, and Python, with a focus on distributed systems and cloud-native architecture. I've written technical deep-dives on real-time infrastructure (SignalR/Redis), Docker image hardening, and PostGIS-based geospatial engineering, and placed 1st Runner-Up at Aurora 2026 (AI Ideathon) with a multi-agent security framework I designed for freelancers. I'm currently open to freelance full-stack work and internship opportunities in backend/distributed systems.",
@@ -435,7 +427,6 @@ export default function App() {
       <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 bg-transparent pt-20">
         <NavBar socialLinks={portfolioData.socialLinks} />
         <Header data={portfolioData} isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />
-        <StatsBar stats={portfolioData.stats} />
         <About data={portfolioData.about} />
         <ExperienceTimeline data={portfolioData.timeline} />
         <Achievements data={portfolioData.achievements} publications={portfolioData.publications} />
