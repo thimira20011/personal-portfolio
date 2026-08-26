@@ -706,21 +706,21 @@ export default function App() {
 
         <About data={portfolioData.about} />
 
-        <ProjectsSection
-          projects={regularProjects}
-          featuredProject={featuredProject}
-          filter={projectFilter}
-          setFilter={setProjectFilter}
-        />
+        <ExperienceTimeline data={portfolioData.timeline} />
 
         <AchievementsAwards
           data={portfolioData.achievements}
           publications={portfolioData.publications}
         />
 
-        <ExperienceTimeline data={portfolioData.timeline} />
-
         <Certifications data={portfolioData.certifications} />
+
+        <ProjectsSection
+          projects={regularProjects}
+          featuredProject={featuredProject}
+          filter={projectFilter}
+          setFilter={setProjectFilter}
+        />
 
         <Contact
           data={portfolioData.contact}
@@ -754,33 +754,87 @@ const SectionHeading = ({ icon: Icon, title, subtitle }) => (
   </div>
 );
 
-// ─── NavBar (Floating Centered Pill) ──────────────────────────────────────────
+// ─── NavBar (Floating Centered Pill with Scroll-Spy) ──────────────────────────
 const NavBar = React.memo(({ socialLinks }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState('');
 
   const navItems = [
-    { href: '#about', label: 'About' },
-    { href: '#experience', label: 'Experience' },
-    { href: '#achievements', label: 'Achievements' },
-    { href: '#certifications', label: 'Certifications' },
-    { href: '#projects', label: 'Projects' },
-    { href: '#contact', label: 'Contact' },
+    { href: '#about', id: 'about', label: 'About' },
+    { href: '#experience', id: 'experience', label: 'Experience' },
+    { href: '#achievements', id: 'achievements', label: 'Achievements' },
+    { href: '#certifications', id: 'certifications', label: 'Certifications' },
+    { href: '#projects', id: 'projects', label: 'Projects' },
+    { href: '#contact', id: 'contact', label: 'Contact' },
   ];
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollY = window.scrollY;
+
+      if (scrollY < 180) {
+        setActiveSection('');
+        return;
+      }
+
+      if (window.innerHeight + scrollY >= document.documentElement.scrollHeight - 80) {
+        setActiveSection('contact');
+        return;
+      }
+
+      const sectionElements = navItems
+        .map((item) => document.getElementById(item.id))
+        .filter(Boolean);
+
+      let currentSection = '';
+      for (const section of sectionElements) {
+        const rect = section.getBoundingClientRect();
+        if (rect.top <= 220 && rect.bottom >= 100) {
+          currentSection = section.id;
+        }
+      }
+
+      if (!currentSection) {
+        for (let i = sectionElements.length - 1; i >= 0; i--) {
+          const rect = sectionElements[i].getBoundingClientRect();
+          if (rect.top <= 220) {
+            currentSection = sectionElements[i].id;
+            break;
+          }
+        }
+      }
+
+      if (currentSection) {
+        setActiveSection(currentSection);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   return (
     <>
       {/* Desktop nav */}
       <nav aria-label="Section navigation" className="fixed top-6 left-1/2 -translate-x-1/2 z-40 hidden md:block">
         <div className="flex items-center gap-1 rounded-full bg-white/70 dark:bg-gray-800/65 backdrop-blur-xl border border-white/60 dark:border-gray-600/50 shadow-xl px-4 py-2">
-          {navItems.map((item) => (
-            <a
-              key={item.href}
-              href={item.href}
-              className="px-3.5 py-1.5 text-sm font-medium rounded-full text-gray-700 dark:text-gray-200 hover:bg-sky-100/70 dark:hover:bg-gray-700/70 hover:text-sky-700 dark:hover:text-sky-300 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-sky-400"
-            >
-              {item.label}
-            </a>
-          ))}
+          {navItems.map((item) => {
+            const isActive = activeSection === item.id;
+            return (
+              <a
+                key={item.href}
+                href={item.href}
+                className={`px-3.5 py-1.5 text-sm font-medium rounded-full transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-sky-400 ${
+                  isActive
+                    ? 'bg-sky-600 text-white shadow-xs font-semibold'
+                    : 'text-gray-700 dark:text-gray-200 hover:bg-sky-100/70 dark:hover:bg-gray-700/70 hover:text-sky-700 dark:hover:text-sky-300'
+                }`}
+              >
+                {item.label}
+              </a>
+            );
+          })}
         </div>
       </nav>
 
@@ -796,16 +850,23 @@ const NavBar = React.memo(({ socialLinks }) => {
         </button>
         {isOpen && (
           <div className="absolute top-14 left-0 w-52 rounded-2xl bg-white/95 dark:bg-gray-800/95 backdrop-blur-xl shadow-2xl border border-white/60 dark:border-gray-600/50 py-2 overflow-hidden animate-in fade-in slide-in-from-top-2">
-            {navItems.map((item) => (
-              <a
-                key={item.href}
-                href={item.href}
-                onClick={() => setIsOpen(false)}
-                className="block px-5 py-3 text-sm font-medium text-gray-700 dark:text-gray-200 hover:bg-sky-50 dark:hover:bg-gray-700/70 hover:text-sky-600 dark:hover:text-sky-400 transition-colors duration-150"
-              >
-                {item.label}
-              </a>
-            ))}
+            {navItems.map((item) => {
+              const isActive = activeSection === item.id;
+              return (
+                <a
+                  key={item.href}
+                  href={item.href}
+                  onClick={() => setIsOpen(false)}
+                  className={`block px-5 py-3 text-sm font-medium transition-colors duration-150 ${
+                    isActive
+                      ? 'bg-sky-50 dark:bg-sky-950/60 text-sky-600 dark:text-sky-400 font-semibold'
+                      : 'text-gray-700 dark:text-gray-200 hover:bg-sky-50 dark:hover:bg-gray-700/70 hover:text-sky-600 dark:hover:text-sky-400'
+                  }`}
+                >
+                  {item.label}
+                </a>
+              );
+            })}
             <div className="border-t border-gray-100 dark:border-gray-700 mt-2 pt-2 px-5 pb-1">
               <a
                 href={socialLinks.medium}
@@ -1428,6 +1489,44 @@ const Certifications = React.memo(({ data }) => {
 // ─── Contact Section ──────────────────────────────────────────────────────────
 const Contact = React.memo(({ data, socialLinks, copyToClipboard, copiedType }) => {
   const [ref, isVisible] = useScrollAnimation();
+  const [formStatus, setFormStatus] = useState('idle'); // 'idle' | 'submitting' | 'success' | 'error'
+  const [formError, setFormError] = useState('');
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setFormStatus('submitting');
+    setFormError('');
+
+    const form = e.target;
+    const formData = new FormData(form);
+
+    try {
+      const response = await fetch('https://formspree.io/f/xdkdjdvn', {
+        method: 'POST',
+        body: formData,
+        headers: {
+          Accept: 'application/json',
+        },
+      });
+
+      if (response.ok) {
+        setFormStatus('success');
+        form.reset();
+      } else {
+        const errorData = await response.json();
+        setFormError(
+          errorData.errors
+            ? errorData.errors.map((err) => err.message).join(', ')
+            : 'Submission failed. Please try again or reach out directly.'
+        );
+        setFormStatus('error');
+      }
+    } catch (err) {
+      setFormError('Network error. Please email me directly at ' + data.email);
+      setFormStatus('error');
+    }
+  };
+
   return (
     <section id="contact" className="py-16 md:py-20 scroll-mt-24">
       <SectionHeading
@@ -1579,55 +1678,91 @@ const Contact = React.memo(({ data, socialLinks, copyToClipboard, copiedType }) 
               <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-4">
                 Send a Message
               </h3>
-              <form action="https://formspree.io/f/xdkdjdvn" method="POST" className="space-y-4">
-                <div>
-                  <label htmlFor="contact-name" className="block text-xs font-semibold text-gray-700 dark:text-gray-300 mb-1">
-                    Your Name <span className="text-red-500">*</span>
-                  </label>
-                  <input
-                    type="text"
-                    id="contact-name"
-                    name="name"
-                    placeholder="Name"
-                    required
-                    autoComplete="name"
-                    className="block w-full rounded-xl border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 px-4 py-2.5 shadow-xs focus:border-sky-500 focus:ring-2 focus:ring-sky-500 text-gray-900 dark:text-gray-100 text-sm transition-colors"
-                  />
+              {formStatus === 'success' ? (
+                <div className="p-8 rounded-3xl bg-white/80 dark:bg-gray-800/80 border border-sky-200/80 dark:border-sky-700/50 text-center shadow-lg backdrop-blur-xl animate-in fade-in zoom-in-95 duration-300">
+                  <div className="w-14 h-14 rounded-full bg-sky-100 dark:bg-sky-900/50 text-sky-600 dark:text-sky-400 mx-auto flex items-center justify-center mb-4 ring-4 ring-sky-100/70 dark:ring-sky-900/40">
+                    <Check className="w-7 h-7" />
+                  </div>
+                  <h4 className="text-lg font-bold text-gray-900 dark:text-white mb-2">
+                    Message Sent Successfully
+                  </h4>
+                  <p className="text-sm text-gray-600 dark:text-gray-300 mb-6 max-w-sm mx-auto leading-relaxed">
+                    Thank you for reaching out! I've received your note and will get back to you shortly.
+                  </p>
+                  <button
+                    onClick={() => setFormStatus('idle')}
+                    className="inline-flex items-center px-6 py-2.5 text-sm font-semibold rounded-full bg-sky-600 hover:bg-sky-700 text-white transition-all duration-200 shadow-md focus:outline-none focus:ring-4 focus:ring-sky-300"
+                  >
+                    Send Another Message
+                  </button>
                 </div>
-                <div>
-                  <label htmlFor="contact-email" className="block text-xs font-semibold text-gray-700 dark:text-gray-300 mb-1">
-                    Your Email <span className="text-red-500">*</span>
-                  </label>
-                  <input
-                    type="email"
-                    id="contact-email"
-                    name="_replyto"
-                    placeholder="email@example.com"
-                    required
-                    autoComplete="email"
-                    className="block w-full rounded-xl border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 px-4 py-2.5 shadow-xs focus:border-sky-500 focus:ring-2 focus:ring-sky-500 text-gray-900 dark:text-gray-100 text-sm transition-colors"
-                  />
-                </div>
-                <div>
-                  <label htmlFor="contact-message" className="block text-xs font-semibold text-gray-700 dark:text-gray-300 mb-1">
-                    Message <span className="text-red-500">*</span>
-                  </label>
-                  <textarea
-                    id="contact-message"
-                    name="message"
-                    rows="4"
-                    placeholder="Your message..."
-                    required
-                    className="block w-full rounded-xl border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 px-4 py-2.5 shadow-xs focus:border-sky-500 focus:ring-2 focus:ring-sky-500 text-gray-900 dark:text-gray-100 text-sm transition-colors resize-none"
-                  />
-                </div>
-                <button
-                  type="submit"
-                  className="w-full py-3 px-6 border border-transparent shadow-md text-sm font-semibold rounded-full text-white bg-sky-600 hover:bg-sky-700 focus:outline-none focus:ring-4 focus:ring-sky-300 transition-all duration-200"
-                >
-                  Send Message
-                </button>
-              </form>
+              ) : (
+                <form onSubmit={handleSubmit} className="space-y-4">
+                  {formStatus === 'error' && (
+                    <div className="p-3 rounded-xl bg-red-50 dark:bg-red-950/40 border border-red-200 dark:border-red-800 text-xs text-red-600 dark:text-red-400">
+                      {formError || 'Something went wrong. Please try again.'}
+                    </div>
+                  )}
+                  <div>
+                    <label htmlFor="contact-name" className="block text-xs font-semibold text-gray-700 dark:text-gray-300 mb-1">
+                      Your Name <span className="text-red-500">*</span>
+                    </label>
+                    <input
+                      type="text"
+                      id="contact-name"
+                      name="name"
+                      placeholder="Name"
+                      required
+                      disabled={formStatus === 'submitting'}
+                      autoComplete="name"
+                      className="block w-full rounded-xl border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 px-4 py-2.5 shadow-xs focus:border-sky-500 focus:ring-2 focus:ring-sky-500 text-gray-900 dark:text-gray-100 text-sm transition-colors disabled:opacity-50"
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="contact-email" className="block text-xs font-semibold text-gray-700 dark:text-gray-300 mb-1">
+                      Your Email <span className="text-red-500">*</span>
+                    </label>
+                    <input
+                      type="email"
+                      id="contact-email"
+                      name="_replyto"
+                      placeholder="email@example.com"
+                      required
+                      disabled={formStatus === 'submitting'}
+                      autoComplete="email"
+                      className="block w-full rounded-xl border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 px-4 py-2.5 shadow-xs focus:border-sky-500 focus:ring-2 focus:ring-sky-500 text-gray-900 dark:text-gray-100 text-sm transition-colors disabled:opacity-50"
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="contact-message" className="block text-xs font-semibold text-gray-700 dark:text-gray-300 mb-1">
+                      Message <span className="text-red-500">*</span>
+                    </label>
+                    <textarea
+                      id="contact-message"
+                      name="message"
+                      rows="4"
+                      placeholder="Your message..."
+                      required
+                      disabled={formStatus === 'submitting'}
+                      className="block w-full rounded-xl border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 px-4 py-2.5 shadow-xs focus:border-sky-500 focus:ring-2 focus:ring-sky-500 text-gray-900 dark:text-gray-100 text-sm transition-colors resize-none disabled:opacity-50"
+                    />
+                  </div>
+                  <button
+                    type="submit"
+                    disabled={formStatus === 'submitting'}
+                    className="w-full py-3 px-6 border border-transparent shadow-md text-sm font-semibold rounded-full text-white bg-sky-600 hover:bg-sky-700 focus:outline-none focus:ring-4 focus:ring-sky-300 transition-all duration-200 disabled:opacity-60 flex items-center justify-center gap-2"
+                  >
+                    {formStatus === 'submitting' ? (
+                      <>
+                        <span className="inline-block w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                        <span>Sending...</span>
+                      </>
+                    ) : (
+                      <span>Send Message</span>
+                    )}
+                  </button>
+                </form>
+              )}
             </div>
           </div>
         </div>
