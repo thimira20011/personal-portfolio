@@ -807,31 +807,33 @@ const FeaturedProjectCard = ({ project }) => {
   const [ref, isVisible] = useScrollAnimation(0.1);
   return (
     <div ref={ref} className={`mb-10 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-      <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-sky-500 via-indigo-500 to-violet-600 p-[1.5px] shadow-2xl">
-        <div className="rounded-3xl bg-gradient-to-br from-sky-600/95 via-indigo-600/95 to-violet-700/95 backdrop-blur-md p-8 md:p-10">
-          <div className="flex flex-wrap items-center gap-3 mb-4">
-            <div className="flex items-center gap-1.5">
-              <StarIcon className="h-5 w-5 text-yellow-300" aria-hidden="true" />
-              <span className="text-white/80 text-xs font-bold uppercase tracking-widest">Featured Project</span>
+      <div className="relative overflow-hidden rounded-3xl bg-white/70 dark:bg-gray-800/55 backdrop-blur-lg border-2 border-sky-200/70 dark:border-sky-700/50 shadow-2xl hover:-translate-y-1 transition-all duration-300">
+        {/* Subtle sky glow */}
+        <div className="absolute -top-12 -left-12 w-48 h-48 rounded-full bg-sky-400/10 dark:bg-sky-500/10 blur-2xl pointer-events-none" aria-hidden="true" />
+        <div className="relative p-8 md:p-10">
+          <div className="flex flex-wrap items-center gap-3 mb-5">
+            <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-sky-100 dark:bg-sky-900/50 border border-sky-200 dark:border-sky-700/60">
+              <StarIcon className="h-4 w-4 text-sky-500 dark:text-sky-400" aria-hidden="true" />
+              <span className="text-sky-700 dark:text-sky-300 text-xs font-bold uppercase tracking-widest">Featured Project</span>
             </div>
             {project.status && (
-              <span className="px-3 py-0.5 bg-green-400/25 text-green-300 rounded-full text-xs font-semibold border border-green-400/40">
+              <span className="px-3 py-0.5 bg-emerald-100 dark:bg-emerald-900/40 text-emerald-700 dark:text-emerald-300 rounded-full text-xs font-semibold border border-emerald-200 dark:border-emerald-700/50">
                 {project.status}
               </span>
             )}
           </div>
-          <h3 className="text-2xl md:text-3xl font-bold text-white mb-1">{project.title}</h3>
-          {project.role && <p className="text-white/60 text-sm font-medium mb-4">{project.role}</p>}
-          <p className="text-white/80 mb-6 max-w-2xl leading-relaxed">{project.description}</p>
+          <h3 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-1 leading-tight">{project.title}</h3>
+          {project.role && <p className="text-sm font-medium text-sky-600 dark:text-sky-400 mb-4">{project.role}</p>}
+          <p className="text-gray-600 dark:text-gray-300 mb-6 max-w-2xl leading-relaxed">{project.description}</p>
           <div className="flex flex-wrap gap-2 mb-7">
             {project.techStack.map((tech, i) => (
-              <span key={i} className="px-3 py-1 bg-white/15 text-white rounded-full text-sm font-medium border border-white/25">
+              <span key={i} className="px-3 py-1 bg-sky-100 text-sky-800 dark:bg-sky-900/60 dark:text-sky-300 rounded-full text-sm font-medium border border-sky-200/60 dark:border-sky-700/40">
                 {tech}
               </span>
             ))}
           </div>
           <a href={project.link} target="_blank" rel="noopener noreferrer"
-            className="inline-flex items-center px-6 py-3 bg-white text-sky-700 font-semibold rounded-full hover:bg-sky-50 transition-all duration-200 shadow-lg hover:shadow-xl hover:-translate-y-0.5">
+            className="inline-flex items-center px-6 py-3 bg-sky-600 hover:bg-sky-700 text-white font-semibold rounded-full transition-all duration-200 shadow-lg hover:shadow-xl hover:-translate-y-0.5 focus:outline-none focus:ring-4 focus:ring-sky-300">
             View on GitHub
             <ArrowTopRightOnSquareIcon className="ml-2 h-4 w-4" aria-hidden="true" />
           </a>
