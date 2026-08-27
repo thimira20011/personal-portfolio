@@ -458,59 +458,59 @@ export default function App() {
     publications: [
       {
         id: 1,
-        title: 'Securing .NET 10 Microservices: A Production Guide to Zero-Trust Architecture',
-        topic: 'Microservices Security',
-        url: 'https://medium.com/@tnirajaya2001/securing-net-10-microservices-a-production-guide-to-zero-trust-architecture-c30985b98f2f',
-        date: '2026',
-        readTime: '6 min read',
-      },
-      {
-        id: 2,
-        title: 'Clean Architecture with ASP.NET Core 10: From Spaghetti to Separation',
-        topic: 'Software Architecture',
-        url: 'https://medium.com/@tnirajaya2001/clean-architecture-with-asp-net-core-10-from-spaghetti-to-separation-256cf4673ec2',
-        date: '2026',
+        title: 'Beyond Coordinates: Engineering the Spatial Brain of a Student Ride Sharing App',
+        topic: 'Spatial Computing & PostGIS',
+        url: 'https://medium.com/@tnirajaya2001/beyond-coordinates-engineering-the-spatial-brain-of-a-student-ride-sharing-app-606b1b536377?sharedUserId=tnirajaya2001',
+        date: 'Jun 23, 2026',
         readTime: '7 min read',
       },
       {
-        id: 3,
-        title: 'Inside the Engine: How .NET 10 Compiles and Executes Your Code',
-        topic: 'Runtime Internals',
-        url: 'https://medium.com/@tnirajaya2001/inside-the-engine-how-net-10-compiles-and-executes-your-code-c361491ba63a',
-        date: '2026',
+        id: 2,
+        title: 'How we engineered a resilient, real-time, ride-sharing backend for university students',
+        topic: 'Real-Time Systems & SignalR',
+        url: 'https://medium.com/@tnirajaya2001/how-we-engineered-a-resilient-real-time-ride-sharing-backend-for-university-students-059089ea1881?sharedUserId=tnirajaya2001',
+        date: 'May 23, 2026',
         readTime: '8 min read',
       },
       {
+        id: 3,
+        title: 'Beyond Distroless: Why We “Chiseled” Our .NET 10 Backend for NearU',
+        topic: 'Container & Cloud-Native Optimization',
+        url: 'https://medium.com/@tnirajaya2001/beyond-distroless-why-we-chiseled-our-net-10-backend-for-nearu-9d5c11469875?sharedUserId=tnirajaya2001',
+        date: 'May 9, 2026',
+        readTime: '6 min read',
+      },
+      {
         id: 4,
-        title: 'Understanding Git Internals: What Actually Happens When You Commit',
-        topic: 'Developer Tooling',
-        url: 'https://medium.com/@tnirajaya2001/understanding-git-internals-what-actually-happens-when-you-commit-daaa268f760f',
-        date: '2026',
-        readTime: '5 min read',
+        title: 'Deploying a Production-Ready AI Gateway on a Cloud VPS: A Complete Survival Guide',
+        topic: 'DevOps & AI Infrastructure',
+        url: 'https://medium.com/@tnirajaya2001/deploying-a-production-ready-ai-gateway-on-a-cloud-vps-a-complete-survival-guide-54291b9e152f?sharedUserId=tnirajaya2001',
+        date: 'Apr 5, 2026',
+        readTime: '9 min read',
       },
       {
         id: 5,
-        title: 'Building Resilient Distributed Systems: Circuit Breakers and Fallbacks in .NET',
-        topic: 'Distributed Systems',
-        url: 'https://medium.com/@tnirajaya2001/building-resilient-distributed-systems-circuit-breakers-and-fallbacks-in-net-e75877fbaea2',
-        date: '2026',
+        title: 'Beyond the Hype: Why Semrush Falls Short in 2026',
+        topic: 'SEO & Tech Industry Analysis',
+        url: 'https://medium.com/@tnirajaya2001/beyond-the-hype-why-semrush-falls-short-in-2026-2f582891ff77?sharedUserId=tnirajaya2001',
+        date: 'Mar 23, 2026',
         readTime: '6 min read',
       },
       {
         id: 6,
-        title: 'Designing Real-Time Ride-Matching Systems with SignalR, Redis, and PostGIS',
-        topic: 'Real-Time Systems',
-        url: 'https://medium.com/@tnirajaya2001/designing-real-time-ride-matching-systems-with-signalr-redis-and-postgis-7622619eb608',
-        date: '2026',
-        readTime: '9 min read',
+        title: 'The Silver Lining of Rising RAM Prices: How Hardware Costs Are Forcing Better Game Optimization',
+        topic: 'Hardware & Game Optimization',
+        url: 'https://medium.com/@tnirajaya2001/the-silver-lining-of-rising-ram-prices-how-hardware-costs-are-forcing-better-game-optimization-7c18ea04edda?sharedUserId=tnirajaya2001',
+        date: 'Jan 7, 2026',
+        readTime: '5 min read',
       },
       {
         id: 7,
-        title: 'AI Agentic Design Patterns: Multi-Agent Collaboration and Task Decomposition',
-        topic: 'Agentic AI',
-        url: 'https://medium.com/@tnirajaya2001/ai-agentic-design-patterns-multi-agent-collaboration-and-task-decomposition-a7beabda26a2',
-        date: '2026',
-        readTime: '7 min read',
+        title: 'Green Coding isn’t Charity. It’s Performance Engineering.',
+        topic: 'Green Computing & Performance',
+        url: 'https://medium.com/@tnirajaya2001/green-coding-isnt-charity-it-s-performance-engineering-7b5b273c5b3b?sharedUserId=tnirajaya2001',
+        date: 'Nov 25, 2025',
+        readTime: '5 min read',
       },
     ],
 
@@ -554,7 +554,7 @@ export default function App() {
         period: 'Nov 2025 – Present',
         badgeText: '7 Deep-Dive Publications',
         description:
-          'Authored comprehensive technical guides covering .NET 10 microservices zero-trust security, Clean Architecture, Git internals, distributed circuit breakers, and SignalR/Redis/PostGIS real-time architecture.',
+          'Authored 7 in-depth technical guides covering real-time ride-sharing architecture (.NET 10, SignalR, Redis), spatial query indexing with PostGIS, Ubuntu Chiseled containers, cloud AI gateway deployment, hardware & game optimization, and green computing.',
       },
       {
         id: 5,
@@ -1342,14 +1342,21 @@ const AchievementsAwards = React.memo(({ data, publications }) => {
               rel="noopener noreferrer"
               className="flex items-center justify-between p-4 bg-white/70 dark:bg-gray-800/55 rounded-2xl shadow-sm backdrop-blur-lg border border-white/60 dark:border-gray-700/50 hover:shadow-md hover:border-orange-300/60 dark:hover:border-orange-700/50 transition-all duration-200 group"
             >
-              <div className="flex items-center gap-3 min-w-0 pr-4">
-                <span className="w-2 h-2 rounded-full bg-orange-400 flex-shrink-0" />
-                <span className="text-sm font-medium text-gray-800 dark:text-gray-200 group-hover:text-orange-500 transition-colors truncate">
-                  {p.title}
-                </span>
+              <div className="flex items-start sm:items-center gap-3 min-w-0 pr-4">
+                <span className="w-2 h-2 rounded-full bg-orange-400 flex-shrink-0 mt-1.5 sm:mt-0" />
+                <div className="min-w-0">
+                  <span className="text-sm font-medium text-gray-800 dark:text-gray-200 group-hover:text-orange-500 transition-colors block">
+                    {p.title}
+                  </span>
+                  <div className="flex flex-wrap items-center gap-2 mt-1 text-xs text-gray-400 font-mono">
+                    <span className="text-orange-600 dark:text-orange-400 font-sans font-medium">{p.topic}</span>
+                    <span>•</span>
+                    <span>{p.date}</span>
+                  </div>
+                </div>
               </div>
               <div className="flex items-center gap-3 flex-shrink-0 text-xs text-gray-400 font-mono">
-                <span>{p.readTime}</span>
+                <span className="hidden sm:inline">{p.readTime}</span>
                 <ArrowTopRightOnSquareIcon className="h-3.5 w-3.5 group-hover:text-orange-500 transition-colors" />
               </div>
             </a>
