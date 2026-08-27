@@ -305,10 +305,10 @@ export default function App() {
           'Docker',
           'AWS ECS',
         ],
-        link: 'https://github.com/thimira20011/NearU-Backend',
+        link: 'https://github.com/Nearu-Project-SUSL',
         demoUrl: 'https://nearusab.me',
-        repoLabel: 'github.com/thimira20011/NearU-Backend',
-        imageUrl: '',
+        repoLabel: 'github.com/Nearu-Project-SUSL',
+        imageUrl: 'https://raw.githubusercontent.com/thimira20011/portfolio-pictures/refs/heads/main/Home%20Page.png',
       },
       {
         id: 2,
@@ -329,7 +329,7 @@ export default function App() {
         techStack: ['AWS VPC', 'ECS Fargate', 'RDS PostgreSQL', 'ALB', 'CloudWatch', 'Route 53', 'Docker'],
         link: 'https://github.com/thimira20011/NearU-Backend',
         repoLabel: 'github.com/thimira20011/NearU-Backend',
-        imageUrl: '',
+        imageUrl: 'https://raw.githubusercontent.com/thimira20011/portfolio-pictures/refs/heads/main/Grafana.png',
       },
       {
         id: 3,
@@ -349,7 +349,7 @@ export default function App() {
         techStack: ['Python', 'FastAPI', 'Machine Learning', 'Isolation Forests', 'PostgreSQL', 'Docker'],
         link: 'https://github.com/thimira20011/ShadowSense-2026-Aurora',
         repoLabel: 'github.com/thimira20011/ShadowSense-2026-Aurora',
-        imageUrl: '',
+        imageUrl: 'https://raw.githubusercontent.com/thimira20011/portfolio-pictures/refs/heads/main/Shadow%20Sense.jpeg',
       },
       {
         id: 4,
@@ -370,7 +370,7 @@ export default function App() {
         techStack: ['.NET 10', 'C#', 'Azure SDK', 'Roslyn', 'EF Core', 'Docker', 'Grafana', 'Prometheus'],
         link: 'https://github.com/thimira20011/GreenOps-Intelligence-Hub',
         repoLabel: 'github.com/thimira20011/GreenOps-Intelligence-Hub',
-        imageUrl: '',
+        imageUrl: 'https://raw.githubusercontent.com/thimira20011/portfolio-pictures/refs/heads/main/GreenOps.png',
       },
       {
         id: 5,
@@ -410,7 +410,7 @@ export default function App() {
         techStack: ['Godot 4', 'GDScript', '2D Physics Engine', 'RayCast2D AI'],
         link: 'https://github.com/thimira20011/Knight_Fury',
         repoLabel: 'github.com/thimira20011/Knight_Fury',
-        imageUrl: '',
+        imageUrl: 'https://raw.githubusercontent.com/thimira20011/portfolio-pictures/refs/heads/main/Game%20Play.png',
       },
       {
         id: 7,
