@@ -586,6 +586,7 @@ export default function App() {
         issuer: 'SCRUMstudy',
         issuedDate: 'Apr 2026',
         credentialUrl: 'https://www.scrumstudy.com/certification/verify?type=SFC&number=1116324',
+      },
       {
         id: 2,
         title: 'Six Sigma Yellow Belt (SSYB)',
@@ -599,12 +600,14 @@ export default function App() {
         issuer: 'KodeKloud',
         issuedDate: 'Feb 2025',
         credentialUrl: 'https://learn.kodekloud.com/learn/certificate/aa3e389f-491b-4abd-925b-ebbc39799677',
+      },
       {
         id: 4,
         title: 'Docker Training Course for the Absolute Beginner',
         issuer: 'KodeKloud',
         issuedDate: 'Feb 2025',
         credentialUrl: 'https://learn.kodekloud.com/learn/certificate/439629ff-2917-41d9-af6a-a567a9be3d0d',
+      },
       {
         id: 5,
         title: 'AI Fluency for Students',
@@ -618,14 +621,14 @@ export default function App() {
         issuer: 'Educative',
         issuedDate: 'Apr 2026',
         credentialUrl: 'https://www.educative.io/verify-certificate/FERYC6CA9C',
-      
+      },
       {
         id: 7,
         title: 'Digital Marketing Certified',
         issuer: 'HubSpot Academy',
         issuedDate: 'Apr 2026',
         credentialUrl: 'https://app-na2.hubspot.com/academy/achievements/n7w40ljz/en/1/thimira-niranjaya/digital-marketing',
-      
+      },
       {
         id: 8,
         title: 'IEEE Computer Society Membership',
