@@ -311,6 +311,30 @@ export default function App() {
         imageUrl: 'https://raw.githubusercontent.com/thimira20011/portfolio-pictures/refs/heads/main/Home%20Page.png',
       },
       {
+        id: 8,
+        featured: false,
+        category: 'AI & Security',
+        title: 'GridWalk AI — Multi-Agent Microgrid Recovery System',
+        period: 'Oct 2026',
+        role: 'AI Developer · Team IGNITE (3 Members)',
+        status: '🥈 1st Runner-Up @ AI Hackathon 2026',
+        description:
+          'Developed with the three-member team IGNITE, GridWalk AI supports electrical microgrid fault analysis and recovery planning through graph-based modeling, multi-agent workflows, and LLM-assisted recovery proposals with deterministic constraint validation. Awarded 1st Runner-Up at AI Hackathon 2026, University of Moratuwa.',
+        bullets: [
+          'Modeled substations, power lines, backup sources, and load sectors as an interconnected graph using Jac nodes, edges, and walkers.',
+          'Built multi-agent workflows for fault monitoring, recovery planning, and incident analysis.',
+          'Combined LLM-assisted recovery proposals with deterministic constraint validation.',
+          'Simulated power distribution failures and recovery strategies, with an interactive dashboard for grid conditions and recovery decisions.',
+          'Secured 1st Runner-Up on October 17, 2026, at AI Hackathon 2026, powered by Jaseci Labs and organized by EESoc, University of Moratuwa.',
+        ],
+        techStack: ['Jac / Jaseci', 'Multi-Agent Systems', 'LLM APIs', 'Graph-Based Modeling', 'WSL', 'Git & GitHub'],
+        link: 'https://github.com/Dileesha001/GridWalk-AI.git',
+        demoUrl: 'https://youtu.be/gPm9pV6GcR4',
+        demoLabel: 'Watch Demo',
+        repoLabel: 'github.com/Dileesha001/GridWalk-AI',
+        imageUrl: 'https://raw.githubusercontent.com/thimira20011/portfolio-pictures/refs/heads/main/Screenshot%202026-10-19%20140341.png',
+      },
+      {
         id: 2,
         featured: false,
         category: 'Cloud & DevOps',
@@ -442,7 +466,7 @@ export default function App() {
         event: 'Organized by EESoc, University of Moratuwa · Powered by Jaseci Labs',
         year: 'Oct 17, 2026',
         description:
-          'Awarded First Runner-Up representing team IGNITE for developing an AI-powered solution using Jac, recognized for problem-solving, innovation, and technical skills.',
+          'Awarded First Runner-Up representing team IGNITE for developing GridWalk AI — a multi-agent microgrid recovery and decision support system using Jac, recognized for problem-solving, innovation, and technical skills.',
         certificateUrl: `${process.env.PUBLIC_URL}/certificates/ai-hackathon-2026-first-runner-up.pdf`,
       },
       {
@@ -1274,7 +1298,7 @@ const ProjectCard = ({ project, index }) => {
             className="inline-flex items-center text-xs font-semibold text-emerald-600 dark:text-emerald-400 hover:underline"
           >
             <Globe className="mr-1 h-3.5 w-3.5" />
-            <span>Live Demo</span>
+            <span>{project.demoLabel || 'Live Demo'}</span>
           </a>
         )}
       </div>
