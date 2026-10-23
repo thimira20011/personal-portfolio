@@ -437,6 +437,15 @@ export default function App() {
     // ── Honors & National Awards ──────────────────────────────────────────────
     achievements: [
       {
+        id: 3,
+        title: '1st Runner-Up — AI Hackathon 2026',
+        event: 'Organized by EESoc, University of Moratuwa · Powered by Jaseci Labs',
+        year: 'Oct 17, 2026',
+        description:
+          'Awarded First Runner-Up representing team IGNITE for developing an AI-powered solution using Jac, recognized for problem-solving, innovation, and technical skills.',
+        certificateUrl: `${process.env.PUBLIC_URL}/certificates/ai-hackathon-2026-first-runner-up.pdf`,
+      },
+      {
         id: 1,
         title: '1st Runner-Up — Aurora 2026 (National AI Ideathon)',
         event: 'Organized by IEEE WIE Student Branch Affinity Group, SUSL',
@@ -580,6 +589,14 @@ export default function App() {
 
     // ── Verified Certifications & Memberships ─────────────────────────────────
     certifications: [
+      {
+        id: 10,
+        title: 'Continuous Integration and Continuous Delivery (CI/CD)',
+        issuer: 'IBM · Coursera',
+        issuedDate: 'Sep 2026',
+        credentialUrl: 'https://coursera.org/verify/56MSHOTEXYNR',
+        certificateUrl: `${process.env.PUBLIC_URL}/certificates/ibm-continuous-integration-and-continuous-delivery.pdf`,
+      },
       {
         id: 1,
         title: 'Scrum Fundamentals Certified (SFC)',
@@ -1304,6 +1321,17 @@ const AchievementsAwards = React.memo(({ data, publications }) => {
                 <p className="mt-2 text-xs sm:text-sm text-gray-600 dark:text-gray-300 leading-relaxed">
                   {a.description}
                 </p>
+                {a.certificateUrl && (
+                  <a
+                    href={a.certificateUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`View certificate for ${a.title} (PDF)`}
+                    className="inline-flex items-center mt-3 text-xs font-semibold text-amber-600 dark:text-amber-400 hover:underline"
+                  >
+                    View Certificate (PDF) <ArrowTopRightOnSquareIcon className="ml-1 h-3 w-3" aria-hidden="true" />
+                  </a>
+                )}
               </div>
             </div>
           </div>
@@ -1485,6 +1513,17 @@ const Certifications = React.memo(({ data }) => {
                   Verify Credential <ArrowTopRightOnSquareIcon className="ml-1 h-3 w-3" />
                 </a>
               </div>
+            )}
+            {cert.certificateUrl && (
+              <a
+                href={cert.certificateUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`View certificate for ${cert.title} (PDF)`}
+                className="inline-flex items-center mt-2 text-xs font-semibold text-sky-600 dark:text-sky-400 hover:underline"
+              >
+                View Certificate (PDF) <ArrowTopRightOnSquareIcon className="ml-1 h-3 w-3" aria-hidden="true" />
+              </a>
             )}
           </div>
         ))}
