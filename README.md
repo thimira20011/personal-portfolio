@@ -73,12 +73,17 @@ Your site will be live at your GitHub Pages URL.
 
 ## ✍️ Customizing Your Portfolio
 
-All content is managed in the [`portfolioData`](src/App.js) object in [`src/App.js`](src/App.js):
+Portfolio content is managed in [`src/data/portfolio.js`](src/data/portfolio.js). Selected project stories live in [`src/data/projectStories.js`](src/data/projectStories.js).
 
 - **Change your name, title, or bio:** Edit the `portfolioData` object.
 - **Update your profile picture:** Replace `profilePicUrl` with your image URL.
 - **Add projects:** Add objects to the `projects` array with details and image URLs.
+- **Selected projects:** NearU, GridWalk AI, and GreenOps have dedicated stories. Update their contribution, architecture overview, and evidence in `projectStories.js` when the implementation changes. Add performance numbers only alongside reproducible measurements.
+- **Design:** Theme tokens, responsive layouts, and reduced-motion behavior are in `src/index.css`. The primary sections are in `src/components/PortfolioSections.js`.
+- **Certificates:** Put PDFs in `public/certificates/` and link to them using `process.env.PUBLIC_URL` so they work under a deployment subpath.
 - **Contact form:** Sign up at [Formspree](https://formspree.io/) and replace the endpoint in the Contact component with your unique form ID.
+
+Run `npm test -- --watchAll=false` for the interaction checks and `npm run build` for the production build.
 
 
 ---
