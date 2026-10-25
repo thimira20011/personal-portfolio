@@ -1,5 +1,5 @@
 # Modern React Portfolio
-## link to the portfolio: https://thimira20011.github.io/personal-portfolio/ 
+## link to the portfolio: https://www.thimira.tech
 A clean, responsive, and modern personal portfolio website built with React and styled using Tailwind CSS. Use this template to showcase your projects, skills, and contact information.
 
 ---
