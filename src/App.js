@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Analytics } from '@vercel/analytics/react';
 import portfolioData from './data/portfolio';
 import { PortfolioAbout, PortfolioCertifications, PortfolioHero, PortfolioNav, PortfolioProjects } from './components/PortfolioSections';
 import { AchievementsAwards, Contact, ExperienceTimeline, Footer, ScrollToTop } from './components/SupportingSections';
@@ -53,6 +54,7 @@ export default function App() {
       </main>
       <div className="page-container"><Footer data={portfolioData} /></div>
       <ScrollToTop />
+      <Analytics />
     </div>
   );
 }

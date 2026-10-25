@@ -69,6 +69,16 @@ test('persists theme changes and restores the preference after mounting again', 
   expect(document.documentElement.classList.contains('dark')).toBe(true);
 });
 
+test('loads Vercel Analytics once across app remounts', () => {
+  const scripts = () => document.head.querySelectorAll('script[data-sdkn="@vercel/analytics/react"]');
+  expect(scripts()).toHaveLength(1);
+  expect(scripts()[0].defer).toBe(true);
+  act(() => root.unmount());
+  root = createRoot(container);
+  act(() => root.render(<App />));
+  expect(scripts()).toHaveLength(1);
+});
+
 test('mobile navigation closes on Escape and returns focus to its trigger', () => {
   const button = container.querySelector('[aria-controls="mobile-navigation"]');
   act(() => button.click());

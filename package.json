@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@heroicons/react": "^2.0.18",
+    "@vercel/analytics": "^2.0.1",
     "lucide-react": "^0.284.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -16,6 +17,11 @@
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
+  },
+  "jest": {
+    "moduleNameMapper": {
+      "^@vercel/analytics/react$": "<rootDir>/node_modules/@vercel/analytics/dist/react/index.js"
+    }
   },
   "browserslist": {
     "production": [
