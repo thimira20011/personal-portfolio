@@ -115,7 +115,6 @@ export function PortfolioHero({ data }) {
         </div>
       </div>
       <div className="proof-strip" aria-label="Experience at a glance">
-        <div><strong>4<span> developers</span></strong><span>Leading the NearU team</span></div>
         <div><strong>{data.achievements.length}<span> competition awards</span></strong><span>Building under real constraints</span></div>
         <div><strong>{data.publications.length}<span> technical articles</span></strong><a href="#publications">Sharing what I learn<ArrowUpRight size={14} aria-hidden="true" /></a></div>
       </div>
