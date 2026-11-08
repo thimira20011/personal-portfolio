@@ -90,7 +90,7 @@ test('mobile navigation closes on Escape and returns focus to its trigger', () =
   expect(document.activeElement).toBe(button);
 });
 
-test('offers both current CVs and dismisses the CV chooser with Escape or an outside pointer', () => {
+test('offers both current résumés and dismisses the résumé chooser with Escape or an outside pointer', () => {
   const chooser = container.querySelector('.resume-menu');
   const links = [...chooser.querySelectorAll('a')];
   expect(links.map((link) => link.getAttribute('href'))).toEqual(['/cv/Thimira_SE.pdf', '/cv/Thimira_DevOps.pdf']);

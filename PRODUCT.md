@@ -16,7 +16,7 @@ Present Thimira Niranjaya's existing software engineering work and experience wi
 
 ## Capabilities and Constraints
 
-React 18 / Vite 8 site, migrated from Create React App to resolve its dependency audit findings. Vitest 5 runs the interaction tests. Preserve project facts, credentials, social URLs, filtering, case-study disclosures, theme preference, and contact form. Do not fabricate achievements or project outcomes. The owner supplied current software engineering and DevOps CVs and authorized replacing the outdated resume link with these locally hosted PDFs. Local commits and pushing the completed changes after checks are authorized. The two pre-existing generated build edits are outside this work.
+React 18 / Vite 8 site, migrated from Create React App to resolve its dependency audit findings. Vitest 5 runs the interaction tests. Preserve project facts, credentials, social URLs, filtering, case-study disclosures, theme preference, and contact form. Do not fabricate achievements or project outcomes. The owner supplied current software engineering and DevOps résumés and authorized replacing the outdated resume link with these locally hosted PDFs. Local commits and pushing the completed changes after checks are authorized. The two pre-existing generated build edits are outside this work.
 
 ## Brand Commitments
 
@@ -24,7 +24,7 @@ The owner requested ink black and sand brown as primary colors, chose electric l
 
 ## Evidence on Hand
 
-Existing content in src/data/portfolio.js and src/data/projectStories.js. Local project screenshots and portrait in public/images. NearU image is a capture of its actual public demo. GreenOps has an architecture-led preview based on the documented implementation, retaining the supplied screenshot as an expandable secondary view. Current CVs live in public/cv. Interaction tests cover navigation, CV access, projects, theme, and contact behavior.
+Existing content in src/data/portfolio.js and src/data/projectStories.js. Local project screenshots and portrait in public/images. NearU image is a capture of its actual public demo. GreenOps has an architecture-led preview based on the documented implementation, retaining the supplied screenshot as an expandable secondary view. Current résumés live in public/cv. Interaction tests cover navigation, résumé access, projects, theme, and contact behavior.
 
 ## Product Principles
 

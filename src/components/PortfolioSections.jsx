@@ -33,8 +33,8 @@ function ResumeMenu({ resumes }) {
     };
   }, []);
   return <details className="resume-menu" ref={ref}>
-    <summary className="nav-resume">CVs<ChevronDown size={14} aria-hidden="true" /></summary>
-    <div className="resume-options" role="group" aria-label="Choose a CV">
+    <summary className="nav-resume">Résumé<ChevronDown size={14} aria-hidden="true" /></summary>
+    <div className="resume-options" role="group" aria-label="Choose a résumé">
       {resumes.map((resume) => <a key={resume.url} href={resume.url} target="_blank" rel="noopener noreferrer" onClick={() => { ref.current.open = false; }}>
         <FileText size={18} aria-hidden="true" /><span>{resume.label}<small>View PDF · 2 pages · {resume.size}</small></span><ArrowUpRight size={15} aria-hidden="true" />
       </a>)}
@@ -97,7 +97,7 @@ export function PortfolioNav({ isDarkMode, toggleDarkMode, resumes, animationsPa
             {open ? <X size={21} aria-hidden="true" /> : <Menu size={21} aria-hidden="true" />}
           </button>
         </div>
-        {open && <div className="mobile-links" id="mobile-navigation">{links()}<a href="#certifications" onClick={() => setOpen(false)}>Certifications</a>{resumes.map((resume) => <a key={resume.url} href={resume.url} target="_blank" rel="noopener noreferrer" onClick={() => setOpen(false)}>{resume.label} CV<ArrowUpRight size={14} aria-hidden="true" /></a>)}</div>}
+        {open && <div className="mobile-links" id="mobile-navigation">{links()}<a href="#certifications" onClick={() => setOpen(false)}>Certifications</a>{resumes.map((resume) => <a key={resume.url} href={resume.url} target="_blank" rel="noopener noreferrer" onClick={() => setOpen(false)}>{resume.label} résumé<ArrowUpRight size={14} aria-hidden="true" /></a>)}</div>}
       </nav>
     </div>
   );
@@ -119,10 +119,10 @@ export function PortfolioHero({ data, animationsPaused, setAnimationsPaused }) {
         <h1><span className="hero-line"><span>Backend thinking.</span></span><span className="hero-line"><span>Real-world impact<span className="headline-period">.</span></span></span></h1>
         <p className="hero-description"><strong className="hero-greeting">Hi, I'm {data.shortName}.</strong>An Information Systems undergraduate building real-time systems with <strong>.NET, cloud infrastructure, and AI.</strong> I enjoy turning complex problems into software people can use.</p>
         <div className="hero-buttons">
-          <a className="button button-primary" href={data.resumes[0].url} target="_blank" rel="noopener noreferrer">Software engineering CV<FileText size={17} aria-hidden="true" /></a>
+          <a className="button button-primary" href={data.resumes[0].url} target="_blank" rel="noopener noreferrer">View résumé<FileText size={17} aria-hidden="true" /></a>
           <a className="button button-secondary" href="#projects">Explore my work<ArrowDown size={17} aria-hidden="true" /></a>
         </div>
-        <p className="hero-cv-alternative">Also available: <a href={data.resumes[1].url} target="_blank" rel="noopener noreferrer">DevOps CV<ArrowUpRight size={14} aria-hidden="true" /></a></p>
+        <p className="hero-cv-alternative">Also available: <a href={data.resumes[1].url} target="_blank" rel="noopener noreferrer">DevOps résumé<ArrowUpRight size={14} aria-hidden="true" /></a></p>
         <div className="hero-socials">
           <span><MapPin size={15} aria-hidden="true" />Sri Lanka</span>
           <span className="social-divider" />

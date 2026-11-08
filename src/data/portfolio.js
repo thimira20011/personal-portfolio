@@ -106,7 +106,7 @@ const portfolioData = {
       ],
     },
 
-    // ── Key Engineering Projects (Master CV Verbatim) ─────────────────────────
+    // ── Key Engineering Projects (Master Résumé Verbatim) ─────────────────────
     projects: [
       {
         id: 1,

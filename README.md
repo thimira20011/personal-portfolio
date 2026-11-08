@@ -14,8 +14,8 @@ Built with React, an ink-black and warm-sand palette, electric-lime highlights, 
 
 - **Project case studies:** selected work with the problem, my contribution, outcome, architecture decisions, source links, and demonstrations.
 - **Experience and evidence:** education, engineering roles, awards, technical writing, and linked credentials.
-- **Responsive navigation:** current-section tracking, a CV chooser, and a mobile menu with keyboard support.
-- **Current CVs:** separate software engineering and DevOps PDFs, hosted with the site.
+- **Responsive navigation:** current-section tracking, a résumé chooser, and a mobile menu with keyboard support.
+- **Current résumés:** separate software engineering and DevOps PDFs, hosted with the site.
 - **GreenOps preview:** an architecture diagram with the original dashboard screenshot available alongside it.
 - **Light and dark themes:** shared color tokens and a saved theme preference.
 - **Gentle motion:** animated monitor code, coffee steam, subtle background graphics, and spring-based pointer depth. The desk stays grounded at rest.
@@ -69,14 +69,14 @@ Open [localhost:3000](http://localhost:3000). The development server reloads whe
 | `npm run build` | Create an optimized production build in `build/` |
 | `npm run preview` | Preview the production build at localhost:4173 |
 
-The tests cover navigation, both CV links and chooser dismissal, project filtering, theme persistence, architecture explanations, contact errors, shared motion controls, reduced-motion preferences, and visibility handling.
+The tests cover navigation, both résumé links and chooser dismissal, project filtering, theme persistence, architecture explanations, contact errors, shared motion controls, reduced-motion preferences, and visibility handling.
 
 ## Project structure
 
 ```text
 public/
   certificates/            Linked certificate PDFs
-  cv/                      Software engineering and DevOps CVs
+  cv/                      Software engineering and DevOps résumés
   fonts/                   Self-hosted fonts, licenses, and origins
   images/                  Portrait, project screenshots, and pixel artwork
     responsive/            Smaller screenshot and portrait variants
@@ -113,7 +113,7 @@ vite.config.mjs            Build, local server, and test configuration
 
 When replacing a portrait or project image, update its dimensions in [imageProps.js](src/data/imageProps.js) and provide the corresponding variants in `public/images/responsive/`. Certificate PDFs live in `public/certificates/` and are referenced from the content data.
 
-Replace the two CVs in `public/cv/` and update the labels, file sizes, and URLs in `portfolioData.resumes` when publishing a new version. The software engineering CV is the main hero action; the DevOps version is linked below it, and both appear in navigation.
+Replace the two résumés in `public/cv/` and update the labels, file sizes, and URLs in `portfolioData.resumes` when publishing a new version. The software engineering résumé is the main hero action; the DevOps version is linked below it, and both appear in navigation.
 
 For a personal adaptation, update the contact details and replace the Formspree endpoint with your own. Keep project contributions and outcomes tied to evidence in their implementations.
 
@@ -135,7 +135,7 @@ The deprecated Create React App toolchain was replaced with Vite to resolve its 
 
 - [DESIGN.md](DESIGN.md) — current color, typography, layout, component, and motion system.
 - [Refinement plan](REFINEMENT_PLAN.md) and [review](REFINEMENT_REVIEW.md) — the latest implementation scope, checks, and known limits.
-- [Maintenance review](MAINTENANCE_REVIEW.md) — dependency remediation, current CVs, GreenOps preview, and subsequent validation.
+- [Maintenance review](MAINTENANCE_REVIEW.md) — dependency remediation, current résumés, GreenOps preview, and subsequent validation.
 - [Image provenance](public/images/README.md) — screenshot sources and the generated pixel illustration, including its recorded prompt.
 - [Font origins and licenses](public/fonts/README.md) — self-hosted font sources and SIL Open Font License files.
 
