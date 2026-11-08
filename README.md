@@ -1,98 +1,128 @@
-# Modern React Portfolio
-## link to the portfolio: https://www.thimira.tech
-A clean, responsive, and modern personal portfolio website built with React and styled using Tailwind CSS. Use this template to showcase your projects, skills, and contact information.
+# Thimira Niranjaya — Developer Portfolio
 
----
+The frontend for [thimira.tech](https://www.thimira.tech), showcasing my work in backend engineering, cloud infrastructure, and AI. I'm an Information Systems undergraduate at Sabaragamuwa University of Sri Lanka, seeking a software engineering internship.
 
-## 🚀 Features
+Built with React, an ink-black and warm-sand palette, electric-lime highlights, and an original animated pixel workspace.
 
-- **Responsive Design:** Seamless experience on mobile, tablet, and desktop.
-- **Dark Mode Toggle:** Switch between light and dark themes.
-- **Component-Based:** Organized, readable React components.
-- **Tailwind CSS:** Utility-first CSS for rapid, consistent styling.
-- **Formspree Integration:** Contact form sends messages directly to your email—no backend required.
-- **GitHub Pages Deployment:** Simple, automated deployment.
+**[Live portfolio](https://www.thimira.tech)** · **[Selected work](#selected-work)** · **[Run locally](#run-locally)** · **[Design system](DESIGN.md)**
 
----
+<p align="center">
+  <img src="public/images/pixel-workspace.webp" alt="Pixel-art developer workspace used in the portfolio hero" width="560" />
+</p>
 
-## 🛠️ Technologies Used
+## What’s inside
 
-- **React:** UI library for building interfaces.
-- **Tailwind CSS:** Utility-first CSS framework.
-- **JavaScript (ES6+):** Core language.
-- **Heroicons:** MIT-licensed SVG icons.
-- **Lucide React:** Beautiful, consistent React icons.
-- **Formspree:** Handles form submissions.
-- **gh-pages:** Deploys to GitHub Pages.
+- **Project case studies:** selected work with the problem, my contribution, outcome, architecture decisions, source links, and demonstrations.
+- **Experience and evidence:** education, engineering roles, awards, technical writing, and linked credentials.
+- **Responsive navigation:** current-section tracking, résumé access, and a mobile menu with keyboard support.
+- **Light and dark themes:** shared color tokens and a saved theme preference.
+- **Gentle motion:** animated monitor code, coffee steam, subtle background graphics, and spring-based pointer depth. The desk stays grounded at rest.
+- **Motion controls:** shared pause controls in the header and hero, reduced-motion support, hidden-tab suspension, and offscreen suspension for the workspace.
+- **Local assets:** self-hosted fonts, responsive project screenshots, and explicit image dimensions.
+- **Contact:** direct email and social links, copy controls, and a Formspree message form.
 
----
+## Selected work
 
-## 🏁 Getting Started
+Each project links to its own implementation; its engineering story is presented in the portfolio.
 
-### Prerequisites
+| Project | Focus | Explore |
+| --- | --- | --- |
+| **NearU** | Real-time campus ride sharing with .NET, SignalR, Redis, and PostGIS | [Repositories](https://github.com/Nearu-Project-SUSL) · [Live demo](https://nearusab.me) |
+| **GridWalk AI** | Multi-agent fault analysis and recovery planning for microgrids | [Source](https://github.com/Dileesha001/GridWalk-AI) · [Demonstration](https://youtu.be/gPm9pV6GcR4) |
+| **GreenOps Intelligence Hub** | Cloud telemetry, static code analysis, and software carbon intensity estimates | [Source](https://github.com/thimira20011/GreenOps-Intelligence-Hub) |
 
-- [Node.js](https://nodejs.org/) and [npm](https://www.npmjs.com/) installed.
+## Technology
 
-### Installation
+| Area | Implementation |
+| --- | --- |
+| UI | React 18, JavaScript, Create React App |
+| Styling | CSS custom properties, custom CSS, Tailwind CSS 3 |
+| Animation | Motion for React, CSS animations, Web Animations API |
+| Typography | Self-hosted Bricolage Grotesque and Manrope |
+| Icons | Lucide React and Heroicons |
+| Contact | Formspree |
+| Analytics | Vercel Web Analytics |
+| Tests | Jest and React DOM test utilities |
+
+## Run locally
+
+Install Git, Node.js, and npm. Local development has been verified with Node.js 22 and npm 11.
 
 ```sh
-git clone https://github.com/your-username/your-repository-name.git
-cd your-repository-name
-npm install
-```
-
-### Running Locally
-
-```sh
+git clone https://github.com/thimira20011/personal-portfolio.git
+cd personal-portfolio
+npm ci
 npm start
 ```
 
-Open [http://localhost:3000](http://localhost:3000) in your browser. The page reloads automatically on edits.
+Open [localhost:3000](http://localhost:3000). The development server reloads when source files change. The current app requires no `.env` file to start.
 
----
+### Commands
 
-## 🚢 Deployment
+| Command | Purpose |
+| --- | --- |
+| `npm start` | Start the development server |
+| `npm test -- --watchAll=false --runInBand` | Run the interaction tests once |
+| `npm run build` | Create an optimized production build in `build/` |
 
-This project is ready for GitHub Pages.
+The tests cover navigation, project filtering, theme persistence, architecture explanations, contact errors, shared motion controls, reduced-motion preferences, and visibility handling.
 
-1. **Configure homepage in [`package.json`](package.json):**
+## Project structure
 
-   ```json
-   "homepage": "https://your-username.github.io/your-repository-name"
-   ```
+```text
+public/
+  certificates/            Linked certificate PDFs
+  fonts/                   Self-hosted fonts, licenses, and origins
+  images/                  Portrait, project screenshots, and pixel artwork
+    responsive/            Smaller screenshot and portrait variants
+src/
+  App.js                   Theme, shared pause state, and page composition
+  components/
+    PortfolioSections.js   Navigation, hero, projects, about, and credentials
+    SupportingSections.js  Experience, awards, writing, contact, and footer
+    PixelWorkspace.js      Animated monitor, steam, and pointer interaction
+    AmbientBackground.js   Decorative pixel layers and background graphics
+  data/
+    portfolio.js           Personal content, projects, credentials, and links
+    projectStories.js      Selected-project narratives and architecture flows
+    imageProps.js          Intrinsic image dimensions and responsive sources
+  hooks/
+    useReveal.js           Once-only viewport entrances
+  index.css                Theme tokens, typography, layout, and components
+  lively.css               Animation and interaction styles
+```
 
-2. **Deploy:**
+## Updating the portfolio
 
-   ```sh
-   npm run deploy
-   ```
+| Change | Where to edit |
+| --- | --- |
+| Name, biography, résumé, social links, projects, and credentials | [src/data/portfolio.js](src/data/portfolio.js) |
+| Selected-project contributions, outcomes, and architecture explanations | [src/data/projectStories.js](src/data/projectStories.js) |
+| Featured project selection and primary section layouts | [src/components/PortfolioSections.js](src/components/PortfolioSections.js) |
+| Contact form endpoint and submission handling | [src/components/SupportingSections.js](src/components/SupportingSections.js) |
+| Colors, type, spacing, and responsive layout | [src/index.css](src/index.css) |
+| Animation timing, hover feedback, and reduced-motion styles | [src/lively.css](src/lively.css) |
+| Page title, description, canonical URL, and social previews | [public/index.html](public/index.html) |
 
-Your site will be live at your GitHub Pages URL.
+When replacing a portrait or project image, update its dimensions in [imageProps.js](src/data/imageProps.js) and provide the corresponding variants in `public/images/responsive/`. Certificate PDFs live in `public/certificates/` and are referenced from the content data.
 
----
+For a personal adaptation, update the contact details and replace the Formspree endpoint with your own. Keep project contributions and outcomes tied to evidence in their implementations.
 
-## ✍️ Customizing Your Portfolio
+## Production build
 
-Portfolio content is managed in [`src/data/portfolio.js`](src/data/portfolio.js). Selected project stories live in [`src/data/projectStories.js`](src/data/projectStories.js).
+```sh
+npm run build
+```
 
-- **Change your name, title, or bio:** Edit the `portfolioData` object.
-- **Update your profile picture:** Replace `profilePicUrl` with your image URL.
-- **Add projects:** Add objects to the `projects` array with details and image URLs.
-- **Selected projects:** NearU, GridWalk AI, and GreenOps have dedicated stories. Update their contribution, architecture overview, and evidence in `projectStories.js` when the implementation changes. Add performance numbers only alongside reproducible measurements.
-- **Design:** Theme tokens, responsive layouts, and reduced-motion behavior are in `src/index.css`. The primary sections are in `src/components/PortfolioSections.js`.
-- **Visual system and audit:** See `DESIGN.md` for the current ink/sand/lime system and `REFINEMENT_PLAN.md` / `REFINEMENT_REVIEW.md` for the latest navigation, typography and card work. `REDESIGN_PLAN.md`, `REDESIGN_REVIEW.md` and `DESIGN_REVIEW.md` retain earlier iteration records. Motion styles are in `src/lively.css`.
-- **Living workspace:** The original pixel artwork and spring-driven pointer depth live in `src/components/PixelWorkspace.js`; background layers live in `src/components/AmbientBackground.js`. App state shares the hero/navbar pause controls. Motion for React handles springs and the current-section indicator. Artwork provenance and the exact generation prompt are beside the asset in `public/images/`; font origins and licenses are in `public/fonts/`.
-- **Images:** Existing portrait and project assets are cached in `public/images/`. Responsive variants are mapped in `src/data/imageProps.js`; update that mapping and provide matching variants when replacing an image. NearU uses a capture of its actual public demo.
-- **Certificates:** Put PDFs in `public/certificates/` and link to them using `process.env.PUBLIC_URL` so they work under a deployment subpath.
-- **Contact form:** Sign up at [Formspree](https://formspree.io/) and replace the endpoint in the Contact component with your unique form ID.
+Serve the generated `build/` directory with a static hosting provider. Configure the build command as `npm run build` and the output directory as `build`.
 
-Run `npm test -- --watchAll=false` for the interaction checks and `npm run build` for the production build.
+The current site uses a root-domain asset layout. A deployment under a repository subpath needs the `homepage` / `PUBLIC_URL` configuration and root-relative asset references reviewed together. An optional `npm run deploy` script is included: it builds and publishes `build/` using `gh-pages`.
 
+## Design and asset records
 
----
+- [DESIGN.md](DESIGN.md) — current color, typography, layout, component, and motion system.
+- [Refinement plan](REFINEMENT_PLAN.md) and [review](REFINEMENT_REVIEW.md) — the latest implementation scope, checks, and known limits.
+- [Image provenance](public/images/README.md) — screenshot sources and the generated pixel illustration, including its recorded prompt.
+- [Font origins and licenses](public/fonts/README.md) — self-hosted font sources and SIL Open Font License files.
 
-## 🙌 Credits
-
-- [Heroicons](https://heroicons.com/)
-- [Lucide React](https://lucide.dev/)
-- [Formspree](https://formspree.io/)
+Earlier design iterations remain documented in [REDESIGN_REVIEW.md](REDESIGN_REVIEW.md) and [DESIGN_REVIEW.md](DESIGN_REVIEW.md).
