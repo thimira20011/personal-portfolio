@@ -11,13 +11,13 @@ let hidden;
 
 beforeEach(() => {
   hidden = false;
-  jest.spyOn(document, 'hidden', 'get').mockImplementation(() => hidden);
-  preference = { matches: false, addEventListener: jest.fn((type, listener) => { motionChanged = listener; }), removeEventListener: jest.fn() };
-  window.matchMedia = jest.fn(() => preference);
-  window.IntersectionObserver = jest.fn(function Observer(callback) {
+  vi.spyOn(document, 'hidden', 'get').mockImplementation(() => hidden);
+  preference = { matches: false, addEventListener: vi.fn((type, listener) => { motionChanged = listener; }), removeEventListener: vi.fn() };
+  window.matchMedia = vi.fn(() => preference);
+  window.IntersectionObserver = vi.fn(function Observer(callback) {
     intersect = callback;
-    this.observe = jest.fn();
-    this.disconnect = jest.fn();
+    this.observe = vi.fn();
+    this.disconnect = vi.fn();
   });
   global.IS_REACT_ACT_ENVIRONMENT = true;
   container = document.createElement('div');
@@ -28,7 +28,7 @@ beforeEach(() => {
 afterEach(() => {
   act(() => root.unmount());
   container.remove();
-  jest.restoreAllMocks();
+  vi.restoreAllMocks();
 });
 
 test('lets visitors pause and resume the artwork without changing content', () => {

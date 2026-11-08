@@ -10,8 +10,8 @@ let observers;
 beforeEach(() => {
   localStorage.clear();
   document.documentElement.classList.remove('dark');
-  window.matchMedia = jest.fn((query) => ({ matches: false, media: query, addEventListener: jest.fn(), removeEventListener: jest.fn() }));
-  jest.spyOn(HTMLCanvasElement.prototype, 'getContext').mockReturnValue(null);
+  window.matchMedia = vi.fn((query) => ({ matches: false, media: query, addEventListener: vi.fn(), removeEventListener: vi.fn() }));
+  vi.spyOn(HTMLCanvasElement.prototype, 'getContext').mockReturnValue(null);
   observers = [];
   window.IntersectionObserver = class {
     constructor(callback) { this.callback = callback; this.targets = []; observers.push(this); }
@@ -29,7 +29,7 @@ beforeEach(() => {
 afterEach(() => {
   act(() => root.unmount());
   container.remove();
-  jest.restoreAllMocks();
+  vi.restoreAllMocks();
 });
 
 test('puts the three selected projects first and clearly identifies internship availability and AI contribution', () => {
@@ -90,6 +90,32 @@ test('mobile navigation closes on Escape and returns focus to its trigger', () =
   expect(document.activeElement).toBe(button);
 });
 
+test('offers both current CVs and dismisses the CV chooser with Escape or an outside pointer', () => {
+  const chooser = container.querySelector('.resume-menu');
+  const links = [...chooser.querySelectorAll('a')];
+  expect(links.map((link) => link.getAttribute('href'))).toEqual(['/cv/Thimira_SE.pdf', '/cv/Thimira_DevOps.pdf']);
+  expect(container.querySelector('.hero-buttons .button-primary').getAttribute('href')).toBe('/cv/Thimira_SE.pdf');
+  expect(container.querySelector('.hero-cv-alternative a').getAttribute('href')).toBe('/cv/Thimira_DevOps.pdf');
+  chooser.open = true;
+  act(() => document.dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape', bubbles: true })));
+  expect(chooser.open).toBe(false);
+  expect(document.activeElement).toBe(chooser.querySelector('summary'));
+  chooser.open = true;
+  act(() => document.body.dispatchEvent(new Event('pointerdown', { bubbles: true })));
+  expect(chooser.open).toBe(false);
+  act(() => container.querySelector('.menu-button').click());
+  expect([...container.querySelectorAll('#mobile-navigation a[href$=".pdf"]')].map((link) => link.getAttribute('href'))).toEqual(['/cv/Thimira_SE.pdf', '/cv/Thimira_DevOps.pdf']);
+});
+
+test('explains GreenOps with its real architecture and retains the original dashboard screenshot', () => {
+  const preview = container.querySelector('[data-project="4"] .greenops-preview');
+  expect(preview.querySelectorAll('.greenops-flow li')).toHaveLength(4);
+  expect(preview.textContent).toContain('SCI + Roslyn');
+  expect(preview.textContent).toContain('Grafana · Prometheus');
+  expect(preview.querySelector('.greenops-screenshot a').getAttribute('href')).toBe('/images/project-5.png');
+  expect(preview.querySelector('.greenops-screenshot img').getAttribute('alt')).toContain('GreenOps');
+});
+
 test('clears stale navigation highlighting when Home enters the active reading area', () => {
   const navObserver = observers.find((observer) => observer.targets.includes(container.querySelector('#home')));
   expect(navObserver).toBeDefined();
@@ -100,7 +126,7 @@ test('clears stale navigation highlighting when Home enters the active reading a
 });
 
 test('one ambient motion control pauses both the workspace and the page background', () => {
-  jest.spyOn(document, 'hidden', 'get').mockReturnValue(false);
+  vi.spyOn(document, 'hidden', 'get').mockReturnValue(false);
   act(() => document.dispatchEvent(new Event('visibilitychange')));
   expect(container.querySelector('.ambient-background').dataset.running).toBe('true');
   act(() => container.querySelector('.artwork-toggle').click());
@@ -156,7 +182,7 @@ test('highlights the AWS leadership role with its dates and description', () => 
 
 test('reduced motion shows supporting content without depending on scroll animation', () => {
   act(() => root.unmount());
-  window.matchMedia = jest.fn((query) => ({ matches: query.includes('reduced-motion') }));
+  window.matchMedia = vi.fn((query) => ({ matches: query.includes('reduced-motion') }));
   observers = [];
   root = createRoot(container);
   act(() => root.render(<App />));
@@ -168,7 +194,7 @@ test('reduced motion shows supporting content without depending on scroll animat
 
 test('contact form handles a failed submission without clearing the message', async () => {
   const originalFetch = global.fetch;
-  global.fetch = jest.fn().mockResolvedValue({ ok: false, json: async () => ({ errors: [{ message: 'Please try again later.' }] }) });
+  global.fetch = vi.fn().mockResolvedValue({ ok: false, json: async () => ({ errors: [{ message: 'Please try again later.' }] }) });
   try {
     const input = container.querySelector('textarea');
     input.value = 'I would like to discuss an internship.';

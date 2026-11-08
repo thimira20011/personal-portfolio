@@ -14,7 +14,9 @@ Built with React, an ink-black and warm-sand palette, electric-lime highlights, 
 
 - **Project case studies:** selected work with the problem, my contribution, outcome, architecture decisions, source links, and demonstrations.
 - **Experience and evidence:** education, engineering roles, awards, technical writing, and linked credentials.
-- **Responsive navigation:** current-section tracking, résumé access, and a mobile menu with keyboard support.
+- **Responsive navigation:** current-section tracking, a CV chooser, and a mobile menu with keyboard support.
+- **Current CVs:** separate software engineering and DevOps PDFs, hosted with the site.
+- **GreenOps preview:** an architecture diagram with the original dashboard screenshot available alongside it.
 - **Light and dark themes:** shared color tokens and a saved theme preference.
 - **Gentle motion:** animated monitor code, coffee steam, subtle background graphics, and spring-based pointer depth. The desk stays grounded at rest.
 - **Motion controls:** shared pause controls in the header and hero, reduced-motion support, hidden-tab suspension, and offscreen suspension for the workspace.
@@ -35,18 +37,18 @@ Each project links to its own implementation; its engineering story is presented
 
 | Area | Implementation |
 | --- | --- |
-| UI | React 18, JavaScript, Create React App |
+| UI | React 18, JavaScript, Vite 8 |
 | Styling | CSS custom properties, custom CSS, Tailwind CSS 3 |
 | Animation | Motion for React, CSS animations, Web Animations API |
 | Typography | Self-hosted Bricolage Grotesque and Manrope |
 | Icons | Lucide React and Heroicons |
 | Contact | Formspree |
 | Analytics | Vercel Web Analytics |
-| Tests | Jest and React DOM test utilities |
+| Tests | Vitest 5, jsdom, and React DOM test utilities |
 
 ## Run locally
 
-Install Git, Node.js, and npm. Local development has been verified with Node.js 22 and npm 11.
+Install Git, Node.js 22.22.2 or newer, and npm. Local development has been verified with Node.js 22.23.4 and npm 11.
 
 ```sh
 git clone https://github.com/thimira20011/personal-portfolio.git
@@ -62,26 +64,29 @@ Open [localhost:3000](http://localhost:3000). The development server reloads whe
 | Command | Purpose |
 | --- | --- |
 | `npm start` | Start the development server |
-| `npm test -- --watchAll=false --runInBand` | Run the interaction tests once |
+| `npm test` | Run the interaction tests once |
+| `npm run test:watch` | Watch tests while developing |
 | `npm run build` | Create an optimized production build in `build/` |
+| `npm run preview` | Preview the production build at localhost:4173 |
 
-The tests cover navigation, project filtering, theme persistence, architecture explanations, contact errors, shared motion controls, reduced-motion preferences, and visibility handling.
+The tests cover navigation, both CV links and chooser dismissal, project filtering, theme persistence, architecture explanations, contact errors, shared motion controls, reduced-motion preferences, and visibility handling.
 
 ## Project structure
 
 ```text
 public/
   certificates/            Linked certificate PDFs
+  cv/                      Software engineering and DevOps CVs
   fonts/                   Self-hosted fonts, licenses, and origins
   images/                  Portrait, project screenshots, and pixel artwork
     responsive/            Smaller screenshot and portrait variants
 src/
-  App.js                   Theme, shared pause state, and page composition
+  App.jsx                  Theme, shared pause state, and page composition
   components/
-    PortfolioSections.js   Navigation, hero, projects, about, and credentials
-    SupportingSections.js  Experience, awards, writing, contact, and footer
-    PixelWorkspace.js      Animated monitor, steam, and pointer interaction
-    AmbientBackground.js   Decorative pixel layers and background graphics
+    PortfolioSections.jsx  Navigation, hero, projects, about, and credentials
+    SupportingSections.jsx Experience, awards, writing, contact, and footer
+    PixelWorkspace.jsx     Animated monitor, steam, and pointer interaction
+    AmbientBackground.jsx  Decorative pixel layers and background graphics
   data/
     portfolio.js           Personal content, projects, credentials, and links
     projectStories.js      Selected-project narratives and architecture flows
@@ -90,6 +95,8 @@ src/
     useReveal.js           Once-only viewport entrances
   index.css                Theme tokens, typography, layout, and components
   lively.css               Animation and interaction styles
+index.html                 Page metadata and application entry
+vite.config.mjs            Build, local server, and test configuration
 ```
 
 ## Updating the portfolio
@@ -98,13 +105,15 @@ src/
 | --- | --- |
 | Name, biography, résumé, social links, projects, and credentials | [src/data/portfolio.js](src/data/portfolio.js) |
 | Selected-project contributions, outcomes, and architecture explanations | [src/data/projectStories.js](src/data/projectStories.js) |
-| Featured project selection and primary section layouts | [src/components/PortfolioSections.js](src/components/PortfolioSections.js) |
-| Contact form endpoint and submission handling | [src/components/SupportingSections.js](src/components/SupportingSections.js) |
+| Featured project selection and primary section layouts | [src/components/PortfolioSections.jsx](src/components/PortfolioSections.jsx) |
+| Contact form endpoint and submission handling | [src/components/SupportingSections.jsx](src/components/SupportingSections.jsx) |
 | Colors, type, spacing, and responsive layout | [src/index.css](src/index.css) |
 | Animation timing, hover feedback, and reduced-motion styles | [src/lively.css](src/lively.css) |
-| Page title, description, canonical URL, and social previews | [public/index.html](public/index.html) |
+| Page title, description, canonical URL, and social previews | [index.html](index.html) |
 
 When replacing a portrait or project image, update its dimensions in [imageProps.js](src/data/imageProps.js) and provide the corresponding variants in `public/images/responsive/`. Certificate PDFs live in `public/certificates/` and are referenced from the content data.
+
+Replace the two CVs in `public/cv/` and update the labels, file sizes, and URLs in `portfolioData.resumes` when publishing a new version. The software engineering CV is the main hero action; the DevOps version is linked below it, and both appear in navigation.
 
 For a personal adaptation, update the contact details and replace the Formspree endpoint with your own. Keep project contributions and outcomes tied to evidence in their implementations.
 
@@ -116,12 +125,17 @@ npm run build
 
 Serve the generated `build/` directory with a static hosting provider. Configure the build command as `npm run build` and the output directory as `build`.
 
-The current site uses a root-domain asset layout. A deployment under a repository subpath needs the `homepage` / `PUBLIC_URL` configuration and root-relative asset references reviewed together. An optional `npm run deploy` script is included: it builds and publishes `build/` using `gh-pages`.
+The included `vercel.json` specifies this build command and output directory for the existing Vercel deployment.
+
+The current site uses a root-domain asset layout. For a deployment under a repository subpath, set Vite’s `base` option and review the few root-relative asset references together. An optional `npm run deploy` script is included: it builds and publishes `build/` using `gh-pages`. `BUILD_PATH` can override the output directory for local checks without replacing an existing build.
+
+The deprecated Create React App toolchain was replaced with Vite to resolve its remaining dependency audit findings. Run `npm audit` to check the current dependency tree against the latest advisory database.
 
 ## Design and asset records
 
 - [DESIGN.md](DESIGN.md) — current color, typography, layout, component, and motion system.
 - [Refinement plan](REFINEMENT_PLAN.md) and [review](REFINEMENT_REVIEW.md) — the latest implementation scope, checks, and known limits.
+- [Maintenance review](MAINTENANCE_REVIEW.md) — dependency remediation, current CVs, GreenOps preview, and subsequent validation.
 - [Image provenance](public/images/README.md) — screenshot sources and the generated pixel illustration, including its recorded prompt.
 - [Font origins and licenses](public/fonts/README.md) — self-hosted font sources and SIL Open Font License files.
 

@@ -6,9 +6,11 @@ const portfolioData = {
       'Building real-time, distributed backend systems — .NET 10 · SignalR · Redis · PostGIS · AWS Cloud.',
     location: 'Ratnapura District, Sabaragamuwa Province, Sri Lanka.',
     profilePicUrl:
-      `${process.env.PUBLIC_URL}/images/thimira.jpeg`,
-    resumeUrl:
-      'https://drive.google.com/file/d/1A5cI1T66xB9HFwusyAgLF2TcU9Mkut8o/view?usp=sharing',
+      `${import.meta.env.BASE_URL.slice(0, -1)}/images/thimira.jpeg`,
+    resumes: [
+      { label: 'Software engineering', url: `${import.meta.env.BASE_URL.slice(0, -1)}/cv/Thimira_SE.pdf`, size: '61 KB' },
+      { label: 'DevOps', url: `${import.meta.env.BASE_URL.slice(0, -1)}/cv/Thimira_DevOps.pdf`, size: '62 KB' },
+    ],
 
     // ── About & Technical Skills (7 Categories) ──────────────────────────────
     about: {
@@ -138,7 +140,7 @@ const portfolioData = {
         demoUrl: 'https://nearusab.me',
         repoLabel: 'github.com/Nearu-Project-SUSL',
         // Captured from the public NearU demo on 2026-11-08.
-        imageUrl: `${process.env.PUBLIC_URL}/images/nearu-live.jpg`,
+        imageUrl: `${import.meta.env.BASE_URL.slice(0, -1)}/images/nearu-live.jpg`,
         imageAlt: 'NearU campus platform live demo landing page',
       },
       {
@@ -163,7 +165,7 @@ const portfolioData = {
         demoUrl: 'https://youtu.be/gPm9pV6GcR4',
         demoLabel: 'Watch Demo',
         repoLabel: 'github.com/Dileesha001/GridWalk-AI',
-        imageUrl: `${process.env.PUBLIC_URL}/images/project-2.png`,
+        imageUrl: `${import.meta.env.BASE_URL.slice(0, -1)}/images/project-2.png`,
       },
       {
         id: 2,
@@ -184,7 +186,7 @@ const portfolioData = {
         techStack: ['AWS VPC', 'ECS Fargate', 'RDS PostgreSQL', 'ALB', 'CloudWatch', 'Route 53', 'Docker'],
         link: 'https://github.com/thimira20011/NearU-Backend',
         repoLabel: 'github.com/thimira20011/NearU-Backend',
-        imageUrl: `${process.env.PUBLIC_URL}/images/project-3.png`,
+        imageUrl: `${import.meta.env.BASE_URL.slice(0, -1)}/images/project-3.png`,
       },
       {
         id: 3,
@@ -204,7 +206,7 @@ const portfolioData = {
         techStack: ['Python', 'FastAPI', 'Machine Learning', 'Isolation Forests', 'PostgreSQL', 'Docker'],
         link: 'https://github.com/thimira20011/ShadowSense-2026-Aurora',
         repoLabel: 'github.com/thimira20011/ShadowSense-2026-Aurora',
-        imageUrl: `${process.env.PUBLIC_URL}/images/project-4.jpeg`,
+        imageUrl: `${import.meta.env.BASE_URL.slice(0, -1)}/images/project-4.jpeg`,
       },
       {
         id: 4,
@@ -225,7 +227,7 @@ const portfolioData = {
         techStack: ['.NET 10', 'C#', 'Azure SDK', 'Roslyn', 'EF Core', 'Docker', 'Grafana', 'Prometheus'],
         link: 'https://github.com/thimira20011/GreenOps-Intelligence-Hub',
         repoLabel: 'github.com/thimira20011/GreenOps-Intelligence-Hub',
-        imageUrl: `${process.env.PUBLIC_URL}/images/project-5.png`,
+        imageUrl: `${import.meta.env.BASE_URL.slice(0, -1)}/images/project-5.png`,
       },
       {
         id: 5,
@@ -245,7 +247,7 @@ const portfolioData = {
         link: 'https://github.com/thimira20011/the-reuse-hub-v2',
         demoUrl: 'https://thimira20011.github.io/the-reuse-hub-v2',
         repoLabel: 'github.com/thimira20011/the-reuse-hub-v2',
-        imageUrl: `${process.env.PUBLIC_URL}/images/project-6.png`,
+        imageUrl: `${import.meta.env.BASE_URL.slice(0, -1)}/images/project-6.png`,
       },
       {
         id: 6,
@@ -265,7 +267,7 @@ const portfolioData = {
         techStack: ['Godot 4', 'GDScript', '2D Physics Engine', 'RayCast2D AI'],
         link: 'https://github.com/thimira20011/Knight_Fury',
         repoLabel: 'github.com/thimira20011/Knight_Fury',
-        imageUrl: `${process.env.PUBLIC_URL}/images/project-7.png`,
+        imageUrl: `${import.meta.env.BASE_URL.slice(0, -1)}/images/project-7.png`,
       },
       {
         id: 7,
@@ -285,7 +287,7 @@ const portfolioData = {
         link: 'https://github.com/thimira20011/expense-tracker.git',
         repoLabel: 'github.com/thimira20011/expense-tracker',
         imageUrl:
-          `${process.env.PUBLIC_URL}/images/project-8.png`,
+          `${import.meta.env.BASE_URL.slice(0, -1)}/images/project-8.png`,
       },
     ],
 
@@ -298,7 +300,7 @@ const portfolioData = {
         year: 'Oct 17, 2026',
         description:
           'Awarded First Runner-Up representing team IGNITE for developing GridWalk AI — a multi-agent microgrid recovery and decision support system using Jac, recognized for problem-solving, innovation, and technical skills.',
-        certificateUrl: `${process.env.PUBLIC_URL}/certificates/ai-hackathon-2026-first-runner-up.pdf`,
+        certificateUrl: `${import.meta.env.BASE_URL.slice(0, -1)}/certificates/ai-hackathon-2026-first-runner-up.pdf`,
       },
       {
         id: 1,
@@ -460,7 +462,7 @@ const portfolioData = {
         issuer: 'IBM · Coursera',
         issuedDate: 'Sep 2026',
         credentialUrl: 'https://coursera.org/verify/56MSHOTEXYNR',
-        certificateUrl: `${process.env.PUBLIC_URL}/certificates/ibm-continuous-integration-and-continuous-delivery.pdf`,
+        certificateUrl: `${import.meta.env.BASE_URL.slice(0, -1)}/certificates/ibm-continuous-integration-and-continuous-delivery.pdf`,
       },
       {
         id: 1,

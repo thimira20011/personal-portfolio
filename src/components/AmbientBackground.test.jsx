@@ -5,10 +5,10 @@ import AmbientBackground from './AmbientBackground';
 test('suspends ambient motion on pause, hidden tabs and system preference changes', () => {
   let hidden = false;
   let onPreference;
-  const preference = { matches: false, addEventListener: jest.fn((_, callback) => { onPreference = callback; }), removeEventListener: jest.fn() };
+  const preference = { matches: false, addEventListener: vi.fn((_, callback) => { onPreference = callback; }), removeEventListener: vi.fn() };
   const originalMedia = window.matchMedia;
-  window.matchMedia = jest.fn(() => preference);
-  const visibility = jest.spyOn(document, 'hidden', 'get').mockImplementation(() => hidden);
+  window.matchMedia = vi.fn(() => preference);
+  const visibility = vi.spyOn(document, 'hidden', 'get').mockImplementation(() => hidden);
   const container = document.createElement('div');
   const root = createRoot(container);
   global.IS_REACT_ACT_ENVIRONMENT = true;

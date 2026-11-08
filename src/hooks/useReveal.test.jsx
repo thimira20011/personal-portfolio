@@ -18,16 +18,16 @@ let bounds;
 const originalAnimate = Element.prototype.animate;
 
 beforeEach(() => {
-  cancel = jest.fn();
-  animate = jest.fn(() => ({ cancel }));
+  cancel = vi.fn();
+  animate = vi.fn(() => ({ cancel }));
   Element.prototype.animate = animate;
-  motion = { matches: false, addEventListener: jest.fn((event, callback) => { onMotionChange = callback; }), removeEventListener: jest.fn() };
-  window.matchMedia = jest.fn(() => motion);
-  bounds = jest.spyOn(Element.prototype, 'getBoundingClientRect').mockReturnValue({ top: 1000 });
-  window.IntersectionObserver = jest.fn(function Observer(callback) {
+  motion = { matches: false, addEventListener: vi.fn((event, callback) => { onMotionChange = callback; }), removeEventListener: vi.fn() };
+  window.matchMedia = vi.fn(() => motion);
+  bounds = vi.spyOn(Element.prototype, 'getBoundingClientRect').mockReturnValue({ top: 1000 });
+  window.IntersectionObserver = vi.fn(function Observer(callback) {
     intersect = callback;
-    this.observe = jest.fn();
-    this.disconnect = jest.fn();
+    this.observe = vi.fn();
+    this.disconnect = vi.fn();
   });
   global.IS_REACT_ACT_ENVIRONMENT = true;
   container = document.createElement('div');

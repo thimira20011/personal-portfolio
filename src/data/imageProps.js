@@ -19,6 +19,6 @@ export default function imageProps(src, sizes) {
   const widths = [320, 640, 960].filter((width) => width <= size[0]);
   return {
     width: size[0], height: size[1], sizes,
-    srcSet: widths.map((width) => `${process.env.PUBLIC_URL}/images/responsive/${name}-${width}.jpg ${width}w`).join(', '),
+    srcSet: widths.map((width) => `${import.meta.env.BASE_URL.slice(0, -1)}/images/responsive/${name}-${width}.jpg ${width}w`).join(', '),
   };
 }

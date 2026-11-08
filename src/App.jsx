@@ -60,7 +60,7 @@ export default function App() {
     <MotionConfig reducedMotion="user"><div className="portfolio">
       <AmbientBackground isDarkMode={isDarkMode} paused={animationsPaused} />
       <a className="skip-link" href="#main-content">Skip to content</a>
-      <PortfolioNav isDarkMode={isDarkMode} toggleDarkMode={() => setIsDarkMode((value) => !value)} resumeUrl={portfolioData.resumeUrl} animationsPaused={animationsPaused} onToggleAnimations={() => setAnimationsPaused((value) => !value)} />
+      <PortfolioNav isDarkMode={isDarkMode} toggleDarkMode={() => setIsDarkMode((value) => !value)} resumes={portfolioData.resumes} animationsPaused={animationsPaused} onToggleAnimations={() => setAnimationsPaused((value) => !value)} />
       <main id="main-content" className="page-container" tabIndex={-1}>
         <PortfolioHero data={portfolioData} animationsPaused={animationsPaused} setAnimationsPaused={setAnimationsPaused} />
         <PortfolioProjects projects={portfolioData.projects} />

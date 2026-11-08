@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { ArrowDown, ArrowUpRight, Check, ChevronDown, Cloud, Code2, ExternalLink, FileText, Github, Linkedin, MapPin, Menu, Moon, Network, Pause, Play, Sun, Trophy, X } from 'lucide-react';
+import { ArrowDown, ArrowUpRight, BarChart3, Check, ChevronDown, Cloud, Code2, Database, ExternalLink, FileText, Github, Linkedin, MapPin, Menu, Moon, Network, Pause, Play, Sun, Trophy, X } from 'lucide-react';
 import { projectStories } from '../data/projectStories';
 import useReveal from '../hooks/useReveal';
 import imageProps from '../data/imageProps';
@@ -13,7 +13,36 @@ const navigation = [
   { id: 'contact', label: 'Contact' },
 ];
 
-export function PortfolioNav({ isDarkMode, toggleDarkMode, resumeUrl, animationsPaused, onToggleAnimations }) {
+function ResumeMenu({ resumes }) {
+  const ref = useRef(null);
+  useEffect(() => {
+    const closeOutside = (event) => {
+      if (ref.current && !ref.current.contains(event.target)) ref.current.open = false;
+    };
+    const closeOnEscape = (event) => {
+      if (event.key === 'Escape' && ref.current?.open) {
+        ref.current.open = false;
+        ref.current.querySelector('summary').focus();
+      }
+    };
+    document.addEventListener('pointerdown', closeOutside);
+    document.addEventListener('keydown', closeOnEscape);
+    return () => {
+      document.removeEventListener('pointerdown', closeOutside);
+      document.removeEventListener('keydown', closeOnEscape);
+    };
+  }, []);
+  return <details className="resume-menu" ref={ref}>
+    <summary className="nav-resume">CVs<ChevronDown size={14} aria-hidden="true" /></summary>
+    <div className="resume-options" role="group" aria-label="Choose a CV">
+      {resumes.map((resume) => <a key={resume.url} href={resume.url} target="_blank" rel="noopener noreferrer" onClick={() => { ref.current.open = false; }}>
+        <FileText size={18} aria-hidden="true" /><span>{resume.label}<small>View PDF · 2 pages · {resume.size}</small></span><ArrowUpRight size={15} aria-hidden="true" />
+      </a>)}
+    </div>
+  </details>;
+}
+
+export function PortfolioNav({ isDarkMode, toggleDarkMode, resumes, animationsPaused, onToggleAnimations }) {
   const [open, setOpen] = useState(false);
   const [active, setActive] = useState('');
   const [scrolled, setScrolled] = useState(false);
@@ -57,7 +86,7 @@ export function PortfolioNav({ isDarkMode, toggleDarkMode, resumeUrl, animations
           {links(true)}
         </div>
         <div className="nav-actions">
-          <a className="nav-resume" href={resumeUrl} target="_blank" rel="noopener noreferrer">Résumé<ArrowUpRight size={14} aria-hidden="true" /></a>
+          <ResumeMenu resumes={resumes} />
           <button className="icon-button nav-motion-toggle" type="button" onClick={onToggleAnimations} disabled={reducedMotion} aria-label={reducedMotion ? 'Ambient motion reduced by system preference' : animationsPaused ? 'Play ambient animations' : 'Pause ambient animations'} aria-pressed={animationsPaused || !!reducedMotion}>
             {animationsPaused || reducedMotion ? <Play size={16} aria-hidden="true" /> : <Pause size={16} aria-hidden="true" />}
           </button>
@@ -68,7 +97,7 @@ export function PortfolioNav({ isDarkMode, toggleDarkMode, resumeUrl, animations
             {open ? <X size={21} aria-hidden="true" /> : <Menu size={21} aria-hidden="true" />}
           </button>
         </div>
-        {open && <div className="mobile-links" id="mobile-navigation">{links()}<a href="#certifications" onClick={() => setOpen(false)}>Certifications</a><a href={resumeUrl} target="_blank" rel="noopener noreferrer" onClick={() => setOpen(false)}>Résumé<ArrowUpRight size={14} aria-hidden="true" /></a></div>}
+        {open && <div className="mobile-links" id="mobile-navigation">{links()}<a href="#certifications" onClick={() => setOpen(false)}>Certifications</a>{resumes.map((resume) => <a key={resume.url} href={resume.url} target="_blank" rel="noopener noreferrer" onClick={() => setOpen(false)}>{resume.label} CV<ArrowUpRight size={14} aria-hidden="true" /></a>)}</div>}
       </nav>
     </div>
   );
@@ -90,9 +119,10 @@ export function PortfolioHero({ data, animationsPaused, setAnimationsPaused }) {
         <h1><span className="hero-line"><span>Backend thinking.</span></span><span className="hero-line"><span>Real-world impact<span className="headline-period">.</span></span></span></h1>
         <p className="hero-description"><strong className="hero-greeting">Hi, I'm {data.shortName}.</strong>An Information Systems undergraduate building real-time systems with <strong>.NET, cloud infrastructure, and AI.</strong> I enjoy turning complex problems into software people can use.</p>
         <div className="hero-buttons">
-          <a className="button button-primary" href={data.resumeUrl} target="_blank" rel="noopener noreferrer">View resume<FileText size={17} aria-hidden="true" /></a>
+          <a className="button button-primary" href={data.resumes[0].url} target="_blank" rel="noopener noreferrer">Software engineering CV<FileText size={17} aria-hidden="true" /></a>
           <a className="button button-secondary" href="#projects">Explore my work<ArrowDown size={17} aria-hidden="true" /></a>
         </div>
+        <p className="hero-cv-alternative">Also available: <a href={data.resumes[1].url} target="_blank" rel="noopener noreferrer">DevOps CV<ArrowUpRight size={14} aria-hidden="true" /></a></p>
         <div className="hero-socials">
           <span><MapPin size={15} aria-hidden="true" />Sri Lanka</span>
           <span className="social-divider" />
@@ -122,6 +152,26 @@ function ProjectLinks({ project }) {
   return <div className="project-links">
     <a href={project.link} target="_blank" rel="noopener noreferrer" aria-label={`View ${projectStories[project.id]?.name || project.title} on GitHub`}><Github size={16} aria-hidden="true" />Source code<ArrowUpRight size={14} aria-hidden="true" /></a>
     {project.demoUrl && <a href={project.demoUrl} target="_blank" rel="noopener noreferrer" aria-label={`${project.demoLabel || 'Live demo'}: ${projectStories[project.id]?.name || project.title}`}><ExternalLink size={15} aria-hidden="true" />{project.demoLabel || 'Live demo'}<ArrowUpRight size={14} aria-hidden="true" /></a>}
+  </div>;
+}
+
+function GreenOpsPreview({ project }) {
+  const steps = [
+    { title: 'Azure telemetry', detail: 'Cloud resource metrics', icon: Cloud },
+    { title: '.NET collection', detail: 'Background service · EF Core', icon: Database },
+    { title: 'SCI + Roslyn', detail: 'Carbon intensity & code analysis', icon: Code2 },
+    { title: 'Observability', detail: 'Grafana · Prometheus', icon: BarChart3 },
+  ];
+  return <div className="greenops-preview">
+    <figure className="greenops-flow">
+      <figcaption><Network size={18} aria-hidden="true" />GreenOps architecture</figcaption>
+      <ol>{steps.map(({ title, detail, icon: Icon }) => <li key={title}><span className="greenops-node"><Icon size={21} aria-hidden="true" /></span><span><strong>{title}</strong><span>{detail}</span></span></li>)}</ol>
+      <p>From cloud signals to efficiency insights.</p>
+    </figure>
+    <details className="greenops-screenshot">
+      <summary>View dashboard screenshot<ChevronDown size={16} aria-hidden="true" /></summary>
+      <a href={project.imageUrl} target="_blank" rel="noopener noreferrer" aria-label="Open original GreenOps dashboard screenshot"><ProjectImage project={project} /><span>Open full-size screenshot<ArrowUpRight size={14} aria-hidden="true" /></span></a>
+    </details>
   </div>;
 }
 
@@ -162,9 +212,9 @@ function SelectedProject({ project, index, flagship }) {
   const ref = useReveal(index * 60);
   return <article ref={ref} className={`selected-project ${flagship ? 'flagship-project' : ''}`} data-project={project.id} aria-labelledby={`project-title-${project.id}`}>
     <div className="project-visual">
-      <div className="project-preview-frame">
+      {project.id === 4 ? <GreenOpsPreview project={project} /> : <div className="project-preview-frame">
         <ProjectImage project={project} />
-      </div>
+      </div>}
     </div>
     <div className="project-content">
       <h3 id={`project-title-${project.id}`}>{story.name}<span> {project.title.split('—')[1]?.trim()}</span></h3>

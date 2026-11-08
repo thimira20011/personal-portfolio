@@ -41,7 +41,7 @@ export const projectStories = {
     ],
     evidenceLabel: 'See the award and demonstration',
     evidence: 'Explore simulated power distribution failures and recovery strategies through the project demonstration. The certificate records team IGNITE’s First Runner-Up award at AI Hackathon 2026.',
-    certificateUrl: `${process.env.PUBLIC_URL}/certificates/ai-hackathon-2026-first-runner-up.pdf`,
+    certificateUrl: `${import.meta.env.BASE_URL.slice(0, -1)}/certificates/ai-hackathon-2026-first-runner-up.pdf`,
   },
   4: {
     name: 'GreenOps',
