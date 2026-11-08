@@ -16,7 +16,7 @@ Present Thimira Niranjaya's existing software engineering work and experience wi
 
 ## Capabilities and Constraints
 
-Existing React 18 / Create React App site. Preserve project facts, credentials, resume and social URLs, filtering, case-study disclosures, theme preference, and contact form. Do not fabricate achievements or project outcomes. Changes may be committed locally; do not push or publish.
+Existing React 18 / Create React App site. Preserve project facts, credentials, resume and social URLs, filtering, case-study disclosures, theme preference, and contact form. Do not fabricate achievements or project outcomes. Local commits are authorized. The owner requested pushing the baseline through `8f083ee` first, which succeeded, then explicitly authorized pushing the completed refinement after all changes and checks are finished. The two pre-existing generated build edits are outside this work.
 
 ## Brand Commitments
 

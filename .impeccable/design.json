@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-11-08T14:11:40.550Z",
+  "generatedAt": "2026-11-08T15:42:00.403Z",
   "title": "Design System: Thimira Portfolio",
   "extensions": {
     "colorMeta": {
@@ -386,23 +386,23 @@
     "typographyMeta": {
       "display": {
         "displayName": "Engineering headline",
-        "purpose": "Large, bold hero headline."
+        "purpose": "Bricolage Grotesque hero display, weight 600."
       },
       "headline": {
         "displayName": "Section headline",
-        "purpose": "Primary section headings."
+        "purpose": "Bricolage Grotesque section headings, weight 600."
       },
       "title": {
         "displayName": "Project title",
-        "purpose": "Selected project names."
+        "purpose": "Bricolage Grotesque selected project names, 38px at weight 600."
       },
       "body": {
         "displayName": "Body",
-        "purpose": "Engineering summaries and descriptions."
+        "purpose": "Manrope summaries, factual contributions, and descriptions."
       },
       "label": {
         "displayName": "Label",
-        "purpose": "Navigation and compact controls."
+        "purpose": "Manrope navigation, compact controls, and metadata."
       }
     },
     "shadows": [
@@ -415,6 +415,11 @@
         "name": "mobile-menu",
         "value": "0 16px 32px -20px rgb(0 0 0 / 30%)",
         "purpose": "Separate the mobile navigation panel."
+      },
+      {
+        "name": "navigation-scrolled",
+        "value": "0 12px 28px -22px rgb(0 0 0 / 35%)",
+        "purpose": "Subtle separation when the navigation gains its surface after 32px of scrolling."
       }
     ],
     "motion": [
@@ -457,6 +462,71 @@
         "name": "reduced-feedback",
         "value": "120ms",
         "purpose": "Short color/opacity feedback with positional movement removed."
+      },
+      {
+        "name": "navigation-surface",
+        "value": "220ms",
+        "purpose": "Background, divider and shadow transition on scroll."
+      },
+      {
+        "name": "navigation-indicator",
+        "value": "spring: duration 0.5s; bounce 0.1",
+        "purpose": "Shared-layout active section marker; immediate for keyboard navigation."
+      },
+      {
+        "name": "pointer-spring",
+        "value": "mass 1; stiffness 100; damping 20",
+        "purpose": "Critically damped, interruptible fine-pointer depth with no competing CSS transform transition."
+      },
+      {
+        "name": "pointer-bounds",
+        "value": "rotateX ±3deg; rotateY ±4deg; translateX ±8px; translateY ±5px",
+        "purpose": "Small bounded perspective movement; resets to rest when paused or reduced."
+      },
+      {
+        "name": "monitor-code",
+        "value": "8s steps(24, end); scaleX 0.35–1",
+        "purpose": "Eight abstract decorative code bars with staggered phases."
+      },
+      {
+        "name": "monitor-cursor",
+        "value": "2.6s linear",
+        "purpose": "Small cursor breath."
+      },
+      {
+        "name": "monitor-signal",
+        "value": "3.6s ease",
+        "purpose": "Small monitor status light."
+      },
+      {
+        "name": "coffee-steam",
+        "value": "5.5s linear",
+        "purpose": "Three curved steam traces; no idle desk bobbing."
+      },
+      {
+        "name": "scene-pixels",
+        "value": "6s cubic-bezier(0.77, 0, 0.175, 1)",
+        "purpose": "Sparse decorative pixels within the workspace."
+      },
+      {
+        "name": "ambient-far",
+        "value": "24s alternate; translateY 3px to -7px",
+        "purpose": "Far edge pixel layer with only 10px total vertical travel."
+      },
+      {
+        "name": "ambient-near",
+        "value": "18s alternate; translateY -3px to 7px",
+        "purpose": "Near edge pixel layer, hidden below 541px."
+      },
+      {
+        "name": "ambient-signal",
+        "value": "16s ease",
+        "purpose": "Sparse accent-pixel opacity signal."
+      },
+      {
+        "name": "ambient-graphics",
+        "value": "18s ease; opacity 0.08–0.16",
+        "purpose": "Outlined stars and diamonds at the edges; the stepped trail stays quiet."
       }
     ],
     "breakpoints": [
@@ -475,6 +545,10 @@
       {
         "name": "awards-three-column-min",
         "value": "1024px"
+      },
+      {
+        "name": "compact-header-max",
+        "value": "540px"
       }
     ]
   },
@@ -507,9 +581,9 @@
       "name": "Navigation",
       "kind": "nav",
       "refersTo": "navigation",
-      "description": "Compact surface shell with an accent current-link underline.",
-      "html": "<nav class=\"ds-nav\" aria-label=\"Portfolio navigation preview\"><a href=\"#projects\" aria-current=\"location\">Work</a><a href=\"#about\">About</a><a href=\"#contact\">Contact</a></nav>",
-      "css": ".ds-nav{display:flex;gap:28px;align-items:center;min-height:72px;padding:0 24px;border:1px solid var(--line,#c7b9a3);border-radius:14px;background:var(--surface,#f5eee3);font:600 13px var(--body,Manrope,sans-serif);}.ds-nav a{display:inline-flex;align-items:center;min-height:44px;position:relative;color:var(--muted,#595346);text-decoration:none;transition:color 160ms ease;}.ds-nav a[aria-current]{color:var(--accent,#426015);}.ds-nav a[aria-current]::after{content:\"\";position:absolute;left:0;right:0;bottom:4px;height:2px;background:currentColor;}.ds-nav a:hover{color:var(--accent,#426015);}.ds-nav a:focus-visible{outline:3px solid var(--accent,#426015);outline-offset:4px;}"
+      "description": "Slim 64px header with wordmark, active section, résumé, shared motion control and theme control.",
+      "html": "<nav class=\"ds-nav\" aria-label=\"Portfolio navigation preview\"><a class=\"ds-wordmark\" href=\"#home\">Thimira<span>.</span></a><div class=\"ds-nav-links\"><a href=\"#projects\" aria-current=\"location\">Work<span class=\"ds-nav-indicator\" aria-hidden=\"true\"></span></a><a href=\"#about\">About</a><a href=\"#contact\">Contact</a></div><div class=\"ds-nav-actions\"><a class=\"ds-resume\" href=\"#contact\">Résumé<svg viewBox=\"0 0 24 24\" width=\"14\" height=\"14\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" aria-hidden=\"true\"><path d=\"M7 7h10v10M7 17 17 7\"/></svg></a><button class=\"ds-icon\" type=\"button\" aria-label=\"Pause ambient animations\" aria-pressed=\"false\"><svg viewBox=\"0 0 24 24\" width=\"16\" height=\"16\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" aria-hidden=\"true\"><rect x=\"6\" y=\"4\" width=\"4\" height=\"16\" rx=\"1\"/><rect x=\"14\" y=\"4\" width=\"4\" height=\"16\" rx=\"1\"/></svg></button><button class=\"ds-icon\" type=\"button\" aria-label=\"Switch theme\"><svg viewBox=\"0 0 24 24\" width=\"19\" height=\"19\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" aria-hidden=\"true\"><path d=\"M20.9 13a9 9 0 0 1-9.9-9.9A9 9 0 1 0 20.9 13Z\"/></svg></button></div></nav>",
+      "css": ".ds-nav{display:flex;align-items:center;justify-content:space-between;gap:24px;min-height:64px;padding:0 20px;border:1px solid transparent;border-radius:12px;background:var(--page,#ece4d6);font:550 13px var(--body,Manrope,sans-serif);transition:background-color 220ms ease,border-color 220ms ease,box-shadow 220ms ease;}.ds-nav[data-scrolled=true]{background:var(--surface,#f5eee3);border-color:var(--line,#c7b9a3);box-shadow:0 12px 28px -22px rgb(0 0 0 / 35%);}.ds-nav a{display:inline-flex;align-items:center;min-height:44px;position:relative;color:var(--muted,#595346);text-decoration:none;transition:color 160ms ease;}.ds-nav .ds-wordmark{font:700 26px var(--display,'Bricolage Grotesque',sans-serif);letter-spacing:-.035em;color:var(--ink,#23231e);}.ds-wordmark span{color:var(--accent,#426015);}.ds-nav-links{display:flex;align-items:center;gap:28px;}.ds-nav a[aria-current]{color:var(--accent,#426015);}.ds-nav-indicator{position:absolute;bottom:3px;left:0;right:0;height:2px;background:var(--accent,#426015);}.ds-nav-actions{display:flex;align-items:center;gap:16px;}.ds-nav .ds-resume{gap:8px;font-size:12px;font-weight:600;color:var(--ink,#23231e);}.ds-icon{display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border:0;border-radius:8px;background:transparent;color:var(--muted,#595346);cursor:pointer;transition:color 160ms ease,background-color 160ms ease;}.ds-nav a:hover{color:var(--accent,#426015);}.ds-nav :is(a,button):focus-visible{outline:3px solid var(--accent,#426015);outline-offset:4px;}@media(hover:hover) and (pointer:fine){.ds-icon:hover{background:var(--accent-soft,#e0e8c9);color:var(--accent,#426015);}}"
     },
     {
       "name": "Project Filter",
@@ -523,18 +597,18 @@
       "name": "Project Card",
       "kind": "card",
       "refersTo": "project-card",
-      "description": "Bordered surface container for engineering work.",
-      "html": "<article class=\"ds-project\"><h3>NearU</h3><p>Real-time backend engineering</p><a href=\"#projects\">Explore the work</a></article>",
-      "css": ".ds-project{padding:36px;border:1px solid var(--line,#c7b9a3);border-radius:16px;background:var(--surface,#f5eee3);color:var(--ink,#23231e);font:16px/1.8 var(--body,Manrope,sans-serif);transition:border-color 240ms ease;}.ds-project h3{margin:0 0 16px;font:500 36px/1.2 var(--display,Manrope,sans-serif);letter-spacing:-.03em;}.ds-project p{color:var(--muted,#595346);}.ds-project a{display:inline-flex;align-items:center;min-height:44px;color:var(--accent,#426015);font-size:13px;font-weight:700;text-underline-offset:5px;}.ds-project a:focus-visible{outline:3px solid var(--accent,#426015);outline-offset:4px;}@media(hover:hover) and (pointer:fine){.ds-project:hover{border-color:var(--sand,#8a6943);}.ds-project a:hover{text-decoration:underline;}}"
+      "description": "Selected project text region with a clear Problem / My contribution / Outcome definition list; the full page places its screenshot to the left on desktop.",
+      "html": "<article class=\"ds-project\"><h3>NearU</h3><p class=\"ds-project-summary\">Real-time backend engineering</p><dl class=\"ds-project-facts\"><div><dt>Problem</dt><dd>Helping students find a ride through a campus-focused platform.</dd></div><div><dt>My contribution</dt><dd>Backend and cloud engineering in a four-developer team.</dd></div><div class=\"ds-project-outcome\"><dt>Outcome</dt><dd>A working platform with a live demo.</dd></div></dl><a href=\"#projects\">Explore the work</a></article>",
+      "css": ".ds-project{padding:36px;border:1px solid var(--line,#c7b9a3);border-radius:16px;background:var(--surface,#f5eee3);color:var(--ink,#23231e);font:16px/1.7 var(--body,Manrope,sans-serif);transition:border-color 240ms ease;}.ds-project h3{margin:0 0 16px;font:600 38px/1.15 var(--display,'Bricolage Grotesque',sans-serif);letter-spacing:-.025em;}.ds-project-summary{margin:0 0 24px;}.ds-project-facts{display:grid;gap:16px;margin:0 0 24px;}.ds-project-facts>div{display:grid;grid-template-columns:112px minmax(0,1fr);gap:12px;}.ds-project-facts dt{font-size:11px;font-weight:700;line-height:1.75;}.ds-project-facts dd{margin:0;font-size:13px;line-height:1.75;color:var(--muted,#595346);}.ds-project-outcome{padding-top:16px;border-top:1px solid var(--line,#c7b9a3);}.ds-project-outcome dt,.ds-project-outcome dd{color:var(--positive,#446023);}.ds-project a{display:inline-flex;align-items:center;min-height:44px;color:var(--accent,#426015);font-size:13px;font-weight:700;text-underline-offset:5px;}.ds-project a:focus-visible{outline:3px solid var(--accent,#426015);outline-offset:4px;}@media(hover:hover) and (pointer:fine){.ds-project:hover{border-color:var(--sand,#8a6943);}.ds-project a:hover{text-decoration:underline;}}"
     }
   ],
   "narrative": {
     "northStar": "A little corner of my world",
-    "overview": "A little corner of my world pairs a finished pixel workspace with a readable engineering portfolio. Ink black and warm sand carry the surfaces and typography; electric lime identifies actions and interaction states.\n\nThe interface uses tonal layers, restrained borders, and clear type rather than ornamental chrome. Motion introduces the work and animates the decorative scene while leaving reading content still after arrival.",
+    "overview": "A little corner of my world pairs a finished pixel workspace with a readable engineering portfolio. Ink black and warm sand carry the surfaces and typography; electric lime identifies actions and interaction states.\n\nThe interface uses tonal layers, restrained borders, expressive display type, and readable engineering detail. Motion introduces the work, gives the monitor and steam gentle activity, and carries sparse geometric accents at the page edges while reading content stays still after arrival.",
     "keyCharacteristics": [
       "Ink and sand surfaces with lime actions.",
-      "Bold Manrope display and readable supporting text.",
-      "Original pixel artwork with a visible pause control.",
+      "Bricolage Grotesque display with Manrope reading and navigation type.",
+      "Original grounded pixel artwork and sparse background graphics with shared pause controls.",
       "Adaptive layouts and a still reduced-motion composition."
     ],
     "rules": [
@@ -545,12 +619,12 @@
       },
       {
         "name": "The Readable Type Rule",
-        "body": "Pixel art belongs to the illustration; the interface and engineering content remain in Manrope.",
+        "body": "Pixel art belongs to the illustration; display headings use Bricolage Grotesque while reading text and navigation remain in Manrope.",
         "section": "typography"
       },
       {
         "name": "The Still Reading Rule",
-        "body": "Reading content enters once and stays still; ongoing animation belongs to the pausable decorative workspace.",
+        "body": "Reading content enters once and stays still; ongoing animation belongs to the pausable monitor, steam, and sparse background accents, while the desk remains grounded.",
         "section": "elevation"
       }
     ],
@@ -563,7 +637,7 @@
     "donts": [
       "Don't use the pixel artwork's styling as a body-text font.",
       "Don't hide reading content behind a loader or replay entrances on every scroll.",
-      "Don't run the artwork when paused, offscreen, in a hidden tab, or under reduced motion."
+      "Don't run the artwork when paused, offscreen, in a hidden tab, or under reduced motion; the background shares pause, hidden-tab, and reduced-motion states."
     ]
   }
 }

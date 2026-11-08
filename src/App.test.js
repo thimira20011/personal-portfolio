@@ -99,6 +99,21 @@ test('clears stale navigation highlighting when Home enters the active reading a
   expect(container.querySelector('.desktop-links [aria-current]')).toBeNull();
 });
 
+test('one ambient motion control pauses both the workspace and the page background', () => {
+  jest.spyOn(document, 'hidden', 'get').mockReturnValue(false);
+  act(() => document.dispatchEvent(new Event('visibilitychange')));
+  expect(container.querySelector('.ambient-background').dataset.running).toBe('true');
+  act(() => container.querySelector('.artwork-toggle').click());
+  expect(container.querySelector('.ambient-background').dataset.running).toBe('false');
+  expect(container.querySelector('.pixel-workspace').dataset.running).toBe('false');
+  expect(container.querySelector('.nav-motion-toggle').getAttribute('aria-pressed')).toBe('true');
+  act(() => container.querySelector('.artwork-toggle').click());
+  expect(container.querySelector('.ambient-background').dataset.running).toBe('true');
+  act(() => container.querySelector('.nav-motion-toggle').click());
+  expect(container.querySelector('.ambient-background').dataset.running).toBe('false');
+  expect(container.querySelector('.pixel-workspace').dataset.running).toBe('false');
+});
+
 test('preserves all credentials, PDFs, engineering stories, and valid local section links', () => {
   expect(container.querySelectorAll('.certificate-card')).toHaveLength(10);
   expect(container.querySelectorAll('.selected-project .architecture')).toHaveLength(3);

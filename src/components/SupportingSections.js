@@ -34,10 +34,10 @@ export const AchievementsAwards = React.memo(({ data, publications }) => {
         {data.map((a) => (
           <div
             key={a.id}
-            className="bg-white/70 dark:bg-gray-800/55 p-6 rounded-3xl shadow-lg backdrop-blur-lg border border-white/60 dark:border-gray-700/50 hover:shadow-xl transition-colors duration-300"
+            className="award-card bg-white/70 dark:bg-gray-800/55 p-6 rounded-3xl shadow-lg backdrop-blur-lg border border-white/60 dark:border-gray-700/50 hover:shadow-xl transition-colors duration-300"
           >
             <div className="flex items-start gap-4">
-              <div className="w-11 h-11 rounded-2xl bg-amber-100 dark:bg-amber-900/40 flex items-center justify-center flex-shrink-0 text-amber-600 dark:text-amber-400">
+              <div className="award-icon w-11 h-11 rounded-2xl bg-amber-100 dark:bg-amber-900/40 flex items-center justify-center flex-shrink-0 text-amber-600 dark:text-amber-400">
                 <TrophyIcon className="h-6 w-6" aria-hidden="true" />
               </div>
               <div>
@@ -229,25 +229,28 @@ export const Contact = React.memo(({ data, socialLinks, copyToClipboard, copiedT
   };
 
   return (
-    <section id="contact" className="py-16 md:py-20 scroll-mt-24">
+    <section id="contact" className="contact-section py-16 md:py-20 scroll-mt-24">
       <SectionHeading
         icon={EnvelopeIcon}
         title="Contact Me"
       />
       <div
         ref={ref}
-        className="max-w-4xl mx-auto"
+        className="contact-content max-w-4xl mx-auto"
       >
         <div className="bg-white/75 dark:bg-gray-800/60 p-8 md:p-10 rounded-3xl shadow-xl backdrop-blur-lg border border-white/60 dark:border-gray-700/50">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {/* Contact info */}
-            <div>
+            <div className="contact-intro">
               <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">
-                Get in Touch
+                Your next engineer?
               </h3>
               <p className="text-sm text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
                 I'm looking for a software engineering internship, with a focus on backend development, cloud systems, and AI. If your team is building something interesting, I'd love to hear from you.
               </p>
+
+              <a className="button button-primary contact-primary" href={`mailto:${data.email}`}>Email me<ArrowTopRightOnSquareIcon className="h-4 w-4" aria-hidden="true" /></a>
+              <p className="contact-availability"><span className="status-dot" />Open to software engineering internships · Sri Lanka</p>
 
               <div className="space-y-3">
                 <div className="flex items-center justify-between p-3 rounded-2xl bg-gray-50 dark:bg-gray-700/40 border border-gray-200/50 dark:border-gray-700/50">
@@ -373,7 +376,7 @@ export const Contact = React.memo(({ data, socialLinks, copyToClipboard, copiedT
             </div>
 
             {/* Message form */}
-            <div>
+            <div className="contact-form-panel">
               <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-4">
                 Send a Message
               </h3>

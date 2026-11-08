@@ -5,6 +5,7 @@ import { PortfolioAbout, PortfolioCertifications, PortfolioHero, PortfolioNav, P
 import { AchievementsAwards, Contact, ExperienceTimeline, Footer, ScrollToTop } from './components/SupportingSections';
 import AmbientBackground from './components/AmbientBackground';
 import './lively.css';
+import { MotionConfig } from 'motion/react';
 
 export default function App() {
   const [isDarkMode, setIsDarkMode] = useState(() => {
@@ -16,6 +17,7 @@ export default function App() {
     }
   });
   const [copiedType, setCopiedType] = useState(null);
+  const [animationsPaused, setAnimationsPaused] = useState(false);
 
   useEffect(() => {
     const page = document.documentElement;
@@ -55,12 +57,12 @@ export default function App() {
   };
 
   return (
-    <div className="portfolio">
-      <AmbientBackground isDarkMode={isDarkMode} />
+    <MotionConfig reducedMotion="user"><div className="portfolio">
+      <AmbientBackground isDarkMode={isDarkMode} paused={animationsPaused} />
       <a className="skip-link" href="#main-content">Skip to content</a>
-      <PortfolioNav isDarkMode={isDarkMode} toggleDarkMode={() => setIsDarkMode((value) => !value)} />
+      <PortfolioNav isDarkMode={isDarkMode} toggleDarkMode={() => setIsDarkMode((value) => !value)} resumeUrl={portfolioData.resumeUrl} animationsPaused={animationsPaused} onToggleAnimations={() => setAnimationsPaused((value) => !value)} />
       <main id="main-content" className="page-container" tabIndex={-1}>
-        <PortfolioHero data={portfolioData} />
+        <PortfolioHero data={portfolioData} animationsPaused={animationsPaused} setAnimationsPaused={setAnimationsPaused} />
         <PortfolioProjects projects={portfolioData.projects} />
         <PortfolioAbout data={portfolioData.about} profilePicUrl={portfolioData.profilePicUrl} />
         <ExperienceTimeline data={portfolioData.timeline} />
@@ -71,6 +73,6 @@ export default function App() {
       <div className="page-container"><Footer data={portfolioData} /></div>
       <ScrollToTop />
       <Analytics />
-    </div>
+    </div></MotionConfig>
   );
 }

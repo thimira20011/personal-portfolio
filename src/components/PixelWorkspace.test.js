@@ -39,7 +39,7 @@ test('lets visitors pause and resume the artwork without changing content', () =
   act(() => button.click());
   expect(scene.dataset.running).toBe('false');
   expect(button.getAttribute('aria-pressed')).toBe('true');
-  expect(button.getAttribute('aria-label')).toBe('Play artwork animation');
+  expect(button.getAttribute('aria-label')).toBe('Play ambient animations');
   expect(container.querySelector('img')).not.toBeNull();
   act(() => button.click());
   expect(scene.dataset.running).toBe('true');

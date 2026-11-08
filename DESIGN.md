@@ -31,23 +31,23 @@ colors:
   dark-error: "#ffb0a5"
 typography:
   display:
-    fontFamily: "Manrope, sans-serif"
-    fontSize: "clamp(44px, 4.9vw, 70px)"
-    fontWeight: 700
-    lineHeight: 1.16
-    letterSpacing: "-0.04em"
-  headline:
-    fontFamily: "Manrope, sans-serif"
-    fontSize: "clamp(32px, 3.5vw, 48px)"
-    fontWeight: 650
-    lineHeight: 1.2
+    fontFamily: "Bricolage Grotesque, sans-serif"
+    fontSize: "clamp(44px, 5.1vw, 74px)"
+    fontWeight: 600
+    lineHeight: 1.12
     letterSpacing: "-0.035em"
+  headline:
+    fontFamily: "Bricolage Grotesque, sans-serif"
+    fontSize: "clamp(32px, 3.5vw, 48px)"
+    fontWeight: 600
+    lineHeight: 1.15
+    letterSpacing: "-0.025em"
   title:
-    fontFamily: "Manrope, sans-serif"
-    fontSize: "36px"
-    fontWeight: 500
-    lineHeight: 1.2
-    letterSpacing: "-0.03em"
+    fontFamily: "Bricolage Grotesque, sans-serif"
+    fontSize: "38px"
+    fontWeight: 600
+    lineHeight: 1.15
+    letterSpacing: "-0.025em"
   body:
     fontFamily: "Manrope, sans-serif"
     fontSize: "16px"
@@ -60,7 +60,7 @@ rounded:
   tag: "5px"
   control: "8px"
   card: "12px"
-  navigation: "14px"
+  navigation: "12px"
   primary-frame: "16px"
 spacing:
   tight: "8px"
@@ -87,10 +87,10 @@ components:
     rounded: "{rounded.control}"
     padding: "12px 14px"
   navigation:
-    backgroundColor: "{colors.light-surface}"
+    backgroundColor: "{colors.light-page}"
     textColor: "{colors.light-muted}"
     rounded: "{rounded.navigation}"
-    height: "72px"
+    height: "64px"
   filter:
     backgroundColor: "{colors.electric-lime}"
     textColor: "{colors.action-ink}"
@@ -110,13 +110,13 @@ components:
 
 A little corner of my world pairs a finished pixel workspace with a readable engineering portfolio. Ink black and warm sand carry the surfaces and typography; electric lime identifies actions and interaction states.
 
-The interface uses tonal layers, restrained borders, and clear type rather than ornamental chrome. Motion introduces the work and animates the decorative scene while leaving reading content still after arrival.
+The interface uses tonal layers, restrained borders, expressive display type, and readable engineering detail. Motion introduces the work, gives the monitor and steam gentle activity, and carries sparse geometric accents at the page edges while reading content stays still after arrival.
 
 **Key Characteristics:**
 
 - Ink and sand surfaces with lime actions.
-- Bold Manrope display and readable supporting text.
-- Original pixel artwork with a visible pause control.
+- Bricolage Grotesque display with Manrope reading and navigation type.
+- Original grounded pixel artwork and sparse background graphics with shared pause controls.
 - Adaptive layouts and a still reduced-motion composition.
 
 ## Colors
@@ -142,29 +142,29 @@ The darker olive link color keeps small text readable on light sand. Lime retain
 
 ## Typography
 
-**Display Font:** Manrope, sans-serif. **Body Font:** Manrope, sans-serif. The variable font is self-hosted; its license lives in public/fonts.
+**Display Font:** Bricolage Grotesque, sans-serif. **Body and Navigation Font:** Manrope, sans-serif. Both variable fonts are self-hosted; their licenses live in public/fonts.
 
-The frontmatter's display, headline, title, body, and label roles describe the primary desktop hierarchy. Hero supporting copy uses 16px text at 1.9 line height and a 53ch measure; section descriptions use a 65ch measure. Project body copy uses 14–16px text. Inputs remain 16px.
+The frontmatter's display, headline, title, body, and label roles describe the primary desktop hierarchy. Hero supporting copy uses 16px text at 1.9 line height and a 53ch measure; section descriptions use a 65ch measure. Project summaries use 16px text at 1.7 line height, while fact values use 13px at 1.75. Inputs remain 16px. Headings use optical sizing.
 
 At widths up to 1100px the hero uses clamp(36px, 4.9vw, 54px). Below 768px it uses clamp(35px, 8.5vw, 60px); below 375px it uses 32px. Mobile project titles use 32px, or 30px on the smallest breakpoint. Headings balance their lines; paragraphs use pretty wrapping.
 
-**The Readable Type Rule.** Pixel art belongs to the illustration; the interface and engineering content remain in Manrope.
+**The Readable Type Rule.** Pixel art belongs to the illustration; display headings use Bricolage Grotesque while reading text and navigation remain in Manrope.
 
 ## Layout
 
 The main container is 1296px including 48px horizontal gutters. Gutters become 32px up to 1100px, 24px below 768px, and 20px below 375px. Section space is fluid; heading-to-content space is 48px on desktop and 32px on mobile.
 
-The hero uses a 1.15:1 column ratio and a 48px by 24px gap, with a three-column proof strip at its base. Below 768px the copy, artwork, and proof links stack. Selected projects use paired text and image columns on desktop; mobile reading order is text, image, then the native case-study disclosure. About pairs a portrait with biography columns before stacking on smaller screens.
+The hero uses a 1.15:1 column ratio and a 48px by 24px gap, with a three-column proof strip at its base. Below 768px the copy, artwork, and proof links stack. Selected projects place screenshots on the left and text on the right on desktop, with a 40px gap between cards. Mobile reading order is text, image, then the native case-study disclosure. About pairs a portrait with biography columns before stacking on smaller screens. Contact separates a direct email action from a bordered form panel; its desktop columns have a 64px gap, reducing to 32px on mobile.
 
 ## Elevation & Depth
 
-Tonal surfaces and single borders separate most content. Project previews use an offset soft shadow (0 16px 32px -18px rgb(22 20 14 / 40%)); the mobile menu uses a softer offset shadow (0 16px 32px -20px rgb(0 0 0 / 30%)). Supporting content panels remain flat.
+Tonal surfaces and single borders separate most content. Project previews use an offset soft shadow (0 16px 32px -18px rgb(22 20 14 / 40%)); the mobile menu uses a softer offset shadow (0 16px 32px -20px rgb(0 0 0 / 30%)). Navigation gains a restrained offset shadow after scrolling. Certificates and awards use transparent fills and quiet borders; supporting content remains flat.
 
-**The Still Reading Rule.** Reading content enters once and stays still; ongoing animation belongs to the pausable decorative workspace.
+**The Still Reading Rule.** Reading content enters once and stays still; ongoing animation belongs to the pausable monitor, steam, and sparse background accents, while the desk remains grounded.
 
 ## Shapes
 
-Controls have gently rounded corners; tags are tighter, supporting cards use 12px corners, and primary project/portrait frames use the 16px frame radius. Navigation uses a 14px shell, becoming 12px on mobile. Focus outlines are immediate, 3px wide, and offset by 4px. The artwork retains its own transparent silhouette.
+Controls have gently rounded corners; tags are tighter, supporting cards use 12px corners, and project/portrait frames use the 16px frame radius. Navigation uses a 12px shell. Focus outlines are immediate, 3px wide, and offset by 4px. The artwork retains its own transparent silhouette. Background graphics are simple outlined stars, diamonds, and a small stepped trail at low opacity.
 
 ## Components
 
@@ -172,13 +172,15 @@ Controls have gently rounded corners; tags are tighter, supporting cards use 12p
 
 **Filters and tags.** Filters are 44px-high controls; selection uses the primary action pair and aria-pressed. Technology tags are passive labels with alternate-surface fills and muted text.
 
-**Cards and disclosures.** Selected projects pair a surface text region with an alternate-surface screenshot region. Padding is 36px on desktop, 28px at intermediate widths, and 24px on mobile. Case studies use native details/summary controls. Disclosure content enters over 240ms; keyboard-triggered disclosure content appears without that entrance.
+**Cards and disclosures.** Selected projects pair an alternate-surface screenshot region with a surface text region. Desktop text padding is 36px and screenshot padding is 28px; both become 28px at intermediate widths. Mobile text padding is 28px by 24px and screenshot padding is 24px. A definition list organizes Problem, My contribution, and Outcome; the outcome has a thin divider and positive text. Additional projects keep a screenshot-to-text boundary; credentials and awards use lighter transparent fills. Case studies use native details/summary controls. Disclosure content enters over 240ms; keyboard-triggered disclosure content appears without that entrance.
 
 **Inputs.** Fields use page-colored fills, theme text, a divider border, 8px corners, and 12px by 14px padding. Placeholders use muted text. Errors use the theme error color; disabled fields dim. Textareas can resize vertically.
 
-**Navigation.** The fixed shell is 72px high on desktop and 64px on mobile. Current links use the accent and a 240ms underline transition. No content link remains current at Home. Below 768px a button exposes the vertical menu; Escape closes it and returns focus.
+**Navigation.** The fixed shell is 64px high with the Thimira wordmark, section links, résumé action, shared motion control, and theme control. It starts on the page fill with a transparent border and gains a surface fill, visible divider, and subtle shadow after 32px of scrolling; those surface changes take 220ms. Current links use the accent and a shared-layout Motion indicator with a 0.5s spring and 0.1 bounce; keyboard navigation changes it immediately. No content link remains current at Home. Below 768px a button exposes the vertical menu; Escape closes it and returns focus. Below 541px résumé access moves into that menu.
 
-**Pixel workspace and motion.** The original transparent 960 by 640 WebP is decorative. CSS animates a monitor cursor (2.6s), signal light and steam (3.6s), and small pixels (6s). A visible control pauses the scene. Scene animation and pointer depth suspend offscreen, in hidden tabs, and under reduced motion. Fine-pointer depth is bounded and updates the artwork layer directly.
+**Pixel workspace and motion.** The original transparent 960 by 640 WebP is decorative, and the desk has no idle bobbing. Eight abstract monitor bars scale from 0.35 to 1 over 8s with 24 steps; these are decorative marks, not functional code or status data. The cursor breathes over 2.6s, the signal over 3.6s, curved coffee steam rises over 5.5s, and small scene pixels drift over 6s. Fine-pointer depth uses Motion springs (mass 1, stiffness 100, damping 20), bounded to 3° X rotation, 4° Y rotation, and 8px/5px X/Y translation. No CSS transform transition competes with the spring.
+
+Sparse edge pixels move only 10px vertically over 24s and 18s; accent signals breathe over 16s. Outlined stars and diamonds fade between 0.08 and 0.16 opacity over 18s beside a quiet stepped trail. The near pixel layer is hidden on small phones. Hero and navigation controls share one pause state for workspace and background. Both suspend in hidden tabs and under reduced motion; the workspace also suspends offscreen. Pausing or reduced motion resets pointer depth to rest.
 
 Hero lines enter over 900ms with an 80ms separation. Supporting elements overlap at 60ms intervals; the artwork settles over 1000ms. Offscreen content reveals once through WAAPI over 700ms, with project-image reveals over 900ms. The strong ease-out is cubic-bezier(0.23, 1, 0.32, 1); on-screen travel uses cubic-bezier(0.77, 0, 0.175, 1). Reduced motion removes positional animation and retains short color/opacity feedback.
 
@@ -195,4 +197,4 @@ Hero lines enter over 900ms with an 80ms separation. Supporting elements overlap
 
 - **Don't** use the pixel artwork's styling as a body-text font.
 - **Don't** hide reading content behind a loader or replay entrances on every scroll.
-- **Don't** run the artwork when paused, offscreen, in a hidden tab, or under reduced motion.
+- **Don't** run the artwork when paused, offscreen, in a hidden tab, or under reduced motion; the background shares pause, hidden-tab, and reduced-motion states.

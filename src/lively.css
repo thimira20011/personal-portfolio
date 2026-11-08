@@ -6,10 +6,10 @@ a, button, summary { transition: color 160ms ease, background-color 160ms ease, 
 details > summary svg { transition: transform 200ms var(--ease-out); }
 .project-image img { transition: transform 700ms var(--ease-out); }
 .selected-project { transition: border-color 240ms ease; }
-.workspace-art { transition: transform 240ms var(--ease-out); }
-.desktop-links a::after { content: ''; position: absolute; bottom: 4px; height: 2px; background: var(--accent); left: 0; right: 0; transform: scaleX(0); transform-origin: left; transition: transform 240ms var(--ease-out); }
-.desktop-links a[aria-current]::after { transform: scaleX(1); }
 .artwork-toggle { transition: background-color 160ms ease, color 160ms ease; }
+.site-nav-wrap { transition: background-color 220ms ease, border-color 220ms ease, box-shadow 220ms ease; }
+.small-project, .certificate-card, .award-card { transition: border-color 220ms ease, background-color 220ms ease; }
+.small-project .project-image img { transition: transform 700ms var(--ease-out); }
 .architecture-progress > span { transition: transform 240ms var(--ease-in-out); }
 .architecture button { transition: border-color 160ms ease, background-color 160ms ease, color 160ms ease; }
 .hero-copy:focus-within > *, .hero-visual:focus-within { animation: none; }
@@ -40,13 +40,34 @@ html[data-keyboard-navigation] .mobile-links { animation: none; }
   50% { opacity: 1; }
 }
 @keyframes steam-rise {
-  0% { opacity: 0; transform: translate(0, 8px) scaleY(.6); }
-  30% { opacity: .3; }
-  100% { opacity: 0; transform: translate(3px, -18px) scaleY(1.1); }
+  0% { opacity: 0; transform: translate(0, 12px) scaleY(.7); }
+  25%, 55% { opacity: .65; }
+  100% { opacity: 0; transform: translate(6px, -28px) scaleY(1.15); }
 }
 @keyframes pixel-drift {
   0%, 100% { transform: translateY(0); opacity: .25; }
-  50% { transform: translateY(-8px); opacity: .7; }
+  50% { transform: translateY(-16px); opacity: .8; }
+}
+@keyframes code-write {
+  0%, 12% { transform: scaleX(.35); opacity: .65; }
+  38%, 78% { transform: scaleX(1); opacity: 1; }
+  100% { transform: scaleX(.35); opacity: .65; }
+}
+@keyframes ambient-drift-far {
+  from { transform: translate3d(0, 3px, 0); }
+  to { transform: translate3d(4px, -7px, 0); }
+}
+@keyframes ambient-drift-near {
+  from { transform: translate3d(0, -3px, 0); }
+  to { transform: translate3d(-3px, 7px, 0); }
+}
+@keyframes ambient-signal {
+  0%, 70%, 100% { opacity: .16; }
+  82% { opacity: .5; }
+}
+@keyframes ambient-graphic-breathe {
+  0%, 100% { opacity: .08; }
+  50% { opacity: .16; }
 }
 @media (prefers-reduced-motion: no-preference) {
   [data-reveal-pending] { opacity: 0; }
@@ -58,14 +79,31 @@ html[data-keyboard-navigation] .mobile-links { animation: none; }
   .hero-visual { animation: workspace-arrive 1000ms var(--ease-out) 160ms backwards; }
   .proof-strip { animation: arrive 700ms var(--ease-out) 360ms backwards; }
   .mobile-links { transform-origin: top right; animation: arrive 200ms var(--ease-out) backwards; }
+  .screen-code-line b { animation: code-write 8s steps(24, end) infinite; }
+  .screen-code-line:nth-child(2) b { animation-delay: -.5s; }
+  .screen-code-line:nth-child(3) b { animation-delay: -1s; }
+  .screen-code-line:nth-child(4) b { animation-delay: -1.5s; }
+  .screen-code-line:nth-child(5) b { animation-delay: -2s; }
+  .screen-code-line:nth-child(6) b { animation-delay: -2.5s; }
+  .screen-code-line:nth-child(7) b { animation-delay: -3s; }
+  .screen-code-line:nth-child(8) b { animation-delay: -3.5s; }
   .monitor-cursor { animation: cursor-breathe 2.6s linear infinite; }
   .monitor-signal { animation: signal-breathe 3.6s ease infinite; }
-  .coffee-steam { animation: steam-rise 3.6s linear infinite; }
-  .steam-two { animation-delay: 1.8s; }
+  .coffee-steam { animation: steam-rise 5.5s linear infinite; }
+  .steam-two { animation-delay: 2.7s; }
+  .steam-three { animation-delay: 1.35s; }
   .workspace-pixel { animation: pixel-drift 6s var(--ease-in-out) infinite; }
+  .ambient-layer-far { animation: ambient-drift-far 24s var(--ease-in-out) infinite alternate; }
+  .ambient-layer-near { animation: ambient-drift-near 18s var(--ease-in-out) infinite alternate; }
+  .ambient-pixel-accent { animation: ambient-signal 16s ease infinite; }
+  .ambient-glyph { animation: ambient-graphic-breathe 18s ease infinite; }
+  .ambient-glyph.glyph-1 { animation-delay: -6s; }
+  .ambient-glyph.glyph-2 { animation-delay: -12s; }
+  .ambient-background[data-running='false'] .ambient-layer, .ambient-background[data-running='false'] .ambient-pixel-accent { animation-play-state: paused; }
+  .ambient-background[data-running='false'] .ambient-glyph { animation-play-state: paused; }
   .pixel-two { animation-delay: -2s; }
   .pixel-three { animation-delay: -4s; }
-  .pixel-workspace[data-running='false'] .workspace-art > span { animation-play-state: paused; }
+  .pixel-workspace[data-running='false'] .workspace-scene, .pixel-workspace[data-running='false'] .workspace-scene * { animation-play-state: paused; }
   .pixel-workspace[data-running='false'] .coffee-steam { opacity: 0; }
   details[open] > :not(summary) { animation: arrive 240ms var(--ease-out); }
   html[data-keyboard-navigation] details[open] > :not(summary), html[data-keyboard-navigation] .hero-line > span { animation: none; }
@@ -78,8 +116,9 @@ html[data-keyboard-navigation] .mobile-links { animation: none; }
   .project-links a:hover svg:last-child, .proof-strip a:hover > svg:last-child { transform: translate(2px, -2px); }
   .project-links a:hover, .certificate-links a:hover, .hero-socials a:hover, .text-link:hover { text-decoration: underline; }
   .desktop-links a:hover, .proof-strip a:hover, summary:hover, .portfolio footer a:hover { color: var(--accent); }
-  .desktop-links a:hover::after { transform: scaleX(1); }
   .selected-project:hover { border-color: var(--sand); }
+  .small-project:hover, .certificate-card:hover, .award-card:hover { border-color: var(--sand); }
+  .small-project:hover .project-image img { transform: scale(1.035); }
   .selected-project:hover .project-image img { transform: scale(1.04); }
   .artwork-toggle:hover:not(:disabled) { background: var(--surface-alt); color: var(--ink); }
   .architecture button:hover { border-color: var(--accent); }
@@ -89,7 +128,7 @@ html[data-keyboard-navigation] .mobile-links { animation: none; }
   html, * { scroll-behavior: auto !important; }
   .portfolio *, .portfolio *::before, .portfolio *::after { animation: none !important; transition-property: color, background-color, border-color, opacity !important; transition-duration: 120ms !important; }
   [data-reveal-pending] { opacity: 1; }
-  .button:active, .icon-button:active, .project-filters button:active, .portfolio #contact button:active, .button:hover, .button:hover svg, .selected-project:hover .project-image img, .project-links a:hover svg:last-child, .proof-strip a:hover > svg:last-child { transform: none; }
+  .button:active, .icon-button:active, .project-filters button:active, .portfolio #contact button:active, .button:hover, .button:hover svg, .selected-project:hover .project-image img, .small-project:hover .project-image img, .project-links a:hover svg:last-child, .proof-strip a:hover > svg:last-child { transform: none; }
   .button:active, .icon-button:active { opacity: .8; }
   .workspace-art { transform: none !important; }
   .coffee-steam { display: none; }

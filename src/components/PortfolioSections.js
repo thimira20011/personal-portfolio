@@ -1,9 +1,10 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { ArrowDown, ArrowUpRight, Check, ChevronDown, Cloud, Code2, ExternalLink, FileText, Github, Linkedin, MapPin, Menu, Moon, Network, Sun, Trophy, X } from 'lucide-react';
+import { ArrowDown, ArrowUpRight, Check, ChevronDown, Cloud, Code2, ExternalLink, FileText, Github, Linkedin, MapPin, Menu, Moon, Network, Pause, Play, Sun, Trophy, X } from 'lucide-react';
 import { projectStories } from '../data/projectStories';
 import useReveal from '../hooks/useReveal';
 import imageProps from '../data/imageProps';
 import PixelWorkspace from './PixelWorkspace';
+import { motion, useReducedMotion } from 'motion/react';
 
 const navigation = [
   { id: 'projects', label: 'Work' },
@@ -12,10 +13,18 @@ const navigation = [
   { id: 'contact', label: 'Contact' },
 ];
 
-export function PortfolioNav({ isDarkMode, toggleDarkMode }) {
+export function PortfolioNav({ isDarkMode, toggleDarkMode, resumeUrl, animationsPaused, onToggleAnimations }) {
   const [open, setOpen] = useState(false);
   const [active, setActive] = useState('');
+  const [scrolled, setScrolled] = useState(false);
   const menuRef = useRef(null);
+  const reducedMotion = useReducedMotion();
+  useEffect(() => {
+    const update = () => setScrolled(window.scrollY > 32);
+    update();
+    window.addEventListener('scroll', update, { passive: true });
+    return () => window.removeEventListener('scroll', update);
+  }, []);
   useEffect(() => {
     const onKey = (event) => {
       if (event.key === 'Escape' && open) {
@@ -37,18 +46,21 @@ export function PortfolioNav({ isDarkMode, toggleDarkMode }) {
     });
     return () => observer.disconnect();
   }, []);
-  const links = navigation.map(({ id, label }) => (
-    <a key={id} href={`#${id}`} aria-current={active === id ? 'location' : undefined} onClick={() => setOpen(false)}>{label}</a>
+  const links = (withIndicator = false) => navigation.map(({ id, label }) => (
+    <a key={id} href={`#${id}`} aria-current={active === id ? 'location' : undefined} onClick={() => setOpen(false)}>{label}{withIndicator && active === id && <motion.span className="nav-active-indicator" layoutId="current-section" initial={false} transition={document.documentElement.hasAttribute('data-keyboard-navigation') ? { duration: 0 } : { type: 'spring', duration: 0.5, bounce: 0.1 }} aria-hidden="true" />}</a>
   ));
   return (
-    <div className="site-nav-wrap">
+    <div className="site-nav-wrap" data-scrolled={scrolled}>
       <nav className="site-nav" aria-label="Main navigation">
-        <a className="wordmark" href="#home" aria-label="Thimira Niranjaya, home"><span>tn<span className="brand-dot">.</span></span><span className="wordmark-caption">THIMIRA NIRANJAYA</span></a>
+        <a className="wordmark" href="#home" aria-label="Thimira Niranjaya, home">Thimira<span className="brand-dot">.</span></a>
         <div className="desktop-links">
-          {links}
+          {links(true)}
         </div>
         <div className="nav-actions">
-          <a className="nav-availability" href="#contact"><span className="status-dot" />Open to internships</a>
+          <a className="nav-resume" href={resumeUrl} target="_blank" rel="noopener noreferrer">Résumé<ArrowUpRight size={14} aria-hidden="true" /></a>
+          <button className="icon-button nav-motion-toggle" type="button" onClick={onToggleAnimations} disabled={reducedMotion} aria-label={reducedMotion ? 'Ambient motion reduced by system preference' : animationsPaused ? 'Play ambient animations' : 'Pause ambient animations'} aria-pressed={animationsPaused || !!reducedMotion}>
+            {animationsPaused || reducedMotion ? <Play size={16} aria-hidden="true" /> : <Pause size={16} aria-hidden="true" />}
+          </button>
           <button className="icon-button" onClick={toggleDarkMode} aria-label={isDarkMode ? 'Switch to light mode' : 'Switch to dark mode'} aria-pressed={isDarkMode}>
             {isDarkMode ? <Sun size={19} aria-hidden="true" /> : <Moon size={19} aria-hidden="true" />}
           </button>
@@ -56,7 +68,7 @@ export function PortfolioNav({ isDarkMode, toggleDarkMode }) {
             {open ? <X size={21} aria-hidden="true" /> : <Menu size={21} aria-hidden="true" />}
           </button>
         </div>
-        {open && <div className="mobile-links" id="mobile-navigation">{links}<a href="#certifications" onClick={() => setOpen(false)}>Certifications</a></div>}
+        {open && <div className="mobile-links" id="mobile-navigation">{links()}<a href="#certifications" onClick={() => setOpen(false)}>Certifications</a><a href={resumeUrl} target="_blank" rel="noopener noreferrer" onClick={() => setOpen(false)}>Résumé<ArrowUpRight size={14} aria-hidden="true" /></a></div>}
       </nav>
     </div>
   );
@@ -71,7 +83,7 @@ export function SectionTitle({ title, description }) {
   );
 }
 
-export function PortfolioHero({ data }) {
+export function PortfolioHero({ data, animationsPaused, setAnimationsPaused }) {
   return (
     <header id="home" className="hero" data-enter>
       <div className="hero-copy">
@@ -89,7 +101,7 @@ export function PortfolioHero({ data }) {
         </div>
       </div>
       <div className="hero-visual">
-        <PixelWorkspace />
+        <PixelWorkspace paused={animationsPaused} onPauseChange={setAnimationsPaused} />
         <a href="#contact" className="availability"><span className="status-dot" />Available for software engineering internships<ArrowUpRight size={15} aria-hidden="true" /></a>
       </div>
       <div className="proof-strip" aria-label="Experience at a glance">
@@ -158,8 +170,11 @@ function SelectedProject({ project, index, flagship }) {
       <h3 id={`project-title-${project.id}`}>{story.name}<span> {project.title.split('—')[1]?.trim()}</span></h3>
       <div className="project-meta"><span>{story.label}</span><span>{project.period}</span></div>
       <p className="project-summary">{story.summary}</p>
-      <div className="contribution"><span>{story.contributionLabel || 'My contribution'}</span><p>{story.contribution}</p></div>
-      <div className="project-result"><Check size={16} aria-hidden="true" /><span>{story.result}</span></div>
+      <dl className="project-facts">
+        <div><dt>Problem</dt><dd>{story.problem}</dd></div>
+        <div><dt>{story.contributionLabel || 'My contribution'}</dt><dd>{story.contribution}</dd></div>
+        <div className="project-outcome"><dt><Check size={13} aria-hidden="true" />Outcome</dt><dd>{story.result}</dd></div>
+      </dl>
       <div className="tech-list" aria-label="Technologies">{project.techStack.slice(0, flagship ? 7 : 4).map((tech) => <span key={tech}>{tech}</span>)}</div>
       <ProjectLinks project={project} />
     </div>
