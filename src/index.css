@@ -144,6 +144,7 @@ p { text-wrap: pretty; }
 .selected-project { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); border: 1px solid var(--line); background: var(--surface); border-radius: var(--radius); overflow: hidden; }
 .project-visual { grid-column: 1; grid-row: 1; min-width: 0; display: flex; align-items: center; padding: 28px; background: var(--surface-alt); }
 .selected-project[data-project='4'] .project-visual { background: var(--positive-soft); }
+.selected-project[data-project='9'] .project-image { aspect-ratio: 1366 / 768; }
 .project-preview-frame { width: 100%; border-radius: 8px; overflow: hidden; box-shadow: 0 16px 32px -18px rgb(22 20 14 / 40%); }
 .project-image { width: 100%; aspect-ratio: 16 / 10; display: flex; align-items: center; justify-content: center; overflow: hidden; background: var(--surface-alt); }
 .project-image img { width: 100%; height: 100%; object-fit: cover; object-position: top; }

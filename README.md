@@ -32,6 +32,7 @@ Each project links to its own implementation; its engineering story is presented
 | **NearU** | Real-time campus ride sharing with .NET, SignalR, Redis, and PostGIS | [Repositories](https://github.com/Nearu-Project-SUSL) · [Live demo](https://nearusab.me) |
 | **GridWalk AI** | Multi-agent fault analysis and recovery planning for microgrids | [Source](https://github.com/Dileesha001/GridWalk-AI) · [Demonstration](https://youtu.be/gPm9pV6GcR4) |
 | **GreenOps Intelligence Hub** | Cloud telemetry, static code analysis, and software carbon intensity estimates | [Source](https://github.com/thimira20011/GreenOps-Intelligence-Hub) |
+| **AyurFlow** | Member A: Go backend, staff authentication, authorization, auditing, and DevOps for a clinic management system in development | [Source](https://github.com/thimira20011/AyurFlow) |
 
 ## Technology
 

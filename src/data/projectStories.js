@@ -1,4 +1,4 @@
-// Editorial summaries of the existing portfolio and supplied GridWalk project details.
+// Editorial summaries of the portfolio and owner-confirmed project contributions.
 // Architecture flows describe the approach; they are not deployment inventories.
 export const projectStories = {
   1: {
@@ -42,6 +42,25 @@ export const projectStories = {
     evidenceLabel: 'See the award and demonstration',
     evidence: 'Explore simulated power distribution failures and recovery strategies through the project demonstration. The certificate records team IGNITE’s First Runner-Up award at AI Hackathon 2026.',
     certificateUrl: `${import.meta.env.BASE_URL.slice(0, -1)}/certificates/ai-hackathon-2026-first-runner-up.pdf`,
+  },
+  9: {
+    name: 'AyurFlow',
+    label: 'Backend security & clinic operations',
+    summary: 'Building the staff-access and backend foundations of an Ayurvedic clinic management system.',
+    contribution: 'As Member A, built the shared Go API, staff authentication, role and record authorization, transactional audit foundation, and deployment and backup tooling.',
+    result: 'In development: staff-access foundations and encrypted backup tooling are implemented; the complete clinic workflow and pilot acceptance remain in progress.',
+    problem: 'Clinic staff need consistent access controls and traceable changes across patient and operational workflows.',
+    approach: 'A Next.js and TypeScript staff workspace connects to a Go/Gin modular API using pgx and PostgreSQL. Shared services handle Argon2id credentials, opaque server sessions, CSRF checks, authorization, and auditing.',
+    decision: 'Keep authorization and audit writes within backend transaction boundaries. Failed audit writes roll back the mutation, while explicit record policies prevent staff roles from gaining blanket clinical access.',
+    flow: ['Next.js staff UI', 'Go/Gin API', 'Session + record access', 'PostgreSQL + audit'],
+    flowDetails: [
+      'The staff workspace provides sign-in and connects to the versioned backend API.',
+      'Go handlers, services, and repositories separate request handling, business rules, and database access.',
+      'Server sessions, CSRF checks, and role and record policies protect backend operations.',
+      'Parameterized pgx queries and shared audit writes participate in the same PostgreSQL transaction.',
+    ],
+    evidenceLabel: 'Review Member A’s implementation',
+    evidence: 'Explore authentication, authorization, transactional auditing, CI verification, and encrypted backup and recovery tooling in the repository. The sign-in screenshot is supplied from the actual project; verification uses synthetic data.',
   },
   4: {
     name: 'GreenOps',

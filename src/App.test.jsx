@@ -32,15 +32,19 @@ afterEach(() => {
   vi.restoreAllMocks();
 });
 
-test('puts the three selected projects first and clearly identifies internship availability and AI contribution', () => {
+test('presents selected projects with internship availability and accurate team contributions', () => {
   expect([...container.querySelectorAll('main > section')].map((section) => section.id)).toEqual(['projects', 'about', 'experience', 'achievements', 'certifications', 'contact']);
   expect(container.querySelectorAll('h1')).toHaveLength(1);
   expect([...container.querySelectorAll('.selected-project h3')].map((title) => title.textContent)).toEqual([
-    expect.stringContaining('NearU'), expect.stringContaining('GridWalk AI'), expect.stringContaining('GreenOps'),
+    expect.stringContaining('NearU'), expect.stringContaining('GridWalk AI'), expect.stringContaining('GreenOps'), expect.stringContaining('AyurFlow'),
   ]);
   expect(container.querySelector('.availability').textContent).toContain('internships');
   expect(container.querySelector('#project-title-8').closest('article').textContent).toContain('Built the AI coordination layer');
   expect(container.querySelector('#project-title-8').closest('article').textContent).toContain('three-member team IGNITE');
+  const ayurflow = container.querySelector('#project-title-9').closest('article');
+  expect(ayurflow.textContent).toContain('As Member A');
+  expect(ayurflow.textContent).toContain('In development');
+  expect(ayurflow.querySelector('.project-links a').getAttribute('href')).toBe('https://github.com/thimira20011/AyurFlow');
 });
 
 test('filters additional projects without duplicating the selected projects', () => {
@@ -55,7 +59,7 @@ test('filters additional projects without duplicating the selected projects', ()
   expect(container.querySelectorAll('.small-project')).toHaveLength(1);
   act(() => buttons.find((button) => button.textContent === 'All').click());
   expect(container.querySelectorAll('.small-project')).toHaveLength(5);
-  expect(container.querySelectorAll('.selected-project')).toHaveLength(3);
+  expect(container.querySelectorAll('.selected-project')).toHaveLength(4);
 });
 
 test('persists theme changes and restores the preference after mounting again', () => {
@@ -142,7 +146,7 @@ test('one ambient motion control pauses both the workspace and the page backgrou
 
 test('preserves all credentials, PDFs, engineering stories, and valid local section links', () => {
   expect(container.querySelectorAll('.certificate-card')).toHaveLength(10);
-  expect(container.querySelectorAll('.selected-project .architecture')).toHaveLength(3);
+  expect(container.querySelectorAll('.selected-project .architecture')).toHaveLength(4);
   expect(container.querySelector('a[href="https://coursera.org/verify/56MSHOTEXYNR"]')).not.toBeNull();
   expect(container.querySelector('a[href$="ai-hackathon-2026-first-runner-up.pdf"]')).not.toBeNull();
   expect(container.querySelector('a[href$="ibm-continuous-integration-and-continuous-delivery.pdf"]')).not.toBeNull();

@@ -237,7 +237,7 @@ const inCategory = (project, filter) => filter === 'All' || (filter === '.NET & 
 
 export function PortfolioProjects({ projects }) {
   const [filter, setFilter] = useState('All');
-  const selected = [1, 8, 4].map((id) => projects.find((project) => project.id === id)).filter(Boolean);
+  const selected = [1, 8, 4, 9].map((id) => projects.find((project) => project.id === id)).filter(Boolean);
   const others = projects.filter((project) => !projectStories[project.id]);
   const filtered = others.filter((project) => inCategory(project, filter));
   return <section id="projects" className="portfolio-section projects-section">

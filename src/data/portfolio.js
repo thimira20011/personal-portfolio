@@ -230,6 +230,28 @@ const portfolioData = {
         imageUrl: `${import.meta.env.BASE_URL.slice(0, -1)}/images/project-5.png`,
       },
       {
+        id: 9,
+        featured: false,
+        category: 'Full-Stack Web',
+        title: 'AyurFlow — Ayurvedic Clinic Management System',
+        period: 'Oct 2026 – Present',
+        role: 'Member A · Backend, Security & DevOps Engineer',
+        status: 'In development · Team project',
+        description:
+          'A team-built staff workspace for a single Ayurvedic clinic. My Member A work covers the shared Go API, authentication, authorization, audit foundation, and deployment and backup tooling.',
+        bullets: [
+          'Built the shared Go/Gin API foundation with pgx, PostgreSQL migrations, and health/readiness checks.',
+          'Implemented Argon2id credentials, opaque server sessions, expiry and revocation, login throttling, and CSRF checks.',
+          'Developed shared role and record authorization, with transactional audit writes that roll back a mutation if auditing fails.',
+          'Added CI and PostgreSQL integration verification, container deployment configuration, and encrypted backup and isolated recovery tooling.',
+        ],
+        techStack: ['Go / Gin', 'Next.js', 'PostgreSQL', 'Docker', 'TypeScript', 'pgx', 'Argon2id', 'GitHub Actions'],
+        link: 'https://github.com/thimira20011/AyurFlow',
+        repoLabel: 'github.com/thimira20011/AyurFlow',
+        imageUrl: `${import.meta.env.BASE_URL.slice(0, -1)}/images/ayurflow-sign-in.png`,
+        imageAlt: 'AyurFlow staff sign-in screen with a green brand panel and a warm paper-textured login form',
+      },
+      {
         id: 5,
         featured: false,
         category: 'Full-Stack Web',

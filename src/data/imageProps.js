@@ -2,6 +2,7 @@
 const dimensions = {
   'thimira.jpeg': [1071, 1428],
   'nearu-live.jpg': [1440, 900],
+  'ayurflow-sign-in.png': [1366, 768],
   'project-2.png': [1524, 863],
   'project-3.png': [1535, 863],
   'project-4.jpeg': [360, 609],

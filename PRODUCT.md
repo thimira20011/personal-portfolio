@@ -26,6 +26,8 @@ The owner requested ink black and sand brown as primary colors, chose electric l
 
 Existing content in src/data/portfolio.js and src/data/projectStories.js. Local project screenshots and portrait in public/images. NearU image is a capture of its actual public demo. GreenOps has an architecture-led preview based on the documented implementation, retaining the supplied screenshot as an expandable secondary view. Current résumés live in public/cv. Interaction tests cover navigation, résumé access, projects, theme, and contact behavior.
 
+AyurFlow is a fourth selected project, added at the owner's request using their supplied staff sign-in screenshot. The owner confirmed they are Member A, responsible for backend, authentication, security, and DevOps. Its contribution summary is grounded in the local/public project's Member A, auth, authorization, audit, and backup records. Present implemented foundations accurately while retaining the project's in-development status and pending clinic/pilot acceptance.
+
 ## Product Principles
 
 - Make personality visible immediately and keep evidence easy to inspect.
