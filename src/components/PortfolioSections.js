@@ -3,6 +3,7 @@ import { ArrowDown, ArrowUpRight, Check, ChevronDown, Cloud, Code2, ExternalLink
 import { projectStories } from '../data/projectStories';
 import useReveal from '../hooks/useReveal';
 import imageProps from '../data/imageProps';
+import PixelWorkspace from './PixelWorkspace';
 
 const navigation = [
   { id: 'projects', label: 'Work' },
@@ -28,9 +29,9 @@ export function PortfolioNav({ isDarkMode, toggleDarkMode }) {
   useEffect(() => {
     if (!window.IntersectionObserver) return undefined;
     const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => { if (entry.isIntersecting) setActive(entry.target.id); });
+      entries.forEach((entry) => { if (entry.isIntersecting) setActive(entry.target.id === 'home' ? '' : entry.target.id); });
     }, { rootMargin: '-15% 0px -55% 0px', threshold: 0 });
-    navigation.forEach(({ id }) => {
+    [{ id: 'home' }, ...navigation].forEach(({ id }) => {
       const section = document.getElementById(id);
       if (section) observer.observe(section);
     });
@@ -74,9 +75,8 @@ export function PortfolioHero({ data }) {
   return (
     <header id="home" className="hero" data-enter>
       <div className="hero-copy">
-        <p className="hero-intro">Hi, I'm {data.shortName}.</p>
-        <h1><span className="hero-line">Backend thinking.</span><span className="hero-line">Real-world impact.</span></h1>
-        <p className="hero-description">An Information Systems undergraduate building real-time systems with <strong>.NET, cloud infrastructure, and AI.</strong> I enjoy turning complex problems into software people can use.</p>
+        <h1><span className="hero-line"><span>Backend thinking.</span></span><span className="hero-line"><span>Real-world impact<span className="headline-period">.</span></span></span></h1>
+        <p className="hero-description"><strong className="hero-greeting">Hi, I'm {data.shortName}.</strong>An Information Systems undergraduate building real-time systems with <strong>.NET, cloud infrastructure, and AI.</strong> I enjoy turning complex problems into software people can use.</p>
         <div className="hero-buttons">
           <a className="button button-primary" href={data.resumeUrl} target="_blank" rel="noopener noreferrer">View resume<FileText size={17} aria-hidden="true" /></a>
           <a className="button button-secondary" href="#projects">Explore my work<ArrowDown size={17} aria-hidden="true" /></a>
@@ -89,9 +89,7 @@ export function PortfolioHero({ data }) {
         </div>
       </div>
       <div className="hero-visual">
-        <div className="portrait-frame">
-          <img src={data.profilePicUrl} {...imageProps(data.profilePicUrl, '(max-width: 767px) calc(100vw - 48px), (max-width: 1100px) 34vw, 390px')} alt="Thimira Niranjaya Keerthiwansha" fetchpriority="high" />
-        </div>
+        <PixelWorkspace />
         <a href="#contact" className="availability"><span className="status-dot" />Available for software engineering internships<ArrowUpRight size={15} aria-hidden="true" /></a>
       </div>
       <div className="proof-strip" aria-label="Experience at a glance">
@@ -197,7 +195,7 @@ function SkillFocus({ title, description, skills, index }) {
   return <div ref={ref} className="skill-focus"><h3>{title}</h3><p>{description}</p><div className="tech-list">{skills.map((skill) => <span key={skill}>{skill}</span>)}</div></div>;
 }
 
-export function PortfolioAbout({ data }) {
+export function PortfolioAbout({ data, profilePicUrl }) {
   const core = [
     { title: 'Backend & real-time', description: 'APIs, domain logic, and the connections between services.', skills: ['C# / .NET', 'ASP.NET Core', 'SignalR', 'CQRS & MediatR'] },
     { title: 'Cloud & data', description: 'The infrastructure and data that keep systems running.', skills: ['AWS', 'Docker', 'PostgreSQL / PostGIS', 'Redis'] },
@@ -205,7 +203,7 @@ export function PortfolioAbout({ data }) {
   ];
   return <section id="about" className="portfolio-section about-section">
     <SectionTitle title="The engineer behind the work." />
-    <div className="about-intro"><p>{data.bio}</p><p>{data.motivation}</p></div>
+    <div className="about-person"><div className="portrait-frame"><img src={profilePicUrl} {...imageProps(profilePicUrl, '(max-width: 767px) 112px, 200px')} alt="Thimira Niranjaya Keerthiwansha" loading="lazy" /></div><div className="about-intro"><p>{data.bio}</p><p>{data.motivation}</p></div></div>
     <div className="skill-focus-grid">{core.map((skill, index) => <SkillFocus key={skill.title} {...skill} index={index} />)}</div>
     <details className="skills-details"><summary>Explore my full toolkit<ChevronDown size={17} aria-hidden="true" /></summary><div className="full-skills">{data.skillGroups.map((group) => <div key={group.category}><h3>{group.category}</h3><p>{group.items.join(' · ')}</p></div>)}</div></details>
   </section>;

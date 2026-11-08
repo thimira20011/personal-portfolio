@@ -34,6 +34,7 @@ export default function App() {
 
   useEffect(() => {
     document.documentElement.classList.toggle('dark', isDarkMode);
+    document.querySelector('meta[name="theme-color"]')?.setAttribute('content', isDarkMode ? '#171714' : '#ece4d6');
     try { localStorage.setItem('theme', isDarkMode ? 'dark' : 'light'); } catch { /* The theme still works without storage. */ }
   }, [isDarkMode]);
 
@@ -61,7 +62,7 @@ export default function App() {
       <main id="main-content" className="page-container" tabIndex={-1}>
         <PortfolioHero data={portfolioData} />
         <PortfolioProjects projects={portfolioData.projects} />
-        <PortfolioAbout data={portfolioData.about} />
+        <PortfolioAbout data={portfolioData.about} profilePicUrl={portfolioData.profilePicUrl} />
         <ExperienceTimeline data={portfolioData.timeline} />
         <AchievementsAwards data={portfolioData.achievements} publications={portfolioData.publications} />
         <PortfolioCertifications data={portfolioData.certifications} />

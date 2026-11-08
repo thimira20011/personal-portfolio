@@ -14,8 +14,8 @@ beforeEach(() => {
   jest.spyOn(HTMLCanvasElement.prototype, 'getContext').mockReturnValue(null);
   observers = [];
   window.IntersectionObserver = class {
-    constructor(callback) { this.callback = callback; observers.push(this); }
-    observe(element) { this.callback([{ target: element, isIntersecting: true }]); }
+    constructor(callback) { this.callback = callback; this.targets = []; observers.push(this); }
+    observe(element) { this.targets.push(element); this.callback([{ target: element, isIntersecting: true }]); }
     unobserve() {}
     disconnect() {}
   };
@@ -90,6 +90,15 @@ test('mobile navigation closes on Escape and returns focus to its trigger', () =
   expect(document.activeElement).toBe(button);
 });
 
+test('clears stale navigation highlighting when Home enters the active reading area', () => {
+  const navObserver = observers.find((observer) => observer.targets.includes(container.querySelector('#home')));
+  expect(navObserver).toBeDefined();
+  act(() => navObserver.callback([{ target: container.querySelector('#contact'), isIntersecting: true }]));
+  expect(container.querySelector('.desktop-links [aria-current]').getAttribute('href')).toBe('#contact');
+  act(() => navObserver.callback([{ target: container.querySelector('#home'), isIntersecting: true }]));
+  expect(container.querySelector('.desktop-links [aria-current]')).toBeNull();
+});
+
 test('preserves all credentials, PDFs, engineering stories, and valid local section links', () => {
   expect(container.querySelectorAll('.certificate-card')).toHaveLength(10);
   expect(container.querySelectorAll('.selected-project .architecture')).toHaveLength(3);
@@ -136,7 +145,8 @@ test('reduced motion shows supporting content without depending on scroll animat
   observers = [];
   root = createRoot(container);
   act(() => root.render(<App />));
-  expect(observers).toHaveLength(1); // Only navigation needs an observer.
+  expect(container.querySelector('[data-reveal-pending]')).toBeNull();
+  expect(container.querySelector('.pixel-workspace').dataset.running).toBe('false');
   expect(container.querySelector('#achievements .opacity-0')).toBeNull();
   expect(container.querySelector('#contact .opacity-0')).toBeNull();
 });

@@ -10,3 +10,4 @@ yarn-error.log*
 coverage
 tmp/
 .taste-skill/
+.impeccable/review/

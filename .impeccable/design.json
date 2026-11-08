@@ -1,0 +1,569 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-08T14:11:40.550Z",
+  "title": "Design System: Thimira Portfolio",
+  "extensions": {
+    "colorMeta": {
+      "ink-black": {
+        "role": "primary",
+        "displayName": "Ink Black",
+        "tonalRamp": [
+          "oklch(15% 0.0026 106.91)",
+          "oklch(26% 0.0042 106.91)",
+          "oklch(37% 0.0053 106.91)",
+          "oklch(48% 0.0058 106.91)",
+          "oklch(59% 0.0056 106.91)",
+          "oklch(70% 0.0047 106.91)",
+          "oklch(82% 0.0031 106.91)",
+          "oklch(95% 0.0009 106.91)"
+        ]
+      },
+      "sand-brown": {
+        "role": "primary",
+        "displayName": "Sand Brown",
+        "tonalRamp": [
+          "oklch(15% 0.0292 72.95)",
+          "oklch(26% 0.0468 72.95)",
+          "oklch(37% 0.0590 72.95)",
+          "oklch(48% 0.0641 72.95)",
+          "oklch(59% 0.0617 72.95)",
+          "oklch(70% 0.0520 72.95)",
+          "oklch(82% 0.0344 72.95)",
+          "oklch(95% 0.0101 72.95)"
+        ]
+      },
+      "electric-lime": {
+        "role": "tertiary",
+        "displayName": "Electric Lime",
+        "tonalRamp": [
+          "oklch(15% 0.0810 125.36)",
+          "oklch(26% 0.1301 125.36)",
+          "oklch(37% 0.1638 125.36)",
+          "oklch(48% 0.1781 125.36)",
+          "oklch(59% 0.1714 125.36)",
+          "oklch(70% 0.1444 125.36)",
+          "oklch(82% 0.0956 125.36)",
+          "oklch(95% 0.0279 125.36)"
+        ]
+      },
+      "action-ink": {
+        "role": "neutral",
+        "displayName": "Action Ink",
+        "tonalRamp": [
+          "oklch(15% 0.0096 127.72)",
+          "oklch(26% 0.0155 127.72)",
+          "oklch(37% 0.0195 127.72)",
+          "oklch(48% 0.0212 127.72)",
+          "oklch(59% 0.0204 127.72)",
+          "oklch(70% 0.0172 127.72)",
+          "oklch(82% 0.0114 127.72)",
+          "oklch(95% 0.0033 127.72)"
+        ]
+      },
+      "light-page": {
+        "role": "neutral",
+        "displayName": "Light Page",
+        "tonalRamp": [
+          "oklch(15% 0.0094 81.78)",
+          "oklch(26% 0.0150 81.78)",
+          "oklch(37% 0.0189 81.78)",
+          "oklch(48% 0.0206 81.78)",
+          "oklch(59% 0.0198 81.78)",
+          "oklch(70% 0.0167 81.78)",
+          "oklch(82% 0.0111 81.78)",
+          "oklch(95% 0.0032 81.78)"
+        ]
+      },
+      "light-surface": {
+        "role": "neutral",
+        "displayName": "Light Surface",
+        "tonalRamp": [
+          "oklch(15% 0.0075 79.35)",
+          "oklch(26% 0.0120 79.35)",
+          "oklch(37% 0.0151 79.35)",
+          "oklch(48% 0.0164 79.35)",
+          "oklch(59% 0.0158 79.35)",
+          "oklch(70% 0.0133 79.35)",
+          "oklch(82% 0.0088 79.35)",
+          "oklch(95% 0.0026 79.35)"
+        ]
+      },
+      "light-surface-alt": {
+        "role": "neutral",
+        "displayName": "Light Surface Alt",
+        "tonalRamp": [
+          "oklch(15% 0.0133 77.53)",
+          "oklch(26% 0.0214 77.53)",
+          "oklch(37% 0.0270 77.53)",
+          "oklch(48% 0.0293 77.53)",
+          "oklch(59% 0.0282 77.53)",
+          "oklch(70% 0.0238 77.53)",
+          "oklch(82% 0.0157 77.53)",
+          "oklch(95% 0.0046 77.53)"
+        ]
+      },
+      "light-ink": {
+        "role": "neutral",
+        "displayName": "Light Ink",
+        "tonalRamp": [
+          "oklch(15% 0.0041 107.03)",
+          "oklch(26% 0.0067 107.03)",
+          "oklch(37% 0.0084 107.03)",
+          "oklch(48% 0.0091 107.03)",
+          "oklch(59% 0.0088 107.03)",
+          "oklch(70% 0.0074 107.03)",
+          "oklch(82% 0.0049 107.03)",
+          "oklch(95% 0.0014 107.03)"
+        ]
+      },
+      "light-muted": {
+        "role": "neutral",
+        "displayName": "Light Muted",
+        "tonalRamp": [
+          "oklch(15% 0.0100 86.17)",
+          "oklch(26% 0.0160 86.17)",
+          "oklch(37% 0.0202 86.17)",
+          "oklch(48% 0.0219 86.17)",
+          "oklch(59% 0.0211 86.17)",
+          "oklch(70% 0.0178 86.17)",
+          "oklch(82% 0.0118 86.17)",
+          "oklch(95% 0.0034 86.17)"
+        ]
+      },
+      "light-subtle": {
+        "role": "neutral",
+        "displayName": "Light Subtle",
+        "tonalRamp": [
+          "oklch(15% 0.0126 79.53)",
+          "oklch(26% 0.0203 79.53)",
+          "oklch(37% 0.0256 79.53)",
+          "oklch(48% 0.0278 79.53)",
+          "oklch(59% 0.0267 79.53)",
+          "oklch(70% 0.0225 79.53)",
+          "oklch(82% 0.0149 79.53)",
+          "oklch(95% 0.0044 79.53)"
+        ]
+      },
+      "light-line": {
+        "role": "neutral",
+        "displayName": "Light Line",
+        "tonalRamp": [
+          "oklch(15% 0.0155 79.22)",
+          "oklch(26% 0.0249 79.22)",
+          "oklch(37% 0.0314 79.22)",
+          "oklch(48% 0.0341 79.22)",
+          "oklch(59% 0.0328 79.22)",
+          "oklch(70% 0.0276 79.22)",
+          "oklch(82% 0.0183 79.22)",
+          "oklch(95% 0.0053 79.22)"
+        ]
+      },
+      "light-accent": {
+        "role": "neutral",
+        "displayName": "Light Accent",
+        "tonalRamp": [
+          "oklch(15% 0.0484 129.20)",
+          "oklch(26% 0.0777 129.20)",
+          "oklch(37% 0.0978 129.20)",
+          "oklch(48% 0.1063 129.20)",
+          "oklch(59% 0.1023 129.20)",
+          "oklch(70% 0.0862 129.20)",
+          "oklch(82% 0.0571 129.20)",
+          "oklch(95% 0.0167 129.20)"
+        ]
+      },
+      "light-accent-soft": {
+        "role": "neutral",
+        "displayName": "Light Accent Soft",
+        "tonalRamp": [
+          "oklch(15% 0.0191 118.99)",
+          "oklch(26% 0.0306 118.99)",
+          "oklch(37% 0.0385 118.99)",
+          "oklch(48% 0.0419 118.99)",
+          "oklch(59% 0.0403 118.99)",
+          "oklch(70% 0.0340 118.99)",
+          "oklch(82% 0.0225 118.99)",
+          "oklch(95% 0.0066 118.99)"
+        ]
+      },
+      "light-positive": {
+        "role": "neutral",
+        "displayName": "Light Positive",
+        "tonalRamp": [
+          "oklch(15% 0.0427 130.16)",
+          "oklch(26% 0.0685 130.16)",
+          "oklch(37% 0.0862 130.16)",
+          "oklch(48% 0.0938 130.16)",
+          "oklch(59% 0.0902 130.16)",
+          "oklch(70% 0.0760 130.16)",
+          "oklch(82% 0.0503 130.16)",
+          "oklch(95% 0.0147 130.16)"
+        ]
+      },
+      "light-positive-soft": {
+        "role": "neutral",
+        "displayName": "Light Positive Soft",
+        "tonalRamp": [
+          "oklch(15% 0.0140 115.02)",
+          "oklch(26% 0.0225 115.02)",
+          "oklch(37% 0.0283 115.02)",
+          "oklch(48% 0.0308 115.02)",
+          "oklch(59% 0.0297 115.02)",
+          "oklch(70% 0.0250 115.02)",
+          "oklch(82% 0.0166 115.02)",
+          "oklch(95% 0.0048 115.02)"
+        ]
+      },
+      "light-error": {
+        "role": "neutral",
+        "displayName": "Light Error",
+        "tonalRamp": [
+          "oklch(15% 0.0735 28.85)",
+          "oklch(26% 0.1180 28.85)",
+          "oklch(37% 0.1486 28.85)",
+          "oklch(48% 0.1616 28.85)",
+          "oklch(59% 0.1555 28.85)",
+          "oklch(70% 0.1310 28.85)",
+          "oklch(82% 0.0867 28.85)",
+          "oklch(95% 0.0253 28.85)"
+        ]
+      },
+      "light-sand": {
+        "role": "primary",
+        "displayName": "Light Sand",
+        "tonalRamp": [
+          "oklch(15% 0.0309 69.52)",
+          "oklch(26% 0.0497 69.52)",
+          "oklch(37% 0.0625 69.52)",
+          "oklch(48% 0.0680 69.52)",
+          "oklch(59% 0.0654 69.52)",
+          "oklch(70% 0.0551 69.52)",
+          "oklch(82% 0.0365 69.52)",
+          "oklch(95% 0.0107 69.52)"
+        ]
+      },
+      "dark-surface": {
+        "role": "neutral",
+        "displayName": "Dark Surface",
+        "tonalRamp": [
+          "oklch(15% 0.0042 107.07)",
+          "oklch(26% 0.0067 107.07)",
+          "oklch(37% 0.0085 107.07)",
+          "oklch(48% 0.0092 107.07)",
+          "oklch(59% 0.0089 107.07)",
+          "oklch(70% 0.0075 107.07)",
+          "oklch(82% 0.0050 107.07)",
+          "oklch(95% 0.0014 107.07)"
+        ]
+      },
+      "dark-surface-alt": {
+        "role": "neutral",
+        "displayName": "Dark Surface Alt",
+        "tonalRamp": [
+          "oklch(15% 0.0057 100.46)",
+          "oklch(26% 0.0091 100.46)",
+          "oklch(37% 0.0115 100.46)",
+          "oklch(48% 0.0125 100.46)",
+          "oklch(59% 0.0120 100.46)",
+          "oklch(70% 0.0101 100.46)",
+          "oklch(82% 0.0067 100.46)",
+          "oklch(95% 0.0020 100.46)"
+        ]
+      },
+      "dark-ink": {
+        "role": "neutral",
+        "displayName": "Dark Ink",
+        "tonalRamp": [
+          "oklch(15% 0.0107 82.12)",
+          "oklch(26% 0.0171 82.12)",
+          "oklch(37% 0.0215 82.12)",
+          "oklch(48% 0.0234 82.12)",
+          "oklch(59% 0.0225 82.12)",
+          "oklch(70% 0.0190 82.12)",
+          "oklch(82% 0.0126 82.12)",
+          "oklch(95% 0.0037 82.12)"
+        ]
+      },
+      "dark-muted": {
+        "role": "neutral",
+        "displayName": "Dark Muted",
+        "tonalRamp": [
+          "oklch(15% 0.0146 81.72)",
+          "oklch(26% 0.0234 81.72)",
+          "oklch(37% 0.0295 81.72)",
+          "oklch(48% 0.0321 81.72)",
+          "oklch(59% 0.0308 81.72)",
+          "oklch(70% 0.0260 81.72)",
+          "oklch(82% 0.0172 81.72)",
+          "oklch(95% 0.0050 81.72)"
+        ]
+      },
+      "dark-subtle": {
+        "role": "neutral",
+        "displayName": "Dark Subtle",
+        "tonalRamp": [
+          "oklch(15% 0.0164 80.23)",
+          "oklch(26% 0.0263 80.23)",
+          "oklch(37% 0.0331 80.23)",
+          "oklch(48% 0.0359 80.23)",
+          "oklch(59% 0.0346 80.23)",
+          "oklch(70% 0.0291 80.23)",
+          "oklch(82% 0.0193 80.23)",
+          "oklch(95% 0.0056 80.23)"
+        ]
+      },
+      "dark-line": {
+        "role": "neutral",
+        "displayName": "Dark Line",
+        "tonalRamp": [
+          "oklch(15% 0.0090 99.45)",
+          "oklch(26% 0.0145 99.45)",
+          "oklch(37% 0.0182 99.45)",
+          "oklch(48% 0.0198 99.45)",
+          "oklch(59% 0.0191 99.45)",
+          "oklch(70% 0.0161 99.45)",
+          "oklch(82% 0.0106 99.45)",
+          "oklch(95% 0.0031 99.45)"
+        ]
+      },
+      "dark-accent-soft": {
+        "role": "neutral",
+        "displayName": "Dark Accent Soft",
+        "tonalRamp": [
+          "oklch(15% 0.0185 127.57)",
+          "oklch(26% 0.0296 127.57)",
+          "oklch(37% 0.0373 127.57)",
+          "oklch(48% 0.0406 127.57)",
+          "oklch(59% 0.0391 127.57)",
+          "oklch(70% 0.0329 127.57)",
+          "oklch(82% 0.0218 127.57)",
+          "oklch(95% 0.0064 127.57)"
+        ]
+      },
+      "dark-positive": {
+        "role": "neutral",
+        "displayName": "Dark Positive",
+        "tonalRamp": [
+          "oklch(15% 0.0298 123.94)",
+          "oklch(26% 0.0479 123.94)",
+          "oklch(37% 0.0603 123.94)",
+          "oklch(48% 0.0655 123.94)",
+          "oklch(59% 0.0631 123.94)",
+          "oklch(70% 0.0531 123.94)",
+          "oklch(82% 0.0352 123.94)",
+          "oklch(95% 0.0103 123.94)"
+        ]
+      },
+      "dark-positive-soft": {
+        "role": "neutral",
+        "displayName": "Dark Positive Soft",
+        "tonalRamp": [
+          "oklch(15% 0.0125 128.25)",
+          "oklch(26% 0.0201 128.25)",
+          "oklch(37% 0.0253 128.25)",
+          "oklch(48% 0.0275 128.25)",
+          "oklch(59% 0.0265 128.25)",
+          "oklch(70% 0.0223 128.25)",
+          "oklch(82% 0.0148 128.25)",
+          "oklch(95% 0.0043 128.25)"
+        ]
+      },
+      "dark-error": {
+        "role": "neutral",
+        "displayName": "Dark Error",
+        "tonalRamp": [
+          "oklch(15% 0.0430 28.05)",
+          "oklch(26% 0.0690 28.05)",
+          "oklch(37% 0.0868 28.05)",
+          "oklch(48% 0.0944 28.05)",
+          "oklch(59% 0.0909 28.05)",
+          "oklch(70% 0.0765 28.05)",
+          "oklch(82% 0.0507 28.05)",
+          "oklch(95% 0.0148 28.05)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Engineering headline",
+        "purpose": "Large, bold hero headline."
+      },
+      "headline": {
+        "displayName": "Section headline",
+        "purpose": "Primary section headings."
+      },
+      "title": {
+        "displayName": "Project title",
+        "purpose": "Selected project names."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Engineering summaries and descriptions."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Navigation and compact controls."
+      }
+    },
+    "shadows": [
+      {
+        "name": "project-preview",
+        "value": "0 16px 32px -18px rgb(22 20 14 / 40%)",
+        "purpose": "Lift project screenshots from their tonal stage."
+      },
+      {
+        "name": "mobile-menu",
+        "value": "0 16px 32px -20px rgb(0 0 0 / 30%)",
+        "purpose": "Separate the mobile navigation panel."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease-out",
+        "value": "cubic-bezier(0.23, 1, 0.32, 1)",
+        "purpose": "Entrances and press feedback."
+      },
+      {
+        "name": "ease-in-out",
+        "value": "cubic-bezier(0.77, 0, 0.175, 1)",
+        "purpose": "On-screen movement."
+      },
+      {
+        "name": "press",
+        "value": "160ms",
+        "purpose": "Button press scale to 0.97."
+      },
+      {
+        "name": "headline",
+        "value": "900ms",
+        "purpose": "Masked hero lines, separated by 80ms."
+      },
+      {
+        "name": "content-reveal",
+        "value": "700ms",
+        "purpose": "Once-only WAAPI entrance; delay capped at 80ms."
+      },
+      {
+        "name": "project-image-reveal",
+        "value": "900ms",
+        "purpose": "Project screenshot clip and settle."
+      },
+      {
+        "name": "workspace-arrival",
+        "value": "1000ms",
+        "purpose": "Initial decorative scene appearance."
+      },
+      {
+        "name": "reduced-feedback",
+        "value": "120ms",
+        "purpose": "Short color/opacity feedback with positional movement removed."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "intermediate-max",
+        "value": "1100px"
+      },
+      {
+        "name": "mobile-max",
+        "value": "767px"
+      },
+      {
+        "name": "small-phone-max",
+        "value": "374px"
+      },
+      {
+        "name": "awards-three-column-min",
+        "value": "1024px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Lime action with dark text and immediate press feedback.",
+      "html": "<button class=\"ds-primary\" type=\"button\">View resume</button>",
+      "css": ".ds-primary{display:inline-flex;align-items:center;justify-content:center;gap:16px;min-height:52px;padding:14px 22px;border-radius:8px;font:700 14px var(--body,Manrope,sans-serif);cursor:pointer;transition:transform 160ms var(--ease-out,cubic-bezier(.23,1,.32,1)),background-color 160ms ease,color 160ms ease;border:1px solid transparent;background:var(--action,#c4f464);color:var(--on-action,#20251a);}.ds-primary:focus-visible{outline:3px solid var(--accent,#426015);outline-offset:4px;}.ds-primary:active{transform:scale(.97);}@media(hover:hover) and (pointer:fine){.ds-primary:hover{transform:translateY(-1px);background:color-mix(in srgb,var(--action,#c4f464),var(--ink,#23231e) 12%);}}@media(prefers-reduced-motion:reduce){.ds-primary,.ds-secondary{transform:none!important;transition-property:color,background-color,border-color;transition-duration:120ms;}}"
+    },
+    {
+      "name": "Secondary Button",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "Surface-colored action with a theme divider.",
+      "html": "<button class=\"ds-secondary\" type=\"button\">Explore my work</button>",
+      "css": ".ds-secondary{display:inline-flex;align-items:center;justify-content:center;gap:16px;min-height:52px;padding:14px 22px;border-radius:8px;font:700 14px var(--body,Manrope,sans-serif);cursor:pointer;transition:transform 160ms var(--ease-out,cubic-bezier(.23,1,.32,1)),background-color 160ms ease,color 160ms ease;border:1px solid var(--line,#c7b9a3);background:var(--surface,#f5eee3);color:var(--ink,#23231e);}.ds-secondary:focus-visible{outline:3px solid var(--accent,#426015);outline-offset:4px;}.ds-secondary:active{transform:scale(.97);}@media(hover:hover) and (pointer:fine){.ds-secondary:hover{transform:translateY(-1px);background:var(--accent-soft,#e0e8c9);color:var(--accent,#426015);}}@media(prefers-reduced-motion:reduce){.ds-primary,.ds-secondary{transform:none!important;transition-property:color,background-color,border-color;transition-duration:120ms;}}"
+    },
+    {
+      "name": "Text Field",
+      "kind": "input",
+      "refersTo": "input",
+      "description": "Readable 16px field on the page surface.",
+      "html": "<label class=\"ds-label\" for=\"ds-contact-name\">Name</label><input class=\"ds-input\" id=\"ds-contact-name\" placeholder=\"Your name\">",
+      "css": ".ds-label{display:block;margin-bottom:8px;color:var(--ink,#23231e);font:600 13px var(--body,Manrope,sans-serif);}.ds-input{width:100%;padding:12px 14px;border:1px solid var(--line,#c7b9a3);border-radius:8px;background:var(--page,#ece4d6);color:var(--ink,#23231e);font:16px var(--body,Manrope,sans-serif);caret-color:var(--accent,#426015);transition:border-color 160ms ease;}.ds-input::placeholder{color:var(--muted,#595346);opacity:1;}.ds-input:hover{border-color:var(--accent,#426015);}.ds-input:focus-visible{outline:3px solid var(--accent,#426015);outline-offset:4px;}.ds-input:disabled{opacity:.5;}"
+    },
+    {
+      "name": "Navigation",
+      "kind": "nav",
+      "refersTo": "navigation",
+      "description": "Compact surface shell with an accent current-link underline.",
+      "html": "<nav class=\"ds-nav\" aria-label=\"Portfolio navigation preview\"><a href=\"#projects\" aria-current=\"location\">Work</a><a href=\"#about\">About</a><a href=\"#contact\">Contact</a></nav>",
+      "css": ".ds-nav{display:flex;gap:28px;align-items:center;min-height:72px;padding:0 24px;border:1px solid var(--line,#c7b9a3);border-radius:14px;background:var(--surface,#f5eee3);font:600 13px var(--body,Manrope,sans-serif);}.ds-nav a{display:inline-flex;align-items:center;min-height:44px;position:relative;color:var(--muted,#595346);text-decoration:none;transition:color 160ms ease;}.ds-nav a[aria-current]{color:var(--accent,#426015);}.ds-nav a[aria-current]::after{content:\"\";position:absolute;left:0;right:0;bottom:4px;height:2px;background:currentColor;}.ds-nav a:hover{color:var(--accent,#426015);}.ds-nav a:focus-visible{outline:3px solid var(--accent,#426015);outline-offset:4px;}"
+    },
+    {
+      "name": "Project Filter",
+      "kind": "chip",
+      "refersTo": "filter",
+      "description": "A 44px selected filter exposing aria-pressed.",
+      "html": "<button class=\"ds-filter\" type=\"button\" aria-pressed=\"true\">All</button>",
+      "css": ".ds-filter{min-height:44px;padding:10px 16px;border:1px solid var(--line,#c7b9a3);border-radius:8px;background:transparent;color:var(--muted,#595346);font:600 13px var(--body,Manrope,sans-serif);cursor:pointer;transition:background-color 160ms ease,border-color 160ms ease,color 160ms ease;}.ds-filter[aria-pressed=true]{background:var(--action,#c4f464);border-color:var(--action,#c4f464);color:var(--on-action,#20251a);}.ds-filter:hover:not([aria-pressed=true]){background:var(--accent-soft,#e0e8c9);}.ds-filter:focus-visible{outline:3px solid var(--accent,#426015);outline-offset:4px;}"
+    },
+    {
+      "name": "Project Card",
+      "kind": "card",
+      "refersTo": "project-card",
+      "description": "Bordered surface container for engineering work.",
+      "html": "<article class=\"ds-project\"><h3>NearU</h3><p>Real-time backend engineering</p><a href=\"#projects\">Explore the work</a></article>",
+      "css": ".ds-project{padding:36px;border:1px solid var(--line,#c7b9a3);border-radius:16px;background:var(--surface,#f5eee3);color:var(--ink,#23231e);font:16px/1.8 var(--body,Manrope,sans-serif);transition:border-color 240ms ease;}.ds-project h3{margin:0 0 16px;font:500 36px/1.2 var(--display,Manrope,sans-serif);letter-spacing:-.03em;}.ds-project p{color:var(--muted,#595346);}.ds-project a{display:inline-flex;align-items:center;min-height:44px;color:var(--accent,#426015);font-size:13px;font-weight:700;text-underline-offset:5px;}.ds-project a:focus-visible{outline:3px solid var(--accent,#426015);outline-offset:4px;}@media(hover:hover) and (pointer:fine){.ds-project:hover{border-color:var(--sand,#8a6943);}.ds-project a:hover{text-decoration:underline;}}"
+    }
+  ],
+  "narrative": {
+    "northStar": "A little corner of my world",
+    "overview": "A little corner of my world pairs a finished pixel workspace with a readable engineering portfolio. Ink black and warm sand carry the surfaces and typography; electric lime identifies actions and interaction states.\n\nThe interface uses tonal layers, restrained borders, and clear type rather than ornamental chrome. Motion introduces the work and animates the decorative scene while leaving reading content still after arrival.",
+    "keyCharacteristics": [
+      "Ink and sand surfaces with lime actions.",
+      "Bold Manrope display and readable supporting text.",
+      "Original pixel artwork with a visible pause control.",
+      "Adaptive layouts and a still reduced-motion composition."
+    ],
+    "rules": [
+      {
+        "name": "The Theme Pair Rule",
+        "body": "Use the semantic CSS variables for surfaces and text so each foreground travels with its light or dark background.",
+        "section": "colors"
+      },
+      {
+        "name": "The Readable Type Rule",
+        "body": "Pixel art belongs to the illustration; the interface and engineering content remain in Manrope.",
+        "section": "typography"
+      },
+      {
+        "name": "The Still Reading Rule",
+        "body": "Reading content enters once and stays still; ongoing animation belongs to the pausable decorative workspace.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do pair semantic foreground and background variables in both themes.",
+      "Do keep controls at least 44px high and form text at 16px.",
+      "Do gate hover movement to fine pointers and honor reduced motion.",
+      "Do retain the original artwork's transparency and provenance."
+    ],
+    "donts": [
+      "Don't use the pixel artwork's styling as a body-text font.",
+      "Don't hide reading content behind a loader or replay entrances on every scroll.",
+      "Don't run the artwork when paused, offscreen, in a hidden tab, or under reduced motion."
+    ]
+  }
+}

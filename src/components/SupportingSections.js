@@ -484,7 +484,7 @@ export const ScrollToTop = () => {
         <button
           onClick={() => window.scrollTo({ top: 0, behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' })}
           aria-label="Scroll to top"
-          className="fixed bottom-6 right-6 z-50 w-11 h-11 flex items-center justify-center rounded-full bg-sky-700 text-white shadow-lg hover:bg-sky-800 transition-colors duration-200 focus:outline-none focus:ring-4 focus:ring-sky-300"
+          className="scroll-top fixed bottom-6 right-6 z-50 w-11 h-11 flex items-center justify-center rounded-full transition-colors duration-200"
         >
           <ChevronUp className="h-5 w-5" />
         </button>

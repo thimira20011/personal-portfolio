@@ -26,7 +26,7 @@ export default function AmbientBackground({ isDarkMode }) {
       particles.forEach((particle) => {
         context.beginPath();
         context.arc(particle.x, particle.y, particle.radius, 0, Math.PI * 2);
-        context.fillStyle = isDarkMode ? 'rgba(147,197,253,.42)' : 'rgba(14,116,184,.24)';
+        context.fillStyle = isDarkMode ? 'rgba(195,164,125,.32)' : 'rgba(81,66,47,.2)';
         context.fill();
       });
     };

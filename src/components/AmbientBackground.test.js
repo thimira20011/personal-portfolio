@@ -17,7 +17,7 @@ test('draws the particle texture once without scheduling a canvas render loop', 
     act(() => window.dispatchEvent(new Event('resize')));
     expect(context.clearRect).toHaveBeenCalledTimes(2);
     act(() => root.render(<AmbientBackground isDarkMode />));
-    expect(context.fillStyle).toBe('rgba(147,197,253,.42)');
+    expect(context.fillStyle).toBe('rgba(195,164,125,.32)');
     expect(frame).not.toHaveBeenCalled();
   } finally {
     act(() => root.unmount());

@@ -1,5 +1,7 @@
 # Portfolio audit and improvement plan
 
+Historical review of the first, blue design iteration. The subsequent owner-requested ink/sand/lime redesign is planned in `REDESIGN_PLAN.md`; its current design system is recorded in `DESIGN.md`. The previous template gate results in `DESIGN_CHECKER_RESULTS.json` describe this first iteration and are not a verdict on the current redesign.
+
 Audience: software engineering internship recruiters, confirmed by Thimira.
 Surface: existing React portfolio; Experience mode, with a short path to resume and contact.
 Scope: strengthen the established blue identity, typography, spacing, project presentation, and motion. Preserve the supplied facts, credentials, links, project stories, and contact service.

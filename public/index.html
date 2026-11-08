@@ -35,11 +35,18 @@
     <meta name="twitter:description" content="Building real-time, distributed backend systems with .NET 10, React/TypeScript, SignalR, Redis, and PostGIS." />
     <meta name="twitter:image" content="https://github.com/thimira20011/portfolio-pictures/blob/main/WhatsApp%20Image%202026-03-30%20at%2023.34.12.jpeg?raw=true" />
 
-    <!-- SVG Favicon with TN monogram in sky-blue (no extra file needed) -->
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%230284c7'/%3E%3Ctext y='72' font-size='52' text-anchor='middle' x='50' fill='white' font-family='Arial%2Csans-serif' font-weight='bold'%3ETN%3C/text%3E%3C/svg%3E" />
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='18' fill='%23171714'/%3E%3Ctext y='72' font-size='52' text-anchor='middle' x='50' fill='%23c4f464' font-family='Arial%2Csans-serif' font-weight='bold'%3ETN%3C/text%3E%3C/svg%3E" />
 
     <!-- Mobile browser chrome color -->
-    <meta name="theme-color" content="#0284c7" />
+    <meta name="theme-color" content="#171714" />
+    <script>
+      try {
+        var portfolioTheme = localStorage.getItem('theme');
+        var portfolioDark = portfolioTheme ? portfolioTheme === 'dark' : window.matchMedia('(prefers-color-scheme: dark)').matches;
+        document.documentElement.classList.toggle('dark', portfolioDark);
+        document.querySelector('meta[name="theme-color"]').setAttribute('content', portfolioDark ? '#171714' : '#ece4d6');
+      } catch (error) { /* The site remains usable without storage. */ }
+    </script>
 
     <!-- Schema.org Person Structured Data for Google Search Rich Snippets -->
     <script type="application/ld+json">

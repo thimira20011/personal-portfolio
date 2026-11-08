@@ -11,6 +11,7 @@ export default function useReveal(delay = 0) {
     if (element.getBoundingClientRect().top < window.innerHeight) return undefined;
 
     let animation;
+    const imageAnimations = [];
     let revealed = false;
     const previousWillChange = element.style.willChange;
     const clear = () => {
@@ -23,15 +24,21 @@ export default function useReveal(delay = 0) {
       revealed = true;
       observer.disconnect();
       element.style.willChange = 'opacity, translate';
+      const image = element.querySelector('.project-preview-frame');
+      const imageAnimation = image?.animate([
+        { clipPath: 'inset(0 0 12% 0 round 8px)', transform: 'translateY(16px) scale(.98)' },
+        { clipPath: 'inset(0 0 0 0 round 8px)', transform: 'translateY(0) scale(1)' },
+      ], { duration: 900, easing: 'cubic-bezier(0.23, 1, 0.32, 1)' });
+      if (imageAnimation) imageAnimations.push(imageAnimation);
       animation = element.animate([
-        { opacity: 0, translate: '0 10px' },
+        { opacity: 0, translate: '0 24px' },
         { opacity: 1, translate: '0 0' },
-      ], { duration: 420, delay: Math.min(delay, 80), easing: 'cubic-bezier(0.23, 1, 0.32, 1)', fill: 'backwards' });
+      ], { duration: 700, delay: Math.min(delay, 80), easing: 'cubic-bezier(0.23, 1, 0.32, 1)', fill: 'backwards' });
       element.removeAttribute('data-reveal-pending');
       animation.onfinish = clear;
     }, { threshold: 0, rootMargin: '0px 0px 80px 0px' });
 
-    const stop = () => { revealed = true; observer.disconnect(); animation?.cancel(); clear(); };
+    const stop = () => { revealed = true; observer.disconnect(); animation?.cancel(); imageAnimations.forEach((item) => item.cancel()); clear(); };
     const onMotionChange = () => { if (motion.matches) stop(); };
     observer.observe(element);
     element.addEventListener('focusin', stop);
