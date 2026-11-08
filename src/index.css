@@ -273,8 +273,8 @@ details[open] > summary > svg, details[open] > summary .expand-label > svg { tra
 .portfolio #experience [class*='absolute'][class*='rounded-full'] { background: var(--sand); }
 .portfolio #publications [class*='bg-orange-'] { background: var(--sand); }
 .portfolio :is(#experience, #achievements, #contact) :is(.text-gray-700, .text-gray-200, .dark\:text-white) { color: var(--ink); }
-.portfolio #contact [role='status'] { background: var(--surface); border-color: var(--line); box-shadow: none; }
-.portfolio #contact [role='status'] button { background: var(--action); color: var(--on-action); }
+.portfolio #contact .contact-form-panel [role='status'] { background: var(--surface); border-color: var(--line); box-shadow: none; }
+.portfolio #contact .contact-form-panel [role='status'] button { background: var(--action); color: var(--on-action); }
 .portfolio .scroll-top { background: var(--action); color: var(--on-action); box-shadow: 0 8px 24px -8px rgb(0 0 0 / 30%); }
 .portfolio #achievements a[href$='.pdf'] { min-height: 44px; }
 .portfolio #experience > div:last-child { max-width: 960px; }
@@ -307,7 +307,9 @@ details[open] > summary > svg, details[open] > summary .expand-label > svg { tra
 .portfolio #contact .text-red-500 { color: var(--error); }
 .portfolio #contact .space-y-3 > div > div > div { flex-wrap: wrap; }
 .portfolio #contact button[title] { flex-shrink: 0; min-width: 44px; min-height: 44px; display: inline-flex; align-items: center; justify-content: center; }
+.portfolio #contact .copy-feedback { min-height: 24px; margin-top: 12px; color: var(--muted); font-size: 14px; line-height: 1.7; }
 .portfolio #contact a[aria-label], .portfolio footer a { width: 44px; height: 44px; display: inline-flex; align-items: center; justify-content: center; }
+.portfolio #contact a[aria-label] { background: var(--surface-alt); }
 .portfolio #contact form :is(input, textarea) { background: var(--page); color: var(--ink); border: 1px solid var(--line); border-radius: 8px; box-shadow: none; font-size: 16px; padding: 12px 14px; }
 .portfolio #contact form :is(input, textarea)::placeholder { color: var(--muted); opacity: 1; }
 .portfolio #contact form textarea { resize: vertical; min-height: 140px; }

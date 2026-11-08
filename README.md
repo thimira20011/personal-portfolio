@@ -137,6 +137,7 @@ The deprecated Create React App toolchain was replaced with Vite to resolve its 
 - [DESIGN.md](DESIGN.md) — current color, typography, layout, component, and motion system.
 - [Refinement plan](REFINEMENT_PLAN.md) and [review](REFINEMENT_REVIEW.md) — the latest implementation scope, checks, and known limits.
 - [Maintenance review](MAINTENANCE_REVIEW.md) — dependency remediation, current résumés, GreenOps preview, and subsequent validation.
+- [Design skill review](DESIGN_SKILLS_REVIEW.md) — installed design guidance, sharing preview, and accessible contact feedback.
 - [Image provenance](public/images/README.md) — screenshot sources and the generated pixel illustration, including its recorded prompt.
 - [Font origins and licenses](public/fonts/README.md) — self-hosted font sources and SIL Open Font License files.
 

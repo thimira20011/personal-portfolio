@@ -6,6 +6,8 @@
 
 `ayurflow-sign-in.png` is the owner's supplied 1366 × 768 screenshot, originally named `01 · Staff sign-in.png`, added on 2026-11-09. It shows the actual AyurFlow staff sign-in interface. The original PNG is preserved; 320, 640, and 960-pixel JPEG variants provide smaller downloads. The portfolio retains the full screenshot aspect ratio. Project descriptions are based on the public AyurFlow repository and the owner's confirmation that they are Member A, responsible for backend, authentication, security, and DevOps. The project is presented as in development.
 
+`social-preview.png` is a 1200 × 630 first-party sharing card rendered on 2026-11-09 from `scripts/social-preview.html`. It reuses the existing self-hosted fonts, ink/sand/lime palette, original pixel workspace artwork, and confirmed name and engineering title. It contains no new generated artwork or invented claims. Open Graph and Twitter metadata reference this local image with its actual dimensions and descriptive alt text.
+
 The portrait and remaining screenshots are cached copies of the images already supplied in `src/data/portfolio.js`, sourced from the owner's `thimira20011/portfolio-pictures` GitHub repository. No stock photographs, invented application UI, or generated portraits are used.
 
 The original project assignments are preserved: `project-2.png` is GridWalk AI; `project-3.png` is the cloud project; `project-4.jpeg` is ShadowSense; `project-5.png` is GreenOps; `project-6.png` is ReuseHub; `project-7.png` is the game; `project-8.png` is the expense tracker. The ShadowSense image is low resolution and should be replaced with a higher-resolution original when one is available.

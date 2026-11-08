@@ -188,7 +188,7 @@ export const ExperienceTimeline = React.memo(({ data }) => (
   </section>
 ));
 
-export const Contact = React.memo(({ data, socialLinks, copyToClipboard, copiedType }) => {
+export const Contact = React.memo(({ data, socialLinks, copyToClipboard, copiedType, copyFeedback }) => {
   const ref = useReveal();
   const [formStatus, setFormStatus] = useState('idle'); // 'idle' | 'submitting' | 'success' | 'error'
   const [formError, setFormError] = useState('');
@@ -267,6 +267,7 @@ export const Contact = React.memo(({ data, socialLinks, copyToClipboard, copiedT
                     onClick={() => copyToClipboard(data.email, 'email')}
                     className="p-1.5 text-gray-500 hover:text-sky-600"
                     title="Copy Email"
+                    aria-label="Copy email address"
                   >
                     {copiedType === 'email' ? <Check className="w-4 h-4 text-emerald-500" /> : <Copy className="w-4 h-4" />}
                   </button>
@@ -291,6 +292,7 @@ export const Contact = React.memo(({ data, socialLinks, copyToClipboard, copiedT
                     onClick={() => copyToClipboard(data.phone, 'phone')}
                     className="p-1.5 text-gray-500 hover:text-sky-600"
                     title="Copy Calling Number"
+                    aria-label="Copy phone number"
                   >
                     {copiedType === 'phone' ? <Check className="w-4 h-4 text-emerald-500" /> : <Copy className="w-4 h-4" />}
                   </button>
@@ -317,6 +319,7 @@ export const Contact = React.memo(({ data, socialLinks, copyToClipboard, copiedT
                     onClick={() => copyToClipboard(data.whatsapp, 'whatsapp')}
                     className="p-1.5 text-gray-500 hover:text-emerald-600"
                     title="Copy WhatsApp Number"
+                    aria-label="Copy WhatsApp number"
                   >
                     {copiedType === 'whatsapp' ? <Check className="w-4 h-4 text-emerald-500" /> : <Copy className="w-4 h-4" />}
                   </button>
@@ -329,6 +332,8 @@ export const Contact = React.memo(({ data, socialLinks, copyToClipboard, copiedT
                   </span>
                 </div>
               </div>
+
+              <p className="copy-feedback" role="status" aria-live="polite" aria-atomic="true">{copyFeedback}</p>
 
               <div className="mt-8">
                 <h4 className="text-xs font-bold uppercase tracking-wider text-gray-700 dark:text-gray-300 mb-3">

@@ -208,3 +208,35 @@ test('contact form handles a failed submission without clearing the message', as
     expect(container.querySelector('button[type="submit"]').disabled).toBe(false);
   } finally { global.fetch = originalFetch; }
 });
+
+test('contact copy announces success and clears the confirmation after its timeout', async () => {
+  const clipboard = Object.getOwnPropertyDescriptor(navigator, 'clipboard');
+  const writeText = vi.fn().mockResolvedValue(undefined);
+  Object.defineProperty(navigator, 'clipboard', { configurable: true, value: { writeText } });
+  vi.useFakeTimers();
+  try {
+    await act(async () => container.querySelector('[aria-label="Copy email address"]').click());
+    expect(writeText).toHaveBeenCalledWith(container.querySelector('#contact a[href^="mailto:"]').href.replace('mailto:', ''));
+    expect(container.querySelector('.copy-feedback').textContent).toBe('Email address copied.');
+    act(() => vi.advanceTimersByTime(2500));
+    expect(container.querySelector('.copy-feedback').textContent).toBe('');
+  } finally {
+    vi.useRealTimers();
+    if (clipboard) Object.defineProperty(navigator, 'clipboard', clipboard);
+    else delete navigator.clipboard;
+  }
+});
+
+test('contact copy explains how to recover when clipboard access fails', async () => {
+  const clipboard = Object.getOwnPropertyDescriptor(navigator, 'clipboard');
+  Object.defineProperty(navigator, 'clipboard', { configurable: true, value: { writeText: vi.fn().mockRejectedValue(new Error('Clipboard denied')) } });
+  try {
+    await act(async () => container.querySelector('[aria-label="Copy phone number"]').click());
+    const feedback = container.querySelector('.copy-feedback');
+    expect(feedback.getAttribute('role')).toBe('status');
+    expect(feedback.textContent).toBe('Could not copy. Select the phone number and copy it manually.');
+  } finally {
+    if (clipboard) Object.defineProperty(navigator, 'clipboard', clipboard);
+    else delete navigator.clipboard;
+  }
+});

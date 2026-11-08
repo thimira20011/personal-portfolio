@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Analytics } from '@vercel/analytics/react';
 import portfolioData from './data/portfolio';
 import { PortfolioAbout, PortfolioCertifications, PortfolioHero, PortfolioNav, PortfolioProjects } from './components/PortfolioSections';
@@ -17,6 +17,8 @@ export default function App() {
     }
   });
   const [copiedType, setCopiedType] = useState(null);
+  const [copyFeedback, setCopyFeedback] = useState('');
+  const copyReset = useRef(null);
   const [animationsPaused, setAnimationsPaused] = useState(false);
 
   useEffect(() => {
@@ -46,13 +48,23 @@ export default function App() {
     }
   }, []);
 
+  useEffect(() => () => clearTimeout(copyReset.current), []);
+
   const copyToClipboard = async (text, type) => {
+    clearTimeout(copyReset.current);
+    setCopiedType(null);
+    setCopyFeedback('');
+    const label = { email: 'Email address', phone: 'Phone number', whatsapp: 'WhatsApp number' }[type];
     try {
       await navigator.clipboard.writeText(text);
       setCopiedType(type);
-      setTimeout(() => setCopiedType(null), 2500);
+      setCopyFeedback(`${label} copied.`);
+      copyReset.current = setTimeout(() => {
+        setCopiedType(null);
+        setCopyFeedback('');
+      }, 2500);
     } catch {
-      setCopiedType(null);
+      setCopyFeedback(`Could not copy. Select the ${label.toLowerCase()} and copy it manually.`);
     }
   };
 
@@ -68,7 +80,7 @@ export default function App() {
         <ExperienceTimeline data={portfolioData.timeline} />
         <AchievementsAwards data={portfolioData.achievements} publications={portfolioData.publications} />
         <PortfolioCertifications data={portfolioData.certifications} />
-        <Contact data={portfolioData.contact} socialLinks={portfolioData.socialLinks} copyToClipboard={copyToClipboard} copiedType={copiedType} />
+        <Contact data={portfolioData.contact} socialLinks={portfolioData.socialLinks} copyToClipboard={copyToClipboard} copiedType={copiedType} copyFeedback={copyFeedback} />
       </main>
       <div className="page-container"><Footer data={portfolioData} /></div>
       <ScrollToTop />
