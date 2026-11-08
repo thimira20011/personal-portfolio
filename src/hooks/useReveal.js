@@ -26,7 +26,7 @@ export default function useReveal(delay = 0) {
       animation = element.animate([
         { opacity: 0, translate: '0 10px' },
         { opacity: 1, translate: '0 0' },
-      ], { duration: 360, delay: Math.min(delay, 80), easing: 'cubic-bezier(.25, .1, .25, 1)', fill: 'backwards' });
+      ], { duration: 420, delay: Math.min(delay, 80), easing: 'cubic-bezier(0.23, 1, 0.32, 1)', fill: 'backwards' });
       element.removeAttribute('data-reveal-pending');
       animation.onfinish = clear;
     }, { threshold: 0, rootMargin: '0px 0px 80px 0px' });

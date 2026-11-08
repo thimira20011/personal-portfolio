@@ -6,9 +6,9 @@ import { SectionTitle } from './PortfolioSections';
 import useReveal from '../hooks/useReveal';
 
 const sectionTitles = {
-  'Education & Experience': ['03', 'The journey so far', 'Learning by building.'],
-  'Honors & Achievements': ['04', 'Recognition & writing', 'Ideas put to the test.'],
-  'Contact Me': ['06', 'Let’s build something', 'A good conversation starts here.'],
+  'Education & Experience': ['03', 'The journey so far', 'Education & engineering experience.'],
+  'Honors & Achievements': ['04', 'Recognition & writing', 'Awards & technical writing.'],
+  'Contact Me': ['06', 'Let’s build something', 'Let’s talk engineering.'],
 };
 const SectionHeading = ({ title }) => {
   const [number, eyebrow, heading] = sectionTitles[title];
@@ -34,7 +34,7 @@ export const AchievementsAwards = React.memo(({ data, publications }) => {
         {data.map((a) => (
           <div
             key={a.id}
-            className="bg-white/70 dark:bg-gray-800/55 p-6 rounded-3xl shadow-lg backdrop-blur-lg border border-white/60 dark:border-gray-700/50 hover:shadow-xl transition-all duration-300"
+            className="bg-white/70 dark:bg-gray-800/55 p-6 rounded-3xl shadow-lg backdrop-blur-lg border border-white/60 dark:border-gray-700/50 hover:shadow-xl transition-colors duration-300"
           >
             <div className="flex items-start gap-4">
               <div className="w-11 h-11 rounded-2xl bg-amber-100 dark:bg-amber-900/40 flex items-center justify-center flex-shrink-0 text-amber-600 dark:text-amber-400">
@@ -97,7 +97,7 @@ export const AchievementsAwards = React.memo(({ data, publications }) => {
               href={p.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center justify-between p-4 bg-white/70 dark:bg-gray-800/55 rounded-2xl shadow-sm backdrop-blur-lg border border-white/60 dark:border-gray-700/50 hover:shadow-md hover:border-orange-300/60 dark:hover:border-orange-700/50 transition-all duration-200 group"
+              className="flex items-center justify-between p-4 bg-white/70 dark:bg-gray-800/55 rounded-2xl shadow-sm backdrop-blur-lg border border-white/60 dark:border-gray-700/50 hover:shadow-md hover:border-orange-300/60 dark:hover:border-orange-700/50 transition-colors duration-200 group"
             >
               <div className="flex items-start sm:items-center gap-3 min-w-0 pr-4">
                 <span className="w-2 h-2 rounded-full bg-orange-400 flex-shrink-0 mt-1.5 sm:mt-0" />
@@ -127,7 +127,7 @@ export const AchievementsAwards = React.memo(({ data, publications }) => {
 const TYPE_CONFIG = {
   education: { dot: 'bg-sky-500', badge: 'bg-sky-100 dark:bg-sky-900/50 text-sky-700 dark:text-sky-300', label: 'Education' },
   project: { dot: 'bg-emerald-500', badge: 'bg-emerald-100 dark:bg-emerald-900/50 text-emerald-700 dark:text-emerald-300', label: 'Engineering' },
-  activity: { dot: 'bg-violet-500', badge: 'bg-violet-100 dark:bg-violet-900/50 text-violet-700 dark:text-violet-300', label: 'Leadership' },
+  activity: { dot: 'bg-sky-500', badge: 'bg-sky-100 dark:bg-sky-900/50 text-sky-700 dark:text-sky-300', label: 'Leadership' },
   publication: { dot: 'bg-orange-500', badge: 'bg-orange-100 dark:bg-orange-900/50 text-orange-700 dark:text-orange-300', label: 'Writing' },
 };
 
@@ -140,7 +140,7 @@ const TimelineItem = ({ item, index }) => {
       className={`timeline-item relative pl-8 sm:pl-10 ${item.featured ? 'timeline-featured' : ''}`}
     >
       <div className={`absolute left-0 top-3 w-3.5 h-3.5 rounded-full ${cfg.dot} ring-4 ring-white dark:ring-gray-950 shadow-xs z-10`} />
-      <div className="timeline-card bg-white/70 dark:bg-gray-800/55 rounded-2xl p-5 mb-6 shadow-md backdrop-blur-lg border border-white/60 dark:border-gray-700/50 hover:shadow-lg transition-all duration-300">
+      <div className="timeline-card bg-white/70 dark:bg-gray-800/55 rounded-2xl p-5 mb-6 shadow-md backdrop-blur-lg border border-white/60 dark:border-gray-700/50 hover:shadow-lg transition-colors duration-300">
         <div className="flex flex-wrap items-start justify-between gap-2 mb-2">
           <div className="flex-1 min-w-0">
             <div className="flex flex-wrap items-center gap-2 mb-1">
@@ -378,7 +378,7 @@ export const Contact = React.memo(({ data, socialLinks, copyToClipboard, copiedT
                 Send a Message
               </h3>
               {formStatus === 'success' ? (
-                <div className="p-8 rounded-3xl bg-white/80 dark:bg-gray-800/80 border border-sky-200/80 dark:border-sky-700/50 text-center shadow-lg backdrop-blur-xl animate-in fade-in zoom-in-95 duration-300">
+                <div role="status" className="p-8 rounded-3xl bg-white/80 dark:bg-gray-800/80 border border-sky-200/80 dark:border-sky-700/50 text-center shadow-lg backdrop-blur-xl animate-in fade-in zoom-in-95 duration-300">
                   <div className="w-14 h-14 rounded-full bg-sky-100 dark:bg-sky-900/50 text-sky-600 dark:text-sky-400 mx-auto flex items-center justify-center mb-4 ring-4 ring-sky-100/70 dark:ring-sky-900/40">
                     <Check className="w-7 h-7" />
                   </div>
@@ -390,7 +390,7 @@ export const Contact = React.memo(({ data, socialLinks, copyToClipboard, copiedT
                   </p>
                   <button
                     onClick={() => setFormStatus('idle')}
-                    className="inline-flex items-center px-6 py-2.5 text-sm font-semibold rounded-full bg-sky-600 hover:bg-sky-700 text-white transition-all duration-200 shadow-md focus:outline-none focus:ring-4 focus:ring-sky-300"
+                    className="inline-flex items-center px-6 py-2.5 text-sm font-semibold rounded-full bg-sky-600 hover:bg-sky-700 text-white transition-colors duration-200 shadow-md focus:outline-none focus:ring-4 focus:ring-sky-300"
                   >
                     Send Another Message
                   </button>
@@ -398,7 +398,7 @@ export const Contact = React.memo(({ data, socialLinks, copyToClipboard, copiedT
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-4">
                   {formStatus === 'error' && (
-                    <div className="p-3 rounded-xl bg-red-50 dark:bg-red-950/40 border border-red-200 dark:border-red-800 text-xs text-red-600 dark:text-red-400">
+                    <div role="alert" className="p-3 rounded-xl bg-red-50 dark:bg-red-950/40 border border-red-200 dark:border-red-800 text-xs text-red-600 dark:text-red-400">
                       {formError || 'Something went wrong. Please try again.'}
                     </div>
                   )}
@@ -449,7 +449,7 @@ export const Contact = React.memo(({ data, socialLinks, copyToClipboard, copiedT
                   <button
                     type="submit"
                     disabled={formStatus === 'submitting'}
-                    className="w-full py-3 px-6 border border-transparent shadow-md text-sm font-semibold rounded-full text-white bg-sky-600 hover:bg-sky-700 focus:outline-none focus:ring-4 focus:ring-sky-300 transition-all duration-200 disabled:opacity-60 flex items-center justify-center gap-2"
+                    className="w-full py-3 px-6 border border-transparent shadow-md text-sm font-semibold rounded-full text-white bg-sky-600 hover:bg-sky-700 focus:outline-none focus:ring-4 focus:ring-sky-300 transition-colors duration-200 disabled:opacity-60 flex items-center justify-center gap-2"
                   >
                     {formStatus === 'submitting' ? (
                       <>

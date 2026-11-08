@@ -1,0 +1,1281 @@
+{
+  "status": "GATE: OPEN 60 (rounds used up)",
+  "round": 3,
+  "openFindings": [
+    {
+      "check": "nav",
+      "where": "div.portfolio > div.site-nav-wrap > nav.site-nav > a.wordmark \"tn. THIMIRA NIRANJAYA\"",
+      "msg": "nav link wraps to a second line",
+      "fix": "make the nav one bar from the content's left edge to its right edge, with every link and action inside it",
+      "widths": [
+        1440,
+        390
+      ],
+      "from": "consistency",
+      "ids": [
+        "nav"
+      ],
+      "wheres": [
+        "div.portfolio > div.site-nav-wrap > nav.site-nav > a.wordmark \"tn. THIMIRA NIRANJAYA\""
+      ]
+    },
+    {
+      "check": "scroll-reveal",
+      "where": "section#projects \"Selected engineering work. Real-time bac\"",
+      "msg": "starts an animation (0.4 s) the moment it is scrolled into view (an IntersectionObserver) on article.selected-project.flagship-project",
+      "fix": "show it at rest: no fade, rise or unmask when it is scrolled into view",
+      "widths": [
+        1440
+      ],
+      "from": "consistency",
+      "ids": [
+        "scroll-reveal"
+      ],
+      "wheres": [
+        "section#projects \"Selected engineering work. Real-time bac\""
+      ]
+    },
+    {
+      "check": "scroll-reveal",
+      "where": "section#about > div.skill-focus-grid > div.skill-focus:nth-of-type(3) \"AI & full-stack Agent coordination and i\"",
+      "msg": "starts an animation (0.4 s) the moment it is scrolled into view (an IntersectionObserver)",
+      "fix": "show it at rest: no fade, rise or unmask when it is scrolled into view",
+      "widths": [
+        1440,
+        390
+      ],
+      "from": "consistency",
+      "ids": [
+        "scroll-reveal"
+      ],
+      "wheres": [
+        "section#about > div.skill-focus-grid > div.skill-focus:nth-of-type(3) \"AI & full-stack Agent coordination and i\""
+      ]
+    },
+    {
+      "check": "scroll-reveal",
+      "where": "section#about > div.skill-focus-grid > div.skill-focus:nth-of-type(1) \"Backend & real-time APIs, domain logic, \"",
+      "msg": "starts an animation (0.4 s) the moment it is scrolled into view (an IntersectionObserver)",
+      "fix": "show it at rest: no fade, rise or unmask when it is scrolled into view",
+      "widths": [
+        1440,
+        390
+      ],
+      "from": "consistency",
+      "ids": [
+        "scroll-reveal"
+      ],
+      "wheres": [
+        "section#about > div.skill-focus-grid > div.skill-focus:nth-of-type(1) \"Backend & real-time APIs, domain logic, \""
+      ]
+    },
+    {
+      "check": "scroll-reveal",
+      "where": "section#about > div.skill-focus-grid > div.skill-focus:nth-of-type(2) \"Cloud & data The infrastructure and data\"",
+      "msg": "starts an animation (0.4 s) the moment it is scrolled into view (an IntersectionObserver)",
+      "fix": "show it at rest: no fade, rise or unmask when it is scrolled into view",
+      "widths": [
+        1440,
+        390
+      ],
+      "from": "consistency",
+      "ids": [
+        "scroll-reveal"
+      ],
+      "wheres": [
+        "section#about > div.skill-focus-grid > div.skill-focus:nth-of-type(2) \"Cloud & data The infrastructure and data\""
+      ]
+    },
+    {
+      "check": "scroll-reveal",
+      "where": "section#experience > div.max-w-3xl.mx-auto > div.timeline-item.relative:nth-of-type(4) \"Engineering Engineering Leadership (Team\"",
+      "msg": "starts an animation (0.4 s) the moment it is scrolled into view (an IntersectionObserver)",
+      "fix": "show it at rest: no fade, rise or unmask when it is scrolled into view",
+      "widths": [
+        1440,
+        390
+      ],
+      "from": "consistency",
+      "ids": [
+        "scroll-reveal"
+      ],
+      "wheres": [
+        "section#experience > div.max-w-3xl.mx-auto > div.timeline-item.relative:nth-of-type(4) \"Engineering Engineering Leadership (Team\""
+      ]
+    },
+    {
+      "check": "scroll-reveal",
+      "where": "section#experience > div.max-w-3xl.mx-auto > div.timeline-item.relative:nth-of-type(3) \"Education Current GPA: 3.14 / 4.00 BSc (\"",
+      "msg": "starts an animation (0.4 s) the moment it is scrolled into view (an IntersectionObserver)",
+      "fix": "show it at rest: no fade, rise or unmask when it is scrolled into view",
+      "widths": [
+        1440,
+        390
+      ],
+      "from": "consistency",
+      "ids": [
+        "scroll-reveal"
+      ],
+      "wheres": [
+        "section#experience > div.max-w-3xl.mx-auto > div.timeline-item.relative:nth-of-type(3) \"Education Current GPA: 3.14 / 4.00 BSc (\""
+      ]
+    },
+    {
+      "check": "scroll-reveal",
+      "where": "section#experience > div.max-w-3xl.mx-auto > div.timeline-item.relative:nth-of-type(2) \"Leadership Current role Associate Techni\"",
+      "msg": "starts an animation (0.4 s) the moment it is scrolled into view (an IntersectionObserver)",
+      "fix": "show it at rest: no fade, rise or unmask when it is scrolled into view",
+      "widths": [
+        1440,
+        390
+      ],
+      "from": "consistency",
+      "ids": [
+        "scroll-reveal"
+      ],
+      "wheres": [
+        "section#experience > div.max-w-3xl.mx-auto > div.timeline-item.relative:nth-of-type(2) \"Leadership Current role Associate Techni\""
+      ]
+    },
+    {
+      "check": "scroll-reveal",
+      "where": "section#experience > div.max-w-3xl.mx-auto > div.timeline-item.relative:nth-of-type(6) \"Writing 7 Deep-Dive Publications Freelan\"",
+      "msg": "starts an animation (0.4 s) the moment it is scrolled into view (an IntersectionObserver)",
+      "fix": "show it at rest: no fade, rise or unmask when it is scrolled into view",
+      "widths": [
+        1440,
+        390
+      ],
+      "from": "consistency",
+      "ids": [
+        "scroll-reveal"
+      ],
+      "wheres": [
+        "section#experience > div.max-w-3xl.mx-auto > div.timeline-item.relative:nth-of-type(6) \"Writing 7 Deep-Dive Publications Freelan\""
+      ]
+    },
+    {
+      "check": "scroll-reveal",
+      "where": "section#experience > div.max-w-3xl.mx-auto > div.timeline-item.relative:nth-of-type(5) \"Engineering Multi-AZ Cloud Architecture \"",
+      "msg": "starts an animation (0.4 s) the moment it is scrolled into view (an IntersectionObserver)",
+      "fix": "show it at rest: no fade, rise or unmask when it is scrolled into view",
+      "widths": [
+        1440,
+        390
+      ],
+      "from": "consistency",
+      "ids": [
+        "scroll-reveal"
+      ],
+      "wheres": [
+        "section#experience > div.max-w-3xl.mx-auto > div.timeline-item.relative:nth-of-type(5) \"Engineering Multi-AZ Cloud Architecture \""
+      ]
+    },
+    {
+      "check": "scroll-reveal",
+      "where": "section#experience > div.max-w-3xl.mx-auto > div.timeline-item.relative:nth-of-type(8) \"Leadership Technical Society Active Memb\"",
+      "msg": "starts an animation (0.4 s) the moment it is scrolled into view (an IntersectionObserver)",
+      "fix": "show it at rest: no fade, rise or unmask when it is scrolled into view",
+      "widths": [
+        1440,
+        390
+      ],
+      "from": "consistency",
+      "ids": [
+        "scroll-reveal"
+      ],
+      "wheres": [
+        "section#experience > div.max-w-3xl.mx-auto > div.timeline-item.relative:nth-of-type(8) \"Leadership Technical Society Active Memb\""
+      ]
+    },
+    {
+      "check": "scroll-reveal",
+      "where": "section#experience > div.max-w-3xl.mx-auto > div.timeline-item.relative:nth-of-type(7) \"Leadership Creative & Community Leadersh\"",
+      "msg": "starts an animation (0.4 s) the moment it is scrolled into view (an IntersectionObserver)",
+      "fix": "show it at rest: no fade, rise or unmask when it is scrolled into view",
+      "widths": [
+        1440,
+        390
+      ],
+      "from": "consistency",
+      "ids": [
+        "scroll-reveal"
+      ],
+      "wheres": [
+        "section#experience > div.max-w-3xl.mx-auto > div.timeline-item.relative:nth-of-type(7) \"Leadership Creative & Community Leadersh\""
+      ]
+    },
+    {
+      "check": "scroll-reveal",
+      "where": "section#achievements > div.max-w-4xl.mx-auto:nth-of-type(2) \"Oct 17, 2026 1st Runner-Up — AI Hackatho\"",
+      "msg": "starts an animation (0.4 s) the moment it is scrolled into view (an IntersectionObserver)",
+      "fix": "show it at rest: no fade, rise or unmask when it is scrolled into view",
+      "widths": [
+        1440,
+        390
+      ],
+      "from": "consistency",
+      "ids": [
+        "scroll-reveal"
+      ],
+      "wheres": [
+        "section#achievements > div.max-w-4xl.mx-auto:nth-of-type(2) \"Oct 17, 2026 1st Runner-Up — AI Hackatho\""
+      ]
+    },
+    {
+      "check": "scroll-reveal",
+      "where": "div#publications \"Technical Writing on Medium View Profile\"",
+      "msg": "starts an animation (0.4 s) the moment it is scrolled into view (an IntersectionObserver)",
+      "fix": "show it at rest: no fade, rise or unmask when it is scrolled into view",
+      "widths": [
+        1440,
+        390
+      ],
+      "from": "consistency",
+      "ids": [
+        "scroll-reveal"
+      ],
+      "wheres": [
+        "div#publications \"Technical Writing on Medium View Profile\""
+      ]
+    },
+    {
+      "check": "scroll-reveal",
+      "where": "section#certifications > div.certificate-grid > article.certificate-card:nth-of-type(1) \"Sep 2026 Continuous Integration and Cont\"",
+      "msg": "starts an animation (0.4 s) the moment it is scrolled into view (an IntersectionObserver)",
+      "fix": "show it at rest: no fade, rise or unmask when it is scrolled into view",
+      "widths": [
+        1440,
+        390
+      ],
+      "from": "consistency",
+      "ids": [
+        "scroll-reveal"
+      ],
+      "wheres": [
+        "section#certifications > div.certificate-grid > article.certificate-card:nth-of-type(1) \"Sep 2026 Continuous Integration and Cont\""
+      ]
+    },
+    {
+      "check": "scroll-reveal",
+      "where": "section#certifications > div.certificate-grid > article.certificate-card:nth-of-type(2) \"Feb 2025 Complete DevOps Bootcamp KodeKl\"",
+      "msg": "starts an animation (0.4 s) the moment it is scrolled into view (an IntersectionObserver)",
+      "fix": "show it at rest: no fade, rise or unmask when it is scrolled into view",
+      "widths": [
+        1440,
+        390
+      ],
+      "from": "consistency",
+      "ids": [
+        "scroll-reveal"
+      ],
+      "wheres": [
+        "section#certifications > div.certificate-grid > article.certificate-card:nth-of-type(2) \"Feb 2025 Complete DevOps Bootcamp KodeKl\""
+      ]
+    },
+    {
+      "check": "scroll-reveal",
+      "where": "section#certifications > div.certificate-grid > article.certificate-card:nth-of-type(3) \"Feb 2025 Docker Training Course for the \"",
+      "msg": "starts an animation (0.4 s) the moment it is scrolled into view (an IntersectionObserver)",
+      "fix": "show it at rest: no fade, rise or unmask when it is scrolled into view",
+      "widths": [
+        1440,
+        390
+      ],
+      "from": "consistency",
+      "ids": [
+        "scroll-reveal"
+      ],
+      "wheres": [
+        "section#certifications > div.certificate-grid > article.certificate-card:nth-of-type(3) \"Feb 2025 Docker Training Course for the \""
+      ]
+    },
+    {
+      "check": "scroll-reveal",
+      "where": "section#contact > div.max-w-4xl.mx-auto \"Get in Touch I'm looking for a software \"",
+      "msg": "starts an animation (0.4 s) the moment it is scrolled into view (an IntersectionObserver)",
+      "fix": "show it at rest: no fade, rise or unmask when it is scrolled into view",
+      "widths": [
+        1440,
+        390
+      ],
+      "from": "consistency",
+      "ids": [
+        "scroll-reveal"
+      ],
+      "wheres": [
+        "section#contact > div.max-w-4xl.mx-auto \"Get in Touch I'm looking for a software \""
+      ]
+    },
+    {
+      "check": "no-visual",
+      "where": "section#about \"The engineer behind the work.\"",
+      "msg": "no picture, effect or mock in this section; a feature section needs a visual",
+      "fix": "give the section a visual: a UI fragment on a ground, real icons, or a photograph that fits",
+      "widths": [
+        1440,
+        390
+      ],
+      "from": "consistency",
+      "ids": [
+        "no-visual"
+      ],
+      "wheres": [
+        "section#about \"The engineer behind the work.\""
+      ]
+    },
+    {
+      "check": "no-visual",
+      "where": "section#experience \"Education & engineering experience.\"",
+      "msg": "no picture, effect or mock in this section; a feature section needs a visual",
+      "fix": "give the section a visual: a UI fragment on a ground, real icons, or a photograph that fits",
+      "widths": [
+        1440,
+        390
+      ],
+      "from": "consistency",
+      "ids": [
+        "no-visual"
+      ],
+      "wheres": [
+        "section#experience \"Education & engineering experience.\""
+      ]
+    },
+    {
+      "check": "no-visual",
+      "where": "section#achievements \"Awards & technical writing.\"",
+      "msg": "no picture, effect or mock in this section; a feature section needs a visual",
+      "fix": "give the section a visual: a UI fragment on a ground, real icons, or a photograph that fits",
+      "widths": [
+        1440,
+        390
+      ],
+      "from": "consistency",
+      "ids": [
+        "no-visual"
+      ],
+      "wheres": [
+        "section#achievements \"Awards & technical writing.\""
+      ]
+    },
+    {
+      "check": "no-visual",
+      "where": "section#certifications \"Credentials & continuous learning.\"",
+      "msg": "no picture, effect or mock in this section; a feature section needs a visual",
+      "fix": "give the section a visual: a UI fragment on a ground, real icons, or a photograph that fits",
+      "widths": [
+        1440,
+        390
+      ],
+      "from": "consistency",
+      "ids": [
+        "no-visual"
+      ],
+      "wheres": [
+        "section#certifications \"Credentials & continuous learning.\""
+      ]
+    },
+    {
+      "check": "text-only",
+      "where": "section#contact \"Let’s talk engineering.\"",
+      "msg": "the closing section is only text: no picture, icon, mock or effect in it",
+      "fix": "give the section a visual: a photograph that fits, the real icons, or a UI fragment on a ground",
+      "widths": [
+        1440,
+        390
+      ],
+      "from": "consistency",
+      "ids": [
+        "text-only"
+      ],
+      "wheres": [
+        "section#contact \"Let’s talk engineering.\""
+      ]
+    },
+    {
+      "check": "card-family",
+      "where": "section#achievements > div.max-w-4xl.mx-auto:nth-of-type(2) > div.p-6.rounded-3xl:nth-of-type(1) \"1st Runner-Up — AI Hackathon 2026\"",
+      "msg": "7 cards of one kind (.bg-white/70) set their titles in 2 faces: manrope (3, like \"1st Runner-Up — AI Hacka\"), space grotesk (4, like \"BSc (Hons) in Informatio\")",
+      "fix": "draw one card part one way: one fill and one title face for every card of a kind (one featured card may differ)",
+      "widths": [
+        1440,
+        390
+      ],
+      "from": "consistency",
+      "ids": [
+        "card-family"
+      ],
+      "wheres": [
+        "section#achievements > div.max-w-4xl.mx-auto:nth-of-type(2) > div.p-6.rounded-3xl:nth-of-type(1) \"1st Runner-Up — AI Hackathon 2026\""
+      ]
+    },
+    {
+      "check": "card-family",
+      "where": "section#contact > div.max-w-4xl.mx-auto > div.p-8.rounded-3xl \"Get in Touch\"",
+      "msg": "4 cards of one kind (.rounded-3xl) set their titles in 2 faces: space grotesk (1, like \"Get in Touch\"), manrope (3, like \"1st Runner-Up — AI Hacka\")",
+      "fix": "draw one card part one way: one fill and one title face for every card of a kind (one featured card may differ)",
+      "widths": [
+        1440,
+        390
+      ],
+      "from": "consistency",
+      "ids": [
+        "card-family"
+      ],
+      "wheres": [
+        "section#contact > div.max-w-4xl.mx-auto > div.p-8.rounded-3xl \"Get in Touch\""
+      ]
+    },
+    {
+      "check": "copy-headline",
+      "where": "header#home > div.hero-copy > h1 \"Backend thinking. Real-world impact.\"",
+      "msg": "\"Backend thinking. Real-world impact.\" does not name what is sold (software engineering portfolio, software, engineering, portfolio, from flags); only the line under it does",
+      "fix": "put the category noun in the h1 (and who it is for, or where), in 2 to 8 words",
+      "widths": [
+        1440
+      ],
+      "from": "consistency",
+      "ids": [
+        "copy-headline"
+      ],
+      "wheres": [
+        "header#home > div.hero-copy > h1 \"Backend thinking. Real-world impact.\""
+      ]
+    },
+    {
+      "check": "copy-headings",
+      "where": "section#about > div.skill-focus-grid > div.skill-focus:nth-of-type(1) > h3 \"Backend & real-time\"",
+      "msg": "\"Backend & real-time\" names no product, part, place or section (7 headings like it; at most one brand line per page) (and 6 more like it: \"AI & full-stack\", \"Graphic Design & Media C\", \"Active Member\", \"Credentials & continuous\", ...)",
+      "fix": "name the thing in every heading: the product, a part, the place or a section noun",
+      "widths": [
+        1440
+      ],
+      "from": "consistency",
+      "ids": [
+        "copy-headings"
+      ],
+      "wheres": [
+        "section#about > div.skill-focus-grid > div.skill-focus:nth-of-type(1) > h3 \"Backend & real-time\""
+      ]
+    },
+    {
+      "check": "heading-scale",
+      "where": "h3#project-title-1 \"NearU Microservices Ride-Sharing Platfor\"",
+      "msg": "h3 headings in 5 sizes, 18px (\"Technical Writing on Med\") to 36px (x2.00)",
+      "fix": "size headings by level: the h1 largest, one size per level, each level below the one above",
+      "widths": [
+        1440,
+        390
+      ],
+      "from": "consistency",
+      "ids": [
+        "heading-scale"
+      ],
+      "wheres": [
+        "h3#project-title-1 \"NearU Microservices Ride-Sharing Platfor\""
+      ]
+    },
+    {
+      "check": "off-grid",
+      "where": "a.flex.items-center:nth-of-type(1) > div.flex.items-start > div.min-w-0 > span.text-sm.font-medium \"Beyond Coordinates: Engineering the Spat\"",
+      "msg": "left edge at 140px, 20px off the page margin at 120px (38 elements, like span.w-2.h-2); 16 more in this section off the grid too (span.text-orange-600.font-sans at 140px, span.text-sm.font-medium at 140px, span.text-orange-600.font-sans at 140px, span.text-sm.font-medium at 140px, ...)",
+      "fix": "move it onto the page margin, or the column edge its section uses",
+      "widths": [
+        1440,
+        390
+      ],
+      "from": "consistency",
+      "ids": [
+        "off-grid"
+      ],
+      "wheres": [
+        "a.flex.items-center:nth-of-type(1) > div.flex.items-start > div.min-w-0 > span.text-sm.font-medium \"Beyond Coordinates: Engineering the Spat\""
+      ]
+    },
+    {
+      "check": "section-tile",
+      "where": "section#certifications \"Credentials & continuous learning.\"",
+      "msg": "the section is 737px tall (0.82 screens at 1440x900), shorter than the screen: its tile (the screen from its top) shows 737px of it and 163px of the next section, its heading \"Let’s talk engineering.\" on screen",
+      "fix": "set every section after the hero to one screen or two (height: calc(var(--h,1) * 100vh)) and fit its content above --padb",
+      "widths": [
+        1440
+      ],
+      "from": "consistency",
+      "ids": [
+        "section-tile"
+      ],
+      "wheres": [
+        "section#certifications \"Credentials & continuous learning.\""
+      ]
+    },
+    {
+      "check": "run-on",
+      "where": "h3#project-title-1 \"NearU Microservices Ride-Sharing Platfor\"",
+      "msg": "\"NearU | Microservices Ride-Shari\": the heading runs its first sentence into the grey second one with no stop",
+      "fix": "end the heading's first sentence with a full stop before its grey second one (\"Rooms and prices. Breakfast included.\")",
+      "widths": [
+        1440
+      ],
+      "from": "consistency",
+      "ids": [
+        "run-on"
+      ],
+      "wheres": [
+        "h3#project-title-1 \"NearU Microservices Ride-Sharing Platfor\""
+      ]
+    },
+    {
+      "check": "run-on",
+      "where": "h3#project-title-8 \"GridWalk AI Multi-Agent Microgrid Recove\"",
+      "msg": "\"GridWalk AI | Multi-Agent Microgrid Re\": the heading runs its first sentence into the grey second one with no stop",
+      "fix": "end the heading's first sentence with a full stop before its grey second one (\"Rooms and prices. Breakfast included.\")",
+      "widths": [
+        1440
+      ],
+      "from": "consistency",
+      "ids": [
+        "run-on"
+      ],
+      "wheres": [
+        "h3#project-title-8 \"GridWalk AI Multi-Agent Microgrid Recove\""
+      ]
+    },
+    {
+      "check": "run-on",
+      "where": "h3#project-title-4 \"GreenOps Cloud Carbon & Efficiency Engin\"",
+      "msg": "\"GreenOps | Cloud Carbon & Efficienc\": the heading runs its first sentence into the grey second one with no stop",
+      "fix": "end the heading's first sentence with a full stop before its grey second one (\"Rooms and prices. Breakfast included.\")",
+      "widths": [
+        1440
+      ],
+      "from": "consistency",
+      "ids": [
+        "run-on"
+      ],
+      "wheres": [
+        "h3#project-title-4 \"GreenOps Cloud Carbon & Efficiency Engin\""
+      ]
+    },
+    {
+      "check": "hero-enter",
+      "where": "header#home",
+      "msg": "the hero does not enter on load: no head line setting html.m-enter (motion.md, The hero's entrance)",
+      "fix": "put data-enter on the hero <section> and keep the head line from starter.html that sets html.m-enter",
+      "widths": [
+        1440
+      ],
+      "from": "consistency",
+      "ids": [
+        "hero-enter"
+      ],
+      "wheres": [
+        "header#home"
+      ]
+    },
+    {
+      "check": "moment-none",
+      "where": "(the page)",
+      "msg": "a service page (--type) deals no moment: every kind carries one, two on a long page (moments.md)",
+      "fix": "deal one (moments.mjs pick --page service --photo) and mount it in its own section",
+      "widths": [
+        1440
+      ],
+      "from": "consistency",
+      "ids": [
+        "moment-none"
+      ],
+      "wheres": [
+        "(the page)"
+      ]
+    },
+    {
+      "check": "section-height",
+      "where": "div#root > div.portfolio > div.page-container > footer.mt-16.py-8 \"© 2026 Thimira Niranjaya Keerthiwansha. \"",
+      "msg": "the section is 109px tall (0.1 screens), 791px short of one screen (900px): every section after the hero is one screen or two, 2px either way (SR-2)",
+      "fix": "set the section to one screen or two (height: calc(var(--h,1) * 100vh), --h 1 or 2) and cut or split its content to fit",
+      "widths": [
+        1440
+      ],
+      "from": "consistency",
+      "ids": [
+        "section-height"
+      ],
+      "wheres": [
+        "div#root > div.portfolio > div.page-container > footer.mt-16.py-8 \"© 2026 Thimira Niranjaya Keerthiwansha. \""
+      ]
+    },
+    {
+      "check": "section-height",
+      "where": "section#projects \"Selected engineering work.Real-time back\"",
+      "msg": "the section is 2388px tall (2.7 screens), 588px over two screens (1800px): every section after the hero is one screen or two, 2px either way (SR-2)",
+      "fix": "set the section to one screen or two (height: calc(var(--h,1) * 100vh), --h 1 or 2) and cut or split its content to fit",
+      "widths": [
+        1440
+      ],
+      "from": "consistency",
+      "ids": [
+        "section-height"
+      ],
+      "wheres": [
+        "section#projects \"Selected engineering work.Real-time back\""
+      ]
+    },
+    {
+      "check": "section-height",
+      "where": "section#achievements \"Awards & technical writing.Oct 17, 20261\"",
+      "msg": "the section is 1487px tall (1.7 screens), 313px short of two screens (1800px): every section after the hero is one screen or two, 2px either way (and 4 more like it: \"Credentials & continuous\", \"The engineer behind the \", \"Let’s talk engineering.G\") (SR-2)",
+      "fix": "set the section to one screen or two (height: calc(var(--h,1) * 100vh), --h 1 or 2) and cut or split its content to fit",
+      "widths": [
+        1440
+      ],
+      "from": "consistency",
+      "ids": [
+        "section-height"
+      ],
+      "wheres": [
+        "section#achievements \"Awards & technical writing.Oct 17, 20261\""
+      ]
+    },
+    {
+      "check": "section-height",
+      "where": "section#experience \"Education & engineering experience.Leade\"",
+      "msg": "the section starts at 4057px, 443px above the screen grid (5 x 900px): sections start on whole screens (SR-2)",
+      "fix": "make every section above it exactly one or two screens tall, so this one starts on a whole screen",
+      "widths": [
+        1440
+      ],
+      "from": "consistency",
+      "ids": [
+        "section-height"
+      ],
+      "wheres": [
+        "section#experience \"Education & engineering experience.Leade\""
+      ]
+    },
+    {
+      "check": "section-height",
+      "where": "section#about \"The engineer behind the work.I'm an Info\"",
+      "msg": "the section starts at 3288px, 312px above the screen grid (4 x 900px): sections start on whole screens (and 2 more like it: \"Credentials & continuous\", \"Let’s talk engineering.G\") (SR-2)",
+      "fix": "make every section above it exactly one or two screens tall, so this one starts on a whole screen",
+      "widths": [
+        1440
+      ],
+      "from": "consistency",
+      "ids": [
+        "section-height"
+      ],
+      "wheres": [
+        "section#about \"The engineer behind the work.I'm an Info\""
+      ]
+    },
+    {
+      "check": "section-air",
+      "where": "details#case-study-1 \"Read the engineering storyThe problemCam\"",
+      "msg": "a top border across 94% of the container, between the section's content: sections and their parts are told apart by air and ground, not lines (SR-3)",
+      "fix": "take the rule out: sections and their parts are parted by their ground and the air between them",
+      "widths": [
+        1440
+      ],
+      "from": "consistency",
+      "ids": [
+        "section-air"
+      ],
+      "wheres": [
+        "details#case-study-1 \"Read the engineering storyThe problemCam\""
+      ]
+    },
+    {
+      "check": "section-air",
+      "where": "details#case-study-8 \"Read the engineering storyThe problemWhe\"",
+      "msg": "a top border across 94% of the container, between the section's content: sections and their parts are told apart by air and ground, not lines (SR-3)",
+      "fix": "take the rule out: sections and their parts are parted by their ground and the air between them",
+      "widths": [
+        1440
+      ],
+      "from": "consistency",
+      "ids": [
+        "section-air"
+      ],
+      "wheres": [
+        "details#case-study-8 \"Read the engineering storyThe problemWhe\""
+      ]
+    },
+    {
+      "check": "section-air",
+      "where": "details#case-study-4 \"Read the engineering storyThe problemClo\"",
+      "msg": "a top border across 94% of the container, between the section's content: sections and their parts are told apart by air and ground, not lines (and 3 more like it: \"More projects 5Explore t\", \"Explore my full toolkitD\", \"More certifications & me\") (SR-3)",
+      "fix": "take the rule out: sections and their parts are parted by their ground and the air between them",
+      "widths": [
+        1440
+      ],
+      "from": "consistency",
+      "ids": [
+        "section-air"
+      ],
+      "wheres": [
+        "details#case-study-4 \"Read the engineering storyThe problemClo\""
+      ]
+    },
+    {
+      "check": "one-section",
+      "where": "section#experience > div.section-title > h2 \"Education & engineering experience.\"",
+      "msg": "the screen at scroll 3600px (stride 4) shows 443px of section 4 and the heading of section 4 whole and the content of 2 sections, over 24px each beside section 3: a screen shows one section (another may peek 8px, 24px WARN) (SR-4)",
+      "fix": "make each section exactly one screen or two, so a screen shows one section and no neighbour peeks",
+      "widths": [
+        1440
+      ],
+      "from": "consistency",
+      "ids": [
+        "one-section"
+      ],
+      "wheres": [
+        "section#experience > div.section-title > h2 \"Education & engineering experience.\""
+      ]
+    },
+    {
+      "check": "one-section",
+      "where": "section#achievements > div.section-title > h2 \"Awards & technical writing.\"",
+      "msg": "the screen at scroll 5400px (stride 6) shows 439px of section 5 and the heading of section 5 whole and the content of 2 sections, over 24px each beside section 4: a screen shows one section (another may peek 8px, 24px WARN) (SR-4)",
+      "fix": "make each section exactly one screen or two, so a screen shows one section and no neighbour peeks",
+      "widths": [
+        1440
+      ],
+      "from": "consistency",
+      "ids": [
+        "one-section"
+      ],
+      "wheres": [
+        "section#achievements > div.section-title > h2 \"Awards & technical writing.\""
+      ]
+    },
+    {
+      "check": "one-section",
+      "where": "section#about > div.section-title > h2 \"The engineer behind the work.\"",
+      "msg": "the screen at scroll 2700px (stride 3) shows 312px of section 3 and the heading of section 3 whole and the content of 2 sections, over 24px each beside section 2: a screen shows one section (another may peek 8px, 24px WARN) (and 4 more like it: scroll 7348px, scroll 7200px, scroll 3288px) (SR-4)",
+      "fix": "make each section exactly one screen or two, so a screen shows one section and no neighbour peeks",
+      "widths": [
+        1440
+      ],
+      "from": "consistency",
+      "ids": [
+        "one-section"
+      ],
+      "wheres": [
+        "section#about > div.section-title > h2 \"The engineer behind the work.\""
+      ]
+    },
+    {
+      "check": "one-section",
+      "where": "header#home \"Hi, I'm Thimira Niranjaya.Backend thinki\"",
+      "msg": "a <header> sits directly in <main>: every part of <main> is a <section> (SR-4)",
+      "fix": "put every block of <main> in a <section>, and give a band its own section instead of a ground inside one",
+      "widths": [
+        1440
+      ],
+      "from": "consistency",
+      "ids": [
+        "one-section"
+      ],
+      "wheres": [
+        "header#home \"Hi, I'm Thimira Niranjaya.Backend thinki\""
+      ]
+    },
+    {
+      "check": "container-edges",
+      "where": "div#root \"Skip to contenttn.THIMIRA NIRANJAYAWorkA\"",
+      "msg": "a <div> at the top of the page, outside header.nav, main, footer.closing and nav.actionbar (SR-6)",
+      "fix": "build the page as header.nav, a main of sections (each one in-flow .wrap plus background layers) and footer.closing",
+      "widths": [
+        1440
+      ],
+      "from": "consistency",
+      "ids": [
+        "container-edges"
+      ],
+      "wheres": [
+        "div#root \"Skip to contenttn.THIMIRA NIRANJAYAWorkA\""
+      ]
+    },
+    {
+      "check": "container-edges",
+      "where": "header#home \"Hi, I'm Thimira Niranjaya.Backend thinki\"",
+      "msg": "the section needs exactly one in-flow child .wrap (it has 3 in-flow children, 0 .wrap) (SR-6)",
+      "fix": "build the page as header.nav, a main of sections (each one in-flow .wrap plus background layers) and footer.closing",
+      "widths": [
+        1440
+      ],
+      "from": "consistency",
+      "ids": [
+        "container-edges"
+      ],
+      "wheres": [
+        "header#home \"Hi, I'm Thimira Niranjaya.Backend thinki\""
+      ]
+    },
+    {
+      "check": "container-edges",
+      "where": "section#projects \"Selected engineering work.Real-time back\"",
+      "msg": "the section needs exactly one in-flow child .wrap (it has 3 in-flow children, 0 .wrap) (and 6 more like it: \"The engineer behind the \", \"Education & engineering \", \"Awards & technical writi\") (SR-6)",
+      "fix": "build the page as header.nav, a main of sections (each one in-flow .wrap plus background layers) and footer.closing",
+      "widths": [
+        1440
+      ],
+      "from": "consistency",
+      "ids": [
+        "container-edges"
+      ],
+      "wheres": [
+        "section#projects \"Selected engineering work.Real-time back\""
+      ]
+    },
+    {
+      "check": "container-edges",
+      "where": "div.flex.flex-wrap > div.flex-1.min-w-0 > div.flex.flex-wrap > span.inline-block.rounded-full \"Leadership\"",
+      "msg": "7 text blocks start on a left line at x 199, 79px from the container's left: text starts on the container's left, or on one split line (x 630, 732, 834) (also \"Education\", \"Engineering\", \"Engineering\") (SR-6)",
+      "fix": "start the text on the container's left, or on the one split line every split shares",
+      "widths": [
+        1440
+      ],
+      "from": "consistency",
+      "ids": [
+        "container-edges"
+      ],
+      "wheres": [
+        "div.flex.flex-wrap > div.flex-1.min-w-0 > div.flex.flex-wrap > span.inline-block.rounded-full \"Leadership\""
+      ]
+    },
+    {
+      "check": "container-edges",
+      "where": "div.timeline-card.rounded-2xl > div.flex.flex-wrap > div.flex-1.min-w-0 > h3.text-base.font-bold \"Associate Technical Lead\"",
+      "msg": "22 text blocks start on a left line at x 189, 69px from the container's left: text starts on the container's left, or on one split line (x 630, 732, 834) (also \"AWS Student Builder Group, Sabar\", \"Coordinate technical delivery fo\", \"BSc (Hons) in Information System\") (SR-6)",
+      "fix": "start the text on the container's left, or on the one split line every split shares",
+      "widths": [
+        1440
+      ],
+      "from": "consistency",
+      "ids": [
+        "container-edges"
+      ],
+      "wheres": [
+        "div.timeline-card.rounded-2xl > div.flex.flex-wrap > div.flex-1.min-w-0 > h3.text-base.font-bold \"Associate Technical Lead\""
+      ]
+    },
+    {
+      "check": "container-edges",
+      "where": "article.selected-project.flagship-project > div.project-content > div.tech-list > span:nth-of-type(1) \".NET 10\"",
+      "msg": "4 text blocks start on a left line at x 166, 46px from the container's left: text starts on the container's left, or on one split line (x 630, 732, 834) (also \"RabbitMQ\", \"Jac / Jaseci\", \".NET 10\") (and 2 more like it: x 157, x 148) (SR-6)",
+      "fix": "start the text on the container's left, or on the one split line every split shares",
+      "widths": [
+        1440
+      ],
+      "from": "consistency",
+      "ids": [
+        "container-edges"
+      ],
+      "wheres": [
+        "article.selected-project.flagship-project > div.project-content > div.tech-list > span:nth-of-type(1) \".NET 10\""
+      ]
+    },
+    {
+      "check": "container-edges",
+      "where": "section#experience > div.max-w-3xl.mx-auto > div.timeline-item.relative:nth-of-type(2) > div.timeline-card.rounded-2xl \"LeadershipCurrent roleAssociate Technica\"",
+      "msg": "a box over half the container wide runs 160-1080px, not on the container's lines at 120-1320px (SR-6)",
+      "fix": "run the picture or box from the container's left line to its right line, or put it in a row or a split",
+      "widths": [
+        1440
+      ],
+      "from": "consistency",
+      "ids": [
+        "container-edges"
+      ],
+      "wheres": [
+        "section#experience > div.max-w-3xl.mx-auto > div.timeline-item.relative:nth-of-type(2) > div.timeline-card.rounded-2xl \"LeadershipCurrent roleAssociate Technica\""
+      ]
+    },
+    {
+      "check": "container-edges",
+      "where": "section#experience > div.max-w-3xl.mx-auto > div.timeline-item.relative:nth-of-type(3) > div.timeline-card.rounded-2xl \"EducationCurrent GPA: 3.14 / 4.00BSc (Ho\"",
+      "msg": "a box over half the container wide runs 160-1080px, not on the container's lines at 120-1320px (and 5 more like it: \"EngineeringEngineering L\", \"EngineeringMulti-AZ Clou\", \"Writing7 Deep-Dive Publi\") (SR-6)",
+      "fix": "run the picture or box from the container's left line to its right line, or put it in a row or a split",
+      "widths": [
+        1440
+      ],
+      "from": "consistency",
+      "ids": [
+        "container-edges"
+      ],
+      "wheres": [
+        "section#experience > div.max-w-3xl.mx-auto > div.timeline-item.relative:nth-of-type(3) > div.timeline-card.rounded-2xl \"EducationCurrent GPA: 3.14 / 4.00BSc (Ho\""
+      ]
+    },
+    {
+      "check": "row-lines",
+      "where": "section#contact > div.max-w-4xl.mx-auto > div.p-8.rounded-3xl > div.grid.grid-cols-1 \"Get in TouchI'm looking for a software e\"",
+      "msg": "a row of 2 items: its first item starts at 161px, the container's left line at 120px; its last item ends at 1279px, the container's right line at 1320px (2px either way) (SR-7)",
+      "fix": "start the row's first item on the container's left line and end its last on the right line, every item one height",
+      "widths": [
+        1440
+      ],
+      "from": "consistency",
+      "ids": [
+        "row-lines"
+      ],
+      "wheres": [
+        "section#contact > div.max-w-4xl.mx-auto > div.p-8.rounded-3xl > div.grid.grid-cols-1 \"Get in TouchI'm looking for a software e\""
+      ]
+    },
+    {
+      "check": "scroll-reveal",
+      "where": "section#projects > div.selected-projects > article.selected-project.flagship-project \"NearU Microservices Ride-Sharing Platfor\"",
+      "msg": "starts an animation (0.4 s) the moment it is scrolled into view (an IntersectionObserver)",
+      "fix": "show it at rest: no fade, rise or unmask when it is scrolled into view",
+      "widths": [
+        390
+      ],
+      "from": "consistency",
+      "ids": [
+        "scroll-reveal"
+      ],
+      "wheres": [
+        "section#projects > div.selected-projects > article.selected-project.flagship-project \"NearU Microservices Ride-Sharing Platfor\""
+      ]
+    },
+    {
+      "check": "scroll-reveal",
+      "where": "section#projects > div.selected-projects > article.selected-project:nth-of-type(2) \"GridWalk AI Multi-Agent Microgrid Recove\"",
+      "msg": "starts an animation (0.4 s) the moment it is scrolled into view (an IntersectionObserver)",
+      "fix": "show it at rest: no fade, rise or unmask when it is scrolled into view",
+      "widths": [
+        390
+      ],
+      "from": "consistency",
+      "ids": [
+        "scroll-reveal"
+      ],
+      "wheres": [
+        "section#projects > div.selected-projects > article.selected-project:nth-of-type(2) \"GridWalk AI Multi-Agent Microgrid Recove\""
+      ]
+    },
+    {
+      "check": "scroll-reveal",
+      "where": "section#projects > div.selected-projects > article.selected-project:nth-of-type(3) \"GreenOps Cloud Carbon & Efficiency Engin\"",
+      "msg": "starts an animation (0.4 s) the moment it is scrolled into view (an IntersectionObserver)",
+      "fix": "show it at rest: no fade, rise or unmask when it is scrolled into view",
+      "widths": [
+        390
+      ],
+      "from": "consistency",
+      "ids": [
+        "scroll-reveal"
+      ],
+      "wheres": [
+        "section#projects > div.selected-projects > article.selected-project:nth-of-type(3) \"GreenOps Cloud Carbon & Efficiency Engin\""
+      ]
+    },
+    {
+      "check": "container",
+      "where": "page",
+      "msg": "no .wrap",
+      "fix": "put the content in one .wrap",
+      "widths": [
+        1440,
+        390
+      ],
+      "from": "layout",
+      "ids": [
+        "container"
+      ],
+      "wheres": [
+        "page"
+      ]
+    }
+  ],
+  "waivedFindings": [
+    {
+      "check": "assets",
+      "where": "(the page)",
+      "msg": "the script _vercel/insights/script.js did not load (404)",
+      "fix": "fix the path, or remove the reference",
+      "widths": [
+        1440
+      ],
+      "from": "consistency",
+      "ids": [
+        "assets"
+      ],
+      "wheres": [
+        "(the page)"
+      ],
+      "reason": "The existing Vercel Analytics endpoint is supplied by the deployed host and is unavailable on this local static preview. The existing integration is intentionally preserved."
+    },
+    {
+      "check": "empty-visual",
+      "where": "div.more-project-grid > article.small-project:nth-of-type(1) > div.project-image > img \"project-3.png\"",
+      "msg": "the picture project-3.png never loaded: its frame shows empty (and 3 more like it: \"project-6.png\", \"project-7.png\", \"project-8.png\")",
+      "fix": "make the visual draw at every width: a picture that loads, an effect that renders, or its still fallback; never an empty frame",
+      "widths": [
+        1440,
+        390
+      ],
+      "from": "consistency",
+      "ids": [
+        "empty-visual"
+      ],
+      "wheres": [
+        "div.more-project-grid > article.small-project:nth-of-type(1) > div.project-image > img \"project-3.png\""
+      ],
+      "reason": "These images sit inside a closed native More projects disclosure and are intentionally lazy. Their original files and all declared responsive variants exist and decode locally. Hidden images are not missing visible content."
+    },
+    {
+      "check": "empty-visual",
+      "where": "div.more-project-grid > article.small-project:nth-of-type(2) > div.project-image > img \"project-4.jpeg\"",
+      "msg": "the picture project-4.jpeg never loaded: its frame shows empty",
+      "fix": "make the visual draw at every width: a picture that loads, an effect that renders, or its still fallback; never an empty frame",
+      "widths": [
+        1440,
+        390
+      ],
+      "from": "consistency",
+      "ids": [
+        "empty-visual"
+      ],
+      "wheres": [
+        "div.more-project-grid > article.small-project:nth-of-type(2) > div.project-image > img \"project-4.jpeg\""
+      ],
+      "reason": "These images sit inside a closed native More projects disclosure and are intentionally lazy. Their original files and all declared responsive variants exist and decode locally. Hidden images are not missing visible content."
+    },
+    {
+      "check": "phone-number",
+      "where": "div.space-y-3 > div.flex.items-center:nth-of-type(2) > div.flex.items-center > div.flex.items-center \"+94) 76 751 3695\"",
+      "msg": "a phone number in international format: \"+94) 76 751 3695\"; a visitor can dial it and reach a stranger (and 1 more like it: div.flex.items-center:nth-of-type(2) > div.flex.items-center > div.flex.items-center > a.text-xs.font-semibold)",
+      "fix": "drop the number and its tel: link (a \"Request a call\" form may stand in), unless the brief gives the number",
+      "widths": [
+        1440
+      ],
+      "from": "consistency",
+      "ids": [
+        "phone-number"
+      ],
+      "wheres": [
+        "div.space-y-3 > div.flex.items-center:nth-of-type(2) > div.flex.items-center > div.flex.items-center \"+94) 76 751 3695\""
+      ],
+      "reason": "These are existing contact numbers supplied by the portfolio owner. This is a real personal portfolio; replacing them with fictional contacts would break its purpose."
+    },
+    {
+      "check": "phone-number",
+      "where": "div.space-y-3 > div.flex.items-center:nth-of-type(3) > div.flex.items-center > div.flex.items-center \"+94) 70 512 7856\"",
+      "msg": "a phone number in international format: \"+94) 70 512 7856\"; a visitor can dial it and reach a stranger (and 1 more like it: div.flex.items-center:nth-of-type(3) > div.flex.items-center > div.flex.items-center > a.text-xs.font-semibold)",
+      "fix": "drop the number and its tel: link (a \"Request a call\" form may stand in), unless the brief gives the number",
+      "widths": [
+        1440
+      ],
+      "from": "consistency",
+      "ids": [
+        "phone-number"
+      ],
+      "wheres": [
+        "div.space-y-3 > div.flex.items-center:nth-of-type(3) > div.flex.items-center > div.flex.items-center \"+94) 70 512 7856\""
+      ],
+      "reason": "These are existing contact numbers supplied by the portfolio owner. This is a real personal portfolio; replacing them with fictional contacts would break its purpose."
+    }
+  ],
+  "warnings": [
+    {
+      "check": "no-visual",
+      "where": "header#home \"Backend thinking. Real-world impact.\"",
+      "msg": "pictures, effects and mocks cover 22% of this section; a feature section needs a visual (about 25% or more)",
+      "fix": "give the section a visual: a UI fragment on a ground, real icons, or a photograph that fits",
+      "widths": [
+        1440
+      ],
+      "from": "consistency"
+    },
+    {
+      "check": "cta",
+      "where": "section#experience \"Education & engineering experience.\"",
+      "msg": "a section over 1.5 screens long with no link or button in it",
+      "fix": "add the action: a button in the hero, one on every priced item, one in the closing section",
+      "widths": [
+        1440,
+        390
+      ],
+      "from": "consistency"
+    },
+    {
+      "check": "copy-actions",
+      "where": "(the page)",
+      "msg": "the main action \"View resume\" does not read word for word the same in the closing section",
+      "fix": "few actions, one wording: at most 2 in the hero, the main action word for word in nav, hero and close",
+      "widths": [
+        1440
+      ],
+      "from": "consistency"
+    },
+    {
+      "check": "off-grid",
+      "where": "div.flex.items-start > div.min-w-0 > div.flex.flex-wrap > span:nth-of-type(2) \"•\"",
+      "msg": "two common left edges of one section 16px apart: 320px (3 elements, like this one) and 336px (4)",
+      "fix": "move it onto the page margin, or the column edge its section uses",
+      "widths": [
+        1440,
+        390
+      ],
+      "from": "consistency"
+    },
+    {
+      "check": "off-grid",
+      "where": "div.flex.items-start > div.min-w-0 > div.flex.flex-wrap > span:nth-of-type(3) \"Apr 5, 2026\"",
+      "msg": "left edge at 323.5px, 3.5px off a common edge of its section at 320px (3 elements, like span:nth-of-type(2))",
+      "fix": "move it onto the page margin, or the column edge its section uses",
+      "widths": [
+        1440,
+        390
+      ],
+      "from": "consistency"
+    },
+    {
+      "check": "body-size",
+      "where": "article.selected-project.flagship-project > div.project-content > div.project-result > span \"A working platform with a live demo and \"",
+      "msg": "15 of 18 paragraphs of running text are set under 16px (13, 14px)",
+      "fix": "set running text at 16px or more",
+      "widths": [
+        1440,
+        390
+      ],
+      "from": "consistency"
+    },
+    {
+      "check": "links",
+      "where": "header#home > div.proof-strip > a:nth-of-type(1) \"AI Hackathon 2026 1st Runner-Up · Team I\"",
+      "msg": "\"AI Hackathon 2026 1st Runner-Up · Team I\" goes to #case-study-8, a closed answer that stays shut when the link is followed",
+      "fix": "open the target when its hash is followed (details.open = true on hashchange), or link to the section",
+      "widths": [
+        1440
+      ],
+      "from": "consistency"
+    },
+    {
+      "check": "photo-set",
+      "where": "div.project-visual > div.project-preview-frame > div.project-image > img \"project-2-640.jpg\"",
+      "msg": "4 photographs in more than one look: lightness from 0.05 to 0.88; saturation from 0.13 to 0.60; the odd one out is project-2-640.jpg",
+      "fix": "grade the photographs to one look (light, colour, warmth), or replace the odd one out",
+      "widths": [
+        1440
+      ],
+      "from": "consistency"
+    },
+    {
+      "check": "nav-family",
+      "where": "div#root > div.portfolio > div.site-nav-wrap",
+      "msg": "the nav's links come in 3 sizes (13, 12, 16px)",
+      "fix": "keep one nav on every screen: the same bar, fill, links and type",
+      "widths": [
+        1440
+      ],
+      "from": "consistency"
+    },
+    {
+      "check": "nav-labels",
+      "where": "div.portfolio > div.site-nav-wrap > nav.site-nav > a.wordmark \"tn. THIMIRA NIRANJAYA\"",
+      "msg": "\"tn. THIMIRA NIRANJAYA\" opens a section headed \"Backend thinking. Real-world impact.\"",
+      "fix": "name each nav link after the heading of the section it opens",
+      "widths": [
+        1440
+      ],
+      "from": "consistency"
+    },
+    {
+      "check": "nav-labels",
+      "where": "div.site-nav-wrap > nav.site-nav > div.desktop-links > a:nth-of-type(4) \"Contact\"",
+      "msg": "\"Contact\" opens a section headed \"Let’s talk engineering.\"",
+      "fix": "name each nav link after the heading of the section it opens",
+      "widths": [
+        1440
+      ],
+      "from": "consistency"
+    },
+    {
+      "check": "nav-labels",
+      "where": "div.site-nav-wrap > nav.site-nav > div.nav-actions > a.nav-availability \"Open to internships\"",
+      "msg": "\"Open to internships\" opens a section headed \"Let’s talk engineering.\"",
+      "fix": "name each nav link after the heading of the section it opens",
+      "widths": [
+        1440
+      ],
+      "from": "consistency"
+    },
+    {
+      "check": "one-screen",
+      "where": "section#about \"The engineer behind the work.\"",
+      "msg": "2 sections are shorter than the screen, so the next one's heading or picture shows with them: \"The engineer behind the work.\" is 769px of the 900px under the nav, and \"Education & engineering experi\" shows below it (\"Credentials & contin\")",
+      "fix": "give each section the screen (min-height: 100svh less the nav, its content centred), or join two short ones into one",
+      "widths": [
+        1440
+      ],
+      "from": "consistency"
+    },
+    {
+      "check": "form-fields",
+      "where": "div.p-8.rounded-3xl > div.grid.grid-cols-1 > div:nth-of-type(2) > form.space-y-4",
+      "msg": "the form has no status line (role=\"status\"): sending, sent and errors are never read out",
+      "fix": "give each field its type, autocomplete and inputmode, never block paste or disable the button before a submit, and add the status line (references/system.md, Forms)",
+      "widths": [
+        1440
+      ],
+      "from": "consistency"
+    },
+    {
+      "check": "cta",
+      "where": "section#about \"The engineer behind the work.\"",
+      "msg": "a section over 1.5 screens long with no link or button in it",
+      "fix": "add the action: a button in the hero, one on every priced item, one in the closing section",
+      "widths": [
+        390
+      ],
+      "from": "consistency"
+    },
+    {
+      "check": "photo-set",
+      "where": "div.project-visual > div.project-preview-frame > div.project-image > img \"project-2-320.jpg\"",
+      "msg": "3 photographs in more than one look: lightness from 0.10 to 0.88; saturation from 0.13 to 0.56; the odd one out is project-2-320.jpg",
+      "fix": "grade the photographs to one look (light, colour, warmth), or replace the odd one out",
+      "widths": [
+        390
+      ],
+      "from": "consistency"
+    },
+    {
+      "check": "link-styles",
+      "where": "header#home > div.hero-copy > div.hero-socials > a:nth-of-type(1) \"GitHub\"",
+      "msg": "text links in 3 looks: no line, regular (2, like \"GitHub\"); no line, bold (14, like \"Available for softwa\"); border 1px, regular (3, like \"AI Hackathon 2026 1s\")",
+      "fix": "give text links one look wherever they sit: one underline, one weight",
+      "widths": [
+        390
+      ],
+      "from": "consistency"
+    },
+    {
+      "check": "copy-em-dash",
+      "msg": "12 em dashes in the body (budget 2)",
+      "fix": "use a comma, a colon, parentheses or a full stop where each is natural (references/copy-tells.md)",
+      "widths": [],
+      "from": "copy",
+      "where": "(the copy)",
+      "exact": false
+    },
+    {
+      "check": "copy-numbered",
+      "msg": "12 step numbers",
+      "fix": "number only steps that happen in order (references/copy-tells.md)",
+      "widths": [],
+      "from": "copy",
+      "where": "(the copy)",
+      "exact": false
+    }
+  ],
+  "notes": [
+    "Template-specific findings remain visible and are not represented as a passing gate.",
+    "The user requested component entrances and preservation of the real portfolio.",
+    "No changes have been pushed to GitHub."
+  ]
+}

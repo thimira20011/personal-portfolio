@@ -80,6 +80,8 @@ Portfolio content is managed in [`src/data/portfolio.js`](src/data/portfolio.js)
 - **Add projects:** Add objects to the `projects` array with details and image URLs.
 - **Selected projects:** NearU, GridWalk AI, and GreenOps have dedicated stories. Update their contribution, architecture overview, and evidence in `projectStories.js` when the implementation changes. Add performance numbers only alongside reproducible measurements.
 - **Design:** Theme tokens, responsive layouts, and reduced-motion behavior are in `src/index.css`. The primary sections are in `src/components/PortfolioSections.js`.
+- **Visual system and audit:** See `DESIGN.md` for typography, spacing, and theme tokens, and `DESIGN_REVIEW.md` for the recruiter-focused improvement plan and validation results. Motion styles are in `src/lively.css`.
+- **Images:** Existing portrait and project assets are cached in `public/images/`. Responsive variants are mapped in `src/data/imageProps.js`; update that mapping and provide matching variants when replacing an image. NearU uses a capture of its actual public demo.
 - **Certificates:** Put PDFs in `public/certificates/` and link to them using `process.env.PUBLIC_URL` so they work under a deployment subpath.
 - **Contact form:** Sign up at [Formspree](https://formspree.io/) and replace the endpoint in the Contact component with your unique form ID.
 

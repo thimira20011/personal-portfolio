@@ -18,6 +18,21 @@ export default function App() {
   const [copiedType, setCopiedType] = useState(null);
 
   useEffect(() => {
+    const page = document.documentElement;
+    const onKey = (event) => {
+      if (event.key === 'Tab') page.setAttribute('data-keyboard-navigation', '');
+    };
+    const onPointer = () => page.removeAttribute('data-keyboard-navigation');
+    window.addEventListener('keydown', onKey);
+    window.addEventListener('pointerdown', onPointer);
+    return () => {
+      window.removeEventListener('keydown', onKey);
+      window.removeEventListener('pointerdown', onPointer);
+      page.removeAttribute('data-keyboard-navigation');
+    };
+  }, []);
+
+  useEffect(() => {
     document.documentElement.classList.toggle('dark', isDarkMode);
     try { localStorage.setItem('theme', isDarkMode ? 'dark' : 'light'); } catch { /* The theme still works without storage. */ }
   }, [isDarkMode]);

@@ -1,7 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { ArrowDown, ArrowUpRight, Check, ChevronDown, Code2, ExternalLink, FileText, Github, Linkedin, MapPin, Menu, Moon, Network, Sun, X } from 'lucide-react';
+import { ArrowDown, ArrowUpRight, Check, ChevronDown, Cloud, Code2, ExternalLink, FileText, Github, Linkedin, MapPin, Menu, Moon, Network, Sun, Trophy, X } from 'lucide-react';
 import { projectStories } from '../data/projectStories';
 import useReveal from '../hooks/useReveal';
+import imageProps from '../data/imageProps';
 
 const navigation = [
   { id: 'projects', label: 'Work' },
@@ -14,20 +15,6 @@ export function PortfolioNav({ isDarkMode, toggleDarkMode }) {
   const [open, setOpen] = useState(false);
   const [active, setActive] = useState('');
   const menuRef = useRef(null);
-  const desktopRef = useRef(null);
-  const [pill, setPill] = useState(null);
-  useEffect(() => {
-    const links = desktopRef.current;
-    const updatePill = () => {
-      const link = links?.querySelector('[aria-current]');
-      setPill(link ? { x: link.offsetLeft } : null);
-    };
-    updatePill();
-    const resize = window.ResizeObserver ? new ResizeObserver(updatePill) : null;
-    if (links) resize?.observe(links);
-    window.addEventListener('resize', updatePill);
-    return () => { resize?.disconnect(); window.removeEventListener('resize', updatePill); };
-  }, [active]);
   useEffect(() => {
     const onKey = (event) => {
       if (event.key === 'Escape' && open) {
@@ -39,6 +26,7 @@ export function PortfolioNav({ isDarkMode, toggleDarkMode }) {
     return () => document.removeEventListener('keydown', onKey);
   }, [open]);
   useEffect(() => {
+    if (!window.IntersectionObserver) return undefined;
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => { if (entry.isIntersecting) setActive(entry.target.id); });
     }, { rootMargin: '-15% 0px -55% 0px', threshold: 0 });
@@ -55,8 +43,7 @@ export function PortfolioNav({ isDarkMode, toggleDarkMode }) {
     <div className="site-nav-wrap">
       <nav className="site-nav" aria-label="Main navigation">
         <a className="wordmark" href="#home" aria-label="Thimira Niranjaya, home"><span>tn<span className="brand-dot">.</span></span><span className="wordmark-caption">THIMIRA NIRANJAYA</span></a>
-        <div className="desktop-links" ref={desktopRef}>
-          <span className="nav-active-pill" aria-hidden="true" style={{ opacity: pill ? 1 : 0, transform: `translateX(${pill?.x || 0}px)` }} />
+        <div className="desktop-links">
           {links}
         </div>
         <div className="nav-actions">
@@ -74,11 +61,9 @@ export function PortfolioNav({ isDarkMode, toggleDarkMode }) {
   );
 }
 
-export function SectionTitle({ number, eyebrow, title, description }) {
-  const ref = useReveal();
+export function SectionTitle({ title, description }) {
   return (
-    <div className="section-title" ref={ref}>
-      <div className="eyebrow"><span>{number}</span>{eyebrow}</div>
+    <div className="section-title">
       <h2>{title}</h2>
       {description && <p>{description}</p>}
     </div>
@@ -87,15 +72,14 @@ export function SectionTitle({ number, eyebrow, title, description }) {
 
 export function PortfolioHero({ data }) {
   return (
-    <header id="home" className="hero">
+    <header id="home" className="hero" data-enter>
       <div className="hero-copy">
-        <a href="#contact" className="availability"><span className="status-dot" />Available for software engineering internships<ArrowUpRight size={15} aria-hidden="true" /></a>
         <p className="hero-intro">Hi, I'm {data.shortName}.</p>
-        <h1>Backend thinking.<br /><span>Real-world impact.</span></h1>
+        <h1><span className="hero-line">Backend thinking.</span><span className="hero-line">Real-world impact.</span></h1>
         <p className="hero-description">An Information Systems undergraduate building real-time systems with <strong>.NET, cloud infrastructure, and AI.</strong> I enjoy turning complex problems into software people can use.</p>
         <div className="hero-buttons">
-          <a className="button button-primary" href="#projects">Explore my work<ArrowDown size={17} aria-hidden="true" /></a>
-          <a className="button button-secondary" href={data.resumeUrl} target="_blank" rel="noopener noreferrer">View resume<FileText size={17} aria-hidden="true" /></a>
+          <a className="button button-primary" href={data.resumeUrl} target="_blank" rel="noopener noreferrer">View resume<FileText size={17} aria-hidden="true" /></a>
+          <a className="button button-secondary" href="#projects">Explore my work<ArrowDown size={17} aria-hidden="true" /></a>
         </div>
         <div className="hero-socials">
           <span><MapPin size={15} aria-hidden="true" />Sri Lanka</span>
@@ -106,17 +90,14 @@ export function PortfolioHero({ data }) {
       </div>
       <div className="hero-visual">
         <div className="portrait-frame">
-          <div className="portrait-topline" aria-hidden="true">
-            <span className="portrait-corner">+</span>
-            <span>THE PERSON BEHIND THE CODE</span>
-            <span className="portrait-corner">+</span>
-          </div>
-          <img src={data.profilePicUrl} alt="Thimira Niranjaya Keerthiwansha" width="480" height="560" fetchpriority="high" />
+          <img src={data.profilePicUrl} {...imageProps(data.profilePicUrl, '(max-width: 767px) calc(100vw - 48px), (max-width: 1100px) 34vw, 390px')} alt="Thimira Niranjaya Keerthiwansha" fetchpriority="high" />
         </div>
+        <a href="#contact" className="availability"><span className="status-dot" />Available for software engineering internships<ArrowUpRight size={15} aria-hidden="true" /></a>
       </div>
       <div className="proof-strip" aria-label="Experience at a glance">
-        <div><strong>{data.achievements.length}<span> competition awards</span></strong><span>Building under real constraints</span></div>
-        <div><strong>{data.publications.length}<span> technical articles</span></strong><a href="#publications">Sharing what I learn<ArrowUpRight size={14} aria-hidden="true" /></a></div>
+        <a href="#case-study-8"><Trophy size={19} aria-hidden="true" /><span><strong>AI Hackathon 2026</strong><span>1st Runner-Up · Team IGNITE</span></span><ArrowUpRight size={17} aria-hidden="true" /></a>
+        <a href="#experience"><Cloud size={19} aria-hidden="true" /><span><strong>AWS Cloud Club</strong><span>Associate Technical Lead</span></span><ArrowUpRight size={17} aria-hidden="true" /></a>
+        <a href="#publications"><FileText size={19} aria-hidden="true" /><span><strong>{data.publications.length} technical articles</strong><span>Engineering notes on Medium</span></span><ArrowUpRight size={17} aria-hidden="true" /></a>
       </div>
     </header>
   );
@@ -124,7 +105,7 @@ export function PortfolioHero({ data }) {
 
 function ProjectImage({ project }) {
   const [failed, setFailed] = useState(false);
-  return <div className="project-image">{!failed && project.imageUrl ? <img src={project.imageUrl} alt={`${projectStories[project.id]?.name || project.title} application screenshot`} loading="lazy" onError={() => setFailed(true)} /> : <div className="project-image-fallback"><Code2 size={38} aria-hidden="true" /><span>{projectStories[project.id]?.name || project.title.split('—')[0]}</span></div>}</div>;
+  return <div className="project-image">{!failed && project.imageUrl ? <img src={project.imageUrl} {...imageProps(project.imageUrl, '(max-width: 767px) calc(100vw - 96px), (max-width: 1100px) calc((100vw - 176px) / 2), 544px')} alt={project.imageAlt || `${projectStories[project.id]?.name || project.title} application screenshot`} loading="lazy" onError={() => setFailed(true)} /> : <div className="project-image-fallback"><Code2 size={38} aria-hidden="true" /><span>{projectStories[project.id]?.name || project.title.split('—')[0]}</span></div>}</div>;
 }
 
 function ProjectLinks({ project }) {
@@ -172,15 +153,12 @@ function SelectedProject({ project, index, flagship }) {
   return <article ref={ref} className={`selected-project ${flagship ? 'flagship-project' : ''}`} data-project={project.id} aria-labelledby={`project-title-${project.id}`}>
     <div className="project-visual">
       <div className="project-preview-frame">
-        <div className="project-preview-toolbar" aria-hidden="true"><span className="preview-dots"><i /><i /><i /></span><span>{story.name}</span><span className="preview-mark">↗</span></div>
         <ProjectImage project={project} />
       </div>
-      <span className="project-index">0{index + 1} / SELECTED WORK</span>
-      <span className="project-orbit" aria-hidden="true" />
     </div>
     <div className="project-content">
-      <div className="project-meta"><span>{story.label}</span><span>{project.period}</span></div>
       <h3 id={`project-title-${project.id}`}>{story.name}<span> {project.title.split('—')[1]?.trim()}</span></h3>
+      <div className="project-meta"><span>{story.label}</span><span>{project.period}</span></div>
       <p className="project-summary">{story.summary}</p>
       <div className="contribution"><span>{story.contributionLabel || 'My contribution'}</span><p>{story.contribution}</p></div>
       <div className="project-result"><Check size={16} aria-hidden="true" /><span>{story.result}</span></div>
@@ -200,14 +178,14 @@ export function PortfolioProjects({ projects }) {
   const others = projects.filter((project) => !projectStories[project.id]);
   const filtered = others.filter((project) => inCategory(project, filter));
   return <section id="projects" className="portfolio-section projects-section">
-    <SectionTitle number="01" eyebrow="Selected work" title="Built to solve something." description="Three projects that reflect how I think, collaborate, and build—from real-time backends to agentic AI." />
+    <SectionTitle title="Selected engineering work." description="Real-time backends, agentic AI, and cloud infrastructure. Explore what I built, the decisions behind it, and the code." />
     <div className="selected-projects">{selected.map((project, index) => <SelectedProject key={project.id} project={project} index={index} flagship={index === 0} />)}</div>
     <details className="more-projects">
       <summary><span>More projects <span className="count-badge">{others.length}</span></span><span className="expand-label">Explore the rest<ChevronDown size={18} aria-hidden="true" /></span></summary>
       <div className="project-filters" role="group" aria-label="Filter additional projects">{categoryFilters.map((category) => <button key={category} type="button" aria-pressed={filter === category} onClick={() => setFilter(category)}>{category}</button>)}</div>
       <p className="filter-result" role="status">{filtered.length} {filtered.length === 1 ? 'project' : 'projects'}{filter !== 'All' ? ` in ${filter}` : ''}</p>
       <div className="more-project-grid">{filtered.map((project) => <article className="small-project" key={project.id}>
-        <ProjectImage project={project} /><div className="small-project-content"><span className="eyebrow">{project.category}</span><h3>{project.title}</h3><p>{project.description}</p><div className="contribution"><span>My role</span><p>{project.role}</p></div><p className="small-project-status">{project.status.replace(/^[^\p{L}\p{N}]+/u, '')}</p><div className="tech-list">{project.techStack.map((tech) => <span key={tech}>{tech}</span>)}</div><ProjectLinks project={project} /><ProjectCaseStudy project={project} /></div>
+        <ProjectImage project={project} /><div className="small-project-content"><h3>{project.title}</h3><p>{project.description}</p><div className="contribution"><span>My role</span><p>{project.role}</p></div><p className="small-project-status">{project.status.replace(/^[^\p{L}\p{N}]+/u, '')}</p><div className="tech-list">{project.techStack.map((tech) => <span key={tech}>{tech}</span>)}</div><ProjectLinks project={project} /><ProjectCaseStudy project={project} /></div>
       </article>)}</div>
       {!filtered.length && <p className="empty-projects">No additional projects in this category. Choose All to browse the remaining projects.</p>}
     </details>
@@ -216,7 +194,7 @@ export function PortfolioProjects({ projects }) {
 
 function SkillFocus({ title, description, skills, index }) {
   const ref = useReveal(index * 60);
-  return <div ref={ref} className="skill-focus"><span className="skill-number">0{index + 1}</span><h3>{title}</h3><p>{description}</p><div className="tech-list">{skills.map((skill) => <span key={skill}>{skill}</span>)}</div></div>;
+  return <div ref={ref} className="skill-focus"><h3>{title}</h3><p>{description}</p><div className="tech-list">{skills.map((skill) => <span key={skill}>{skill}</span>)}</div></div>;
 }
 
 export function PortfolioAbout({ data }) {
@@ -226,7 +204,7 @@ export function PortfolioAbout({ data }) {
     { title: 'AI & full-stack', description: 'Agent coordination and interfaces that make complex systems usable.', skills: ['Jac / Jaseci', 'Multi-Agent Systems', 'React', 'TypeScript'] },
   ];
   return <section id="about" className="portfolio-section about-section">
-    <SectionTitle number="02" eyebrow="A little about me" title="Curiosity, backed by practice." />
+    <SectionTitle title="The engineer behind the work." />
     <div className="about-intro"><p>{data.bio}</p><p>{data.motivation}</p></div>
     <div className="skill-focus-grid">{core.map((skill, index) => <SkillFocus key={skill.title} {...skill} index={index} />)}</div>
     <details className="skills-details"><summary>Explore my full toolkit<ChevronDown size={17} aria-hidden="true" /></summary><div className="full-skills">{data.skillGroups.map((group) => <div key={group.category}><h3>{group.category}</h3><p>{group.items.join(' · ')}</p></div>)}</div></details>
@@ -243,7 +221,7 @@ export function PortfolioCertifications({ data }) {
   const featured = featuredIds.map((id) => data.find((cert) => cert.id === id)).filter(Boolean);
   const others = data.filter((cert) => !featuredIds.includes(cert.id));
   return <section id="certifications" className="portfolio-section">
-    <SectionTitle number="05" eyebrow="Continuous learning" title="Building on the fundamentals." description="Selected credentials that support my engineering work." />
+    <SectionTitle title="Credentials & continuous learning." description="Selected credentials that support my engineering work." />
     <div className="certificate-grid">{featured.map((cert) => <CertificateCard cert={cert} key={cert.id} />)}</div>
     <details className="skills-details"><summary>More certifications & memberships <span className="count-badge">{others.length}</span><ChevronDown size={17} aria-hidden="true" /></summary><div className="certificate-grid additional-certificates">{others.map((cert) => <CertificateCard cert={cert} key={cert.id} />)}</div></details>
   </section>;

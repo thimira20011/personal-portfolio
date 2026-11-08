@@ -6,7 +6,7 @@ const portfolioData = {
       'Building real-time, distributed backend systems — .NET 10 · SignalR · Redis · PostGIS · AWS Cloud.',
     location: 'Ratnapura District, Sabaragamuwa Province, Sri Lanka.',
     profilePicUrl:
-      'https://github.com/thimira20011/portfolio-pictures/blob/main/WhatsApp%20Image%202026-03-30%20at%2023.34.12.jpeg?raw=true',
+      `${process.env.PUBLIC_URL}/images/thimira.jpeg`,
     resumeUrl:
       'https://drive.google.com/file/d/1A5cI1T66xB9HFwusyAgLF2TcU9Mkut8o/view?usp=sharing',
 
@@ -137,7 +137,9 @@ const portfolioData = {
         link: 'https://github.com/Nearu-Project-SUSL',
         demoUrl: 'https://nearusab.me',
         repoLabel: 'github.com/Nearu-Project-SUSL',
-        imageUrl: 'https://raw.githubusercontent.com/thimira20011/portfolio-pictures/refs/heads/main/Home%20Page.png',
+        // Captured from the public NearU demo on 2026-11-08.
+        imageUrl: `${process.env.PUBLIC_URL}/images/nearu-live.jpg`,
+        imageAlt: 'NearU campus platform live demo landing page',
       },
       {
         id: 8,
@@ -161,7 +163,7 @@ const portfolioData = {
         demoUrl: 'https://youtu.be/gPm9pV6GcR4',
         demoLabel: 'Watch Demo',
         repoLabel: 'github.com/Dileesha001/GridWalk-AI',
-        imageUrl: 'https://raw.githubusercontent.com/thimira20011/portfolio-pictures/refs/heads/main/Screenshot%202026-10-19%20140341.png',
+        imageUrl: `${process.env.PUBLIC_URL}/images/project-2.png`,
       },
       {
         id: 2,
@@ -182,7 +184,7 @@ const portfolioData = {
         techStack: ['AWS VPC', 'ECS Fargate', 'RDS PostgreSQL', 'ALB', 'CloudWatch', 'Route 53', 'Docker'],
         link: 'https://github.com/thimira20011/NearU-Backend',
         repoLabel: 'github.com/thimira20011/NearU-Backend',
-        imageUrl: 'https://raw.githubusercontent.com/thimira20011/portfolio-pictures/refs/heads/main/Grafana.png',
+        imageUrl: `${process.env.PUBLIC_URL}/images/project-3.png`,
       },
       {
         id: 3,
@@ -202,7 +204,7 @@ const portfolioData = {
         techStack: ['Python', 'FastAPI', 'Machine Learning', 'Isolation Forests', 'PostgreSQL', 'Docker'],
         link: 'https://github.com/thimira20011/ShadowSense-2026-Aurora',
         repoLabel: 'github.com/thimira20011/ShadowSense-2026-Aurora',
-        imageUrl: 'https://raw.githubusercontent.com/thimira20011/portfolio-pictures/refs/heads/main/Shadow%20Sense.jpeg',
+        imageUrl: `${process.env.PUBLIC_URL}/images/project-4.jpeg`,
       },
       {
         id: 4,
@@ -223,7 +225,7 @@ const portfolioData = {
         techStack: ['.NET 10', 'C#', 'Azure SDK', 'Roslyn', 'EF Core', 'Docker', 'Grafana', 'Prometheus'],
         link: 'https://github.com/thimira20011/GreenOps-Intelligence-Hub',
         repoLabel: 'github.com/thimira20011/GreenOps-Intelligence-Hub',
-        imageUrl: 'https://raw.githubusercontent.com/thimira20011/portfolio-pictures/refs/heads/main/GreenOps.png',
+        imageUrl: `${process.env.PUBLIC_URL}/images/project-5.png`,
       },
       {
         id: 5,
@@ -243,7 +245,7 @@ const portfolioData = {
         link: 'https://github.com/thimira20011/the-reuse-hub-v2',
         demoUrl: 'https://thimira20011.github.io/the-reuse-hub-v2',
         repoLabel: 'github.com/thimira20011/the-reuse-hub-v2',
-        imageUrl: 'https://github.com/thimira20011/portfolio-pictures/blob/main/ReuseHubHome.png?raw=true',
+        imageUrl: `${process.env.PUBLIC_URL}/images/project-6.png`,
       },
       {
         id: 6,
@@ -263,7 +265,7 @@ const portfolioData = {
         techStack: ['Godot 4', 'GDScript', '2D Physics Engine', 'RayCast2D AI'],
         link: 'https://github.com/thimira20011/Knight_Fury',
         repoLabel: 'github.com/thimira20011/Knight_Fury',
-        imageUrl: 'https://raw.githubusercontent.com/thimira20011/portfolio-pictures/refs/heads/main/Game%20Play.png',
+        imageUrl: `${process.env.PUBLIC_URL}/images/project-7.png`,
       },
       {
         id: 7,
@@ -283,7 +285,7 @@ const portfolioData = {
         link: 'https://github.com/thimira20011/expense-tracker.git',
         repoLabel: 'github.com/thimira20011/expense-tracker',
         imageUrl:
-          'https://raw.githubusercontent.com/thimira20011/portfolio-pictures/refs/heads/main/expenseTracker.png',
+          `${process.env.PUBLIC_URL}/images/project-8.png`,
       },
     ],
 
