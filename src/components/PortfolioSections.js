@@ -106,7 +106,7 @@ export function PortfolioHero({ data, animationsPaused, setAnimationsPaused }) {
       </div>
       <div className="proof-strip" aria-label="Experience at a glance">
         <a href="#case-study-8"><Trophy size={19} aria-hidden="true" /><span><strong>AI Hackathon 2026</strong><span>1st Runner-Up · Team IGNITE</span></span><ArrowUpRight size={17} aria-hidden="true" /></a>
-        <a href="#experience"><Cloud size={19} aria-hidden="true" /><span><strong>AWS Cloud Club</strong><span>Associate Technical Lead</span></span><ArrowUpRight size={17} aria-hidden="true" /></a>
+        <a href="#experience"><Cloud size={19} aria-hidden="true" /><span><strong>AWS Student Builder Group</strong><span>Associate Technical Lead</span></span><ArrowUpRight size={17} aria-hidden="true" /></a>
         <a href="#publications"><FileText size={19} aria-hidden="true" /><span><strong>{data.publications.length} technical articles</strong><span>Engineering notes on Medium</span></span><ArrowUpRight size={17} aria-hidden="true" /></a>
       </div>
     </header>
