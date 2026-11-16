@@ -6,7 +6,6 @@ a, button, summary { transition: color 160ms ease, background-color 160ms ease, 
 details > summary svg { transition: transform 200ms var(--ease-out); }
 .project-image img { transition: transform 700ms var(--ease-out); }
 .selected-project { transition: border-color 240ms ease; }
-.artwork-toggle { transition: background-color 160ms ease, color 160ms ease; }
 .site-nav-wrap { transition: background-color 220ms ease, border-color 220ms ease, box-shadow 220ms ease; }
 .small-project, .certificate-card, .award-card { transition: border-color 220ms ease, background-color 220ms ease; }
 .small-project .project-image img { transition: transform 700ms var(--ease-out); }
@@ -120,7 +119,6 @@ html[data-keyboard-navigation] .mobile-links { animation: none; }
   .small-project:hover, .certificate-card:hover, .award-card:hover { border-color: var(--sand); }
   .small-project:hover .project-image img { transform: scale(1.035); }
   .selected-project:hover .project-image img { transform: scale(1.04); }
-  .artwork-toggle:hover:not(:disabled) { background: var(--surface-alt); color: var(--ink); }
   .architecture button:hover { border-color: var(--accent); }
   .project-filters button:hover:not([aria-pressed='true']) { background: var(--accent-soft); }
 }

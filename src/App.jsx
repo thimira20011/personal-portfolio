@@ -74,7 +74,7 @@ export default function App() {
       <a className="skip-link" href="#main-content">Skip to content</a>
       <PortfolioNav isDarkMode={isDarkMode} toggleDarkMode={() => setIsDarkMode((value) => !value)} resumes={portfolioData.resumes} animationsPaused={animationsPaused} onToggleAnimations={() => setAnimationsPaused((value) => !value)} />
       <main id="main-content" className="page-container" tabIndex={-1}>
-        <PortfolioHero data={portfolioData} animationsPaused={animationsPaused} setAnimationsPaused={setAnimationsPaused} />
+        <PortfolioHero data={portfolioData} animationsPaused={animationsPaused} />
         <PortfolioProjects projects={portfolioData.projects} />
         <PortfolioAbout data={portfolioData.about} profilePicUrl={portfolioData.profilePicUrl} />
         <ExperienceTimeline data={portfolioData.timeline} />

@@ -201,7 +201,7 @@ const portfolioData = {
         bullets: [
           'Designed a hybrid anomaly detection pipeline combining isolation forests and heuristic thresholds to score transaction risk in real time.',
           'Implemented an automated alert-and-freeze mechanism that locks suspicious accounts and notifies reviewers within seconds of detection.',
-          'Placed 1st Runner-Up at Aurora 2026 (National AI Ideathon organized by IEEE WIE Student Branch Affinity Group, SUSL).',
+          'Placed 1st Runner-Up in the university-level competition at Aurora 2026, organized by the Computer Science Association of the University of Sri Jayewardenepura.',
         ],
         techStack: ['Python', 'FastAPI', 'Machine Learning', 'Isolation Forests', 'PostgreSQL', 'Docker'],
         link: 'https://github.com/thimira20011/ShadowSense-2026-Aurora',
@@ -326,9 +326,9 @@ const portfolioData = {
       },
       {
         id: 1,
-        title: '1st Runner-Up — Aurora 2026 (National AI Ideathon)',
-        event: 'Organized by IEEE WIE Student Branch Affinity Group, SUSL',
-        year: '2026',
+        title: '1st Runner-Up — Aurora 2026 (University Level)',
+        event: 'Organized by the Computer Science Association, University of Sri Jayewardenepura',
+        year: 'Jul 4, 2026',
         description:
           'Awarded 1st Runner-Up for designing ShadowSense — an AI-powered financial fraud detection engine that uses isolation forests and behavioral heuristics to safeguard digital freelancer transactions.',
       },

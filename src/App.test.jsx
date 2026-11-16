@@ -133,15 +133,27 @@ test('one ambient motion control pauses both the workspace and the page backgrou
   vi.spyOn(document, 'hidden', 'get').mockReturnValue(false);
   act(() => document.dispatchEvent(new Event('visibilitychange')));
   expect(container.querySelector('.ambient-background').dataset.running).toBe('true');
-  act(() => container.querySelector('.artwork-toggle').click());
+  expect(container.querySelector('#home button')).toBeNull();
+  act(() => container.querySelector('.nav-motion-toggle').click());
   expect(container.querySelector('.ambient-background').dataset.running).toBe('false');
   expect(container.querySelector('.pixel-workspace').dataset.running).toBe('false');
   expect(container.querySelector('.nav-motion-toggle').getAttribute('aria-pressed')).toBe('true');
-  act(() => container.querySelector('.artwork-toggle').click());
+  act(() => container.querySelector('.nav-motion-toggle').click());
   expect(container.querySelector('.ambient-background').dataset.running).toBe('true');
   act(() => container.querySelector('.nav-motion-toggle').click());
   expect(container.querySelector('.ambient-background').dataset.running).toBe('false');
   expect(container.querySelector('.pixel-workspace').dataset.running).toBe('false');
+});
+
+test('attributes Aurora to the organizer named on the university-level certificate', () => {
+  const award = [...container.querySelectorAll('.award-card')].find((card) => card.textContent.includes('Aurora 2026'));
+  expect(award.textContent).toContain('University Level');
+  expect(award.textContent).toContain('Computer Science Association, University of Sri Jayewardenepura');
+  expect(award.textContent).toContain('Jul 4, 2026');
+  expect(award.textContent).not.toContain('IEEE');
+  const project = [...container.querySelectorAll('.small-project')].find((card) => card.textContent.includes('ShadowSense'));
+  expect(project.textContent).toContain('Computer Science Association of the University of Sri Jayewardenepura');
+  expect(project.textContent).not.toContain('IEEE');
 });
 
 test('preserves all credentials, PDFs, engineering stories, and valid local section links', () => {

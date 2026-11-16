@@ -31,17 +31,15 @@ afterEach(() => {
   vi.restoreAllMocks();
 });
 
-test('lets visitors pause and resume the artwork without changing content', () => {
+test('follows the shared pause state without a duplicate artwork control', () => {
   act(() => root.render(<PixelWorkspace />));
   const scene = container.firstChild;
-  const button = container.querySelector('button');
+  expect(container.querySelector('button')).toBeNull();
   expect(scene.dataset.running).toBe('true');
-  act(() => button.click());
+  act(() => root.render(<PixelWorkspace paused />));
   expect(scene.dataset.running).toBe('false');
-  expect(button.getAttribute('aria-pressed')).toBe('true');
-  expect(button.getAttribute('aria-label')).toBe('Play ambient animations');
   expect(container.querySelector('img')).not.toBeNull();
-  act(() => button.click());
+  act(() => root.render(<PixelWorkspace paused={false} />));
   expect(scene.dataset.running).toBe('true');
 });
 
@@ -58,7 +56,7 @@ test('pauses outside the viewport and in a hidden tab while preserving a manual 
   hidden = false;
   act(() => document.dispatchEvent(new Event('visibilitychange')));
   expect(scene.dataset.running).toBe('true');
-  act(() => container.querySelector('button').click());
+  act(() => root.render(<PixelWorkspace paused />));
   act(() => intersect([{ isIntersecting: false }]));
   act(() => intersect([{ isIntersecting: true }]));
   expect(scene.dataset.running).toBe('false');
@@ -68,7 +66,7 @@ test('honors reduced motion on load and when the system preference changes', () 
   preference.matches = true;
   act(() => root.render(<PixelWorkspace />));
   expect(container.firstChild.dataset.running).toBe('false');
-  expect(container.querySelector('button').disabled).toBe(true);
+  expect(container.querySelector('button')).toBeNull();
   preference.matches = false;
   act(() => motionChanged());
   expect(container.firstChild.dataset.running).toBe('true');

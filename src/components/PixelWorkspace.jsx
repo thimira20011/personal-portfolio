@@ -1,8 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { Pause, Play } from 'lucide-react';
 import { motion, useMotionTemplate, useSpring, useTransform } from 'motion/react';
 
-export default function PixelWorkspace({ paused: sharedPaused, onPauseChange }) {
+export default function PixelWorkspace({ paused = false }) {
   const sceneRef = useRef(null);
   const pointerX = useSpring(0, { mass: 1, stiffness: 100, damping: 20 });
   const pointerY = useSpring(0, { mass: 1, stiffness: 100, damping: 20 });
@@ -11,9 +10,6 @@ export default function PixelWorkspace({ paused: sharedPaused, onPauseChange }) 
   const translateX = useTransform(pointerX, (value) => value * 16);
   const translateY = useTransform(pointerY, (value) => value * 10);
   const transform = useMotionTemplate`perspective(900px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translate3d(${translateX}px, ${translateY}px, 0)`;
-  const [localPaused, setLocalPaused] = useState(false);
-  const paused = sharedPaused ?? localPaused;
-  const setPaused = onPauseChange || setLocalPaused;
   const [reduced, setReduced] = useState(() => window.matchMedia('(prefers-reduced-motion: reduce)').matches);
   const [inView, setInView] = useState(true);
   const [visible, setVisible] = useState(!document.hidden);
@@ -68,10 +64,6 @@ export default function PixelWorkspace({ paused: sharedPaused, onPauseChange }) 
     </motion.div>
     <div className="workspace-caption">
       <span><span className="workspace-status" />A little corner of my world.</span>
-      <button type="button" className="artwork-toggle" disabled={reduced} onClick={() => { resetDepth(); setPaused((value) => !value); }} aria-label={reduced ? 'Ambient motion reduced by system preference' : paused ? 'Play ambient animations' : 'Pause ambient animations'} aria-pressed={paused || reduced}>
-        {paused || reduced ? <Play size={14} aria-hidden="true" /> : <Pause size={14} aria-hidden="true" />}
-        <span>{reduced ? 'Still mode' : paused ? 'Play' : 'Pause'}</span>
-      </button>
     </div>
   </div>;
 }

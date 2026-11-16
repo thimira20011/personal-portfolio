@@ -112,7 +112,7 @@ export function SectionTitle({ title, description }) {
   );
 }
 
-export function PortfolioHero({ data, animationsPaused, setAnimationsPaused }) {
+export function PortfolioHero({ data, animationsPaused }) {
   return (
     <header id="home" className="hero" data-enter>
       <div className="hero-copy">
@@ -131,7 +131,7 @@ export function PortfolioHero({ data, animationsPaused, setAnimationsPaused }) {
         </div>
       </div>
       <div className="hero-visual">
-        <PixelWorkspace paused={animationsPaused} onPauseChange={setAnimationsPaused} />
+        <PixelWorkspace paused={animationsPaused} />
         <a href="#contact" className="availability"><span className="status-dot" />Available for software engineering internships<ArrowUpRight size={15} aria-hidden="true" /></a>
       </div>
       <div className="proof-strip" aria-label="Experience at a glance">
