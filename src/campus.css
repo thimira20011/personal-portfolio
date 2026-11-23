@@ -28,18 +28,17 @@
 .campus-links .availability { width: fit-content; justify-content: flex-start; min-height: 44px; padding: 0; font-size: 12px; }
 .campus-hero .proof-strip { grid-area: proof; margin-top: clamp(8px, 3.5vw, 48px); }
 .ride-feature { grid-area: demo; min-width: 0; align-self: center; scroll-margin-block-start: 12px; }
-.ride-sheet { overflow: hidden; margin: 0; border: 1px solid #405545; border-radius: 12px; background: #20392e; color: #f6f4e8; }
+.ride-sheet { container-type: inline-size; overflow: hidden; margin: 0; border: 1px solid #405545; border-radius: 12px; background: #20392e; color: #f6f4e8; }
 .map-heading { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 12px 20px; color: #304637; background: #f2ecd8; border-bottom: 1px solid #aeb49a; font-size: 13px; font-weight: 600; }
 .map-project { display: inline-flex; align-items: center; gap: 8px; font-family: var(--display); font-size: 23px; font-weight: 700; letter-spacing: -.03em; }
 .campus-map { display: block; width: 100%; height: auto; background: #e9e3cb; }
 .search-area { fill: #65933f; fill-opacity: .12; stroke: #4a682f; stroke-width: 2; stroke-dasharray: 5 5; }
 .match-route { stroke: #28583b; stroke-width: 5; stroke-linecap: round; }
-.ride-console { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; padding: 16px 20px; }
-.ride-status { flex: 1 1 170px; }
+.ride-console { display: grid; grid-template-columns: minmax(0, 1fr) 9rem; align-items: center; gap: 12px; padding: 16px 20px; }
 .ride-status strong, .ride-status span { display: block; }
-.ride-status strong { font-size: 17px; font-family: var(--display); font-weight: 650; }
+.ride-status strong { font-size: 17px; font-family: var(--display); font-weight: 650; line-height: 1.25; }
 .ride-status span { margin-top: 3px; color: #d6e1d2; font-size: 12px; line-height: 1.45; }
-.ride-action { display: inline-flex; align-items: center; justify-content: center; gap: 9px; min-height: 44px; padding: 10px 15px; border-radius: 6px; background: #cef47c; color: #1c3226; font-size: 13px; font-weight: 750; }
+.ride-action { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 44px; padding: 10px; white-space: nowrap; border-radius: 6px; background: #cef47c; color: #1c3226; font-size: 13px; font-weight: 750; }
 .ride-action:focus-visible { outline-color: #fff9dd; }
 .ride-action:hover { background: #dff9a7; }
 .ride-action[aria-disabled="true"] { cursor: progress; }
@@ -100,7 +99,6 @@
   .map-heading { padding: 9px 14px; font-size: 12px; }
   .map-project { font-size: 20px; }
   .ride-console { padding: 12px; gap: 8px; }
-  .ride-status { flex-basis: 140px; }
   .ride-status strong { font-size: 15px; }
   .ride-note { margin: 0; }
   .campus-links .availability { min-height: 36px; }
@@ -115,4 +113,12 @@
 @media (max-width: 389px) {
   .product-capture figcaption { flex-wrap: wrap; }
   .ride-note b { margin-inline-start: 3px; }
+}
+@container (max-width: 440px) {
+  .ride-console { grid-template-columns: minmax(0, 1fr) 8.5rem; min-height: 104px; }
+}
+@container (max-width: 310px) {
+  .ride-console { grid-template-columns: 1fr; gap: 8px; }
+  .ride-status { min-height: 50px; }
+  .ride-action { justify-self: start; width: 8.5rem; }
 }
