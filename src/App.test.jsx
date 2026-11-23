@@ -157,7 +157,12 @@ test('attributes Aurora to the organizer named on the university-level certifica
 });
 
 test('preserves all credentials, PDFs, engineering stories, and valid local section links', () => {
-  expect(container.querySelectorAll('.certificate-card')).toHaveLength(10);
+  expect(container.querySelectorAll('.certificate-card')).toHaveLength(11);
+  const newestCredential = container.querySelector('.certificate-card');
+  expect(newestCredential.textContent).toContain('GitHub Copilot');
+  expect(newestCredential.textContent).toContain('Nov 23, 2026');
+  expect(newestCredential.querySelector('a[href="https://learn.microsoft.com/en-us/users/kandewidanalagethimiraniranjayakee-1770/credentials/7474a8fb5ea6cd44"]')).not.toBeNull();
+  expect(newestCredential.querySelector('a[href$="/certificates/github-copilot.pdf"]')).not.toBeNull();
   expect(container.querySelectorAll('.selected-project .architecture')).toHaveLength(4);
   expect(container.querySelector('a[href="https://coursera.org/verify/56MSHOTEXYNR"]')).not.toBeNull();
   expect(container.querySelector('a[href$="ai-hackathon-2026-first-runner-up.pdf"]')).not.toBeNull();

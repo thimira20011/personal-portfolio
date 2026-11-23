@@ -280,7 +280,7 @@ function CertificateCard({ cert }) {
 }
 
 export function PortfolioCertifications({ data }) {
-  const featuredIds = [10, 3, 4];
+  const featuredIds = [11, 10, 3];
   const featured = featuredIds.map((id) => data.find((cert) => cert.id === id)).filter(Boolean);
   const others = data.filter((cert) => !featuredIds.includes(cert.id));
   return <section id="certifications" className="portfolio-section">

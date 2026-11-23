@@ -479,6 +479,14 @@ const portfolioData = {
     // ── Verified Certifications & Memberships ─────────────────────────────────
     certifications: [
       {
+        id: 11,
+        title: 'GitHub Copilot',
+        issuer: 'Microsoft · GitHub',
+        issuedDate: 'Nov 23, 2026 · Expires Nov 23, 2028',
+        credentialUrl: 'https://learn.microsoft.com/en-us/users/kandewidanalagethimiraniranjayakee-1770/credentials/7474a8fb5ea6cd44',
+        certificateUrl: `${import.meta.env.BASE_URL.slice(0, -1)}/certificates/github-copilot.pdf`,
+      },
+      {
         id: 10,
         title: 'Continuous Integration and Continuous Delivery (CI/CD)',
         issuer: 'IBM · Coursera',
