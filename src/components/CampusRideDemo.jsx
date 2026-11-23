@@ -1,85 +1,119 @@
-import React, { useEffect, useState } from 'react';
-import { ArrowRight, ArrowUpRight, BookOpen, LocateFixed, RotateCcw } from 'lucide-react';
+import React, { useEffect, useRef, useState } from 'react';
+import { ArrowUpRight, BookOpen } from 'lucide-react';
 
-const drivers = [
-  { x: 386, y: 135, angle: 29 },
-  { x: 103, y: 224, angle: -52 },
-  { x: 552, y: 249, angle: -50 },
+// Both the painted roads and the moving car use the campus plan's 640 × 332 coordinates.
+const toLibrary = 'M433 85 C415 98 400 117 386 135 S357 165 342 178 Q323 195 297 198';
+const toGate = 'M297 198 C253 208 184 190 126 212 C105 220 80 243 56 263';
+const stages = [
+  { id: 'search', label: 'Search', caption: 'A student requests a pickup at the library. PostGIS finds a nearby driver.', duration: 2800 },
+  { id: 'pickup', label: 'Pickup', caption: 'The driver heads to the library. SignalR delivers location updates to the rider.', duration: 3800 },
+  { id: 'ride', label: 'On the road', caption: 'The student is on board. Follow the car across campus to the west gate.', duration: 4300 },
+  { id: 'arrival', label: 'Arrival', caption: 'The car reaches the west gate and the ride is complete.', duration: 2600 },
 ];
-const pickup = { x: 297, y: 198 };
-const searchRadius = 118;
-// Distances are in units of the illustrative map. The real NearU service uses PostGIS.
-const closestDriver = drivers
-  .map((driver) => ({ driver, distance: Math.hypot(driver.x - pickup.x, driver.y - pickup.y) }))
-  .filter(({ distance }) => distance <= searchRadius)
-  .sort((a, b) => a.distance - b.distance)[0].driver;
 
-function CampusMap({ phase }) {
-  const matched = phase === 'matched';
-  return <svg className="campus-map" viewBox="0 0 640 332" role="img" aria-label={matched
-    ? 'A nearby driver is matched to the pickup at the library.'
-    : 'Illustrated campus with a library pickup and three sample drivers.'}>
+function Vehicle({ selected = false }) {
+  return <g className="map-vehicle">
+    {selected && <ellipse rx="17" ry="13" fill="#d4fc8b" fillOpacity=".18" stroke="#c3ef87" strokeWidth="1" />}
+    <rect x="-10" y="-5.5" width="20" height="11" rx="4" fill={selected ? '#e2fcad' : '#a5bbac'} stroke="#162c27" strokeWidth="1.8" />
+    <path d="M-5-3.5h2l.8 7H-5zM3-3.5h2.5l1 7H3.5z" fill="#304940" />
+    <path d="M8-3h2m-2 6h2" stroke="#fff5c8" strokeWidth="2" />
+  </g>;
+}
+
+function CampusMap({ stage }) {
+  const route = stage === 'pickup' ? toLibrary : toGate;
+  let carPosition = 'translate(433 85) rotate(138)';
+  if (stage === 'arrival') carPosition = 'translate(56 263) rotate(140)';
+  const moving = stage === 'pickup' || stage === 'ride';
+  return <svg className="campus-map" viewBox="0 0 640 332" preserveAspectRatio="xMidYMid slice" role="img"
+    aria-label="Campus ride simulation. A driver approaches the library from the east and takes a student along the main road to the west gate.">
     <image href="/images/campus-plan.svg" width="640" height="332" />
-    {phase !== 'idle' && <circle className="search-area" cx={pickup.x} cy={pickup.y} r={searchRadius} />}
-    {matched && <path className="match-route" d="M297 198 Q321 196 342 178 T386 135" fill="none" />}
-    {drivers.map((driver) => {
-      const selected = matched && driver === closestDriver;
-      return <g key={driver.x} transform={`translate(${driver.x} ${driver.y})`}>
-        {selected && <circle r="16" fill="#ccf374" stroke="#294a37" strokeWidth="1.5" />}
-        <g transform={`rotate(${driver.angle})`} stroke="#f5f1da" strokeWidth="1.8">
-          <rect x="-6" y="-10" width="12" height="20" rx="4" fill="#30493c" />
-          <path d="M-3.5 -4h7m-7 8h7" />
-        </g>
-      </g>;
-    })}
-    <g transform={`translate(${pickup.x} ${pickup.y})`}>
-      <circle r="10" fill="#c7f46a" stroke="#1d382d" strokeWidth="3" />
-      <circle r="3" fill="#183326" />
-      <path d="M-6 -10l-12 -14h-9" stroke="#193629" strokeWidth="2" fill="none" />
-      <rect x="-117" y="-38" width="94" height="28" rx="4" fill="#233e31" />
-      <text x="-70" y="-19" textAnchor="middle" fill="#fff9e7" fontSize="16" fontWeight="700">Pickup</text>
+    <g transform="translate(103 224) rotate(-36)"><Vehicle /></g>
+    <g transform="translate(552 249) rotate(39)"><Vehicle /></g>
+    {stage === 'search' && <g className="dispatch-search">
+      <circle cx="297" cy="198" r="180" className="search-ring" />
+      <circle cx="297" cy="198" r="180" className="search-ring search-echo" />
+    </g>}
+    <path d={toGate} className="trip-guide" />
+    {stage !== 'search' && <g className="dispatch-route">
+      <path d={stage === 'arrival' ? toLibrary : route} className="route-bed" />
+      {stage === 'arrival' ? <>
+        <path d={toLibrary} className="approach-trace" />
+        <path d={toGate} className="route-ink" />
+      </> : <path key={stage} d={route} className="route-ink route-reveal" pathLength="1" />}
+    </g>}
+    <g transform="translate(297 198)">
+      <circle r="7" fill="#c4f464" stroke="#1c3227" strokeWidth="2" />
+      <path d="m0-9-10-18" fill="none" stroke="#d6f5b5" strokeWidth="2" />
+      <rect x="-67" y="-47" width="74" height="24" rx="3" fill="#d9e9b9" />
+      <text x="-30" y="-30" textAnchor="middle" className="map-pin-text">Pickup</text>
     </g>
+    <g transform="translate(56 263)">
+      <path d="M0 0v-30" stroke="#f4cca4" strokeWidth="2.5" />
+      <path d="M1-31h19l-5 6 5 6H1z" fill="#efb581" />
+      <text x="2" y="22" textAnchor="middle" className="gate-label">West gate</text>
+    </g>
+    {moving ? <g key={stage} className="moving-car" style={{ offsetPath: `path('${route}')` }}><Vehicle selected /></g>
+      : <g className={stage === 'arrival' ? 'arrived-car' : undefined} transform={carPosition}><Vehicle selected={stage !== 'search'} /></g>}
   </svg>;
 }
 
-const status = {
-  idle: ['Pickup at the library', 'Find a driver near this point.'],
-  searching: ['Looking for a driver…', 'Checking the area around the pickup.'],
-  matched: ['Driver matched', 'PostGIS finds nearby drivers in NearU.'],
-};
-
 export default function CampusRideDemo({ article, paused }) {
-  const [phase, setPhase] = useState('idle');
-  useEffect(() => {
-    if (phase !== 'searching') return;
-    const timer = window.setTimeout(() => setPhase('matched'), paused ? 0 : 700);
-    return () => window.clearTimeout(timer);
-  }, [phase, paused]);
+  const sheet = useRef(null);
+  const [index, setIndex] = useState(0);
+  const [inView, setInView] = useState(() => !window.IntersectionObserver);
+  const [visible, setVisible] = useState(() => !document.hidden);
+  const [reduced, setReduced] = useState(() => window.matchMedia('(prefers-reduced-motion: reduce)').matches);
 
-  const request = () => {
-    if (phase === 'searching') return;
-    const instant = paused || window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    setPhase(instant ? 'matched' : 'searching');
-  };
+  useEffect(() => {
+    const preference = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const onPreference = () => { setReduced(preference.matches); setIndex(0); };
+    const onVisibility = () => setVisible(!document.hidden);
+    preference.addEventListener?.('change', onPreference);
+    document.addEventListener('visibilitychange', onVisibility);
+    const observer = window.IntersectionObserver && new IntersectionObserver(([entry]) => {
+      setInView(entry.isIntersecting);
+    }, { threshold: 0 });
+    observer?.observe(sheet.current);
+    return () => {
+      observer?.disconnect();
+      preference.removeEventListener?.('change', onPreference);
+      document.removeEventListener('visibilitychange', onVisibility);
+    };
+  }, []);
+
+  const activeIndex = reduced ? stages.length - 1 : index;
+  const stage = stages[activeIndex];
+  const running = !reduced && !paused && inView && visible;
+  // The active progress line is the clock. Pausing CSS freezes it and the car at the same instant.
+  function advance(event) {
+    if (!reduced && event.animationName === 'dispatch-progress') {
+      setIndex((previous) => (previous + 1) % stages.length);
+    }
+  }
 
   return <div className="ride-feature" id="ride-demo">
-    <figure className="ride-sheet" data-phase={phase} data-paused={paused}>
-      <figcaption className="map-heading">
-        <span className="map-project"><LocateFixed size={22} aria-hidden="true" />NearU</span>
-        <span>Campus ride demo</span>
+    <figure ref={sheet} className="ride-sheet" data-stage={stage.id} data-running={running} style={{ '--leg-duration': `${stage.duration}ms` }}>
+      <figcaption className="dispatch-caption">
+        <div><h2>NearU<span>.</span></h2><p>Campus ride simulation</p></div>
+        <div className="trip-endpoints"><span>Library</span><span>West gate</span></div>
       </figcaption>
-      <CampusMap phase={phase} />
-      <div className="ride-console">
-        <div className="ride-status" role="status" aria-live="polite" aria-atomic="true">
-          <strong>{status[phase][0]}</strong><span>{status[phase][1]}</span>
+      <CampusMap stage={stage.id} />
+      <div className="dispatch-log">
+        <ol className="dispatch-steps" aria-label="Ride sequence">
+          {stages.map((item, step) => <li key={item.id} data-state={step < activeIndex ? 'done' : step === activeIndex ? 'current' : 'next'}
+            aria-current={step === activeIndex ? 'step' : undefined}>
+            <span className="step-track" aria-hidden="true">{step === activeIndex && !reduced && <i onAnimationEnd={advance} />}</span>
+            {item.label}
+          </li>)}
+        </ol>
+        <div className="ride-status" aria-live="off">
+          {stages.map((item) => <p key={item.id} aria-hidden={item !== stage} data-current={item === stage}>{item.caption}</p>)}
         </div>
-        <button className="ride-action" type="button" onClick={phase === 'matched' ? () => setPhase('idle') : request} aria-disabled={phase === 'searching'}>
-          {phase === 'matched' ? <>Reset demo<RotateCcw size={16} /></> : <>Request a ride<ArrowRight size={17} /></>}
-        </button>
       </div>
+      {article && <a className="ride-note" href={article.url} target="_blank" rel="noopener noreferrer">
+        <BookOpen size={16} aria-hidden="true" /><span>How I find nearby drivers</span><ArrowUpRight size={15} aria-hidden="true" />
+      </a>}
     </figure>
-    {article && <a className="ride-note" href={article.url} target="_blank" rel="noopener noreferrer">
-      <BookOpen size={17} aria-hidden="true" /><span>My field notes <b>How I find nearby drivers</b></span><ArrowUpRight size={16} aria-hidden="true" />
-    </a>}
   </div>;
 }

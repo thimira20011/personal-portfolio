@@ -119,7 +119,7 @@ export function PortfolioHero({ data, animationsPaused }) {
       <div className="hero-copy">
         <h1>Thimira <span>Niranjaya<i>.</i></span></h1>
         <p className="engineer-byline">Backend engineer <span> / </span> Sri Lanka</p>
-        <p className="campus-intro">I build real-time systems. For <strong>NearU</strong>, I built the backend that connects students with nearby drivers on campus.</p>
+        <p className="campus-intro">For <strong>NearU</strong>, I built the backend that finds nearby drivers and streams their locations. Here’s one ride across campus.</p>
       </div>
       <CampusRideDemo article={data.publications.find((article) => article.id === 1)} paused={animationsPaused} />
       <div className="campus-links">
@@ -199,7 +199,7 @@ function ProjectPreview({ project }) {
   return <figure className="product-capture">
     <div className="project-preview-frame"><ProjectImage project={project} /></div>
     {project.id === 9 ? <figcaption><LockKeyhole size={18} aria-hidden="true" /><span><strong>Beyond the sign-in screen</strong>The Go API checks the staff session, role and record permissions before a protected change.</span></figcaption>
-      : <figcaption><span><strong>The student-facing application</strong>I built the ride matching, live updates and cloud deployment behind this interface.</span><a href="#ride-demo">Try the map<ArrowUpRight size={15} aria-hidden="true" /></a></figcaption>}
+      : <figcaption><span><strong>The student-facing application</strong>I built the ride matching, live updates and cloud deployment behind this interface.</span><a href="#ride-demo">Watch the ride<ArrowUpRight size={15} aria-hidden="true" /></a></figcaption>}
   </figure>;
 }
 

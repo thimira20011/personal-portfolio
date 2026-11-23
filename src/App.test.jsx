@@ -211,31 +211,42 @@ test('reduced motion shows supporting content without depending on scroll animat
   expect(container.querySelector('.pixel-workspace').dataset.running).toBe('false');
   expect(container.querySelector('#achievements .opacity-0')).toBeNull();
   expect(container.querySelector('#contact .opacity-0')).toBeNull();
-  act(() => container.querySelector('.ride-action').click());
-  expect(container.querySelector('.ride-status').textContent).toContain('Driver matched');
+  expect(container.querySelector('.ride-sheet').dataset.stage).toBe('arrival');
+  expect(container.querySelector('.ride-sheet').dataset.running).toBe('false');
+  expect(container.querySelector('.moving-car, .search-ring, .step-track i')).toBeNull();
 });
 
-test('the campus ride demo finds a driver, resets and can be used again', () => {
-  vi.useFakeTimers();
-  try {
-    const button = container.querySelector('.ride-action');
-    const status = container.querySelector('.ride-status');
-    act(() => button.click());
-    expect(status.textContent).toContain('Looking for a driver');
-    expect(button.getAttribute('aria-disabled')).toBe('true');
-    act(() => vi.advanceTimersByTime(700));
-    expect(status.textContent).toContain('Driver matched');
-    expect(container.querySelector('.match-route')).not.toBeNull();
-    act(() => button.click());
-    expect(status.textContent).toContain('Pickup at the library');
-    expect(container.querySelector('.match-route')).toBeNull();
-    act(() => container.querySelector('.nav-motion-toggle').click());
-    act(() => button.click());
-    expect(status.textContent).toContain('Driver matched');
-    expect(container.querySelector('#ride-demo .ride-note').href).toContain('beyond-coordinates');
-  } finally {
-    vi.useRealTimers();
+test('the campus sequence advances on its animation clock and loops without input', () => {
+  const sheet = container.querySelector('.ride-sheet');
+  expect(sheet.dataset.stage).toBe('search');
+  expect(sheet.querySelector('button')).toBeNull();
+  for (const next of ['pickup', 'ride', 'arrival', 'search']) {
+    act(() => Simulate.animationEnd(sheet.querySelector('.step-track i'), { animationName: 'dispatch-progress' }));
+    expect(sheet.dataset.stage).toBe(next);
+    expect(sheet.querySelectorAll('[aria-current="step"]')).toHaveLength(1);
   }
+  expect(sheet.querySelector('.ride-note').href).toContain('beyond-coordinates');
+});
+
+test('manual pause, viewport and tab visibility independently gate campus playback', () => {
+  let hidden = false;
+  vi.spyOn(document, 'hidden', 'get').mockImplementation(() => hidden);
+  act(() => document.dispatchEvent(new Event('visibilitychange')));
+  const sheet = container.querySelector('.ride-sheet');
+  const observer = observers.find((entry) => entry.targets.includes(sheet));
+  expect(sheet.dataset.running).toBe('true');
+  act(() => observer.callback([{ target: sheet, isIntersecting: false }]));
+  expect(sheet.dataset.running).toBe('false');
+  act(() => observer.callback([{ target: sheet, isIntersecting: true }]));
+  act(() => container.querySelector('.nav-motion-toggle').click());
+  expect(sheet.dataset.running).toBe('false');
+  hidden = true;
+  act(() => document.dispatchEvent(new Event('visibilitychange')));
+  act(() => container.querySelector('.nav-motion-toggle').click());
+  expect(sheet.dataset.running).toBe('false');
+  hidden = false;
+  act(() => document.dispatchEvent(new Event('visibilitychange')));
+  expect(sheet.dataset.running).toBe('true');
 });
 
 test('contact form handles a failed submission without clearing the message', async () => {

@@ -1,11 +1,11 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 332">
-  <title>Illustrated campus plan</title>
+  <title>Campus plan at dusk</title>
   <defs>
     <pattern id="meadow" width="17" height="13" patternUnits="userSpaceOnUse">
-      <path d="m3 10 2-3m1 3 1-2" fill="none" stroke="#7c936f" opacity=".45" stroke-width=".9"/>
+      <path d="m3 10 2-3m1 3 1-2" fill="none" stroke="#66816d" opacity=".45" stroke-width=".9"/>
     </pattern>
     <pattern id="court" width="5" height="5" patternUnits="userSpaceOnUse">
-      <path d="M0 5 5 0" stroke="#a68f69" stroke-width="1" opacity=".35"/>
+      <path d="M0 5 5 0" stroke="#9b926e" stroke-width="1" opacity=".35"/>
     </pattern>
     <path id="woods" d="M350-10h310v360H475c28-32 30-51 7-74-21-23 3-45 15-73 18-41 0-60-44-77-40-16-74-9-101-33-25-22-34-69-2-103Z"/>
     <path id="contour" d="M353-24c-40 66-11 108 46 127 43 15 103 11 119 50 16 40-27 78-16 101 15 29 51 51 3 102"/>
@@ -16,29 +16,29 @@
     <path id="west" d="M-8 53c36 15 72 41 113 37 45-3 87-31 140-27l47 2c41 3 66 20 101 50"/>
     <path id="lane" d="M107 88c5 41 27 79 63 116m-42-54 147-51m-97 106c7 40 25 66 63 90m56-119c-29 2-62 8-80 23m93-143c15-26 32-39 57-47m57 331c-5-51-17-97-52-163m142 156c-23-32-52-54-83-74l-47 18"/>
     <g id="roads"><use href="#main"/><use href="#south"/><use href="#east"/><use href="#west"/></g>
-    <g id="grove" fill="#a8b797" stroke="#8b9c7d" stroke-width="1">
+    <g id="grove" fill="#385a47" stroke="#63806a" stroke-width="1">
       <circle r="4"/><circle cx="8" cy="2" r="3"/><circle cx="3" cy="-6" r="3.5"/>
     </g>
   </defs>
-  <path fill="#e9e3cb" d="M0 0h640v332H0z"/>
-  <use href="#woods" fill="#c4d2b0"/>
+  <path fill="#213933" d="M0 0h640v332H0z"/>
+  <use href="#woods" fill="#2b483a"/>
   <use href="#woods" fill="url(#meadow)"/>
-  <g fill="none" stroke="#8b9d7f" stroke-width="1.3" opacity=".61">
+  <g fill="none" stroke="#5c7661" stroke-width="1.3" opacity=".61">
     <use href="#contour"/><use href="#contour" x="9" y="-5"/><use href="#contour" x="19" y="-11"/>
     <use href="#contour" x="30" y="-17"/><use href="#contour" x="43" y="-22"/><use href="#contour" x="58" y="-28"/>
     <use href="#contour" x="76" y="-35"/><use href="#contour" x="94" y="-41"/><use href="#contour" x="116" y="-50"/>
     <use href="#contour" x="140" y="-56"/><use href="#contour" x="166" y="-65"/>
   </g>
-  <path d="M18-7c53 54 62 88 47 145s0 87 14 110l-18 82H0V0Z" fill="#ced6b8"/>
-  <use href="#river" fill="none" stroke="#a4bfb4" stroke-width="22"/>
-  <use href="#river" fill="none" stroke="#b6cfc2" stroke-width="17"/>
+  <path d="M18-7c53 54 62 88 47 145s0 87 14 110l-18 82H0V0Z" fill="#2c483b"/>
+  <use href="#river" fill="none" stroke="#426c70" stroke-width="22"/>
+  <use href="#river" fill="none" stroke="#33595b" stroke-width="17"/>
   <g transform="translate(165 265) rotate(-16)">
-    <rect x="-53" y="-28" width="106" height="56" rx="28" fill="#c5a787" stroke="#baa082" stroke-width="2"/>
-    <rect x="-48" y="-23" width="96" height="46" rx="23" fill="none" stroke="#eee1c6"/>
-    <rect x="-43" y="-18" width="86" height="36" rx="18" fill="#aeba97" stroke="#eee1c6"/>
-    <path d="M-28-15h56v30h-56zm28 0v30" fill="none" stroke="#e4e7ce"/><circle r="7" fill="none" stroke="#e4e7ce"/>
+    <rect x="-53" y="-28" width="106" height="56" rx="28" fill="#806956" stroke="#b29072" stroke-width="2"/>
+    <rect x="-48" y="-23" width="96" height="46" rx="23" fill="none" stroke="#c4af8f"/>
+    <rect x="-43" y="-18" width="86" height="36" rx="18" fill="#49664c" stroke="#c4af8f"/>
+    <path d="M-28-15h56v30h-56zm28 0v30" fill="none" stroke="#93a88e"/><circle r="7" fill="none" stroke="#93a88e"/>
   </g>
-  <g fill="#c5b49a" stroke="#a99880" stroke-width="1.7" stroke-linejoin="round">
+  <g fill="#50645a" stroke="#79857a" stroke-width="1.7" stroke-linejoin="round">
     <g transform="translate(146 50) rotate(-17)">
       <path d="M-46-15h57v13h-21v12h-36zM17-14h30v24h-9V-2H17zM-16-35H9v12h-25z"/>
     </g>
@@ -60,24 +60,24 @@
     <path d="m82 135 12-5 7 16-12 5zm16 31 27-10 4 10-27 10zm202-140 28 9-4 11-28-9z"/>
   </g>
   <g transform="translate(73 307) rotate(-29)">
-    <rect width="49" height="26" fill="#c8b99d"/><rect x="2" y="2" width="45" height="22" fill="url(#court)" stroke="#f2e6cd"/>
+    <rect width="49" height="26" fill="#465b50"/><rect x="2" y="2" width="45" height="22" fill="url(#court)" stroke="#808d77"/>
   </g>
   <g fill="none" stroke-linejoin="round" stroke-linecap="round">
-    <use href="#lane" stroke="#bcaf94" stroke-width="5"/><use href="#lane" stroke="#f3ead2" stroke-width="3"/>
-    <use href="#roads" stroke="#b6a991" stroke-width="13"/><use href="#roads" stroke="#faf4e1" stroke-width="10"/>
-    <use href="#main" stroke="#c2b292" stroke-width="1" stroke-dasharray="5 5"/>
+    <use href="#lane" stroke="#4f6457" stroke-width="5"/><use href="#lane" stroke="#34483f" stroke-width="3"/>
+    <use href="#roads" stroke="#6f806f" stroke-width="13"/><use href="#roads" stroke="#3b5248" stroke-width="10"/>
+    <use href="#main" stroke="#7d8d7d" stroke-width="1" stroke-dasharray="5 5"/>
   </g>
   <g><use href="#grove" x="91" y="45"/><use href="#grove" x="80" y="54"/><use href="#grove" x="120" y="23"/>
     <use href="#grove" x="259" y="132"/><use href="#grove" x="269" y="142"/><use href="#grove" x="162" y="173"/>
     <use href="#grove" x="308" y="313"/><use href="#grove" x="323" y="309"/><use href="#grove" x="397" y="228"/>
     <use href="#grove" x="457" y="93"/><use href="#grove" x="447" y="96"/><use href="#grove" x="586" y="265"/>
   </g>
-  <g fill="#455446" stroke="#e9e4cd" stroke-width="3.5" paint-order="stroke" font-family="Georgia, serif" font-style="italic" font-size="18">
+  <g fill="#e2e1bf" stroke="#2b443a" stroke-width="3.5" paint-order="stroke" font-family="Georgia, serif" font-style="italic" font-size="18">
     <text x="115" y="55">Residences</text><text x="265" y="228">Library</text><text x="119" y="305">Sports ground</text>
     <text x="463" y="137">East ridge</text>
   </g>
-  <g transform="translate(596 41)" fill="#334c3b">
+  <g transform="translate(596 41)" fill="#d5dfc7">
     <text text-anchor="middle" y="-10" font-family="sans-serif" font-size="12" font-weight="700">N</text>
-    <path d="m0-4 7 22-7-5-7 5Z"/><path d="M0 0v12l4 3Z" fill="#efe9d6"/>
+    <path d="m0-4 7 22-7-5-7 5Z"/><path d="M0 0v12l4 3Z" fill="#435d4a"/>
   </g>
 </svg>
