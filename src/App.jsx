@@ -5,6 +5,7 @@ import { PortfolioAbout, PortfolioCertifications, PortfolioHero, PortfolioNav, P
 import { AchievementsAwards, Contact, ExperienceTimeline, Footer, ScrollToTop } from './components/SupportingSections';
 import AmbientBackground from './components/AmbientBackground';
 import './lively.css';
+import './campus.css';
 import { MotionConfig } from 'motion/react';
 
 export default function App() {
@@ -76,7 +77,7 @@ export default function App() {
       <main id="main-content" className="page-container" tabIndex={-1}>
         <PortfolioHero data={portfolioData} animationsPaused={animationsPaused} />
         <PortfolioProjects projects={portfolioData.projects} />
-        <PortfolioAbout data={portfolioData.about} profilePicUrl={portfolioData.profilePicUrl} />
+        <PortfolioAbout data={portfolioData.about} profilePicUrl={portfolioData.profilePicUrl} animationsPaused={animationsPaused} />
         <ExperienceTimeline data={portfolioData.timeline} />
         <AchievementsAwards data={portfolioData.achievements} publications={portfolioData.publications} />
         <PortfolioCertifications data={portfolioData.certifications} />

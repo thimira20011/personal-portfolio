@@ -98,8 +98,7 @@ test('offers both current résumés and dismisses the résumé chooser with Esca
   const chooser = container.querySelector('.resume-menu');
   const links = [...chooser.querySelectorAll('a')];
   expect(links.map((link) => link.getAttribute('href'))).toEqual(['/cv/Thimira_SE.pdf', '/cv/Thimira_DevOps.pdf']);
-  expect(container.querySelector('.hero-buttons .button-primary').getAttribute('href')).toBe('/cv/Thimira_SE.pdf');
-  expect(container.querySelector('.hero-cv-alternative a').getAttribute('href')).toBe('/cv/Thimira_DevOps.pdf');
+  expect(container.querySelector('#home .intro-links a[href$=".pdf"]').getAttribute('href')).toBe('/cv/Thimira_SE.pdf');
   chooser.open = true;
   act(() => document.dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape', bubbles: true })));
   expect(chooser.open).toBe(false);
@@ -133,7 +132,8 @@ test('one ambient motion control pauses both the workspace and the page backgrou
   vi.spyOn(document, 'hidden', 'get').mockReturnValue(false);
   act(() => document.dispatchEvent(new Event('visibilitychange')));
   expect(container.querySelector('.ambient-background').dataset.running).toBe('true');
-  expect(container.querySelector('#home button')).toBeNull();
+  expect(container.querySelector('#home .pixel-workspace')).toBeNull();
+  expect(container.querySelector('#about .pixel-workspace')).not.toBeNull();
   act(() => container.querySelector('.nav-motion-toggle').click());
   expect(container.querySelector('.ambient-background').dataset.running).toBe('false');
   expect(container.querySelector('.pixel-workspace').dataset.running).toBe('false');
@@ -211,6 +211,31 @@ test('reduced motion shows supporting content without depending on scroll animat
   expect(container.querySelector('.pixel-workspace').dataset.running).toBe('false');
   expect(container.querySelector('#achievements .opacity-0')).toBeNull();
   expect(container.querySelector('#contact .opacity-0')).toBeNull();
+  act(() => container.querySelector('.ride-action').click());
+  expect(container.querySelector('.ride-status').textContent).toContain('Driver matched');
+});
+
+test('the campus ride demo finds a driver, resets and can be used again', () => {
+  vi.useFakeTimers();
+  try {
+    const button = container.querySelector('.ride-action');
+    const status = container.querySelector('.ride-status');
+    act(() => button.click());
+    expect(status.textContent).toContain('Looking for a driver');
+    expect(button.getAttribute('aria-disabled')).toBe('true');
+    act(() => vi.advanceTimersByTime(700));
+    expect(status.textContent).toContain('Driver matched');
+    expect(container.querySelector('.match-route')).not.toBeNull();
+    act(() => button.click());
+    expect(status.textContent).toContain('Pickup at the library');
+    expect(container.querySelector('.match-route')).toBeNull();
+    act(() => container.querySelector('.nav-motion-toggle').click());
+    act(() => button.click());
+    expect(status.textContent).toContain('Driver matched');
+    expect(container.querySelector('#ride-demo .ride-note').href).toContain('beyond-coordinates');
+  } finally {
+    vi.useRealTimers();
+  }
 });
 
 test('contact form handles a failed submission without clearing the message', async () => {

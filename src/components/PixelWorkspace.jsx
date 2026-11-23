@@ -49,7 +49,7 @@ export default function PixelWorkspace({ paused = false }) {
   return <div ref={sceneRef} className="pixel-workspace" data-running={running} onPointerMove={moveDepth} onPointerLeave={resetDepth}>
     <motion.div className="workspace-art" style={{ transform }} aria-hidden="true">
       <div className="workspace-scene">
-      <img className="workspace-image" src="/images/pixel-workspace.webp" width="960" height="640" alt="" fetchpriority="high" />
+      <img className="workspace-image" src="/images/pixel-workspace.webp" width="960" height="640" alt="" loading="lazy" />
       <div className="workspace-screen">
         <div className="screen-code">{[52, 82, 37, 64, 45, 92, 70, 58].map((width, index) => <span className={`screen-code-line code-line-${index}`} key={index}><i /><b style={{ width: `${width}%` }} /></span>)}<span className="monitor-cursor" /></div>
       </div>

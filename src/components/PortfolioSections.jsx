@@ -1,9 +1,10 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { ArrowDown, ArrowUpRight, BarChart3, Check, ChevronDown, Cloud, Code2, Database, ExternalLink, FileText, Github, Linkedin, MapPin, Menu, Moon, Network, Pause, Play, Sun, Trophy, X } from 'lucide-react';
+import { ArrowDown, ArrowUpRight, BarChart3, Check, ChevronDown, Cloud, Code2, Database, ExternalLink, FileText, Github, LockKeyhole, Menu, Moon, Network, Pause, Play, Sun, Trophy, X } from 'lucide-react';
 import { projectStories } from '../data/projectStories';
 import useReveal from '../hooks/useReveal';
 import imageProps from '../data/imageProps';
 import PixelWorkspace from './PixelWorkspace';
+import CampusRideDemo from './CampusRideDemo';
 import { motion, useReducedMotion } from 'motion/react';
 
 const navigation = [
@@ -114,25 +115,19 @@ export function SectionTitle({ title, description }) {
 
 export function PortfolioHero({ data, animationsPaused }) {
   return (
-    <header id="home" className="hero" data-enter>
+    <header id="home" className="campus-hero">
       <div className="hero-copy">
-        <h1><span className="hero-line"><span>Backend thinking.</span></span><span className="hero-line"><span>Real-world impact<span className="headline-period">.</span></span></span></h1>
-        <p className="hero-description"><strong className="hero-greeting">Hi, I'm {data.shortName}.</strong>An Information Systems undergraduate building real-time systems with <strong>.NET, cloud infrastructure, and AI.</strong> I enjoy turning complex problems into software people can use.</p>
-        <div className="hero-buttons">
-          <a className="button button-primary" href={data.resumes[0].url} target="_blank" rel="noopener noreferrer">View résumé<FileText size={17} aria-hidden="true" /></a>
-          <a className="button button-secondary" href="#projects">Explore my work<ArrowDown size={17} aria-hidden="true" /></a>
-        </div>
-        <p className="hero-cv-alternative">Also available: <a href={data.resumes[1].url} target="_blank" rel="noopener noreferrer">DevOps résumé<ArrowUpRight size={14} aria-hidden="true" /></a></p>
-        <div className="hero-socials">
-          <span><MapPin size={15} aria-hidden="true" />Sri Lanka</span>
-          <span className="social-divider" />
-          <a href={data.socialLinks.github} target="_blank" rel="noopener noreferrer"><Github size={17} aria-hidden="true" />GitHub<ArrowUpRight size={13} aria-hidden="true" /></a>
-          <a href={data.socialLinks.linkedin} target="_blank" rel="noopener noreferrer"><Linkedin size={17} aria-hidden="true" />LinkedIn<ArrowUpRight size={13} aria-hidden="true" /></a>
-        </div>
+        <h1>Thimira <span>Niranjaya<i>.</i></span></h1>
+        <p className="engineer-byline">Backend engineer <span> / </span> Sri Lanka</p>
+        <p className="campus-intro">I build real-time systems. For <strong>NearU</strong>, I built the backend that connects students with nearby drivers on campus.</p>
       </div>
-      <div className="hero-visual">
-        <PixelWorkspace paused={animationsPaused} />
-        <a href="#contact" className="availability"><span className="status-dot" />Available for software engineering internships<ArrowUpRight size={15} aria-hidden="true" /></a>
+      <CampusRideDemo article={data.publications.find((article) => article.id === 1)} paused={animationsPaused} />
+      <div className="campus-links">
+        <div className="intro-links">
+          <a href="#projects">Explore my work<ArrowDown size={16} aria-hidden="true" /></a>
+          <a href={data.resumes[0].url} target="_blank" rel="noopener noreferrer">View résumé<ArrowUpRight size={16} aria-hidden="true" /></a>
+        </div>
+        <a href="#contact" className="availability"><span className="status-dot" />Open to software engineering internships</a>
       </div>
       <div className="proof-strip" aria-label="Experience at a glance">
         <a href="#case-study-8"><Trophy size={19} aria-hidden="true" /><span><strong>AI Hackathon 2026</strong><span>1st Runner-Up · Team IGNITE</span></span><ArrowUpRight size={17} aria-hidden="true" /></a>
@@ -175,6 +170,39 @@ function GreenOpsPreview({ project }) {
   </div>;
 }
 
+function RecoveryPreview() {
+  return <figure className="recovery-preview">
+    <figcaption>GridWalk AI <span>Recovery sketch</span></figcaption>
+    <svg viewBox="0 0 430 184" role="img" aria-label="Illustrative microgrid. A fault interrupts the primary supply. A dashed path shows a proposed connection from backup power to the load.">
+      <g fill="none" strokeWidth="3" strokeLinejoin="round">
+        <path d="M49 65h65l23 22m24 21 18 16h54l48-59h100" stroke="#aab7ad" />
+        <path d="M49 151h55l36 12h83l66-76h91" stroke="#ceec9b" strokeDasharray="7 6" />
+      </g>
+      <g stroke="#d7e1d9" strokeWidth="2" fill="#35443e"><rect x="37" y="54" width="22" height="22"/><circle cx="233" cy="124" r="6"/><rect x="378" y="60" width="13" height="33" rx="2"/></g>
+      <path d="m144 83-10 18h10l-3 14 18-23h-11l7-9z" fill="#efab7a"/>
+      <path d="m49 142 10 9-10 9-10-9z" fill="#ceec9b"/>
+      <g fill="#edf2e9" fontSize="15" fontFamily="sans-serif">
+        <text x="34" y="38">Supply</text><text x="350" y="42">Load</text><text x="34" y="132">Backup</text>
+        <text x="144" y="67" fill="#f4bb95">Fault</text>
+      </g>
+    </svg>
+    <p><span aria-hidden="true" />Proposed recovery path</p>
+  </figure>;
+}
+
+function ProjectPreview({ project }) {
+  if (project.id === 4) return <GreenOpsPreview project={project} />;
+  if (project.id === 8) return <>
+    <RecoveryPreview />
+    <details className="project-capture"><summary>View application screenshot<ChevronDown size={16} aria-hidden="true" /></summary><ProjectImage project={project} /></details>
+  </>;
+  return <figure className="product-capture">
+    <div className="project-preview-frame"><ProjectImage project={project} /></div>
+    {project.id === 9 ? <figcaption><LockKeyhole size={18} aria-hidden="true" /><span><strong>Beyond the sign-in screen</strong>The Go API checks the staff session, role and record permissions before a protected change.</span></figcaption>
+      : <figcaption><span><strong>The student-facing application</strong>I built the ride matching, live updates and cloud deployment behind this interface.</span><a href="#ride-demo">Try the map<ArrowUpRight size={15} aria-hidden="true" /></a></figcaption>}
+  </figure>;
+}
+
 function ArchitectureFlow({ story, projectId }) {
   const [activeStep, setActiveStep] = useState(0);
   const detailId = `architecture-detail-${projectId}`;
@@ -212,16 +240,13 @@ function SelectedProject({ project, index, flagship }) {
   const ref = useReveal(index * 60);
   return <article ref={ref} className={`selected-project ${flagship ? 'flagship-project' : ''}`} data-project={project.id} aria-labelledby={`project-title-${project.id}`}>
     <div className="project-visual">
-      {project.id === 4 ? <GreenOpsPreview project={project} /> : <div className="project-preview-frame">
-        <ProjectImage project={project} />
-      </div>}
+      <ProjectPreview project={project} />
     </div>
     <div className="project-content">
       <h3 id={`project-title-${project.id}`}>{story.name}<span> {project.title.split('—')[1]?.trim()}</span></h3>
       <div className="project-meta"><span>{story.label}</span><span>{project.period}</span></div>
       <p className="project-summary">{story.summary}</p>
       <dl className="project-facts">
-        <div><dt>Problem</dt><dd>{story.problem}</dd></div>
         <div><dt>{story.contributionLabel || 'My contribution'}</dt><dd>{story.contribution}</dd></div>
         <div className="project-outcome"><dt><Check size={13} aria-hidden="true" />Outcome</dt><dd>{story.result}</dd></div>
       </dl>
@@ -241,7 +266,7 @@ export function PortfolioProjects({ projects }) {
   const others = projects.filter((project) => !projectStories[project.id]);
   const filtered = others.filter((project) => inCategory(project, filter));
   return <section id="projects" className="portfolio-section projects-section">
-    <SectionTitle title="Selected engineering work." description="Real-time backends, agentic AI, and cloud infrastructure. Explore what I built, the decisions behind it, and the code." />
+    <SectionTitle title="Inside the projects." />
     <div className="selected-projects">{selected.map((project, index) => <SelectedProject key={project.id} project={project} index={index} flagship={index === 0} />)}</div>
     <details className="more-projects">
       <summary><span>More projects <span className="count-badge">{others.length}</span></span><span className="expand-label">Explore the rest<ChevronDown size={18} aria-hidden="true" /></span></summary>
@@ -260,7 +285,7 @@ function SkillFocus({ title, description, skills, index }) {
   return <div ref={ref} className="skill-focus"><h3>{title}</h3><p>{description}</p><div className="tech-list">{skills.map((skill) => <span key={skill}>{skill}</span>)}</div></div>;
 }
 
-export function PortfolioAbout({ data, profilePicUrl }) {
+export function PortfolioAbout({ data, profilePicUrl, animationsPaused }) {
   const core = [
     { title: 'Backend & real-time', description: 'APIs, domain logic, and the connections between services.', skills: ['C# / .NET', 'ASP.NET Core', 'SignalR', 'CQRS & MediatR'] },
     { title: 'Cloud & data', description: 'The infrastructure and data that keep systems running.', skills: ['AWS', 'Docker', 'PostgreSQL / PostGIS', 'Redis'] },
@@ -268,7 +293,7 @@ export function PortfolioAbout({ data, profilePicUrl }) {
   ];
   return <section id="about" className="portfolio-section about-section">
     <SectionTitle title="The engineer behind the work." />
-    <div className="about-person"><div className="portrait-frame"><img src={profilePicUrl} {...imageProps(profilePicUrl, '(max-width: 767px) 112px, 200px')} alt="Thimira Niranjaya Keerthiwansha" loading="lazy" /></div><div className="about-intro"><p>{data.bio}</p><p>{data.motivation}</p></div></div>
+    <div className="about-person"><div className="portrait-frame"><img src={profilePicUrl} {...imageProps(profilePicUrl, '(max-width: 767px) 112px, 200px')} alt="Thimira Niranjaya Keerthiwansha" loading="lazy" /></div><div className="about-intro"><p>{data.bio}</p><p>{data.motivation}</p></div><PixelWorkspace paused={animationsPaused} /></div>
     <div className="skill-focus-grid">{core.map((skill, index) => <SkillFocus key={skill.title} {...skill} index={index} />)}</div>
     <details className="skills-details"><summary>Explore my full toolkit<ChevronDown size={17} aria-hidden="true" /></summary><div className="full-skills">{data.skillGroups.map((group) => <div key={group.category}><h3>{group.category}</h3><p>{group.items.join(' · ')}</p></div>)}</div></details>
   </section>;
